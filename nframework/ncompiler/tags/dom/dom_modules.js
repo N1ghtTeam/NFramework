@@ -15,7 +15,7 @@ tag.Compile = function(element, childsCode, code) {
 
     return `
 
-        ${code}
+        ${result}
 
     `;
 }
