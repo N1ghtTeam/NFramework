@@ -7,43 +7,43 @@
         <method setup>
 
             function(){
-                this->body = document.body;
+                this->body=document.body;
             }
 
         </method>
 
         <method getElementById>
-            function(pr0) {
+            function(pr0){
                 return document.getElementById(pr0);
             }
         </method>
 
         <method getElementsByName>
-            function(pr0) {
+            function(pr0){
                 return document.getElementsByName(pr0);
             }
         </method>
 
         <method getElementsByClassName>
-            function(pr0) {
+            function(pr0){
                 return document.getElementsByClassName(pr0);
             }
         </method>
 
         <method getElementsByTagName>
-            function(pr0) {
+            function(pr0){
                 return document.getElementsByTagName(pr0);
             }
         </method>
 
         <method querySelector>
-            function(pr0) {
+            function(pr0){
                 return document.querySelector(pr0);
             }
         </method>
 
         <method querySelectorAll>
-            function(pr0) {
+            function(pr0){
                 return document.querySelectorAll(pr0);
             }
         </method>

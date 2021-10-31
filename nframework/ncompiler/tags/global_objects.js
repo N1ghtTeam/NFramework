@@ -1,36 +1,35 @@
-var Tag=require('../tag/tag');
+const Tag = require('../tag/tag');
 
-var tag=new Tag();
+let tag = new Tag();
 
-tag.isAutoClose=true;
+tag.isAutoClose = true;
 
-tag.Compile=function(element,childsCode,code){
-    var inputs=tag.GetInputs(element,childsCode,code);
-    
+tag.Compile = function(element, childsCode, code) {
+    let inputs = tag.GetInputs(element, childsCode, code);
 
-    if(inputs[0]=='*'){
+
+    if (inputs[0] == '*') {
         return `
             this.useAllGlobalObjects=true;
         `;
-    }
-    else{
-        var code=`this.customTypeDatas=[];
+    } else {
+        let code = `this.customTypeDatas=[];
         `;
-    
-        for(var i=0;i<inputs.length;i++){
-            code+=`this.customTypeDatas.push('${inputs[i]}');
+
+        for (let i = 0; i < inputs.length; i++) {
+            code += `this.customTypeDatas.push('${inputs[i]}');
             `;
         }
-        
+
         return `
-        
+
             ${code}
-        
+
         `;
     }
 
-    
+
 }
 
 
-module.exports=tag;
+module.exports = tag;

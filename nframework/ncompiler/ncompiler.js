@@ -22,16 +22,14 @@ class NCompiler {
             }
         }
 
-        dirNLCPath = fileNLCPath.substring(0, endDIndex);
-
+        // File name.
         fileNLCName = fileNLCPath.substring(endDIndex + 1, path.length);
-
+        fileJSNameC = fileNLCName + '.client.js';
         fileJSNameSV = fileNLCName + '.server.js';
 
+        // File path.
+        dirNLCPath = fileNLCPath.substring(0, endDIndex);
         fileJSSVPath = dirNLCPath + '/' + fileJSNameSV;
-
-        fileJSNameC = fileNLCName + '.client.js';
-
         fileJSCPath = dirNLCPath + '/' + fileJSNameC;
 
         let prs_fileJSCPath = '';
@@ -43,10 +41,9 @@ class NCompiler {
             prs_fileJSCPath += fileJSCPath[i];
         }
 
-        codeSV = 'var JSCLPath = "' + prs_fileJSCPath + '";' + codeSV;
+        codeSV = 'const JSCLPath = "' + prs_fileJSCPath + '";\n' + codeSV;
 
         fs.writeFileSync(fileJSSVPath, codeSV);
-
         fs.writeFileSync(fileJSCPath, codeCL);
 
         let cResult = new Object();
@@ -210,147 +207,139 @@ class NCompiler {
                     }
 
                 }
-                if (true) { //code[startN]=='N'){
+                let endTagName = startN + 1;
 
-                    if (true) { //code[startN+1]==':' && code[startN+2]!=':'){
+                for (let j = startN + 1; j < code.length; j++) {
+                    let chj = code[j];
 
-                        let endTagName = startN + 1;
-
-                        for (let j = startN + 1; j < code.length; j++) {
-                            let chj = code[j];
-
-                            if (chj == ' ' || chj == '>' || chj == '/') {
-                                endTagName = j - 1;
-                                break;
-                            }
-
-                        }
-
-                        let tagName = code.substring(startN, endTagName + 1);
-
-                        tagName = this.GetTagNameFromString(tagName);
-
-
-                        if (tagName == 'use' || tagName == 'use-for-all') {
-                            let checkIsCloseStart = startN;
-                            let __tagStart = startN;
-                            let isCloseTag = false;
-                            for (let t = checkIsCloseStart; t >= 0; t--) {
-                                if (code[t] == '<') {
-                                    __tagStart = t;
-                                    break;
-                                }
-                            }
-                            for (let t = __tagStart + 1; t < checkIsCloseStart; t++) {
-                                if (code[t] == '/') {
-                                    isCloseTag = true;
-                                    break;
-                                }
-                            }
-                            if (!isCloseTag) {
-                                this.useLevel++;
-
-                                let useLevel = this.useLevel;
-                                let endTagNameUse = endTagName + 1;
-                                let endBaseName = endTagNameUse + 1;
-                                for (let t = endTagNameUse; t < code.length; t++) {
-                                    if (code[t] == '>') {
-                                        endBaseName = t;
-                                        break;
-                                    }
-                                }
-                                let baseName = this.ClearSpace(code.substring(endTagNameUse, endBaseName));
-
-                                this.useBases.push({
-                                    level: useLevel,
-                                    name: baseName
-                                });
-                            } else {
-                                let lastOpenTagBaseIndex = this.useBases.length - 1;
-                                let base = new Object();
-                                let baseIndex = lastOpenTagBaseIndex;
-                                for (let t = lastOpenTagBaseIndex; t >= 0; t--) {
-                                    if (this.useBases[t].level == this.useLevel) {
-                                        base = this.useBases[t];
-                                        baseIndex = t;
-                                        break;
-                                    }
-                                }
-
-                                let bases = [];
-                                for (let t = 0; t < this.useBases.length; t++) {
-                                    if (t != baseIndex) {
-                                        bases.push(this.useBases[t]);
-                                    }
-                                }
-                                this.useBases = bases;
-                                this.useLevel--;
-                            }
-                        }
-
-
-                        let tagNameCache = '';
-
-                        for (let j = 0; j < tagName.length; j++) {
-                            let isSTN = false;
-
-                            if (tagName[j] == '-') {
-                                isSTN = true;
-                                tagNameCache += '_';
-                            }
-
-                            if (tagName[j] == ':') {
-                                isSTN = true;
-                                tagNameCache += '/';
-                            }
-
-                            if (!isSTN) tagNameCache += tagName[j];
-                        }
-
-                        tagName = tagNameCache;
-
-                        let tag = {
-                            ...this.GetTag(tagName)
-                        };
-
-                        if (tag.notFound) {
-                            let line = 1;
-
-                            for (let i = 0; i < startN; i++)
-                                if (code[i] == '\n')
-                                    line++;
-
-                            console.log(`${nlcPath}:${line}`);
-                            console.log(`   '${tagName}' tag not found.`);
-                            process.exit();
-                        }
-
-                        tag.start = tagStart;
-
-                        tag.isClose = (() => {
-                            let checkIsCloseStart = startN;
-                            let __tagStart = startN;
-                            let isCloseTag = false;
-                            for (let t = checkIsCloseStart; t >= 0; t--) {
-                                if (code[t] == '<') {
-                                    __tagStart = t;
-                                    break;
-                                }
-                            }
-
-                            for (let t = __tagStart + 1; t < checkIsCloseStart; t++) {
-                                if (code[t] == '/') {
-                                    isCloseTag = true;
-                                    break;
-                                }
-                            }
-                            return isCloseTag;
-                        })();
-
-                        tagsOrder.push(tag);
+                    if (chj == ' ' || chj == '>' || chj == '/') {
+                        endTagName = j - 1;
+                        break;
                     }
 
                 }
+
+                let tagName = code.substring(startN, endTagName + 1);
+
+                tagName = this.GetTagNameFromString(tagName);
+
+                if (tagName == 'use' || tagName == 'use-for-all') {
+                    let checkIsCloseStart = startN;
+                    let __tagStart = startN;
+                    let isCloseTag = false;
+                    for (let t = checkIsCloseStart; t >= 0; t--) {
+                        if (code[t] == '<') {
+                            __tagStart = t;
+                            break;
+                        }
+                    }
+                    for (let t = __tagStart + 1; t < checkIsCloseStart; t++) {
+                        if (code[t] == '/') {
+                            isCloseTag = true;
+                            break;
+                        }
+                    }
+                    if (!isCloseTag) {
+                        this.useLevel++;
+
+                        let useLevel = this.useLevel;
+                        let endTagNameUse = endTagName + 1;
+                        let endBaseName = endTagNameUse + 1;
+                        for (let t = endTagNameUse; t < code.length; t++) {
+                            if (code[t] == '>') {
+                                endBaseName = t;
+                                break;
+                            }
+                        }
+                        let baseName = this.ClearSpace(code.substring(endTagNameUse, endBaseName));
+
+                        this.useBases.push({
+                            level: useLevel,
+                            name: baseName
+                        });
+                    } else {
+                        let lastOpenTagBaseIndex = this.useBases.length - 1;
+                        let base = new Object();
+                        let baseIndex = lastOpenTagBaseIndex;
+                        for (let t = lastOpenTagBaseIndex; t >= 0; t--) {
+                            if (this.useBases[t].level == this.useLevel) {
+                                base = this.useBases[t];
+                                baseIndex = t;
+                                break;
+                            }
+                        }
+
+                        let bases = [];
+                        for (let t = 0; t < this.useBases.length; t++) {
+                            if (t != baseIndex) {
+                                bases.push(this.useBases[t]);
+                            }
+                        }
+                        this.useBases = bases;
+                        this.useLevel--;
+                    }
+                }
+
+
+                let tagNameCache = '';
+
+                for (let j = 0; j < tagName.length; j++) {
+                    let isSTN = false;
+
+                    if (tagName[j] == '-') {
+                        isSTN = true;
+                        tagNameCache += '_';
+                    }
+
+                    if (tagName[j] == ':') {
+                        isSTN = true;
+                        tagNameCache += '/';
+                    }
+
+                    if (!isSTN) tagNameCache += tagName[j];
+                }
+
+                tagName = tagNameCache;
+
+                let tag = {
+                    ...this.GetTag(tagName)
+                };
+
+                if (tag.notFound) {
+                    let line = 1;
+
+                    for (let i = 0; i < startN; i++)
+                        if (code[i] == '\n')
+                            line++;
+
+                    console.log(`${nlcPath}:${line}`);
+                    console.log(`   '${tagName}' tag not found.`);
+                    process.exit();
+                }
+
+                tag.start = tagStart;
+
+                tag.isClose = (() => {
+                    let checkIsCloseStart = startN;
+                    let __tagStart = startN;
+                    let isCloseTag = false;
+                    for (let t = checkIsCloseStart; t >= 0; t--) {
+                        if (code[t] == '<') {
+                            __tagStart = t;
+                            break;
+                        }
+                    }
+
+                    for (let t = __tagStart + 1; t < checkIsCloseStart; t++) {
+                        if (code[t] == '/') {
+                            isCloseTag = true;
+                            break;
+                        }
+                    }
+                    return isCloseTag;
+                })();
+
+                tagsOrder.push(tag);
             }
 
         }
@@ -450,27 +439,27 @@ class NCompiler {
                 `;
             }
 
-            code = (element.forSV) ? `module.exports=(manager)=>{
-            var exports=new Object();
-                var nmodules=[];
-                var pages=[];
-                exports.customTypeDatas=[];
-                exports.customTypeDatas.Add=function(key,value){
-                    exports.customTypeDatas.push({
-                        'key':key,
-                        'value':value
-                    });
-                }
+            code = (element.forSV) ? `
+module.exports = (manager) => {
+    let exports     = new Object();
+    let nmodules    = [];
+    let pages       = [];
+    exports.customTypeDatas=[];
+    exports.customTypeDatas.Add=function(key,value){
+        exports.customTypeDatas.push({
+            'key':key,
+            'value':value
+        });
+    }
 
-                ${code}
+    ${code}
 
-                exports.nmodules=nmodules;
-                exports.pages=pages;
-                return exports;
-            }
-            ` : `manager=window.NFramework.nmoduleManager;
-            ${code}
-            `;
+    exports.nmodules=nmodules;
+    exports.pages=pages;
+    return exports;
+}` :
+                `manager = window.NFramework.nmoduleManager;
+${code}`;
 
             element.code = code;
         } else {
@@ -543,7 +532,6 @@ class NCompiler {
                     isInStr = (code[i] == '"' || code[i] == "'" || code[i] == '`') ? false : isInStr;
                 }
 
-
                 if (!isInStr && code[i] == '@') {
                     i++;
                     let startName = i;
@@ -576,7 +564,6 @@ class NCompiler {
     CompileNModuleFastGetterAndSetter(code) {
         let result = '';
         let top = '';
-
         let strC = '';
 
         let isInStr = false;
@@ -690,13 +677,13 @@ class NCompiler {
                         fid = fid2;
 
                         top += `
-                            var a${fid}_module;
+                            let a${fid}_module;
                         `;
 
                         result += `.GetThisWithCallback((module)=>{
                             a${fid}_module=module;
                         })
-                        var getterObj${fid}={
+                        let getterObj${fid}={
                             set stter(value) {
                                 a${fid}_module.Set('${name}',value);
                             }
@@ -773,7 +760,7 @@ class NCompiler {
                     fid = fid2;
 
                     if (!isSetter) {
-                        top += `var a${fid}_module;
+                        top += `let a${fid}_module;
                         `;
                         result += `.AsyncGetThisWithCallback(async (module)=>{
                             a${fid}_module=module;
@@ -785,12 +772,12 @@ class NCompiler {
                         let nextCode = code.substring(setterEqualChrIndex + 1, code.length);
 
                         top += `
-                            var a${fid}_module;
+                            let a${fid}_module;
                         `;
                         result += `.AsyncGetThisWithCallback(async (module)=>{
                             a${fid}_module=module;
                         })
-                        var getterObj${fid}={
+                        let getterObj${fid}={
                             set stter(value) {
                                 (async ()=>{
                                     await a${fid}_module.AsyncSet('${name}',value);
@@ -810,8 +797,6 @@ class NCompiler {
                     result += code[i];
                 }
             }
-
-
         }
 
         return {

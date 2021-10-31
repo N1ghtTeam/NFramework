@@ -88,11 +88,11 @@ class NFramework {
         let settingObj  = JSON.parse(str);
         let keys        = Object.keys(settingObj);
 
-        for(let i = 0; i < keys.length; i++)
-            this[keys[i]] = settingObj[keys[i]];
+        for(let key of keys)
+            this[key] = settingObj[key];
 
         if(this.nmodules_src_dir[0] == '.')
-            this.nmodules_src_dir = this.appDir + this.nmodules_src_dir.substring(1,this.nmodules_src_dir.length);
+            this.nmodules_src_dir = this.appDir + this.nmodules_src_dir.substring(1, this.nmodules_src_dir.length);
     }
 
     CompileModule(path) {
@@ -119,9 +119,7 @@ class NFramework {
         socket.on('connection', (csocket) => {
             framework.clientManager.PushClient(csocket);
             framework.ioRouterManager.SetupFor(csocket);
-            csocket.on('disconnect', function() {
-                framework.clientManager.RemoveClient(csocket);
-            });
+            csocket.on('disconnect', () => framework.clientManager.RemoveClient(csocket));
         });
     }
 }

@@ -8,10 +8,9 @@ class ClientManager {
     }
 
     RemoveClient(client){
-        let i = this.clientSockets.indexOf(client);
+        const i = this.clientSockets.indexOf(client);
         this.clientSockets.splice(i,1);
     }
 }
-
 
 module.exports = ClientManager;

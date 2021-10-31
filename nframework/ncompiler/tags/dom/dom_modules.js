@@ -1,26 +1,24 @@
-let Tag=require('../../tag/tag');
+const Tag = require('../../tag/tag');
 
-let tag=new Tag();
+let tag = new Tag();
 
-tag.isAutoClose=true;
+tag.isAutoClose = true;
 
-tag.Compile=function(element,childsCode,code){
-    let inputs=['dom']//tag.GetInputs(element,childsCode,code);
+tag.Compile = function(element, childsCode, code) {
+    let inputs = ['dom'] //tag.GetInputs(element,childsCode,code);
+    let result = ``;
 
-    let result=`
-    `;
-
-    for(let i=0;i<inputs.length;i++){
-        result+=`this.modules.push('${inputs[i]}');
+    for (let i = 0; i < inputs.length; i++) {
+        result += `this.modules.push('${inputs[i]}');
         `;
     }
-    
+
     return `
-    
+
         ${result}
-    
+
     `;
 }
 
 
-module.exports=tag;
+module.exports = tag;

@@ -1,15 +1,15 @@
-var Tag=require('../tag/tag');
+const Tag = require('../tag/tag');
 
-var tag=new Tag();
+let tag = new Tag();
 
-tag.isAutoClose=true;
+tag.isAutoClose = true;
 
-tag.Compile=function(element,childsCode,code){
-    
+tag.Compile = function(element, childsCode, code) {
+
     return `
         this.useAllGlobalObjects=true;
     `;
 }
 
 
-module.exports=tag;
+module.exports = tag;

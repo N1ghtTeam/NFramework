@@ -1,31 +1,31 @@
-var Tag=require('../tag/tag');
+const Tag = require('../tag/tag');
 
-var tag=new Tag();
+let tag = new Tag();
 
-tag.isAutoClose=false;
+tag.isAutoClose = false;
 
-tag.Compile=function(element,childsCode,code){
-    var contents=tag.GetContent(element,childsCode,code);
-    
-    var inputs=tag.GetInputs(element,childsCode,code);
+tag.Compile = function(element, childsCode, code) {
+    let contents = tag.GetContent(element, childsCode, code);
 
-    var compiledCode=`
-        var ${inputs[0]}=function(){
-            
+    let inputs = tag.GetInputs(element, childsCode, code);
+
+    let compiledCode = `
+        let ${inputs[0]}=function(){
+
         }
 
         ${inputs[0]}.base=
     `;
-    
-    for(var i=0;i<contents.length;i++){
-        compiledCode+=contents[i].code;
+
+    for (let i = 0; i < contents.length; i++) {
+        compiledCode += contents[i].code;
     }
 
-    compiledCode+=`
-        
+    compiledCode += `
+
     `;
 
     return compiledCode;
 }
 
-module.exports=tag;
+module.exports = tag;

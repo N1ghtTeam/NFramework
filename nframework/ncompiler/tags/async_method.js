@@ -1,77 +1,77 @@
-var Tag=require('../tag/tag');
+const Tag = require('../tag/tag');
 
-var tag=new Tag();
+let tag = new Tag();
 
-tag.isAutoClose=false;
+tag.isAutoClose = false;
 
-tag.Compile=function(element,childsCode,code){
-    
-    var contents=tag.GetContent(element,childsCode,code);
-    
-    var inputs=tag.GetInputs(element,childsCode,code);
+tag.Compile = function(element, childsCode, code) {
 
-    var codeFunc='';
-    for(var i=0;i<contents.length;i++){
-        codeFunc+=contents[i].code;
+    let contents = tag.GetContent(element, childsCode, code);
+
+    let inputs = tag.GetInputs(element, childsCode, code);
+
+    let codeFunc = '';
+    for (let i = 0; i < contents.length; i++) {
+        codeFunc += contents[i].code;
     }
-    
-    var compiledCodeFunc='';
 
-    var start=0;
-    for(;start<codeFunc.length;start++){
-        if(codeFunc[start]=='f'){
+    let compiledCodeFunc = '';
+
+    let start = 0;
+    for (; start < codeFunc.length; start++) {
+        if (codeFunc[start] == 'f') {
             start;
             break;
         }
     }
 
-    for(var i=start;i<codeFunc.length;i++){
-        var strChar='';
+    for (let i = start; i < codeFunc.length; i++) {
+        let strChar = '';
 
-        if(codeFunc[i]=='"' || codeFunc[i]=='`' || codeFunc[i]==`"`){
-            strChar=codeFunc[i];
-            compiledCodeFunc+=strChar;
+        if (codeFunc[i] == '"' || codeFunc[i] == '`' || codeFunc[i] == `"`) {
+            strChar = codeFunc[i];
+            compiledCodeFunc += strChar;
             i++;
-            for(;i<codeFunc.length;i++){
-                if(codeFunc[i]=='"' || codeFunc[i]=='`' || codeFunc[i]==`"`){
+            for (; i < codeFunc.length; i++) {
+                if (codeFunc[i] == '"' || codeFunc[i] == '`' || codeFunc[i] == `"`) {
                     break;
                 }
-                compiledCodeFunc+=codeFunc[i];
+                compiledCodeFunc += codeFunc[i];
             }
-            compiledCodeFunc+=strChar;
-        }
-        else{
+            compiledCodeFunc += strChar;
+        } else {
             /*
             if(codeFunc[i]+codeFunc[i+1]+codeFunc[i+2]+codeFunc[i+3]=='this'){
                 i=i+3;
                 compiledCodeFunc+='nmodule';
             }
-            else*/{
-                compiledCodeFunc+=codeFunc[i];
+            else*/
+            {
+                compiledCodeFunc += codeFunc[i];
             }
         }
 
-        if(i>=codeFunc.length){
+        if (i >= codeFunc.length) {
             break;
         }
 
 
     }
 
-    compiledCodeFunc='async '+compiledCodeFunc;
+    compiledCodeFunc = 'async ' + compiledCodeFunc;
 
-    var compiledCode=`
+    let compiledCode = `
         this.AddMethod('${inputs[0]}',async (...args)=>{
-                var f=${compiledCodeFunc}
-                var f2=f.bind(this);
+                let f=${compiledCodeFunc}
+                let f2=f.bind(this);
                 return await f2(...args);
             }
-    
+
         );
-    
+
     `;
 
     return compiledCode;
 }
 
-module.exports=tag;
+module.exports = tag;
