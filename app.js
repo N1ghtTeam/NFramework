@@ -1,5 +1,5 @@
-const nframework  = require('./nframework/framework');
-const app         = nframework();
+const NFramework  = require('./nframework/framework');
+const app         = NFramework();
 
 app.appDir = __dirname;
 
