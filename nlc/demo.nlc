@@ -1,12 +1,27 @@
+<use dom>
+<use html>
+
 <module demo>
 
-    <method setup>
+    <client-only>
 
-        function(){
-            console.log('running');
-        }
+        <method setup>
+
+            function(){
+                @dom->body.appendChild(
+
+                    <div>
+
+                        Hello World
+
+                    </div>
+
+                );
+            }
 
 
-    </method>
+        </method>
+
+    </client-only>
 
 </module>
