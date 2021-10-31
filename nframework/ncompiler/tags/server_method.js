@@ -1,29 +1,29 @@
-var Tag=require('../tag/tag');
+const Tag = require('../tag/tag');
 
-var tag=new Tag();
+let tag = new Tag();
 
-tag.isAutoClose=false;
+tag.isAutoClose = false;
 
-tag.Compile=function(element,childsCode,code){
-    var contents=tag.GetContent(element,childsCode,code);
-    
-    var inputs=tag.GetInputs(element,childsCode,code);
+tag.Compile = function(element, childsCode, code) {
+    let contents = tag.GetContent(element, childsCode, code);
 
-    var compiledCode=`{
-        this.AddServerMethod('${inputs[0]}',(clientSocket,...args)=>{
-            var f=
+    let inputs = tag.GetInputs(element, childsCode, code);
+
+    let compiledCode = `{
+        this.AddServerMethod('${inputs[0]}',(clientSocket,...args) => {
+            let f =
     `;
-    
-    for(var i=0;i<contents.length;i++){
-        compiledCode+=contents[i].code;
+
+    for (let i = 0; i < contents.length; i++) {
+        compiledCode += contents[i].code;
     }
 
-    compiledCode+=`
-        
-    return f.call(this,...args); 
+    compiledCode += `
+
+    return f.call(this,...args);
 
 }
-    
+
     );
 }
     `;
@@ -31,4 +31,4 @@ tag.Compile=function(element,childsCode,code){
     return compiledCode;
 }
 
-module.exports=tag;
+module.exports = tag;

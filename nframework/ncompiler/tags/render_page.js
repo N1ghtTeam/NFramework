@@ -1,13 +1,13 @@
-var Tag=require('../tag/tag');
+var Tag = require('../tag/tag');
 
-var tag=new Tag();
+var tag = new Tag();
 
-tag.isAutoClose=true;
+tag.isAutoClose = true;
 
-tag.Compile=function(element,childsCode,code){
-    var inputs=tag.GetInputs(element,childsCode,code);
-    
-    var pageName=inputs[0];
+tag.Compile = function(element, childsCode, code) {
+    var inputs = tag.GetInputs(element, childsCode, code);
+
+    var pageName = inputs[0];
 
     return `
 
@@ -41,9 +41,9 @@ tag.Compile=function(element,childsCode,code){
                 NFramework:miejs
             });
         })(req,res);
-    
+
     `;
 }
 
 
-module.exports=tag;
+module.exports = tag;

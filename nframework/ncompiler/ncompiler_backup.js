@@ -43,10 +43,9 @@ class NCompiler {
             prs_fileJSCPath += fileJSCPath[i];
         }
 
-        codeSV = 'var JSCLPath = "' + prs_fileJSCPath + '";' + codeSV;
+        codeSV = 'const JSCLPath = "' + prs_fileJSCPath + '";\n' + codeSV;
 
         fs.writeFileSync(fileJSSVPath, codeSV);
-
         fs.writeFileSync(fileJSCPath, codeCL);
 
         let cResult = new Object();

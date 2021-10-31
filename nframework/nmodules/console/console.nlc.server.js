@@ -1,31 +1,31 @@
-var JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/console/console.nlc.client.js";module.exports=(manager)=>{
-            var exports=new Object();
-                var nmodules=[];
-                var pages=[];
-                exports.customTypeDatas=[];
-                exports.customTypeDatas.Add=function(key,value){
-                    exports.customTypeDatas.push({
-                        'key':key,
-                        'value':value
-                    });
-                }
+const JSCLPath = "/home/chrx/Desktop/nframework/nframework/nmodules/console/console.nlc.client.js";
 
-                
+module.exports = (manager) => {
+    let exports     = new Object();
+    let nmodules    = [];
+    let pages       = [];
+    exports.customTypeDatas=[];
+    exports.customTypeDatas.Add=function(key,value){
+        exports.customTypeDatas.push({
+            'key':key,
+            'value':value
+        });
+    }
+
+    
 
                     
 
-        var NModule=
-        function(){
-
-            return require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule");
-
+        let NModule=
+        function() {
+            return require("/home/chrx/Desktop/nframework/nframework/ncompiler/tags/../../nmodule/nmodule");
         }()
-    
-    ;
-    
-        var nmodule=new NModule();
 
-        var This=nmodule;
+    ;
+
+        let nmodule=new NModule();
+
+        let This=nmodule;
 
         nmodule.side='both';
 
@@ -61,51 +61,51 @@ var JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/console/console.nlc
                 })();
 
                 
-        this.AddMethod('log',(...args)=>{
-            var f=
+        this.AddMethod('log',(...args) => {
+            let f=
     
                     function(...args) {
                         console.log(...args);
                     }
                 
-        
-    return f.call(this,...args); 
+
+    return f.call(this,...args);
 
 }
-    
+
     );
-    
+
     
 
                 
-        this.AddMethod('clear',(...args)=>{
-            var f=
+        this.AddMethod('clear',(...args) => {
+            let f=
     
                     function() {
                         console.clear();
                     }
                 
-        
-    return f.call(this,...args); 
+
+    return f.call(this,...args);
 
 }
-    
+
     );
-    
+
     
 
                 
         this.AddMethod('readLine',async (...args)=>{
-                var f=async function() {
+                let f=async function() {
                         return await ReadLine();
                     }
                 
-                var f2=f.bind(this);
+                let f2=f.bind(this);
                 return await f2(...args);
             }
-    
+
         );
-    
+
     
 
             }
@@ -120,31 +120,25 @@ var JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/console/console.nlc
         });
     
         
-    
-        var fs=require('fs');
+        let fs=require('fs');
 
-        var clientVersion=JSCLPath;
+        let clientVersion=JSCLPath;
 
         nmodule.client_js_code=fs.readFileSync(clientVersion);
 
-        
-        
         if(nmodule.side!='server'){
-            nmodule.Routing('/nmodules/console',(req,res)=>{
-                res.send(nmodule.client_js_code);
-            });
+            nmodule.Routing('/nmodules/console', (req, res) => res.send(nmodule.client_js_code));
         }
 
         
 
             nmodules.push(nmodule);
-        
+
         
 
                 
 
-                exports.nmodules=nmodules;
-                exports.pages=pages;
-                return exports;
-            }
-            
+    exports.nmodules=nmodules;
+    exports.pages=pages;
+    return exports;
+}

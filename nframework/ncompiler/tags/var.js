@@ -1,12 +1,13 @@
-const Tag   = require('../tag/tag');
-let tag     = new Tag();
+const Tag = require('../tag/tag');
+let tag = new Tag();
 
 tag.isAutoClose = false;
 
 tag.Compile = function(element, childsCode, code) {
     let contents = tag.GetContent(element, childsCode, code);
+
     let inputs = tag.GetInputs(element, childsCode, code);
-    
+
     let compiledCode = `
         ${inputs[0]}=
     `;

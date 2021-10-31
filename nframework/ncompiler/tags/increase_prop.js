@@ -1,1 +1,1 @@
-module.exports=require('./increase_property');
+module.exports = require('./increase_property');

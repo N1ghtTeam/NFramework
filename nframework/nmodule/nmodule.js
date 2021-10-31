@@ -18,35 +18,28 @@ class NModule {
         let result = null;
         let isExist = false;
 
-        if (name in this.properties) {
-            result = this.properties[name];
-            isExist = true;
+        result = (this.properties[name]     || this.methods[name]       ||
+                 this.serverMethods[name]   || this.clientMethods[name] ||
+                 this.syncProperties[name]) || null;
+
+        isExist = (name in this.properties)     || (name in this.methods)       ||
+                  (name in this.serverMethods)  || (name in this.clientMethods) ||
+                  (name in this.syncProperties) || false;
+
+        if (result && isExist) {
+            return {
+                'data': result,
+                'isExist': isExist
+            };
         }
-        else if (name in this.methods) {
-            result = this.methods[name];
-            isExist = true;
-        }
-        else if (name in this.serverMethods) {
-            result = this.serverMethods[name];
-            isExist = true;
-        }
-        else if (name in this.clientMethods) {
-            result = this.clientMethods[name];
-            isExist = true;
-        }
-        else if (name in this.syncProperties) {
-            result = this.syncProperties[name];
-            isExist = true;
-        }
-        else {
-            for (let i = 0; i < this.baseModules.length; i++) {
-                let baseModule = this.GetModule(this.baseModules[i]);
-                let fBM = baseModule.GetWithIsExist(name);
-                if (fBM.isExist) {
-                    result = fBM.data;
-                    isExist = true;
-                    break;
-                }
+
+        for (let i = 0; i < this.baseModules.length; i++) {
+            let baseModule = this.GetModule(this.baseModules[i]);
+            let fBM = baseModule.GetWithIsExist(name);
+            if (fBM.isExist) {
+                result = fBM.data;
+                isExist = true;
+                break;
             }
         }
 
@@ -59,65 +52,55 @@ class NModule {
 
     Get(name) {
         let result = null;
-        let r = false;
+        let isExist = false;
 
-        if (name in this.properties) {
-            result = this.properties[name];
-            r = true;
-        }
-        else if (name in this.methods) {
-            result = this.methods[name];
-            r = true;
-        }
-        else if (name in this.serverMethods) {
-            result = this.serverMethods[name];
-            r = true;
-        }
-        else if (name in this.clientMethods) {
-            result = this.clientMethods[name];
-            r = true;
-        }
-        else if (name in this.syncProperties) {
-            result = this.syncProperties[name];
-            r = true;
-        }
-        else {
-            for (let i = 0; i < this.baseModules.length; i++) {
-                let baseModule = this.GetModule(this.baseModules[i]);
-                let fBM = baseModule.GetWithIsExist(name);
-                if (fBM.isExist) {
-                    result = fBM.data;
-                    r = true;
-                    break;
-                }
+        result = (this.properties[name]     || this.methods[name]       ||
+                 this.serverMethods[name]   || this.clientMethods[name] ||
+                 this.syncProperties[name]) || null;
+
+        isExist = (name in this.properties)     || (name in this.methods)       ||
+                  (name in this.serverMethods)  || (name in this.clientMethods) ||
+                  (name in this.syncProperties) || false;
+
+        if (result && isExist) return result;
+
+        for (let i = 0; i < this.baseModules.length; i++) {
+            let baseModule = this.GetModule(this.baseModules[i]);
+            let fBM = baseModule.GetWithIsExist(name);
+            if (fBM.isExist) {
+                result = fBM.data;
+                isExist = true;
+                break;
             }
         }
-        if (!r)
+
+        if (!isExist)
             throw new Error(`Module ${this.name}: Not Found ${name} `);
         return result;
     }
 
     Set(name, data) {
-        let r = false;
+        let isExist = false;
+
         if (name in this.properties) {
             this.properties[name] = data;
-            r = true;
+            isExist = true;
         }
         else if (name in this.methods) {
             this.methods[name] = data;
-            r = true;
+            isExist = true;
         }
         else if (name in this.serverMethods) {
             this.serverMethods[name] = data;
-            r = true;
+            isExist = true;
         }
         else if (name in this.clientMethods) {
             this.clientMethods[name] = data;
-            r = true;
+            isExist = true;
         }
         else if (name in this.syncProperties) {
             this.syncProperties[name] = data;
-            r = true;
+            isExist = true;
         }
         else {
             for (let i = 0; i < this.baseModules.length; i++) {
@@ -125,12 +108,12 @@ class NModule {
                 let fBM = baseModule.GetWithIsExist(name);
                 if (fBM.isExist) {
                     baseModule.Set(name, data);
-                    r = true;
+                    isExist = true;
                     break;
                 }
             }
         }
-        if (!r)
+        if (!isExist)
             throw new Error(`Module ${this.name}: Not Found ${name} `);
     }
 
@@ -243,7 +226,7 @@ class NModule {
     NoSafe__Routing(path, callback) {
         let express_server = this.manager.NFramework.express_server;
         let module = this;
-        
+
         express_server.get(path, (req, res) => callback.call(this, req, res));
     }
 

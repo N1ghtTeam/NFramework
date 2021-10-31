@@ -1,5 +1,6 @@
-const Tag   = require('../tag/tag');
-let tag     = new Tag();
+const Tag = require('../tag/tag');
+
+let tag = new Tag();
 
 tag.isAutoClose = false;
 
@@ -10,8 +11,9 @@ tag.Compile = function(element, childsCode, code) {
 
     let compiledCode = ``;
 
-    for (let i = 0; i < contents.length; i++)
+    for (let i = 0; i < contents.length; i++) {
         compiledCode += contents[i].code;
+    }
 
     compiledCode = `
     (()=>{
@@ -25,8 +27,9 @@ tag.Compile = function(element, childsCode, code) {
     })()
     `;
 
-    if (element.forSV)
+    if (element.forSV) {
         compiledCode = '';
+    }
 
     return compiledCode;
 }
