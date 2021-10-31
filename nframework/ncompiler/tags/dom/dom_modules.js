@@ -1,23 +1,23 @@
-var Tag=require('../../tag/tag');
+let Tag=require('../../tag/tag');
 
-var tag=new Tag();
+let tag=new Tag();
 
 tag.isAutoClose=true;
 
 tag.Compile=function(element,childsCode,code){
-    var inputs=['dom']//tag.GetInputs(element,childsCode,code);
+    let inputs=['dom']//tag.GetInputs(element,childsCode,code);
 
-    var code=`
+    let result=`
     `;
 
-    for(var i=0;i<inputs.length;i++){
-        code+=`this.modules.push('${inputs[i]}');
+    for(let i=0;i<inputs.length;i++){
+        result+=`this.modules.push('${inputs[i]}');
         `;
     }
     
     return `
     
-        ${code}
+        ${result}
     
     `;
 }
