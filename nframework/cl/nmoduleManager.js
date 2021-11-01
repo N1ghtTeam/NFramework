@@ -3,6 +3,7 @@ class NModuleManager {
         this.modules            = new Object();
         this.customTypeDatas    = new Object();
         this.textContents       = new Object();
+        this.nlcElementRunned   = new Object();
     }
 
     async GetDatasFromServer() {

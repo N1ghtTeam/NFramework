@@ -25,7 +25,7 @@ tag.Compile = function(element, childsCode, code, manager) {
         (()=>{
             let fs=require('fs');
             let clientVersion=JSCLPath;
-            let client_js_code=fs.readFileSync(clientVersion);
+            let client_js_code=fs.readFileSync(clientVersion).toString();
             manager.globalObjectSourceCodes['${inputs[0]}']=client_js_code;
             let data=${compiledCode};
             return data;

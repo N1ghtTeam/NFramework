@@ -18,7 +18,7 @@ module.exports = (manager) => {
         (()=>{
             let fs=require('fs');
             let clientVersion=JSCLPath;
-            let client_js_code=fs.readFileSync(clientVersion);
+            let client_js_code=fs.readFileSync(clientVersion).toString();
             manager.globalObjectSourceCodes['demoGlobal']=client_js_code;
             let data=
 

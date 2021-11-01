@@ -1,4 +1,7 @@
-manager = window.NFramework.nmoduleManager;
+
+            if(window.NFramework.nmoduleManager.nlcElementRunned['df797c0e_bb6c_45e1_8a17_55fa9f1926eb']==null){
+                window.NFramework.nmoduleManager.nlcElementRunned['df797c0e_bb6c_45e1_8a17_55fa9f1926eb']=true;
+                manager = window.NFramework.nmoduleManager;
 
 
                     
@@ -99,3 +102,7 @@ manager = window.NFramework.nmoduleManager;
         
 
                 
+            }
+
+            
+            

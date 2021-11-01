@@ -1,5 +1,6 @@
 const fs 			= require('fs');
 const Element 	= require('./element/element');
+const { v4: uuidv4 } = require('uuid');
 
 class NCompiler {
     constructor() {}
@@ -430,6 +431,7 @@ class NCompiler {
         let code = '';
         let einputCode = new Object();
 
+
         einputCode.data = codeinput;
 
         if (!element.tag) {
@@ -485,6 +487,31 @@ ${code}`;
                 code = element.tag.Compile(element, childsCode, einputCode, manager, nlcPath);
                 element.code = code;
             }
+        }
+        
+        if(element.parent==null && !element.forSV){
+            var rfid = uuidv4();
+
+            var rfid2='';
+
+            for(var i=0;i<rfid.length;i++){
+                if(rfid[i]!='-'){
+                    rfid2+=rfid[i];
+                }
+                else
+                rfid2+='_'
+            }
+
+            rfid=rfid2;
+            
+            code=`
+            if(window.NFramework.nmoduleManager.nlcElementRunned['${rfid}']==null){
+                window.NFramework.nmoduleManager.nlcElementRunned['${rfid}']=true;
+                ${code}
+            }
+
+            
+            `;
         }
         return code;
     }

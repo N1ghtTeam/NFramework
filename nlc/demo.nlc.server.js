@@ -14,6 +14,22 @@ module.exports = (manager) => {
 
     
 
+                    exports.customTypeDatas.Add('demoGlobalInDemoNLC',
+        (()=>{
+            let fs=require('fs');
+            let clientVersion=JSCLPath;
+            let client_js_code=fs.readFileSync(clientVersion).toString();
+            manager.globalObjectSourceCodes['demoGlobalInDemoNLC']=client_js_code;
+            let data=
+
+6
+
+;
+            return data;
+        })())
+
+                
+
                     
 
         let NModule=
