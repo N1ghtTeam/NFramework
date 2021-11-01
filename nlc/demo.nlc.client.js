@@ -1,5 +1,5 @@
 
-                            let aa33bc922_f5e4_43a2_9804_6b097f345524_module;
+                            let a5a4cb9dc_b029_488a_83b4_7618b09f43f8_module;
                         manager = window.NFramework.nmoduleManager;
 
 
@@ -46,7 +46,7 @@
     
 
             function(){
-                /*DONTUSENLCFASTGET*/
+                
     (()=>{
         let styleE = document.createElement('style');
 
@@ -60,16 +60,16 @@
 
         return styleE;
     })()
-    /*DONTUSENLCFASTGET*/;
+    ;
                 (manager.Get('demo')).GetThisWithCallback((module)=>{
-                            aa33bc922_f5e4_43a2_9804_6b097f345524_module=module;
+                            a5a4cb9dc_b029_488a_83b4_7618b09f43f8_module=module;
                         })
-                        let getterObja33bc922_f5e4_43a2_9804_6b097f345524={
+                        let getterObj5a4cb9dc_b029_488a_83b4_7618b09f43f8={
                             set stter(value) {
-                                aa33bc922_f5e4_43a2_9804_6b097f345524_module.Set('prop',value);
+                                a5a4cb9dc_b029_488a_83b4_7618b09f43f8_module.Set('prop',value);
                             }
                         }
-                        getterObja33bc922_f5e4_43a2_9804_6b097f345524.stter=5;
+                        getterObj5a4cb9dc_b029_488a_83b4_7618b09f43f8.stter=5;
 
             }
 

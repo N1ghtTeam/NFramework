@@ -496,7 +496,6 @@ ${code}`;
 
     CompileFastGet(code) {
 
-        console.log(code);
         let result = '';
 
         let isInStr = false;

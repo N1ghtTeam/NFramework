@@ -7,12 +7,6 @@ var Tag=class{
         return element.startContentIndex + ' ' + element.endContentIndex;
     }
 
-    DontUseNLCFastGet(code){
-
-        return `/*DONTUSENLCFASTGET*/${code}/*DONTUSENLCFASTGET*/`;
-
-    }
-
     CheckInStr(inputs){
 
         var result=inputs;
