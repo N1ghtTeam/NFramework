@@ -182,11 +182,13 @@ class NModuleManager {
         for (let modulePath of this.svMJSPaths) {
             let eps = require(modulePath)(this);
 
+            let ctdindex=0;
             for (let ctData of eps.customTypeDatas) {
                 this.customTypeDatas[ctData.key] = ctData.value;
                 this.customTypeDataInfos[ctData.key] = new Object();
                 this.customTypeDataInfos[ctData.key].isSetupCLRouter = false;
-                this.customTypeDataInfos[ctData.key].path = this.clMJSPaths[i];
+                this.customTypeDataInfos[ctData.key].path = this.clMJSPaths[ctdindex];
+                ctdindex++;
             }
 
             eps.manager = this;

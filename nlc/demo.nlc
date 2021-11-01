@@ -1,6 +1,12 @@
 <use html>
 <use dom>
 
+<global demoGlobal>
+
+    5
+
+</global>
+
 <module demo>
 
     <client-only>
@@ -29,6 +35,8 @@
                     </div>
 
                 );
+
+                console.log(@demoGlobal);
 
 
             }

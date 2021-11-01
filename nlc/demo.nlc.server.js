@@ -14,6 +14,17 @@ module.exports = (manager) => {
 
     
 
+                    exports.customTypeDatas.Add('demoGlobal',(()=>{
+            let data=
+
+    5
+
+;
+            return data;
+        })())
+
+                
+
                     
 
         let NModule=
