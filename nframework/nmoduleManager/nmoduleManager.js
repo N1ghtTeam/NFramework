@@ -50,7 +50,7 @@ class NModuleManager {
 
             manager.GetModule(moduleName).Set(syncPropName, data);
 
-            res.send('DONE');
+            res.send('{}');
         })
     }
 

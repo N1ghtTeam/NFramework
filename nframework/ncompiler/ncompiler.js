@@ -801,15 +801,26 @@ ${code}`;
                         `;
                         result += `.AsyncGetThisWithCallback(async (module)=>{
                             a${fid}_module=module;
-                        })
-                        let getterObj${fid}={
-                            set stter(value) {
-                                (async ()=>{
-                                    await a${fid}_module.AsyncSet('${name}',value);
-                                })();
+                        });
+                        `;
+
+                        var endValueIndex=1;
+
+                        for(let t=1;t<nextCode.length;t++){
+                            if(nextCode[t]==';'){
+                                endValueIndex=t;
+                                break;
                             }
                         }
-                        getterObj${fid}.stter=`;
+
+                        var codeValue=nextCode.substring(0,endValueIndex);
+
+                        result+=`
+                        await a${fid}_module.AsyncSet('${name}',${codeValue});`;
+
+                        var afterValue=nextCode.substring(endValueIndex,nextCode.length);
+
+                        nextCode=afterValue;
 
                         result += nextCode;
 

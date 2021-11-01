@@ -7,9 +7,16 @@
 
 </global>
 
-<module demo>
+
+<module demop>
 
     <sync-property sp/>
+
+</module>
+
+<module demo>
+
+    <extends demop/>
 
     <server-only>
 
@@ -17,7 +24,7 @@
 
             function(){
 
-                this->sp=5;
+
 
             }
 
@@ -52,7 +59,8 @@
 
                 );
 
-                await this-->sp=7;
+                this-->sp=7;
+                
 
                 console.log(await this-->sp);
 

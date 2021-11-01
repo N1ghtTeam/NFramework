@@ -1,25 +1,25 @@
 
-                            var a7c778ef2_5b6a_49a1_ac6d_916e43008a8c_module;
+                            var a3bf701ed_db0a_40de_8297_41fbf2745527_module;
                         manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['84b0f0e9_221d_4277_bd34_885198ef0206']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['84b0f0e9_221d_4277_bd34_885198ef0206']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['0c3fbe03_e558_43b5_8fa3_e35ba77c6981']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['0c3fbe03_e558_43b5_8fa3_e35ba77c6981']=true;
                         
             (()=>{
                 
 
-        let NModule=
+        var NModule=
             function() {
                 return window.NFramework.NModule;
             }()
 
         ;
 
-        let nmodule=new NModule();
+        var nmodule=new NModule();
 
-        let This=nmodule;
+        var This=nmodule;
 
         nmodule.side='both';
 
@@ -50,14 +50,14 @@
 
             function(){
                 this.GetThisWithCallback((module)=>{
-                            a7c778ef2_5b6a_49a1_ac6d_916e43008a8c_module=module;
+                            a3bf701ed_db0a_40de_8297_41fbf2745527_module=module;
                         })
-                        let getterObj7c778ef2_5b6a_49a1_ac6d_916e43008a8c={
+                        let getterObj3bf701ed_db0a_40de_8297_41fbf2745527={
                             set stter(value) {
-                                a7c778ef2_5b6a_49a1_ac6d_916e43008a8c_module.Set('body',value);
+                                a3bf701ed_db0a_40de_8297_41fbf2745527_module.Set('body',value);
                             }
                         }
-                        getterObj7c778ef2_5b6a_49a1_ac6d_916e43008a8c.stter=document.body;
+                        getterObj3bf701ed_db0a_40de_8297_41fbf2745527.stter=document.body;
             }
 
         
@@ -178,7 +178,7 @@
         });
     
 
-            let nmoduleManager = window.NFramework.nmoduleManager;
+            var nmoduleManager = window.NFramework.nmoduleManager;
             nmoduleManager.ImportModule(nmodule);
         
             })();

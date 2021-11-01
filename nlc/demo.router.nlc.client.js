@@ -2,22 +2,22 @@ manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['b79f328c_9da9_46df_9449_98ec30f8a2e4']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['b79f328c_9da9_46df_9449_98ec30f8a2e4']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['03b53487_c2a4_42df_a0d5_0ada3a43e75b']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['03b53487_c2a4_42df_a0d5_0ada3a43e75b']=true;
                         
             (()=>{
                 
 
-        let NModule=
+        var NModule=
             function() {
                 return window.NFramework.NModule;
             }()
 
         ;
 
-        let nmodule=new NModule();
+        var nmodule=new NModule();
 
-        let This=nmodule;
+        var This=nmodule;
 
         nmodule.side='both';
 
@@ -95,7 +95,7 @@ manager = window.NFramework.nmoduleManager;
         });
     
 
-            let nmoduleManager = window.NFramework.nmoduleManager;
+            var nmoduleManager = window.NFramework.nmoduleManager;
             nmoduleManager.ImportModule(nmodule);
         
             })();

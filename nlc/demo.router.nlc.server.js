@@ -16,16 +16,16 @@ module.exports = (manager) => {
 
                     
 
-        let NModule=
+        var NModule=
         function() {
             return require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule");
         }()
 
     ;
 
-        let nmodule=new NModule();
+        var nmodule=new NModule();
 
-        let This=nmodule;
+        var This=nmodule;
 
         nmodule.side='both';
 
@@ -111,9 +111,9 @@ module.exports = (manager) => {
         });
     
 
-        let fs=require('fs');
+        var fs=require('fs');
 
-        let clientVersion=JSCLPath;
+        var clientVersion=JSCLPath;
 
         nmodule.client_js_code=fs.readFileSync(clientVersion);
 

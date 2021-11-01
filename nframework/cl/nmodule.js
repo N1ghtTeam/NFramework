@@ -21,7 +21,7 @@ class NModule {
     async SetSyncProperty(name, data) {
         const dataJSON      = JSON.stringify(data);
         const parsedData    = encodeURIComponent(dataJSON);
-        await fetch(window.origin + `/setSyncProp/${this.name}/${name}/${parsedData}`);
+        var setRes          = await fetch(window.origin + `/setSyncProp/${this.name}/${name}/${parsedData}`);
     }
 
     GetWithIsExist(name) {
@@ -84,7 +84,7 @@ class NModule {
 
         for (let i = 0; i < this.baseModules.length; i++) {
             let baseModule = this.GetModule(this.baseModules[i]);
-            let fBM = baseModule.GetWithIsExist(name);
+            let fBM = await baseModule.AsyncGetWithIsExist(name);
             if (fBM.isExist) {
                 result = fBM.data;
                 isExist = true;
@@ -118,7 +118,7 @@ class NModule {
 
         for (let i = 0; i < this.baseModules.length; i++) {
             let baseModule = this.GetModule(this.baseModules[i]);
-            let fBM = await baseModule.GetWithIsExist(name);
+            let fBM = await baseModule.AsyncGetWithIsExist(name);
             if (fBM.isExist) {
                 result = fBM.data;
                 isExist = true;
@@ -185,9 +185,9 @@ class NModule {
         else {
             for (let i = 0; i < this.baseModules.length; i++) {
                 let baseModule = this.GetModule(this.baseModules[i]);
-                let fBM = await baseModule.GetWithIsExist(name);
+                let fBM = await baseModule.AsyncGetWithIsExist(name);
                 if (fBM.isExist) {
-                    baseModule.Set(name, data);
+                    await baseModule.AsyncSet(name, data);
                     r = true;
                     break;
                 }

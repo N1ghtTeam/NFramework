@@ -51,11 +51,11 @@ tag.Compile = function(element, childsCode, code) {
 
     let compiledCode = `
 
-        let NModule=${nmoduleImportCode};
+        var NModule=${nmoduleImportCode};
 
-        let nmodule=new NModule();
+        var nmodule=new NModule();
 
-        let This=nmodule;
+        var This=nmodule;
 
         nmodule.side='${side}';
 
@@ -82,9 +82,9 @@ tag.Compile = function(element, childsCode, code) {
     if (element.forSV) {
         compiledCode += `
 
-        let fs=require('fs');
+        var fs=require('fs');
 
-        let clientVersion=JSCLPath;
+        var clientVersion=JSCLPath;
 
         nmodule.client_js_code=fs.readFileSync(clientVersion);
 
@@ -96,7 +96,7 @@ tag.Compile = function(element, childsCode, code) {
     } else {
         compiledCode += `
 
-            let nmoduleManager = window.NFramework.nmoduleManager;
+            var nmoduleManager = window.NFramework.nmoduleManager;
             nmoduleManager.ImportModule(nmodule);
         `;
     }
