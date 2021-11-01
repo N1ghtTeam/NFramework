@@ -1,6 +1,6 @@
-const fs 			= require('fs');
-const Element 	= require('./element/element');
-const { v4: uuidv4 } = require('uuid');
+const fs                = require('fs');
+const Element           = require('./element/element');
+const { v4: uuidv4 }    = require('uuid');
 
 class NCompiler {
     constructor() {}
@@ -42,11 +42,11 @@ class NCompiler {
             prs_fileJSCPath += fileJSCPath[i];
         }
 
-        var isNeedSaveCode=((codeSV!=null) || (codeCL!=null));
+        let isNeedSaveCode = ((codeSV != null) || (codeCL != null));
 
         codeSV = 'const JSCLPath = "' + prs_fileJSCPath + '";\n' + codeSV;
 
-        if(isNeedSaveCode){    
+        if (isNeedSaveCode) {
             fs.writeFileSync(fileJSSVPath, codeSV);
             fs.writeFileSync(fileJSCPath, codeCL);
         }
@@ -488,32 +488,26 @@ ${code}`;
                 element.code = code;
             }
         }
-        
-        if(element.tag!=null){
-            if(element.tag.oneTime && !element.forSV){
-                var rfid = uuidv4();
-    
-                var rfid2='';
-    
-                for(var i=0;i<rfid.length;i++){
-                    if(rfid[i]!='-'){
-                        rfid2+=rfid[i];
-                    }
-                    else
-                    rfid2+='_'
-                }
-    
-                rfid=rfid2;
-                
-                code=`
+
+        if (element.tag) {
+            if (element.tag.oneTime && !element.forSV) {
+                let rfid = uuidv4();
+                let rfid2 = '';
+
+                for (let i = 0; i < rfid.length; i++)
+                    rfid2 += (rfid[i] != '-') ? rfid[i] : '_';
+
+                rfid = rfid2;
+
+                code = `
                     if(window.NFramework.nmoduleManager.nlcElementRunned['${rfid}']==null){
                         window.NFramework.nmoduleManager.nlcElementRunned['${rfid}']=true;
                         ${code}
                     }
-                
                 `;
             }
         }
+
         return code;
     }
 
@@ -527,14 +521,10 @@ ${code}`;
     }
 
     CompileFastGet(code) {
-
         let result = '';
-
         let isInStr = false;
-
         let strC = '';
-
-        let isVarInTemplateLiterals = false;
+        let isletInTemplateLiterals = false;
 
         for (let i = 0; i < code.length; i++) {
 
@@ -544,14 +534,16 @@ ${code}`;
                         break;
                     }
                 }
-            } else if (code[i] + code[i + 1] == '//*') {
+            }
+            else if (code[i] + code[i + 1] == '//*') {
                 i += 2;
                 for (; i < code.length; i++) {
                     if (code[i] == '*' || code[i + 1] == '//') {
                         break;
                     }
                 }
-            } else {
+            }
+            else {
                 if (!isInStr) {
                     if (code[i] == '"' || code[i] == "'") {
                         isInStr = true;
@@ -559,7 +551,7 @@ ${code}`;
                     } else if (code[i] == '`') {
                         isInStr = true;
                         strC = code[i];
-                        isVarInTemplateLiterals = false;
+                        isletInTemplateLiterals = false;
                     }
                 } else {
                     isInStr = (code[i] == '"' || code[i] == "'" || code[i] == '`') ? false : isInStr;
@@ -601,7 +593,7 @@ ${code}`;
 
         let isInStr = false;
 
-        let isVarInTemplateLiterals = false;
+        let isletInTemplateLiterals = false;
 
         for (let i = 0; i < code.length; i++) {
 
@@ -629,14 +621,14 @@ ${code}`;
 
                         isInStr = true;
                         strC = code[i];
-                        isVarInTemplateLiterals = false;
+                        isletInTemplateLiterals = false;
 
                     }
                 } else {
                     isInStr = (code[i] == '"' || code[i] == "'" || code[i] == '`') ? false : isInStr;
                 }
 
-                if (code[i] + code[i + 1] == '->' && (!isInStr || isVarInTemplateLiterals)) {
+                if (code[i] + code[i + 1] == '->' && (!isInStr || isletInTemplateLiterals)) {
                     let name = '';
                     i += 2;
                     for (; i < code.length; i++) {
@@ -730,7 +722,7 @@ ${code}`;
                         break;
                     }
 
-                } else if (code[i] + code[i + 1] + code[i + 2] == '-->' && (!isInStr || isVarInTemplateLiterals)) {
+                } else if (code[i] + code[i + 1] + code[i + 2] == '-->' && (!isInStr || isletInTemplateLiterals)) {
                     let name = '';
                     i += 3;
                     for (; i < code.length; i++) {

@@ -3,19 +3,19 @@ const global_nmodule    = require('./global_nmodule/global_nmodule');
 
 class NModuleManager {
     constructor() {
-        this.customTypeDatas        = new Object();
-        this.customTypeDataInfos    = new Object();
-        this.jsCode                 = new Object();
-        this.pages                  = new Object();
-        this.modules                = new Object();
-        this.textContents           = new Object();
-        this.globalObjectSourceCodes= new Object();
+        this.customTypeDatas            = new Object();
+        this.customTypeDataInfos        = new Object();
+        this.jsCode                     = new Object();
+        this.pages                      = new Object();
+        this.modules                    = new Object();
+        this.textContents               = new Object();
+        this.globalObjectSourceCodes    = new Object();
 
-        this.modulePaths            = [];
-        this.svMJSPaths             = [];
-        this.clMJSPaths             = [];
-        this.nlcPaths               = [];
-        this.watches                = [];
+        this.modulePaths                = [];
+        this.svMJSPaths                 = [];
+        this.clMJSPaths                 = [];
+        this.nlcPaths                   = [];
+        this.watches                    = [];
     }
 
     Routing() {
@@ -26,11 +26,11 @@ class NModuleManager {
     }
 
     SetupGetterAndSetterForSyncProps() {
-        let express_server = this.NFramework.express_server;
-        let manager = this;
+        let express_server  = this.NFramework.express_server;
+        let manager         = this;
         express_server.get('/getSyncProp/:module/:name', (req, res) => {
-            let moduleName = req.params.module;
-            let syncPropName = req.params.name;
+            let moduleName      = req.params.module;
+            let syncPropName    = req.params.name;
 
             let property = manager.GetModule(moduleName).Get(syncPropName);
 
@@ -44,9 +44,9 @@ class NModuleManager {
         });
 
         express_server.get('/setSyncProp/:module/:name/:data', (req, res) => {
-            let moduleName = req.params.module;
-            let syncPropName = req.params.name;
-            let data = JSON.parse(req.params.data);
+            let moduleName      = req.params.module;
+            let syncPropName    = req.params.name;
+            let data            = JSON.parse(req.params.data);
 
             manager.GetModule(moduleName).Set(syncPropName, data);
 
@@ -55,31 +55,29 @@ class NModuleManager {
     }
 
     BuildModulePathsArray() {
-        const src_path = this.NFramework.nmodules_src_dir;
-        const framework_src_path = this.NFramework.framework_nmodules_src_dir;
+        const src_path              = this.NFramework.nmodules_src_dir;
+        const framework_src_path    = this.NFramework.framework_nmodules_src_dir;
 
         let nmm = this;
 
-        let recompile_when_startup=this.NFramework.recompile_when_startup;
+        let recompile_when_startup = this.NFramework.recompile_when_startup;
 
-        let buildmpa = function(file) {
+        const buildmpa = function(file) {
             let parts = file.split('.');
             if (parts[parts.length - 1] == 'nlc') nmm.modulePaths.push(file);
-            else {
-                if (parts[parts.length - 1] == 'showjs') fs.unlinkSync(file);
-                else if (
-                    recompile_when_startup &&
-                    parts[parts.length - 3] == 'nlc' &&
-                    parts[parts.length - 1] == 'js' &&
-                    (parts[parts.length - 2] == 'server' || parts[parts.length - 2] == 'client')
-                ) {
+            else if (parts[parts.length - 1] == 'showjs') fs.unlinkSync(file);
+            else if (
+                recompile_when_startup &&
+                parts[parts.length - 3] == 'nlc' &&
+                parts[parts.length - 1] == 'js' &&
+                (parts[parts.length - 2] == 'server' || parts[parts.length - 2] == 'client')
+            ) {
 
-                    fs.unlinkSync(file);
-                }
+                fs.unlinkSync(file);
             }
         };
 
-        let isDir = function(path) {
+        const isDir = function(path) {
             let isD = false;
             let stats = fs.statSync(path);
             isD = stats.isDirectory();
@@ -87,7 +85,7 @@ class NModuleManager {
             return isD;
         }
 
-        let DoWithAllFile = function(dirPath) {
+        const DoWithAllFile = function(dirPath) {
             fs.readdirSync(dirPath).forEach(file => {
 
                 const filePath = dirPath + '/' + file;
@@ -107,22 +105,17 @@ class NModuleManager {
     }
 
     CompileOrImportModules() {
-
         for (let filePath of this.watches)
             fs.unwatchFile(filePath);
 
         this.watches = [];
 
         let compiler = this.NFramework.ncompiler;
+
         for (let modulePath of this.modulePaths) {
-            let cr;
-            if(this.NFramework.recompile_when_startup){
-                cr = compiler.CompileFile(modulePath);
-            }
-            else{
-                cr=compiler.CreateModuleFromCode(null,null,modulePath);
-            }
-            //if(this.recompile_when_startup)
+            let cr = (this.NFramework.recompile_when_startup) ?
+                      compiler.CompileFile(modulePath) :
+                      compiler.CreateModuleFromCode(null, null, modulePath);
 
             if (this.NFramework.debug.show_nlc_compiled_js) {
                 let showerCompiledFileSV = '';
@@ -157,7 +150,6 @@ class NModuleManager {
                 });
             }
         }
-
     }
 
     ReRoutingModulesForClient() {
@@ -194,7 +186,7 @@ class NModuleManager {
         for (let modulePath of this.svMJSPaths) {
             let eps = require(modulePath)(this);
 
-            let ctdindex=0;
+            let ctdindex = 0;
             for (let ctData of eps.customTypeDatas) {
                 this.customTypeDatas[ctData.key] = ctData.value;
                 this.customTypeDataInfos[ctData.key] = new Object();

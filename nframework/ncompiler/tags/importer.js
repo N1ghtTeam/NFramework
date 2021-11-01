@@ -4,7 +4,7 @@ let tag = new Tag();
 
 tag.isAutoClose = true;
 
-tag.isJSTag=true;
+tag.isJSTag = true;
 
 tag.Compile = function(element, childsCode, code) {
     return `

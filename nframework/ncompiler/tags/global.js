@@ -4,9 +4,9 @@ let tag = new Tag();
 
 tag.isAutoClose = false;
 
-tag.isJSTag=true;
+tag.isJSTag = true;
 
-tag.oneTime=true;
+tag.oneTime = true;
 
 tag.Compile = function(element, childsCode, code, manager) {
     let inputs = tag.GetInputs(element, childsCode, code);
@@ -37,7 +37,7 @@ tag.Compile = function(element, childsCode, code, manager) {
 
         return `exports.customTypeDatas.Add('${inputs[0]}',${compiledCode})`;
     } else{
-        
+
         return ` manager.customTypeDatas['${inputs[0]}']=(()=>{
             let data=${compiledCode};
             return data;

@@ -4,9 +4,9 @@ let tag = new Tag();
 
 tag.isAutoClose = false;
 
-tag.isJSTag=true;
+tag.isJSTag = true;
 
-tag.oneTime=true;
+tag.oneTime = true;
 
 let parsed__dirname = '';
 
@@ -81,7 +81,7 @@ tag.Compile = function(element, childsCode, code) {
 
     if (element.forSV) {
         compiledCode += `
-        
+
         let fs=require('fs');
 
         let clientVersion=JSCLPath;

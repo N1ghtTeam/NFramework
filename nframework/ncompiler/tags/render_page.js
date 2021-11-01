@@ -1,15 +1,15 @@
-var Tag = require('../tag/tag');
+const Tag = require('../tag/tag');
 
-var tag = new Tag();
+let tag = new Tag();
 
 tag.isAutoClose = true;
 
-tag.isJSTag=true;
+tag.isJSTag = true;
 
 tag.Compile = function(element, childsCode, code) {
-    var inputs = tag.GetInputs(element, childsCode, code);
+    let inputs = tag.GetInputs(element, childsCode, code);
 
-    var pageName = inputs[0];
+    let pageName = inputs[0];
 
     return `
 
