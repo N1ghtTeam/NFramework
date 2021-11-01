@@ -110,7 +110,7 @@ module.exports = (manager) => {
 
         });
     
-        
+
         let fs=require('fs');
 
         let clientVersion=JSCLPath;

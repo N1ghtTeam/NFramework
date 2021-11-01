@@ -1,9 +1,12 @@
-manager = window.NFramework.nmoduleManager;
+
+                            var ab70089fb_e1a7_4ee9_b7ef_d73a37233717_module;
+                        var aa29a3b2b_4de9_435f_a29c_49b88c463312_module;
+                        manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['3ad6c982_33fe_4e42_9914_0372e16e15e4']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['3ad6c982_33fe_4e42_9914_0372e16e15e4']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['5af6c551_3a85_44ac_8096_b4304a12c115']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['5af6c551_3a85_44ac_8096_b4304a12c115']=true;
                          manager.customTypeDatas['demoGlobalInDemoNLC']=(()=>{
             let data=
 
@@ -14,13 +17,12 @@ manager = window.NFramework.nmoduleManager;
         })();
                     }
                 
-                
 
                 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['52cd91c0_e960_4678_bad2_e6b52e2048b7']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['52cd91c0_e960_4678_bad2_e6b52e2048b7']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['90c02cdd_3dda_41db_a2c3_61866682a58e']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['90c02cdd_3dda_41db_a2c3_61866682a58e']=true;
                         
             (()=>{
                 
@@ -52,6 +54,12 @@ manager = window.NFramework.nmoduleManager;
 
     
 
+    this.AddSyncProperty('sp');
+
+    
+
+    
+
     
 
         
@@ -61,11 +69,8 @@ manager = window.NFramework.nmoduleManager;
     
 
         
-        this.AddMethod('setup',(...args) => {
-            let f=
-    
-
-            function(){
+        this.AddMethod('setup',async (...args)=>{
+                let f=async function(){
                 
                 
                 (manager.Get('dom')).GetThisWithCallback((module)=>{
@@ -78,66 +83,66 @@ manager = window.NFramework.nmoduleManager;
 
         
 
-            var result_9f2832e8_8ec0_4592_ad8e_c96065daad7d=document.createElement('div');
+            var result_d3c6ce0c_b416_4e0d_981e_c5e0651153ac=document.createElement('div');
 
-            window.result_9f2832e8_8ec0_4592_ad8e_c96065daad7d=result_9f2832e8_8ec0_4592_ad8e_c96065daad7d;
+            window.result_d3c6ce0c_b416_4e0d_981e_c5e0651153ac=result_d3c6ce0c_b416_4e0d_981e_c5e0651153ac;
             
             
-        var attributes_9f2832e8_8ec0_4592_ad8e_c96065daad7d=[];
+        var attributes_d3c6ce0c_b416_4e0d_981e_c5e0651153ac=[];
     
-                var a9f2832e8_8ec0_4592_ad8e_c96065daad7dclass=true;
-                attributes_9f2832e8_8ec0_4592_ad8e_c96065daad7d.push({
+                var ad3c6ce0c_b416_4e0d_981e_c5e0651153acclass=true;
+                attributes_d3c6ce0c_b416_4e0d_981e_c5e0651153ac.push({
                     key:'class',
-                    value:(()=>{return a9f2832e8_8ec0_4592_ad8e_c96065daad7dclass='demo1'})()
+                    value:(()=>{return ad3c6ce0c_b416_4e0d_981e_c5e0651153acclass='demo1'})()
                 });
-                result_9f2832e8_8ec0_4592_ad8e_c96065daad7d.setAttribute(attributes_9f2832e8_8ec0_4592_ad8e_c96065daad7d[attributes_9f2832e8_8ec0_4592_ad8e_c96065daad7d.length-1].key,attributes_9f2832e8_8ec0_4592_ad8e_c96065daad7d[attributes_9f2832e8_8ec0_4592_ad8e_c96065daad7d.length-1].value);
+                result_d3c6ce0c_b416_4e0d_981e_c5e0651153ac.setAttribute(attributes_d3c6ce0c_b416_4e0d_981e_c5e0651153ac[attributes_d3c6ce0c_b416_4e0d_981e_c5e0651153ac.length-1].key,attributes_d3c6ce0c_b416_4e0d_981e_c5e0651153ac[attributes_d3c6ce0c_b416_4e0d_981e_c5e0651153ac.length-1].value);
             
 
-            result_9f2832e8_8ec0_4592_ad8e_c96065daad7d.innerHTML+=
+            result_d3c6ce0c_b416_4e0d_981e_c5e0651153ac.innerHTML+=
 ""+'\r\n\r\n                        Hello World\r\n\r\n                            '+""
 ;
-                result_9f2832e8_8ec0_4592_ad8e_c96065daad7d.appendChild(
+                result_d3c6ce0c_b416_4e0d_981e_c5e0651153ac.appendChild(
 
     (()=>{
 
         
 
-            var result_cf08c172_b064_4c09_86d0_f10a9679b7fb=document.createElement('div');
+            var result_d93b58c9_3fa9_4b1c_b9c0_52d80409482e=document.createElement('div');
 
-            window.result_cf08c172_b064_4c09_86d0_f10a9679b7fb=result_cf08c172_b064_4c09_86d0_f10a9679b7fb;
+            window.result_d93b58c9_3fa9_4b1c_b9c0_52d80409482e=result_d93b58c9_3fa9_4b1c_b9c0_52d80409482e;
             
             
-        var attributes_cf08c172_b064_4c09_86d0_f10a9679b7fb=[];
+        var attributes_d93b58c9_3fa9_4b1c_b9c0_52d80409482e=[];
     
-                var acf08c172_b064_4c09_86d0_f10a9679b7fbclass=true;
-                attributes_cf08c172_b064_4c09_86d0_f10a9679b7fb.push({
+                var ad93b58c9_3fa9_4b1c_b9c0_52d80409482eclass=true;
+                attributes_d93b58c9_3fa9_4b1c_b9c0_52d80409482e.push({
                     key:'class',
-                    value:(()=>{return acf08c172_b064_4c09_86d0_f10a9679b7fbclass='demo2'})()
+                    value:(()=>{return ad93b58c9_3fa9_4b1c_b9c0_52d80409482eclass='demo2'})()
                 });
-                result_cf08c172_b064_4c09_86d0_f10a9679b7fb.setAttribute(attributes_cf08c172_b064_4c09_86d0_f10a9679b7fb[attributes_cf08c172_b064_4c09_86d0_f10a9679b7fb.length-1].key,attributes_cf08c172_b064_4c09_86d0_f10a9679b7fb[attributes_cf08c172_b064_4c09_86d0_f10a9679b7fb.length-1].value);
+                result_d93b58c9_3fa9_4b1c_b9c0_52d80409482e.setAttribute(attributes_d93b58c9_3fa9_4b1c_b9c0_52d80409482e[attributes_d93b58c9_3fa9_4b1c_b9c0_52d80409482e.length-1].key,attributes_d93b58c9_3fa9_4b1c_b9c0_52d80409482e[attributes_d93b58c9_3fa9_4b1c_b9c0_52d80409482e.length-1].value);
             
 
-            result_cf08c172_b064_4c09_86d0_f10a9679b7fb.innerHTML+=
+            result_d93b58c9_3fa9_4b1c_b9c0_52d80409482e.innerHTML+=
 ""+'\r\n\r\n                                Hello World2\r\n\r\n                            '+""
 ;
             
 
     
         
-        return result_cf08c172_b064_4c09_86d0_f10a9679b7fb;
+        return result_d93b58c9_3fa9_4b1c_b9c0_52d80409482e;
 
     })()
         
 
 );
-                result_9f2832e8_8ec0_4592_ad8e_c96065daad7d.innerHTML+=
+                result_d3c6ce0c_b416_4e0d_981e_c5e0651153ac.innerHTML+=
 ""+'\r\n\r\n                        Hello World\r\n\r\n                    '+""
 ;
             
 
     
         
-        return result_9f2832e8_8ec0_4592_ad8e_c96065daad7d;
+        return result_d3c6ce0c_b416_4e0d_981e_c5e0651153ac;
 
     })()
         
@@ -146,18 +151,32 @@ manager = window.NFramework.nmoduleManager;
 
                 );
 
-                console.log((manager.Get('demoGlobalInDemoNLC')));
+                await this.AsyncGetThisWithCallback(async (module)=>{
+                            ab70089fb_e1a7_4ee9_b7ef_d73a37233717_module=module;
+                        })
+                        let getterObjb70089fb_e1a7_4ee9_b7ef_d73a37233717={
+                            set stter(value) {
+                                (async ()=>{
+                                    await ab70089fb_e1a7_4ee9_b7ef_d73a37233717_module.AsyncSet('sp',value);
+                                })();
+                            }
+                        }
+                        getterObjb70089fb_e1a7_4ee9_b7ef_d73a37233717.stter=7;
 
+                console.log(await this.AsyncGetThisWithCallback(async (module)=>{
+                            aa29a3b2b_4de9_435f_a29c_49b88c463312_module=module;
+                            return await aa29a3b2b_4de9_435f_a29c_49b88c463312_module.AsyncGet('sp');
+                        })
+                        );
 
             }
 
         
+                let f2=f.bind(this);
+                return await f2(...args);
+            }
 
-    return f.call(this,...args);
-
-}
-
-    );
+        );
 
     
 
@@ -173,7 +192,6 @@ manager = window.NFramework.nmoduleManager;
             })();
         
                     }
-                
                 
 
                 

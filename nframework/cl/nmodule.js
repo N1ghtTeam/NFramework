@@ -67,6 +67,10 @@ class NModule {
                  this.serverMethods[name]   || this.clientMethods[name] ||
                  this.syncProperties[name]) || null;
 
+        if(name in this.syncProperties){
+            result = await this.GetSyncProperty(name);
+        }
+
         isExist = (name in this.properties)     || (name in this.methods)       ||
                   (name in this.serverMethods)  || (name in this.clientMethods) ||
                   (name in this.syncProperties) || false;
@@ -100,7 +104,11 @@ class NModule {
 
         result = (this.properties[name]     || this.methods[name]       ||
                  this.serverMethods[name]   || this.clientMethods[name] ||
-                 await this.syncProperties[name]) || null;
+                 this.syncProperties[name]) || null;
+
+        if(name in this.syncProperties){
+            result = await this.GetSyncProperty(name);
+        }
 
         isExist = (name in this.properties)     || (name in this.methods)       ||
                   (name in this.serverMethods)  || (name in this.clientMethods) ||

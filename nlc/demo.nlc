@@ -9,13 +9,15 @@
 
 <module demo>
 
+    <sync-property sp/>
+
     <server-only>
 
         <method setup>
 
             function(){
 
-                console.log('s');
+                this->sp=5;
 
             }
 
@@ -27,7 +29,7 @@
 
         <property prop/>
 
-        <method setup>
+        <async-method setup>
 
             function(){
                 
@@ -50,8 +52,9 @@
 
                 );
 
-                console.log(@demoGlobalInDemoNLC);
+                await this-->sp=7;
 
+                console.log(await this-->sp);
 
             }
 

@@ -702,7 +702,7 @@ ${code}`;
                         fid = fid2;
 
                         top += `
-                            let a${fid}_module;
+                            var a${fid}_module;
                         `;
 
                         result += `.GetThisWithCallback((module)=>{
@@ -785,7 +785,7 @@ ${code}`;
                     fid = fid2;
 
                     if (!isSetter) {
-                        top += `let a${fid}_module;
+                        top += `var a${fid}_module;
                         `;
                         result += `.AsyncGetThisWithCallback(async (module)=>{
                             a${fid}_module=module;
@@ -797,7 +797,7 @@ ${code}`;
                         let nextCode = code.substring(setterEqualChrIndex + 1, code.length);
 
                         top += `
-                            let a${fid}_module;
+                            var a${fid}_module;
                         `;
                         result += `.AsyncGetThisWithCallback(async (module)=>{
                             a${fid}_module=module;

@@ -2,8 +2,8 @@ manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['38bf2b20_b154_4ad0_8783_7dbbfafd88d9']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['38bf2b20_b154_4ad0_8783_7dbbfafd88d9']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['71a3b3ae_959b_417c_b167_34032d79b89a']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['71a3b3ae_959b_417c_b167_34032d79b89a']=true;
                          manager.customTypeDatas['demoGlobal']=(()=>{
             let data=
 
@@ -13,7 +13,6 @@ manager = window.NFramework.nmoduleManager;
             return data;
         })();
                     }
-                
                 
 
                 

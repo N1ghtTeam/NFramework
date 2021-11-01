@@ -1,5 +1,7 @@
 const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";
 
+                            var afa69be54_563e_43a8_96ea_6e90b18c542a_module;
+                        
 module.exports = (manager) => {
     let exports     = new Object();
     let nmodules    = [];
@@ -59,6 +61,12 @@ module.exports = (manager) => {
 
     
 
+    this.AddSyncProperty('sp');
+
+    
+
+    
+
         
         this.AddMethod('setup',(...args) => {
             let f=
@@ -66,7 +74,15 @@ module.exports = (manager) => {
 
             function(){
 
-                console.log('s');
+                this.GetThisWithCallback((module)=>{
+                            afa69be54_563e_43a8_96ea_6e90b18c542a_module=module;
+                        })
+                        let getterObjfa69be54_563e_43a8_96ea_6e90b18c542a={
+                            set stter(value) {
+                                afa69be54_563e_43a8_96ea_6e90b18c542a_module.Set('sp',value);
+                            }
+                        }
+                        getterObjfa69be54_563e_43a8_96ea_6e90b18c542a.stter=5;
 
             }
 
@@ -87,7 +103,7 @@ module.exports = (manager) => {
 
         });
     
-        
+
         let fs=require('fs');
 
         let clientVersion=JSCLPath;
