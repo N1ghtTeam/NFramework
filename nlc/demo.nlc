@@ -1,5 +1,5 @@
-<use dom>
 <use html>
+<use dom>
 
 <module demo>
 
@@ -10,15 +10,28 @@
         <method setup>
 
             function(){
-                <style>
+                
+                
+                @dom->body.appendChild(
 
-                    @demo->prop=5;
+                    <div class='demo1'>
 
-                </style>;
-                @demo->prop=5;
+                        Hello World
+
+                            <div class='demo2'>
+
+                                Hello World2
+
+                            </div>
+
+                        Hello World
+
+                    </div>
+
+                );
+
 
             }
-
 
         </method>
 

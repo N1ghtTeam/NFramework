@@ -7,6 +7,75 @@ var Tag=class{
         return element.startContentIndex + ' ' + element.endContentIndex;
     }
 
+    ParseToHTMLElementTextcontent(str){
+        let result='';
+
+        let isSpecialChr=false;
+
+        for(let i=0;i<str.length;i++){
+            if(str[i]=='"'){
+                isSpecialChr=true;
+                result+=`'"'+`;
+            }
+            else if(str[i]=='`'){
+                isSpecialChr=true;
+                result+="'`'+";
+            }
+            else if(str[i]=="'"){
+                isSpecialChr=true;
+                result+="`'`+";
+            }
+            else if(str[i]=="\n"){
+                isSpecialChr=true;
+                result+=`'\\n'+`;
+            }
+            else if(str[i]=="\r"){
+                isSpecialChr=true;
+                result+=`'\\r'+`;
+            }
+            else{
+                isSpecialChr=false;
+                result+=`'${str[i]}'+`;
+            }
+        }
+
+        var rcache2='';
+
+        var strChr='';
+
+        for(let i=0;i<result.length;i++){
+            if(result[i]=='"' || result[i]=="'" || result[i]=='`'){
+                strChr=result[i];
+                for(;i<result.length;i++){
+                    if(result[i]==strChr){
+                        if(result[i+2]!=strChr){
+                            rcache2+=result[i];
+                            //i+=2;
+                        }
+                        else{
+                            i+=2;
+                        }
+                        break;
+                    }
+                    rcache2+=result[i];
+                }
+            }
+            else{
+                rcache2+=result[i];
+            }
+        }
+
+        result=rcache2;
+
+        let rcache='\n'+'""+'+result+'+""'+'\n';
+        if(rcache[rcache.length-4]==rcache[rcache.length-5]){
+            rcache='\n'+'""+'+result+'""'+'\n';
+        }
+        result=rcache;
+
+        return result;
+    }
+
     CheckInStr(inputs){
 
         var result=inputs;

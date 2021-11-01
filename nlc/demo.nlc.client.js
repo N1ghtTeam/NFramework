@@ -1,6 +1,4 @@
-
-                            let affb92fbc_8a08_448e_976a_5e81feee04ec_module;
-                        manager = window.NFramework.nmoduleManager;
+manager = window.NFramework.nmoduleManager;
 
 
                     
@@ -47,32 +45,87 @@
 
             function(){
                 
+                
+                (manager.Get('dom')).GetThisWithCallback((module)=>{
+                            return module.Get('body');
+                        }).appendChild(
+
+                    
+
     (()=>{
-        let styleE = document.createElement('style');
 
-        styleE.textContent = `
+        
 
-                    @demo->prop=5;
+            var result_0778688e_c0a0_4419_8471_2e9182836964=document.createElement('div');
 
-                `;
+            window.result_0778688e_c0a0_4419_8471_2e9182836964=result_0778688e_c0a0_4419_8471_2e9182836964;
+            
+            
+        var attributes_0778688e_c0a0_4419_8471_2e9182836964=[];
+    
+                var a0778688e_c0a0_4419_8471_2e9182836964class=true;
+                attributes_0778688e_c0a0_4419_8471_2e9182836964.push({
+                    key:'class',
+                    value:(()=>{return a0778688e_c0a0_4419_8471_2e9182836964class='demo1'})()
+                });
+                result_0778688e_c0a0_4419_8471_2e9182836964.setAttribute(attributes_0778688e_c0a0_4419_8471_2e9182836964[attributes_0778688e_c0a0_4419_8471_2e9182836964.length-1].key,attributes_0778688e_c0a0_4419_8471_2e9182836964[attributes_0778688e_c0a0_4419_8471_2e9182836964.length-1].value);
+            
 
-        document.body.appendChild(styleE);
+            result_0778688e_c0a0_4419_8471_2e9182836964.innerHTML+=
+""+'\r\n\r\n                        Hello World\r\n\r\n                            '+""
+;
+                result_0778688e_c0a0_4419_8471_2e9182836964.appendChild(
 
-        return styleE;
+    (()=>{
+
+        
+
+            var result_f62d05c7_c493_4491_83e8_e586ebb83acb=document.createElement('div');
+
+            window.result_f62d05c7_c493_4491_83e8_e586ebb83acb=result_f62d05c7_c493_4491_83e8_e586ebb83acb;
+            
+            
+        var attributes_f62d05c7_c493_4491_83e8_e586ebb83acb=[];
+    
+                var af62d05c7_c493_4491_83e8_e586ebb83acbclass=true;
+                attributes_f62d05c7_c493_4491_83e8_e586ebb83acb.push({
+                    key:'class',
+                    value:(()=>{return af62d05c7_c493_4491_83e8_e586ebb83acbclass='demo2'})()
+                });
+                result_f62d05c7_c493_4491_83e8_e586ebb83acb.setAttribute(attributes_f62d05c7_c493_4491_83e8_e586ebb83acb[attributes_f62d05c7_c493_4491_83e8_e586ebb83acb.length-1].key,attributes_f62d05c7_c493_4491_83e8_e586ebb83acb[attributes_f62d05c7_c493_4491_83e8_e586ebb83acb.length-1].value);
+            
+
+            result_f62d05c7_c493_4491_83e8_e586ebb83acb.innerHTML+=
+""+'\r\n\r\n                                Hello World2\r\n\r\n                            '+""
+;
+            
+
+    
+        
+        return result_f62d05c7_c493_4491_83e8_e586ebb83acb;
+
     })()
-    ;
-                (manager.Get('demo')).GetThisWithCallback((module)=>{
-                            affb92fbc_8a08_448e_976a_5e81feee04ec_module=module;
-                        })
-                        let getterObjffb92fbc_8a08_448e_976a_5e81feee04ec={
-                            set stter(value) {
-                                affb92fbc_8a08_448e_976a_5e81feee04ec_module.Set('prop',value);
-                            }
-                        }
-                        getterObjffb92fbc_8a08_448e_976a_5e81feee04ec.stter=5;
+        
+
+);
+                result_0778688e_c0a0_4419_8471_2e9182836964.innerHTML+=
+""+'\r\n\r\n                        Hello World\r\n\r\n                    '+""
+;
+            
+
+    
+        
+        return result_0778688e_c0a0_4419_8471_2e9182836964;
+
+    })()
+        
+
+
+
+                );
+
 
             }
-
 
         
 
