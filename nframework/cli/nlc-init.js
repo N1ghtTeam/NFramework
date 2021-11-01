@@ -33,6 +33,9 @@ const CreatePackageLockFile = function(target) {
     if (!fs.existsSync(target + '/package-lock.json')) {
         fs.copyFileSync(__dirname + '/default_app/package-lock.json', target + '/package-lock.json');
     }
+    if (!fs.existsSync(target + '/package.json')) {
+        fs.copyFileSync(__dirname + '/default_app/package.json', target + '/package.json');
+    }
 }
 
 const CreateViewsFolder = function(target) {
