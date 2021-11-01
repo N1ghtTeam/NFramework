@@ -21,7 +21,7 @@ class NModule {
     async SetSyncProperty(name, data) {
         const dataJSON      = JSON.stringify(data);
         const parsedData    = encodeURIComponent(dataJSON);
-        var setRes          = await fetch(window.origin + `/setSyncProp/${this.name}/${name}/${parsedData}`);
+        await fetch(window.origin + `/setSyncProp/${this.name}/${name}/${parsedData}`);
     }
 
     GetWithIsExist(name) {
