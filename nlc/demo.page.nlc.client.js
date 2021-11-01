@@ -1,1 +1,1 @@
-manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned["40678e6a_8d1d_4f14_a851_27888ec5ba3a"]&&(window.NFramework.nmoduleManager.nlcElementRunned["40678e6a_8d1d_4f14_a851_27888ec5ba3a"]=!0);
+/* NFRAMEWORK */manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned["772bb328_fcb4_4a0e_af87_d05e6aaa9983"]&&(window.NFramework.nmoduleManager.nlcElementRunned["772bb328_fcb4_4a0e_af87_d05e6aaa9983"]=!0);

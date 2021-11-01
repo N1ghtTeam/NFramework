@@ -48,9 +48,13 @@ class NCompiler {
 
         codeSV = 'const JSCLPath = "' + prs_fileJSCPath + '";\n' + codeSV;
 
+        //add js file header
+        codeSV=`/* NFRAMEWORK */`+Uglify.minify(codeSV).code;
+        codeCL=`/* NFRAMEWORK */`+Uglify.minify(codeCL).code;
+
         if (isNeedSaveCode) {
-            fs.writeFileSync(fileJSSVPath, Uglify.minify(codeSV).code);
-            fs.writeFileSync(fileJSCPath, Uglify.minify(codeCL).code);
+            fs.writeFileSync(fileJSSVPath, codeSV);
+            fs.writeFileSync(fileJSCPath, codeCL);
         }
 
         let cResult = new Object();
