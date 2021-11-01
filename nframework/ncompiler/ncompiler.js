@@ -1,5 +1,5 @@
-const fs = require('fs');
-const Element = require('./element/element');
+const fs 			= require('fs');
+const Element 	= require('./element/element');
 
 class NCompiler {
     constructor() {}
