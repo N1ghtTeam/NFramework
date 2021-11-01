@@ -524,7 +524,7 @@ ${code}`;
         let result = '';
         let isInStr = false;
         let strC = '';
-        let isletInTemplateLiterals = false;
+        let isVarInTemplateLiterals = false;
 
         for (let i = 0; i < code.length; i++) {
 
@@ -551,7 +551,7 @@ ${code}`;
                     } else if (code[i] == '`') {
                         isInStr = true;
                         strC = code[i];
-                        isletInTemplateLiterals = false;
+                        isVarInTemplateLiterals = false;
                     }
                 } else {
                     isInStr = (code[i] == '"' || code[i] == "'" || code[i] == '`') ? false : isInStr;
@@ -593,7 +593,7 @@ ${code}`;
 
         let isInStr = false;
 
-        let isletInTemplateLiterals = false;
+        let isVarInTemplateLiterals = false;
 
         for (let i = 0; i < code.length; i++) {
 
@@ -621,14 +621,14 @@ ${code}`;
 
                         isInStr = true;
                         strC = code[i];
-                        isletInTemplateLiterals = false;
+                        isVarInTemplateLiterals = false;
 
                     }
                 } else {
                     isInStr = (code[i] == '"' || code[i] == "'" || code[i] == '`') ? false : isInStr;
                 }
 
-                if (code[i] + code[i + 1] == '->' && (!isInStr || isletInTemplateLiterals)) {
+                if (code[i] + code[i + 1] == '->' && (!isInStr || isVarInTemplateLiterals)) {
                     let name = '';
                     i += 2;
                     for (; i < code.length; i++) {
@@ -722,7 +722,7 @@ ${code}`;
                         break;
                     }
 
-                } else if (code[i] + code[i + 1] + code[i + 2] == '-->' && (!isInStr || isletInTemplateLiterals)) {
+                } else if (code[i] + code[i + 1] + code[i + 2] == '-->' && (!isInStr || isVarInTemplateLiterals)) {
                     let name = '';
                     i += 3;
                     for (; i < code.length; i++) {
