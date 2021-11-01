@@ -4,6 +4,9 @@ let tag = new Tag();
 
 tag.isAutoClose = false;
 
+tag.isJSTag=true;
+
+
 tag.Compile = function(element, childsCode, code) {
 
     let contents = tag.GetContent(element, childsCode, code);

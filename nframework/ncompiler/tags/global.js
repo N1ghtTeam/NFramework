@@ -4,6 +4,10 @@ let tag = new Tag();
 
 tag.isAutoClose = false;
 
+tag.isJSTag=true;
+
+tag.oneTime=true;
+
 tag.Compile = function(element, childsCode, code, manager) {
     let inputs = tag.GetInputs(element, childsCode, code);
 

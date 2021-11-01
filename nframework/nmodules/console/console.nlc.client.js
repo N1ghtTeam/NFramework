@@ -1,10 +1,10 @@
-
-            if(window.NFramework.nmoduleManager.nlcElementRunned['70f39a85_9adb_4287_8be5_ead4edd0e373']==null){
-                window.NFramework.nmoduleManager.nlcElementRunned['70f39a85_9adb_4287_8be5_ead4edd0e373']=true;
-                manager = window.NFramework.nmoduleManager;
+manager = window.NFramework.nmoduleManager;
 
 
                     
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['20a6290d_b6ba_42f3_b4de_16795f6168cb']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['20a6290d_b6ba_42f3_b4de_16795f6168cb']=true;
+                        
             (()=>{
                 
 
@@ -46,9 +46,8 @@
         
             })();
         
+                    }
+                
+                
 
                 
-            }
-
-            
-            

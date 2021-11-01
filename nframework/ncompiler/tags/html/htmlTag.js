@@ -122,6 +122,8 @@ const { v4: uuidv4 } = require('uuid');
 var tag=require('../../tag/tag');
 
 module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
+    tag.isJSTag=true;
+
     var isAutoClose=tag.isAutoClose;
 
     var contents=tag.GetContent(element,childsCode,code);

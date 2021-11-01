@@ -1,10 +1,10 @@
-
-            if(window.NFramework.nmoduleManager.nlcElementRunned['7873ac20_f520_4bf7_871c_bba8daf6c15d']==null){
-                window.NFramework.nmoduleManager.nlcElementRunned['7873ac20_f520_4bf7_871c_bba8daf6c15d']=true;
-                manager = window.NFramework.nmoduleManager;
+manager = window.NFramework.nmoduleManager;
 
 
-                     manager.customTypeDatas['demoGlobalInDemoNLC']=(()=>{
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['3ad6c982_33fe_4e42_9914_0372e16e15e4']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['3ad6c982_33fe_4e42_9914_0372e16e15e4']=true;
+                         manager.customTypeDatas['demoGlobalInDemoNLC']=(()=>{
             let data=
 
 6
@@ -12,10 +12,16 @@
 ;
             return data;
         })();
+                    }
+                
+                
 
                 
 
                     
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['52cd91c0_e960_4678_bad2_e6b52e2048b7']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['52cd91c0_e960_4678_bad2_e6b52e2048b7']=true;
+                        
             (()=>{
                 
 
@@ -72,66 +78,66 @@
 
         
 
-            var result_55e75983_08a7_47a1_a43a_419974b5a38b=document.createElement('div');
+            var result_9f2832e8_8ec0_4592_ad8e_c96065daad7d=document.createElement('div');
 
-            window.result_55e75983_08a7_47a1_a43a_419974b5a38b=result_55e75983_08a7_47a1_a43a_419974b5a38b;
+            window.result_9f2832e8_8ec0_4592_ad8e_c96065daad7d=result_9f2832e8_8ec0_4592_ad8e_c96065daad7d;
             
             
-        var attributes_55e75983_08a7_47a1_a43a_419974b5a38b=[];
+        var attributes_9f2832e8_8ec0_4592_ad8e_c96065daad7d=[];
     
-                var a55e75983_08a7_47a1_a43a_419974b5a38bclass=true;
-                attributes_55e75983_08a7_47a1_a43a_419974b5a38b.push({
+                var a9f2832e8_8ec0_4592_ad8e_c96065daad7dclass=true;
+                attributes_9f2832e8_8ec0_4592_ad8e_c96065daad7d.push({
                     key:'class',
-                    value:(()=>{return a55e75983_08a7_47a1_a43a_419974b5a38bclass='demo1'})()
+                    value:(()=>{return a9f2832e8_8ec0_4592_ad8e_c96065daad7dclass='demo1'})()
                 });
-                result_55e75983_08a7_47a1_a43a_419974b5a38b.setAttribute(attributes_55e75983_08a7_47a1_a43a_419974b5a38b[attributes_55e75983_08a7_47a1_a43a_419974b5a38b.length-1].key,attributes_55e75983_08a7_47a1_a43a_419974b5a38b[attributes_55e75983_08a7_47a1_a43a_419974b5a38b.length-1].value);
+                result_9f2832e8_8ec0_4592_ad8e_c96065daad7d.setAttribute(attributes_9f2832e8_8ec0_4592_ad8e_c96065daad7d[attributes_9f2832e8_8ec0_4592_ad8e_c96065daad7d.length-1].key,attributes_9f2832e8_8ec0_4592_ad8e_c96065daad7d[attributes_9f2832e8_8ec0_4592_ad8e_c96065daad7d.length-1].value);
             
 
-            result_55e75983_08a7_47a1_a43a_419974b5a38b.innerHTML+=
+            result_9f2832e8_8ec0_4592_ad8e_c96065daad7d.innerHTML+=
 ""+'\r\n\r\n                        Hello World\r\n\r\n                            '+""
 ;
-                result_55e75983_08a7_47a1_a43a_419974b5a38b.appendChild(
+                result_9f2832e8_8ec0_4592_ad8e_c96065daad7d.appendChild(
 
     (()=>{
 
         
 
-            var result_30a576a0_603b_4041_b923_bc9d49ba6f50=document.createElement('div');
+            var result_cf08c172_b064_4c09_86d0_f10a9679b7fb=document.createElement('div');
 
-            window.result_30a576a0_603b_4041_b923_bc9d49ba6f50=result_30a576a0_603b_4041_b923_bc9d49ba6f50;
+            window.result_cf08c172_b064_4c09_86d0_f10a9679b7fb=result_cf08c172_b064_4c09_86d0_f10a9679b7fb;
             
             
-        var attributes_30a576a0_603b_4041_b923_bc9d49ba6f50=[];
+        var attributes_cf08c172_b064_4c09_86d0_f10a9679b7fb=[];
     
-                var a30a576a0_603b_4041_b923_bc9d49ba6f50class=true;
-                attributes_30a576a0_603b_4041_b923_bc9d49ba6f50.push({
+                var acf08c172_b064_4c09_86d0_f10a9679b7fbclass=true;
+                attributes_cf08c172_b064_4c09_86d0_f10a9679b7fb.push({
                     key:'class',
-                    value:(()=>{return a30a576a0_603b_4041_b923_bc9d49ba6f50class='demo2'})()
+                    value:(()=>{return acf08c172_b064_4c09_86d0_f10a9679b7fbclass='demo2'})()
                 });
-                result_30a576a0_603b_4041_b923_bc9d49ba6f50.setAttribute(attributes_30a576a0_603b_4041_b923_bc9d49ba6f50[attributes_30a576a0_603b_4041_b923_bc9d49ba6f50.length-1].key,attributes_30a576a0_603b_4041_b923_bc9d49ba6f50[attributes_30a576a0_603b_4041_b923_bc9d49ba6f50.length-1].value);
+                result_cf08c172_b064_4c09_86d0_f10a9679b7fb.setAttribute(attributes_cf08c172_b064_4c09_86d0_f10a9679b7fb[attributes_cf08c172_b064_4c09_86d0_f10a9679b7fb.length-1].key,attributes_cf08c172_b064_4c09_86d0_f10a9679b7fb[attributes_cf08c172_b064_4c09_86d0_f10a9679b7fb.length-1].value);
             
 
-            result_30a576a0_603b_4041_b923_bc9d49ba6f50.innerHTML+=
+            result_cf08c172_b064_4c09_86d0_f10a9679b7fb.innerHTML+=
 ""+'\r\n\r\n                                Hello World2\r\n\r\n                            '+""
 ;
             
 
     
         
-        return result_30a576a0_603b_4041_b923_bc9d49ba6f50;
+        return result_cf08c172_b064_4c09_86d0_f10a9679b7fb;
 
     })()
         
 
 );
-                result_55e75983_08a7_47a1_a43a_419974b5a38b.innerHTML+=
+                result_9f2832e8_8ec0_4592_ad8e_c96065daad7d.innerHTML+=
 ""+'\r\n\r\n                        Hello World\r\n\r\n                    '+""
 ;
             
 
     
         
-        return result_55e75983_08a7_47a1_a43a_419974b5a38b;
+        return result_9f2832e8_8ec0_4592_ad8e_c96065daad7d;
 
     })()
         
@@ -166,9 +172,8 @@
         
             })();
         
+                    }
+                
+                
 
                 
-            }
-
-            
-            

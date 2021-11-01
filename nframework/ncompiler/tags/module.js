@@ -4,6 +4,10 @@ let tag = new Tag();
 
 tag.isAutoClose = false;
 
+tag.isJSTag=true;
+
+tag.oneTime=true;
+
 let parsed__dirname = '';
 
 for (let i = 0; i < __dirname.length; i++) {
