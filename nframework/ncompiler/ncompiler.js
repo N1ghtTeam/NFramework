@@ -1,6 +1,8 @@
 const fs                = require('fs');
 const Element           = require('./element/element');
+const Uglify            = require('uglify-js');
 const { v4: uuidv4 }    = require('uuid');
+
 
 class NCompiler {
     constructor() {}
@@ -47,8 +49,8 @@ class NCompiler {
         codeSV = 'const JSCLPath = "' + prs_fileJSCPath + '";\n' + codeSV;
 
         if (isNeedSaveCode) {
-            fs.writeFileSync(fileJSSVPath, codeSV);
-            fs.writeFileSync(fileJSCPath, codeCL);
+            fs.writeFileSync(fileJSSVPath, Uglify.minify(codeSV).code);
+            fs.writeFileSync(fileJSCPath, Uglify.minify(codeCL).code);
         }
 
         let cResult = new Object();
