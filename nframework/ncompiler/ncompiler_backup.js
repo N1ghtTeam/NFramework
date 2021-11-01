@@ -6,13 +6,13 @@ class NCompiler {
 
     CreateModuleFromCode(codeSV, codeCL, path) {
         let fileNLCPath = path;
+        let fileJSSVPath = path;
+        let fileJSCPath = path;
+
         let dirNLCPath = '';
         let fileNLCName = '';
         let fileJSNameSV = '';
-        let fileJSSVPath = path;
-
         let fileJSNameC = '';
-        let fileJSCPath = path;
 
         let endDIndex = 0;
         for (let i = path.length - 1; i >= 0; i--) {
@@ -22,16 +22,14 @@ class NCompiler {
             }
         }
 
-        dirNLCPath = fileNLCPath.substring(0, endDIndex);
-
+        // File name.
         fileNLCName = fileNLCPath.substring(endDIndex + 1, path.length);
-
+        fileJSNameC = fileNLCName + '.client.js';
         fileJSNameSV = fileNLCName + '.server.js';
 
+        // File path.
+        dirNLCPath = fileNLCPath.substring(0, endDIndex);
         fileJSSVPath = dirNLCPath + '/' + fileJSNameSV;
-
-        fileJSNameC = fileNLCName + '.client.js';
-
         fileJSCPath = dirNLCPath + '/' + fileJSNameC;
 
         let prs_fileJSCPath = '';
@@ -65,16 +63,18 @@ class NCompiler {
         return cResult;
     }
 
-
     GetTag(name) {
         let result = null;
 
         let useNone = function() {
             result = require('./tags/none_tag.js');
             result.name = name;
+            result.notFoundName = name;
+            result.notFound = true;
+            return result;
         }
 
-        if (name != '') {
+        if (name) {
             if (fs.existsSync(__dirname + '/tags/' + name + '.js')) {
                 result = require('./tags/' + name + '.js');
                 result.name = name;
@@ -86,13 +86,14 @@ class NCompiler {
                     let basePath2 = '';
                     for (let i = 0; i < basePath.length; i++) {
                         let ch = '/'
-                        if (basePath[i] != ':') {
+                        if (basePath[i] != ':')
                             ch = basePath[i];
-                        }
                         basePath2 += ch;
                     }
                     basePath = basePath2;
+
                     let fullPath = __dirname + '/tags/' + basePath + '/' + name + '.js';
+
                     if (fs.existsSync(fullPath)) {
                         result = require(fullPath);
                         result.name = name;
@@ -113,11 +114,10 @@ class NCompiler {
         let result = true;
         for (let i = index + 1; i < code.length; i++) {
             let ch = code[i];
-            if (ch == '|') {
+            if (ch == '|' || ch == '(' || ch == '{') {
                 result = false;
                 break;
-            } else
-            if (ch == '>' || ch == '/') {
+            } else if (ch == '>' || ch == '/') {
                 break;
             }
         }
@@ -138,7 +138,6 @@ class NCompiler {
                 break;
             }
         }
-
         for (j = input.length - 1; j >= start; j--) {
             if (input[j] != ' ' && input[j] != '\n' && input[j] != '\r') {
                 end = j;
@@ -146,7 +145,6 @@ class NCompiler {
             }
         }
         inputr = input.substring(start, end + 1);
-
         return inputr;
     }
 
@@ -169,10 +167,9 @@ class NCompiler {
         }
 
         return name.substring(start, end + 1);
-
     }
 
-    GetTagsOrder(code) {
+    GetTagsOrder(code, nlcPath) {
         let tagsOrder = [];
 
         for (let i = 0; i < code.length; i++) {
@@ -182,7 +179,6 @@ class NCompiler {
 
             if (code[i] == '"' || code[i] == "'" || code[i] == '`') {
                 strch = code[i];
-
                 i++;
 
                 for (; i < code.length; i++) {
@@ -190,11 +186,9 @@ class NCompiler {
                         break;
                     }
                 }
-
                 if (i >= code.length) {
                     break;
                 }
-
             }
 
             let regex = /^[a-zA-Z]+$/;
@@ -213,112 +207,139 @@ class NCompiler {
                     }
 
                 }
-                if (true) {
-                    if (true) {
-                        let endTagName = startN + 1;
-                        for (let j = startN + 1; j < code.length; j++) {
-                            let chj = code[j];
+                let endTagName = startN + 1;
 
-                            if (chj == ' ' || chj == '>' || chj == '/') {
-                                endTagName = j - 1;
+                for (let j = startN + 1; j < code.length; j++) {
+                    let chj = code[j];
+
+                    if (chj == ' ' || chj == '>' || chj == '/') {
+                        endTagName = j - 1;
+                        break;
+                    }
+
+                }
+
+                let tagName = code.substring(startN, endTagName + 1);
+
+                tagName = this.GetTagNameFromString(tagName);
+
+                if (tagName == 'use' || tagName == 'use-for-all') {
+                    let checkIsCloseStart = startN;
+                    let __tagStart = startN;
+                    let isCloseTag = false;
+                    for (let t = checkIsCloseStart; t >= 0; t--) {
+                        if (code[t] == '<') {
+                            __tagStart = t;
+                            break;
+                        }
+                    }
+                    for (let t = __tagStart + 1; t < checkIsCloseStart; t++) {
+                        if (code[t] == '/') {
+                            isCloseTag = true;
+                            break;
+                        }
+                    }
+                    if (!isCloseTag) {
+                        this.useLevel++;
+
+                        let useLevel = this.useLevel;
+                        let endTagNameUse = endTagName + 1;
+                        let endBaseName = endTagNameUse + 1;
+                        for (let t = endTagNameUse; t < code.length; t++) {
+                            if (code[t] == '>') {
+                                endBaseName = t;
+                                break;
+                            }
+                        }
+                        let baseName = this.ClearSpace(code.substring(endTagNameUse, endBaseName));
+
+                        this.useBases.push({
+                            level: useLevel,
+                            name: baseName
+                        });
+                    } else {
+                        let lastOpenTagBaseIndex = this.useBases.length - 1;
+                        let base = new Object();
+                        let baseIndex = lastOpenTagBaseIndex;
+                        for (let t = lastOpenTagBaseIndex; t >= 0; t--) {
+                            if (this.useBases[t].level == this.useLevel) {
+                                base = this.useBases[t];
+                                baseIndex = t;
                                 break;
                             }
                         }
 
-                        let tagName = code.substring(startN, endTagName + 1);
-
-                        tagName = this.GetTagNameFromString(tagName);
-
-                        if (tagName == 'use') {
-                            let checkIsCloseStart = startN;
-                            let __tagStart = startN;
-                            let isCloseTag = false;
-                            for (let t = checkIsCloseStart; t >= 0; t--) {
-                                if (code[t] == '<') {
-                                    __tagStart = t;
-                                    break;
-                                }
-                            }
-                            for (let t = __tagStart + 1; t < checkIsCloseStart; t++) {
-                                if (code[t] == '/') {
-                                    isCloseTag = true;
-                                    break;
-                                }
-                            }
-                            if (!isCloseTag) {
-                                this.useLevel++;
-
-                                let useLevel = this.useLevel;
-                                let endTagNameUse = endTagName + 1;
-                                let endBaseName = endTagNameUse + 1;
-                                for (let t = endTagNameUse; t < code.length; t++) {
-                                    if (code[t] == '>') {
-                                        endBaseName = t;
-                                        break;
-                                    }
-                                }
-                                let baseName = this.ClearSpace(code.substring(endTagNameUse, endBaseName));
-
-                                this.useBases.push({
-                                    level: useLevel,
-                                    name: baseName
-                                });
-                            } else {
-                                let lastOpenTagBaseIndex = this.useBases.length - 1;
-                                let base = new Object();
-                                let baseIndex = lastOpenTagBaseIndex;
-                                for (let t = lastOpenTagBaseIndex; t >= 0; t--) {
-                                    if (this.useBases[t].level == this.useLevel) {
-                                        base = this.useBases[t];
-                                        baseIndex = t;
-                                        break;
-                                    }
-                                }
-
-                                let bases = [];
-                                for (let t = 0; t < this.useBases.length; t++) {
-                                    if (t != baseIndex) {
-                                        bases.push(this.useBases[t]);
-                                    }
-                                }
-                                this.useBases = bases;
-                                this.useLevel--;
+                        let bases = [];
+                        for (let t = 0; t < this.useBases.length; t++) {
+                            if (t != baseIndex) {
+                                bases.push(this.useBases[t]);
                             }
                         }
+                        this.useBases = bases;
+                        this.useLevel--;
+                    }
+                }
 
 
-                        let tagNameCache = '';
+                let tagNameCache = '';
 
-                        for (let j = 0; j < tagName.length; j++) {
-                            let isSTN = false;
+                for (let j = 0; j < tagName.length; j++) {
+                    let isSTN = false;
 
-                            if (tagName[j] == '-') {
-                                isSTN = true;
-                                tagNameCache += '_';
-                            }
-
-                            if (tagName[j] == ':') {
-                                isSTN = true;
-                                tagNameCache += '/';
-                            }
-
-                            if (!isSTN)
-                                tagNameCache += tagName[j];
-                        }
-
-                        tagName = tagNameCache;
-
-                        let tag = {
-                            ...this.GetTag(tagName)
-                        };
-
-                        tag.start = tagStart;
-
-                        tagsOrder.push(tag);
-
+                    if (tagName[j] == '-') {
+                        isSTN = true;
+                        tagNameCache += '_';
                     }
 
+                    if (tagName[j] == ':') {
+                        isSTN = true;
+                        tagNameCache += '/';
+                    }
+
+                    if (!isSTN) tagNameCache += tagName[j];
                 }
+
+                tagName = tagNameCache;
+
+                let tag = {
+                    ...this.GetTag(tagName)
+                };
+
+                if (tag.notFound) {
+                    let line = 1;
+
+                    for (let i = 0; i < startN; i++)
+                        if (code[i] == '\n')
+                            line++;
+
+                    console.log(`${nlcPath}:${line}`);
+                    console.log(`   '${tagName}' tag not found.`);
+                    process.exit();
+                }
+
+                tag.start = tagStart;
+
+                tag.isClose = (() => {
+                    let checkIsCloseStart = startN;
+                    let __tagStart = startN;
+                    let isCloseTag = false;
+                    for (let t = checkIsCloseStart; t >= 0; t--) {
+                        if (code[t] == '<') {
+                            __tagStart = t;
+                            break;
+                        }
+                    }
+
+                    for (let t = __tagStart + 1; t < checkIsCloseStart; t++) {
+                        if (code[t] == '/') {
+                            isCloseTag = true;
+                            break;
+                        }
+                    }
+                    return isCloseTag;
+                })();
+
+                tagsOrder.push(tag);
             }
 
         }
@@ -328,44 +349,49 @@ class NCompiler {
 
     GetElementsFromTagsOrder(tagsOrder, code) {
         let result = new Element();
-        let openTags = new Object();
-
         let level = 0;
+        let openTags = new Object();
         let currentElement = result;
 
         for (let i = 0; i < tagsOrder.length; i++) {
-            if (!tagsOrder[i].isAutoClose) {
-                if (openTags[tagsOrder[i].name] == null) {
-                    level++;
-                    openTags[tagsOrder[i].name] = tagsOrder[i];
+            if (tagsOrder[i].name != 'use') {
+                if (!tagsOrder[i].isAutoClose) {
+                    let openTagKey = tagsOrder[i].name;
+
+                    if (!tagsOrder[i].isClose) {
+                        level++;
+                        openTags[openTagKey] = tagsOrder[i];
+
+                        let element = new Element();
+                        element.NFramework = this.NFramework;
+                        element.tag = tagsOrder[i];
+                        element.startContentIndex = tagsOrder[i].start;
+                        currentElement.AppendChild(element);
+                        currentElement = element;
+                    } else {
+                        level--;
+                        openTags[openTagKey] = null;
+                        currentElement.endContentIndex = tagsOrder[i].start;
+                        currentElement = currentElement.parent;
+                    }
+                } else {
                     let element = new Element();
                     element.NFramework = this.NFramework;
                     element.tag = tagsOrder[i];
                     element.startContentIndex = tagsOrder[i].start;
-                    currentElement.AppendChild(element);
-                    currentElement = element;
-                } else {
-                    level--;
-                    openTags[tagsOrder[i].name] = null;
-                    currentElement.endContentIndex = tagsOrder[i].start;
-                    currentElement = currentElement.parent;
-                }
-            } else {
-                let element = new Element();
-                element.NFramework = this.NFramework;
-                element.tag = tagsOrder[i];
-                element.startContentIndex = tagsOrder[i].start;
-                for (let j = element.startContentIndex; j < code.length; j++) {
-                    if (code[j] == '>') {
-                        element.endContentIndex = j;
-                        break;
+
+                    for (let j = element.startContentIndex; j < code.length; j++) {
+                        if (code[j] == '>') {
+                            element.endContentIndex = j;
+                            break;
+                        }
                     }
+
+                    currentElement.AppendChild(element);
                 }
-                currentElement.AppendChild(element);
+
+                tagsOrder[i].level = level;
             }
-
-            tagsOrder[i].level = level;
-
         }
 
         return result;
@@ -373,7 +399,6 @@ class NCompiler {
 
     CompileSpecialCharaters(code) {
         let result = '';
-
 
         for (let i = 0; i < code.length; i++) {
             let isSpecialChr = false;
@@ -386,11 +411,9 @@ class NCompiler {
         return result;
     }
 
-    GetElementsFromCode(code) {
+    GetElementsFromCode(code, nlcPath) {
         let result = [];
-
-        let tagsOrder = this.GetTagsOrder(code);
-
+        let tagsOrder = this.GetTagsOrder(code, nlcPath);
         let elements = this.GetElementsFromTagsOrder(tagsOrder, code);
 
         result = elements;
@@ -398,56 +421,55 @@ class NCompiler {
         return result;
     }
 
-    CompileElement(element, codeinput) {
+    CompileElement(element, codeinput, nlcPath) {
         let manager = this.NFramework.nmoduleManager;
         let code = '';
         let einputCode = new Object();
 
         einputCode.data = codeinput;
 
-        if (element.tag == null) {
-            for (let i = 0; i < element.childs.length; i++) {
-                let ei_code = this.CompileElement(element.childs[i], codeinput);
+        if (!element.tag) {
+            for (let child of element.childs) {
+                let ei_code = this.CompileElement(child, codeinput, nlcPath);
+
                 code += `
 
                     ${ei_code}
 
                 `;
             }
-            if (element.forSV) {
-                code = `module.exports=(manager)=>{
-                var exports=new Object();
-                    var nmodules=[];
-                    var pages=[];
-                    exports.customTypeDatas=[];
-                    exports.customTypeDatas.Add=function(key,value){
-                        exports.customTypeDatas.push({
-                            'key':key,
-                            'value':value
-                        });
-                    }
 
-                    ${code}
+            code = (element.forSV) ? `
+module.exports = (manager) => {
+    let exports     = new Object();
+    let nmodules    = [];
+    let pages       = [];
+    exports.customTypeDatas=[];
+    exports.customTypeDatas.Add=function(key,value){
+        exports.customTypeDatas.push({
+            'key':key,
+            'value':value
+        });
+    }
 
-                    exports.nmodules=nmodules;
-                    exports.pages=pages;
-                    return exports;
-                }
-                `;
-            } else {
-                code = `manager=window.NFramework.nmoduleManager;
-                ${code}
-                `;
-            }
+    ${code}
+
+    exports.nmodules=nmodules;
+    exports.pages=pages;
+    return exports;
+}` :
+                `manager = window.NFramework.nmoduleManager;
+${code}`;
+
             element.code = code;
         } else {
             if (element.tag.isAutoClose) {
-                code = element.tag.Compile(element, '', einputCode, manager);
+                code = element.tag.Compile(element, '', einputCode, manager, nlcPath);
                 element.code = code;
             } else {
                 let childsCode = '';
                 for (let i = 0; i < element.childs.length; i++) {
-                    let ei_code = this.CompileElement(element.childs[i], codeinput);
+                    let ei_code = this.CompileElement(element.childs[i], codeinput, nlcPath);
                     element.childs[i].code = ei_code;
                     childsCode += `
 
@@ -455,7 +477,8 @@ class NCompiler {
 
                     `;
                 }
-                code = element.tag.Compile(element, childsCode, einputCode, manager);
+
+                code = element.tag.Compile(element, childsCode, einputCode, manager, nlcPath);
                 element.code = code;
             }
         }
@@ -481,6 +504,7 @@ class NCompiler {
         let isVarInTemplateLiterals = false;
 
         for (let i = 0; i < code.length; i++) {
+
             if (code[i] + code[i + 1] == '////') {
                 for (; i < code.length; i++) {
                     if (code[i] == '\r' || code[i] == '\n') {
@@ -499,7 +523,6 @@ class NCompiler {
                     if (code[i] == '"' || code[i] == "'") {
                         isInStr = true;
                         strC = code[i];
-
                     } else if (code[i] == '`') {
                         isInStr = true;
                         strC = code[i];
@@ -508,7 +531,6 @@ class NCompiler {
                 } else {
                     isInStr = (code[i] == '"' || code[i] == "'" || code[i] == '`') ? false : isInStr;
                 }
-
 
                 if (!isInStr && code[i] == '@') {
                     i++;
@@ -542,8 +564,7 @@ class NCompiler {
     CompileNModuleFastGetterAndSetter(code) {
         let result = '';
         let top = '';
-
-        let strC = code[i];
+        let strC = '';
 
         let isInStr = false;
 
@@ -567,12 +588,16 @@ class NCompiler {
             } else {
                 if (!isInStr) {
                     if (code[i] == '"' || code[i] == "'") {
+
                         isInStr = true;
                         strC = code[i];
+
                     } else if (code[i] == '`') {
+
                         isInStr = true;
                         strC = code[i];
                         isVarInTemplateLiterals = false;
+
                     }
                 } else {
                     isInStr = (code[i] == '"' || code[i] == "'" || code[i] == '`') ? false : isInStr;
@@ -614,11 +639,12 @@ class NCompiler {
                     let endSetterIndex = forCheckIsSetterIndex;
 
                     for (let j = forCheckIsSetterIndex; j < code.length; j++) {
+
                         if ((code[j].match(regex) || code[j] == '_') || code[i] == ';' || code[i] == '.' || code[i] == '}' || code[i] == '{' || code[i] == '(' || code[i] == ')' || code[i] == '+' || code[i] == '-' || code[i] == '>' || code[i] == '<' || code[i] == '\\' || code[i] == '*') {
                             break;
                         }
 
-                        if (code[j] == '=') {
+                        if (code[j] == '=' && code[j + 1] != '=' && code[j - 1] != '=' && code[j - 1] != '!' && code[j - 1] != '<' && code[j - 1] != '>') {
                             setterEqualChrIndex = j;
                             isSetter = true;
                             break;
@@ -635,6 +661,7 @@ class NCompiler {
                         const {
                             v4: uuidv4
                         } = require('uuid');
+
                         let fid = uuidv4();
 
                         let fid2 = '';
@@ -650,24 +677,26 @@ class NCompiler {
                         fid = fid2;
 
                         top += `
-                            var a${fid}_module;
+                            let a${fid}_module;
                         `;
+
                         result += `.GetThisWithCallback((module)=>{
                             a${fid}_module=module;
                         })
-                        var getterObj${fid}={
+                        let getterObj${fid}={
                             set stter(value) {
                                 a${fid}_module.Set('${name}',value);
                             }
                         }
                         getterObj${fid}.stter=`;
-                        result += nextCode;
 
+                        result += nextCode;
                         let nextCompile = this.CompileNModuleFastGetterAndSetter(result);
                         result = nextCompile.code;
                         top += nextCompile.top;
                         break;
                     }
+
                 } else if (code[i] + code[i + 1] + code[i + 2] == '-->' && (!isInStr || isVarInTemplateLiterals)) {
                     let name = '';
                     i += 3;
@@ -709,7 +738,7 @@ class NCompiler {
                             break;
                         }
 
-                        if (code[j] == '=') {
+                        if (code[j] == '=' && code[j + 1] != '=' && code[j - 1] != '=' && code[j - 1] != '!' && code[j - 1] != '<' && code[j - 1] != '>') {
                             setterEqualChrIndex = j;
                             isSetter = true;
                             break;
@@ -720,6 +749,7 @@ class NCompiler {
                     const {
                         v4: uuidv4
                     } = require('uuid');
+
                     let fid = uuidv4();
 
                     let fid2 = '';
@@ -730,7 +760,7 @@ class NCompiler {
                     fid = fid2;
 
                     if (!isSetter) {
-                        top += `var a${fid}_module;
+                        top += `let a${fid}_module;
                         `;
                         result += `.AsyncGetThisWithCallback(async (module)=>{
                             a${fid}_module=module;
@@ -741,15 +771,13 @@ class NCompiler {
                     } else {
                         let nextCode = code.substring(setterEqualChrIndex + 1, code.length);
 
-
-                        //.Set('${name}',${value})
                         top += `
-                            var a${fid}_module;
+                            let a${fid}_module;
                         `;
                         result += `.AsyncGetThisWithCallback(async (module)=>{
                             a${fid}_module=module;
                         })
-                        var getterObj${fid}={
+                        let getterObj${fid}={
                             set stter(value) {
                                 (async ()=>{
                                     await a${fid}_module.AsyncSet('${name}',value);
@@ -757,20 +785,18 @@ class NCompiler {
                             }
                         }
                         getterObj${fid}.stter=`;
+
                         result += nextCode;
+
                         let nextCompile = this.CompileNModuleFastGetterAndSetter(result);
                         result = nextCompile.code;
                         top += nextCompile.top;
                         break;
                     }
-
-
                 } else {
                     result += code[i];
                 }
             }
-
-
         }
 
         return {
@@ -822,7 +848,7 @@ class NCompiler {
         return result;
     }
 
-    CompileCode(code, forSV) {
+    CompileCode(code, forSV, nlcPath) {
         let result = code;
 
         this.useBases = [];
@@ -830,11 +856,11 @@ class NCompiler {
 
         let removedCommentsCode = this.RemoveComments(code);
 
-        let elements = this.GetElementsFromCode(removedCommentsCode);
+        let elements = this.GetElementsFromCode(removedCommentsCode, nlcPath);
 
         elements = this.SetSideForElements(elements, forSV);
 
-        let compiledElement = this.CompileElement(elements, removedCommentsCode);
+        let compiledElement = this.CompileElement(elements, removedCommentsCode, nlcPath);
 
         let compiledSpecialCharactersCode = this.CompileSpecialCharaters(compiledElement);
 
@@ -851,9 +877,9 @@ class NCompiler {
 
         let code = fs.readFileSync(path).toString();
 
-        let compiledCodeSV = this.CompileCode(code, true);
+        let compiledCodeSV = this.CompileCode(code, true, path);
 
-        let compiledCodeCL = this.CompileCode(code, false);
+        let compiledCodeCL = this.CompileCode(code, false, path);
 
         let cResult = this.CreateModuleFromCode(compiledCodeSV, compiledCodeCL, path);
 

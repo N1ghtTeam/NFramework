@@ -1,4 +1,4 @@
-const JSCLPath = "/home/chrx/Desktop/nframework/nframework/nmodules/dom/dom.nlc.client.js";
+const JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/dom/dom.nlc.client.js";
 
 module.exports = (manager) => {
     let exports     = new Object();
@@ -18,7 +18,7 @@ module.exports = (manager) => {
 
         let NModule=
         function() {
-            return require("/home/chrx/Desktop/nframework/nframework/ncompiler/tags/../../nmodule/nmodule");
+            return require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule");
         }()
 
     ;

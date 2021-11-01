@@ -31,6 +31,8 @@ tag.Compile = function(element, childsCode, code) {
         compiledCode = '';
     }
 
+    compiledCode=tag.DontUseNLCFastGet(compiledCode);
+
     return compiledCode;
 }
 

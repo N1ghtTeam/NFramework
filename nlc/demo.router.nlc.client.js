@@ -1,22 +1,20 @@
-manager=window.NFramework.nmoduleManager;
-            
+manager = window.NFramework.nmoduleManager;
+
 
                     
             (()=>{
                 
 
-        var NModule=
-            function(){
-
+        let NModule=
+            function() {
                 return window.NFramework.NModule;
-
             }()
 
         ;
-    
-        var nmodule=new NModule();
 
-        var This=nmodule;
+        let nmodule=new NModule();
+
+        let This=nmodule;
 
         nmodule.side='both';
 
@@ -80,7 +78,7 @@ manager=window.NFramework.nmoduleManager;
                 NFramework:miejs
             });
         })(req,res);
-    
+
     
             }
         
@@ -93,12 +91,11 @@ manager=window.NFramework.nmoduleManager;
 
         });
     
-        
-            var nmoduleManager=window.NFramework.nmoduleManager;
+
+            let nmoduleManager = window.NFramework.nmoduleManager;
             nmoduleManager.ImportModule(nmodule);
         
             })();
         
 
                 
-            

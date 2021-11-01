@@ -5,18 +5,18 @@
 
     <client-only>
 
+        <property prop/>
+
         <method setup>
 
             function(){
-                @dom->body.appendChild(
+                <style>
 
-                    <div>
+                    @demo->prop=5;
 
-                        Hello World
+                </style>;
+                @demo->prop=5;
 
-                    </div>
-
-                );
             }
 
 
