@@ -814,8 +814,18 @@ ${code}`;
 
                         var endValueIndex=1;
 
+                        var curlyBracketCount=0;
+
                         for(let t=1;t<nextCode.length;t++){
-                            if(nextCode[t]==';'){
+
+                            if(nextCode[t]=='{'){
+                                curlyBracketCount++;
+                            }
+                            else if(nextCode[t]=='}'){
+                                curlyBracketCount--;
+                            }
+                            
+                            if(nextCode[t]==';' && curlyBracketCount==0){
                                 endValueIndex=t;
                                 break;
                             }

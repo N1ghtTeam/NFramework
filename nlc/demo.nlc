@@ -59,7 +59,7 @@
 
                 );
 
-                this-->sp=7;
+                this-->sp=(()=>{return 7;})();
                 
 
                 console.log(await this-->sp);
