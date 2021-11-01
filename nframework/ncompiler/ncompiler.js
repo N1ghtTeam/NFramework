@@ -48,9 +48,11 @@ class NCompiler {
 
         codeSV = 'const JSCLPath = "' + prs_fileJSCPath + '";\n' + codeSV;
 
-        //add js file header
-        codeSV=`/* NFRAMEWORK */`+Uglify.minify(codeSV).code;
-        codeCL=`/* NFRAMEWORK */`+Uglify.minify(codeCL).code;
+        if(this.NFramework.use_uglify_js){
+            //add js file header
+            codeSV=`/* NFRAMEWORK */`+Uglify.minify(codeSV).code;
+            codeCL=`/* NFRAMEWORK */`+Uglify.minify(codeCL).code;
+        }
 
         if (isNeedSaveCode) {
             fs.writeFileSync(fileJSSVPath, codeSV);

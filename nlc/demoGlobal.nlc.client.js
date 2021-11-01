@@ -1,1 +1,1 @@
-/* NFRAMEWORK */manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned.e1345844_8d71_4ad5_be92_d9d7e72a0e35&&(window.NFramework.nmoduleManager.nlcElementRunned.e1345844_8d71_4ad5_be92_d9d7e72a0e35=!0,manager.customTypeDatas.demoGlobal=5);
+/* NFRAMEWORK */manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned.eac01e47_a80e_4486_b7c6_1a22364875ff&&(window.NFramework.nmoduleManager.nlcElementRunned.eac01e47_a80e_4486_b7c6_1a22364875ff=!0,manager.customTypeDatas.demoGlobal=5);
