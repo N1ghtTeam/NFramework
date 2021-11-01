@@ -76,13 +76,13 @@ module.exports = (manager) => {
 
             for(var i=0;i<modules.length;i++){
                 var module=modules[i];
-                miejs+=' <script  src="/nmodules/'+module+'"></script>';
+                miejs+=' <script  src="/nlc/'+module+'"></script>';
             }
 
             var globalObjects=manager.pages['demoPage'].customTypeDatas;
 
             for(var globalObjectName of globalObjects){
-                miejs+="\n<script src='/global-objects/"+globalObjectName+"'></script>";
+                miejs+="\n<script src='/nlc/"+globalObjectName+"'></script>";
             }
 
             miejs+="\n<script src='/appcl'></script>";
@@ -118,7 +118,7 @@ module.exports = (manager) => {
         nmodule.client_js_code=fs.readFileSync(clientVersion);
 
         if(nmodule.side!='server'){
-            nmodule.Routing('/nmodules/demo-router', (req, res) => res.send(nmodule.client_js_code));
+            nmodule.Routing('/nlc/demo-router', (req, res) => res.send(nmodule.client_js_code));
         }
 
         

@@ -54,7 +54,7 @@ module.exports = (manager) => {
         nmodule.client_js_code=fs.readFileSync(clientVersion);
 
         if(nmodule.side!='server'){
-            nmodule.Routing('/nmodules/dom', (req, res) => res.send(nmodule.client_js_code));
+            nmodule.Routing('/nlc/dom', (req, res) => res.send(nmodule.client_js_code));
         }
 
         

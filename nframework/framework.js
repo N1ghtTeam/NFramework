@@ -44,8 +44,7 @@ class NFramework {
 
     Build() {
         this.nmoduleManager.BuildModulePathsArray();
-        if(this.recompile_when_startup)
-            this.nmoduleManager.CompileModules();
+        this.nmoduleManager.CompileOrImportModules();
         this.nmoduleManager.ImportModules();
     }
 

@@ -41,10 +41,14 @@ class NCompiler {
             prs_fileJSCPath += fileJSCPath[i];
         }
 
+        var isNeedSaveCode=((codeSV!=null) || (codeCL!=null));
+
         codeSV = 'const JSCLPath = "' + prs_fileJSCPath + '";\n' + codeSV;
 
-        fs.writeFileSync(fileJSSVPath, codeSV);
-        fs.writeFileSync(fileJSCPath, codeCL);
+        if(isNeedSaveCode){    
+            fs.writeFileSync(fileJSSVPath, codeSV);
+            fs.writeFileSync(fileJSCPath, codeCL);
+        }
 
         let cResult = new Object();
 

@@ -14,17 +14,6 @@ module.exports = (manager) => {
 
     
 
-                    exports.customTypeDatas.Add('demoGlobal',(()=>{
-            let data=
-
-    5
-
-;
-            return data;
-        })())
-
-                
-
                     
 
         let NModule=
@@ -54,6 +43,31 @@ module.exports = (manager) => {
 
     
 
+        
+        this.AddMethod('setup',(...args) => {
+            let f=
+    
+
+            function(){
+
+                console.log('s');
+
+            }
+
+        
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+    
+
+    
+
 
         });
     
@@ -65,7 +79,7 @@ module.exports = (manager) => {
         nmodule.client_js_code=fs.readFileSync(clientVersion);
 
         if(nmodule.side!='server'){
-            nmodule.Routing('/nmodules/demo', (req, res) => res.send(nmodule.client_js_code));
+            nmodule.Routing('/nlc/demo', (req, res) => res.send(nmodule.client_js_code));
         }
 
         

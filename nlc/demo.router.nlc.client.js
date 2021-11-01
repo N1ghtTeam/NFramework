@@ -61,13 +61,13 @@ manager = window.NFramework.nmoduleManager;
 
             for(var i=0;i<modules.length;i++){
                 var module=modules[i];
-                miejs+=' <script  src="/nmodules/'+module+'"></script>';
+                miejs+=' <script  src="/nlc/'+module+'"></script>';
             }
 
             var globalObjects=manager.pages['demoPage'].customTypeDatas;
 
             for(var globalObjectName of globalObjects){
-                miejs+="\n<script src='/global-objects/"+globalObjectName+"'></script>";
+                miejs+="\n<script src='/nlc/"+globalObjectName+"'></script>";
             }
 
             miejs+="\n<script src='/appcl'></script>";

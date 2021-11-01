@@ -1,13 +1,21 @@
 <use html>
 <use dom>
 
-<global demoGlobal>
-
-    5
-
-</global>
-
 <module demo>
+
+    <server-only>
+
+        <method setup>
+
+            function(){
+
+                console.log('s');
+
+            }
+
+        </method>
+
+    </server-only>
 
     <client-only>
 

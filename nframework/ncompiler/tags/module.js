@@ -85,7 +85,7 @@ tag.Compile = function(element, childsCode, code) {
         nmodule.client_js_code=fs.readFileSync(clientVersion);
 
         if(nmodule.side!='server'){
-            nmodule.Routing('/nmodules/${moduleName}', (req, res) => res.send(nmodule.client_js_code));
+            nmodule.Routing('/nlc/${moduleName}', (req, res) => res.send(nmodule.client_js_code));
         }
 
         `;

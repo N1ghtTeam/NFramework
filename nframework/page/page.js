@@ -12,12 +12,12 @@ class Page {
             if(!info.isSetupCLRouter) {
                 let express_server = manager.NFramework.express_server;
 
-                let url = `/global-objects/${globalObjName}`;
+                let url = `/nlc/${globalObjName}`;
 
-                let data = manager.jsCode[globalObjName];
+                let data = manager.globalObjectSourceCodes[globalObjName];
 
                 data = `
-                    window.NFramework.nmoduleManager.customTypeDatas['${globalObjName}']=${data}
+                    ${data}
                 `;
 
                 let compiler = manager.NFramework.ncompiler;
