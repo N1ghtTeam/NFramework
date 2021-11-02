@@ -1,34 +1,33 @@
 <use html>
 <use dom>
+<use ui>
+
+<ui:component demo-component>
+    render(){
+        this.appendChild(            
+            <html:style>
+                demo-component{
+                    color:red;
+                }
+            </html:style>
+        );
+    }
+</ui:component>
 
 <module demo>
-
-    <property prop/>
-
     <client-only>
 
         <async-method setup>
 
             function(){
 
-                var text='Click Here To Log Hello World';
 
-                var demoGlobalValue=@demoGlobal;
-
-                this->prop=`console.log('${demoGlobalValue}')`;
-                
                 @dom->body.appendChild(
+                    <demo-component>
 
-                    <div onclick = { @demo->prop } >
-                        
-                        <region>
+                        Hello World
 
-                            text
-
-                        </region>
-
-                    </div>
-
+                    </demo-component>
                 );
 
             }

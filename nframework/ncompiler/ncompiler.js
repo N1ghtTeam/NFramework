@@ -78,6 +78,7 @@ class NCompiler {
 
     GetTag(name) {
         let result = null;
+        let useUI=false;
 
         let useNone = function() {
             result = require('./tags/none_tag.js');
@@ -96,6 +97,9 @@ class NCompiler {
                 let isExists = false;
                 for (let base of this.useBases) {
                     let basePath = this.GetTagNameFromString(base.name);
+                    if(base.name=='ui'){
+                        useUI=true;
+                    }
                     let basePath2 = '';
                     for (let i = 0; i < basePath.length; i++) {
                         let ch = '/'
@@ -114,7 +118,17 @@ class NCompiler {
                         return result;
                     }
                 }
-                useNone();
+                if(!useUI){
+                    result = require('./tags/region.js');
+                    result.name = name;
+                    return result;
+                }
+                else{
+                    result = require('./tags/UITag.js');
+                    result.componentName=name;
+                    result.name = name;
+                    return result;
+                }
             }
         } else {
             result = require('./tags/region.js');
@@ -237,28 +251,47 @@ class NCompiler {
                 let tagStart = i;
                 let tagEnd = i;
                 let startN = i + 1;
+                let isFragmentTag=false;
+                let isAutoCloseTag=true;
                 for (let j = i + 1; j < code.length; j++) {
                     let chj = code[j];
 
+                    if(chj=='/'){
+                        isAutoCloseTag=false;
+                    }
+
                     if (chj.match(regex) || chj == '_' || chj == '-') {
                         startN = j;
+                        break;
+                    }
+                    if(chj == '>'){
+                        isFragmentTag=true;
                         break;
                     }
 
                 }
                 let endTagName = startN + 1;
 
-                for (let j = startN + 1; j < code.length; j++) {
-                    let chj = code[j];
+                if(!isFragmentTag){
+                    for (let j = startN + 1; j < code.length; j++) {
+                        let chj = code[j];
 
-                    if ((chj == ' ' || chj == '>' || chj == '/')) {
-                        endTagName = j - 1;
-                        break;
+                        if ((chj == ' ' || chj == '>' || chj == '/')) {
+                            if(chj == '>'){
+                                isAutoCloseTag=false;
+                            }
+                            endTagName = j - 1;
+                            break;
+                        }
+
                     }
-
                 }
 
                 let tagName = code.substring(startN, endTagName + 1);
+
+                if(isFragmentTag){
+                    tagName='region';
+                }
 
                 tagName = this.GetTagNameFromString(tagName);
 
@@ -340,13 +373,17 @@ class NCompiler {
 
                 tagName = tagNameCache;
 
+
                 let tag = {
                     ...this.GetTag(tagName)
                 };
 
+                if(tag.isUITag){
+                    tag.isAutoClose=isAutoCloseTag;
+                }
+
                 if (tag.notFound) {
                     let line = 1;
-
                     for (let i = 0; i < startN; i++)
                         if (code[i] == '\n')
                             line++;
@@ -504,7 +541,7 @@ ${code}`;
             element.code = code;
         } else {
             if (element.tag.isAutoClose) {
-                code = element.tag.Compile(element, '', einputCode, manager, nlcPath);
+                code = element.tag.Compile(element, '', einputCode, manager, nlcPath,this);
                 element.code = code;
             } else {
                 let childsCode = '';
@@ -518,7 +555,7 @@ ${code}`;
                     `;
                 }
 
-                code = element.tag.Compile(element, childsCode, einputCode, manager, nlcPath);
+                code = element.tag.Compile(element, childsCode, einputCode, manager, nlcPath,this);
                 element.code = code;
             }
         }
