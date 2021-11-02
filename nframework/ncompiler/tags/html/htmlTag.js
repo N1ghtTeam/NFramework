@@ -130,6 +130,201 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
     
     var inputs=tag.GetInputs(element,childsCode,code);
 
+    let newInputs=[];
+
+    /*
+
+    for(let i=0;i<inputs.length;i++){
+
+        let parsedInp='';
+
+        let inp=inputs[i];
+
+        let parts=inp.split('=');
+
+        if(parts.length>1){
+            let start=0;
+            let end=parts[1].length-1;
+            for(;start<parts[1].length;start++){
+                if(parts[1][start]!=' '){
+                    break;
+                }
+            }
+            for(;end>=0;end--){
+                if(parts[1][end]!=' '){
+                    break;
+                }
+            }
+            var parsedPart1=parts[1].substring(start,end+1);
+
+            if(parsedPart1[0]=='{' && parsedPart1[parsedPart1.length-1]=='}'){
+                parsedPart1=parsedPart1.substring(1,parsedPart1.length-1);
+            }
+
+            parsedInp = (parts[0]+'='+parsedPart1);
+        }
+        else{
+            parsedInp = (inp);
+        }
+
+        newInputs.push(parsedInp);
+
+    }
+*/
+
+    inputs;
+
+    newInputs=[];
+
+    for(let i=0;i<inputs.length;i++){
+
+        let ct=false;
+
+        let icache=i;
+
+        if(inputs[i][0]=='='){
+            newInputs[i-1]+='='//+inputs[i+1];
+            ct=true;
+            if(inputs[i][inputs[i].length-1]=='='){
+                newInputs[i-1]+=inputs[i+1];
+                icache=i+1;
+            }
+        }
+        else
+        if(inputs[i][inputs[i].length-1]=='='){
+            newInputs[i]='='+inputs[i+1];
+            icache=i+1;
+            ct=true;
+        }
+        
+
+        i=icache;
+        
+        if(!ct)
+        newInputs.push(inputs[i]);
+
+    }
+
+    inputs=newInputs;
+
+
+    newInputs=[];
+
+    let inputsStr='';
+
+    for(let i=0;i<inputs.length;i++){
+
+        inputsStr+=inputs[i];
+
+        if(i<inputs.length-1){
+            inputsStr+='\n';
+        }
+
+    }
+
+    let inputIndex=0;
+
+    let newInputsStr='';
+
+    let curlyBracketCount=0;
+
+    for(let i=0;i<inputsStr.length;i++){
+
+        let strChar='';
+        let isInStr=false;
+
+        if(inputsStr[i]=='\n' && curlyBracketCount==0){
+            inputIndex++;
+        }
+        else{
+            if(inputsStr[i]!='\n')
+                newInputsStr+=inputsStr[i];
+            else{
+                newInputsStr+=' ';
+            }
+        }
+
+        if(!isInStr && (inputsStr[i]=='"' || inputsStr[i]=='`' || inputsStr[i]=="'")){
+            strChar=inputsStr[i];
+            isInStr=true;
+        }
+        if(isInStr && inputsStr[i]==strChar){
+            isInStr=false;
+        }
+
+        if(!isInStr){
+            
+            if(inputsStr[i]=='{'){
+                curlyBracketCount++;
+            }
+            
+            if(inputsStr[i]=='}'){
+                curlyBracketCount--;
+            }
+
+        }
+
+    }
+
+
+    newInputs=newInputsStr.split('\n');
+
+    inputs=newInputs;
+
+    
+    newInputs=[];
+
+    for(let i=0;i<inputs.length;i++){
+
+        let parsedInp='';
+
+        let inp=inputs[i];
+
+        let parts=inp.split('=');
+
+        if(parts.length>1){
+            let start=0;
+
+            let part1='';
+
+            for(let t=1;t<parts.length;t++){
+                part1+=parts[t];
+                if(t<parts.length-1){
+                    part1+='=';
+                }
+            }
+
+            let end=part1.length-1;
+            for(;start<part1.length;start++){
+                if(part1[start]!=' '){
+                    break;
+                }
+            }
+            for(;end>=0;end--){
+                if(part1[end]!=' '){
+                    break;
+                }
+            }
+            var parsedPart1=part1.substring(start,end+1);
+
+            if(parsedPart1[0]=='{' && parsedPart1[parsedPart1.length-1]=='}'){
+                parsedPart1=parsedPart1.substring(1,parsedPart1.length-1);
+            }
+
+            parsedInp = (parts[0]+'='+parsedPart1);
+        }
+        else{
+            parsedInp = (inp);
+        }
+
+        newInputs.push(parsedInp);
+
+    }
+
+    inputs=newInputs;
+
+
+
     var rfid = uuidv4();
 
     var rfid2='';
@@ -194,7 +389,12 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
         if(isAutoClose!=true){
             if(contents[i].type=='childCode'){
                 childsAndTextContents+=`
-                result_${rfid}.appendChild(${contents[i].code});
+                try{
+                    result_${rfid}.appendChild(${contents[i].code});
+                }
+                catch{
+                    result_${rfid}.innerHTML+=${contents[i].code};
+                }
                 `;
             }
             else

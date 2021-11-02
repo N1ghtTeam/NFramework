@@ -90,6 +90,9 @@ class Tag {
         let endTagIndex = element.startContentIndex;
         let strChr = '"';
         let isInStr = false;
+        
+        let curlyBracketCount=0;
+        let roundBracketCount=0;
 
         for (let i = element.startContentIndex; i < code.data.length; i++) {
             if ((!isInStr) &&
@@ -102,9 +105,25 @@ class Tag {
                 isInStr = false;
                 i++;
             }
+
+            if(!isInStr){
+                if(code.data[i]=='{'){
+                    curlyBracketCount++;
+                }
+                if(code.data[i]=='}'){
+                    curlyBracketCount--;
+                }
+                if(code.data[i]=='('){
+                    roundBracketCount++;
+                }
+                if(code.data[i]==')'){
+                    roundBracketCount--;
+                }
+            }
+
             if (!isInStr)
-                if ((code.data[i] == '>' && !this.isAutoClose) ||
-                    (code.data[i] == '/' && (this.isAutoClose))) {
+                if ((code.data[i] == '>' && !this.isAutoClose && (roundBracketCount==0 && curlyBracketCount==0)) ||
+                    (code.data[i] == '/' && (this.isAutoClose)  && (roundBracketCount==0 && curlyBracketCount==0))) {
                     endTagIndex = i;
                     break;
                 }
@@ -223,8 +242,38 @@ class Tag {
 
         let endTagIndex = element.startContentIndex;
 
+        let curlyBracketCount=0;
+        let roundBracketCount=0;
+        let strChr = '"';
+        let isInStr = false;
+
         for (let i = element.startContentIndex; i <= element.endContentIndex; i++) {
-            if (code.data[i] == '>') {
+            if ((!isInStr) &&
+                (code.data[i] == '"' || code.data[i] == "'" || code.data[i] == '`')) {
+                strChr = code.data[i];
+                isInStr = true;
+            }
+            else if (isInStr && code.data[i] == strChr) {
+                isInStr = false;
+            }
+
+            if(!isInStr){
+                if(code.data[i]=='{'){
+                    curlyBracketCount++;
+                }
+                if(code.data[i]=='}'){
+                    curlyBracketCount--;
+                }
+                if(code.data[i]=='('){
+                    roundBracketCount++;
+                }
+                if(code.data[i]==')'){
+                    roundBracketCount--;
+                }
+            }
+
+
+            if (code.data[i] == '>' && !isInStr && (curlyBracketCount==0 && roundBracketCount==0)) {
                 endTagIndex = i;
                 break;
             }

@@ -1,68 +1,33 @@
 <use html>
 <use dom>
-    
-<global demoGlobalInDemoNLC>
-
-6
-
-</global>
-
-
-<module demop>
-
-    <sync-property sp/>
-
-</module>
 
 <module demo>
 
-    <extends demop/>
-
-    <server-only>
-
-        <method setup>
-
-            function(){
-
-
-
-            }
-
-        </method>
-
-    </server-only>
+    <property prop/>
 
     <client-only>
-
-        <property prop/>
 
         <async-method setup>
 
             function(){
-                
+
+                var t='https://www.youtube.com';
+
+                this->prop='console.log("ok")';
                 
                 @dom->body.appendChild(
 
-                    <div class='demo1'>
+                    <div onclick = { 'console.log("hello world")' } >
 
-                        Hello World
+                        <region>
 
-                            <div class='demo2'>
+                            t
 
-                                Hello World2
-
-                            </div>
-
-                        Hello World
+                        </region>
 
                     </div>
 
                 );
-
-                this-->sp=(()=>{return 7;})();
-                
-
-                console.log(await this-->sp);
 
             }
 

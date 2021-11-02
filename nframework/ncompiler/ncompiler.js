@@ -125,12 +125,37 @@ class NCompiler {
 
     IsStartTag(index, code) {
         let result = true;
+
+        let isInStr=false;
+        let strChr='';
+
+        let curlyBracketCount=0;
+        
         for (let i = index + 1; i < code.length; i++) {
             let ch = code[i];
-            if (ch == '|' || ch == '(' || ch == '{') {
+            
+            if(!isInStr && (ch=='"' || ch=="'" || ch=='`')){
+                isInStr=true;
+            }
+            if(isInStr && ch==strChr){
+                isInStr=false;
+            }
+
+            if(!isInStr){
+
+                if(ch=='{'){
+                    curlyBracketCount++;
+                }
+                if(ch=='}'){
+                    curlyBracketCount--;
+                }
+
+            }
+
+            if ((ch == '|' || (ch == '(' && curlyBracketCount==0)) && !isInStr) {
                 result = false;
                 break;
-            } else if (ch == '>' || ch == '/') {
+            } else if ((ch == '>' || ch == '/') && !isInStr) {
                 break;
             }
         }
@@ -225,7 +250,7 @@ class NCompiler {
                 for (let j = startN + 1; j < code.length; j++) {
                     let chj = code[j];
 
-                    if (chj == ' ' || chj == '>' || chj == '/') {
+                    if ((chj == ' ' || chj == '>' || chj == '/')) {
                         endTagName = j - 1;
                         break;
                     }
@@ -815,14 +840,37 @@ ${code}`;
                         var endValueIndex=1;
 
                         var curlyBracketCount=0;
+                        var roundBracketCount=0;
 
-                        for(let t=1;t<nextCode.length;t++){
+                        let ncIsInStr=false;
+                        let ncStrChr='';
 
-                            if(nextCode[t]=='{'){
+                        for(let t=0;t<nextCode.length;t++){
+
+                            if((!ncIsInStr) && (nextCode[t]=='"' || nextCode[t]=="`" || nextCode[t]=='`')){
+                                ncStrChr=nextCode[t];
+                                ncIsInStr=true;
+                            }
+                            if(ncStrChr && nextCode[t]==ncStrChr){
+                                ncIsInStr=false;
+                            }
+
+                            if((!ncIsInStr) && nextCode[t]=='('){
+                                roundBracketCount++;
+                            }
+                            else if((!ncIsInStr) && nextCode[t]==')'){
+                                roundBracketCount--;
+                            }
+
+                            if((!ncIsInStr) && nextCode[t]=='{'){
                                 curlyBracketCount++;
                             }
-                            else if(nextCode[t]=='}'){
+                            else if((!ncIsInStr) && nextCode[t]=='}'){
                                 curlyBracketCount--;
+                                if(curlyBracketCount==0 && roundBracketCount==0){
+                                    endValueIndex=t+1;
+                                    break;
+                                }
                             }
                             
                             if(nextCode[t]==';' && curlyBracketCount==0){
