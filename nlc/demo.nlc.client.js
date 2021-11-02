@@ -1,11 +1,11 @@
 
-                            var af396c793_b372_4b77_9e43_b38812960cba_module;
+                            var a8787973b_4eea_49b9_adef_0d5d06d4a9e5_module;
                         manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['08ff201f_719b_4ebb_87ea_ad4d09c14b6d']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['08ff201f_719b_4ebb_87ea_ad4d09c14b6d']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['58384fe8_9b03_4015_8e39_f617f541a68c']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['58384fe8_9b03_4015_8e39_f617f541a68c']=true;
                         
             (()=>{
                 
@@ -47,17 +47,19 @@
         this.AddMethod('setup',async (...args)=>{
                 let f=async function(){
 
-                var t='https://www.youtube.com';
+                var text='Click Here To Log Hello World';
+
+                var demoGlobalValue=(manager.Get('demoGlobal'));
 
                 this.GetThisWithCallback((module)=>{
-                            af396c793_b372_4b77_9e43_b38812960cba_module=module;
+                            a8787973b_4eea_49b9_adef_0d5d06d4a9e5_module=module;
                         })
-                        let getterObjf396c793_b372_4b77_9e43_b38812960cba={
+                        let getterObj8787973b_4eea_49b9_adef_0d5d06d4a9e5={
                             set stter(value) {
-                                af396c793_b372_4b77_9e43_b38812960cba_module.Set('prop',value);
+                                a8787973b_4eea_49b9_adef_0d5d06d4a9e5_module.Set('prop',value);
                             }
                         }
-                        getterObjf396c793_b372_4b77_9e43_b38812960cba.stter='console.log("ok")';
+                        getterObj8787973b_4eea_49b9_adef_0d5d06d4a9e5.stter=`console.log('${demoGlobalValue}')`;
                 
                 (manager.Get('dom')).GetThisWithCallback((module)=>{
                             return module.Get('body');
@@ -69,46 +71,48 @@
 
         
 
-            var result_679460c4_8778_4cf8_a1f7_0c8b9fb2b7cf=document.createElement('div');
+            var result_983ea662_133a_45a1_a7d2_7ebc6640fd13=document.createElement('div');
 
-            window.result_679460c4_8778_4cf8_a1f7_0c8b9fb2b7cf=result_679460c4_8778_4cf8_a1f7_0c8b9fb2b7cf;
+            window.result_983ea662_133a_45a1_a7d2_7ebc6640fd13=result_983ea662_133a_45a1_a7d2_7ebc6640fd13;
             
             
-        var attributes_679460c4_8778_4cf8_a1f7_0c8b9fb2b7cf=[];
+        var attributes_983ea662_133a_45a1_a7d2_7ebc6640fd13=[];
     
-                var a679460c4_8778_4cf8_a1f7_0c8b9fb2b7cfonclick=true;
-                attributes_679460c4_8778_4cf8_a1f7_0c8b9fb2b7cf.push({
+                var a983ea662_133a_45a1_a7d2_7ebc6640fd13onclick=true;
+                attributes_983ea662_133a_45a1_a7d2_7ebc6640fd13.push({
                     key:'onclick',
-                    value:(()=>{return a679460c4_8778_4cf8_a1f7_0c8b9fb2b7cfonclick= 'console.log("hello world")' })()
+                    value:(()=>{return a983ea662_133a_45a1_a7d2_7ebc6640fd13onclick= (manager.Get('demo')).GetThisWithCallback((module)=>{
+                            return module.Get('prop');
+                        }) })()
                 });
-                result_679460c4_8778_4cf8_a1f7_0c8b9fb2b7cf.setAttribute(attributes_679460c4_8778_4cf8_a1f7_0c8b9fb2b7cf[attributes_679460c4_8778_4cf8_a1f7_0c8b9fb2b7cf.length-1].key,attributes_679460c4_8778_4cf8_a1f7_0c8b9fb2b7cf[attributes_679460c4_8778_4cf8_a1f7_0c8b9fb2b7cf.length-1].value);
+                result_983ea662_133a_45a1_a7d2_7ebc6640fd13.setAttribute(attributes_983ea662_133a_45a1_a7d2_7ebc6640fd13[attributes_983ea662_133a_45a1_a7d2_7ebc6640fd13.length-1].key,attributes_983ea662_133a_45a1_a7d2_7ebc6640fd13[attributes_983ea662_133a_45a1_a7d2_7ebc6640fd13.length-1].value);
             
 
-            result_679460c4_8778_4cf8_a1f7_0c8b9fb2b7cf.innerHTML+=
-""+'\r\n\r\n                        '+""
+            result_983ea662_133a_45a1_a7d2_7ebc6640fd13.innerHTML+=
+""+'\r\n                        \r\n                        '+""
 ;
                 try{
-                    result_679460c4_8778_4cf8_a1f7_0c8b9fb2b7cf.appendChild(
+                    result_983ea662_133a_45a1_a7d2_7ebc6640fd13.appendChild(
 
-                            t
+                            text
 
                         );
                 }
                 catch{
-                    result_679460c4_8778_4cf8_a1f7_0c8b9fb2b7cf.innerHTML+=
+                    result_983ea662_133a_45a1_a7d2_7ebc6640fd13.innerHTML+=
 
-                            t
+                            text
 
                         ;
                 }
-                result_679460c4_8778_4cf8_a1f7_0c8b9fb2b7cf.innerHTML+=
+                result_983ea662_133a_45a1_a7d2_7ebc6640fd13.innerHTML+=
 ""+'\r\n\r\n                    '+""
 ;
             
 
     
         
-        return result_679460c4_8778_4cf8_a1f7_0c8b9fb2b7cf;
+        return result_983ea662_133a_45a1_a7d2_7ebc6640fd13;
 
     })()
         

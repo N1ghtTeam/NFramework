@@ -11,17 +11,19 @@
 
             function(){
 
-                var t='https://www.youtube.com';
+                var text='Click Here To Log Hello World';
 
-                this->prop='console.log("ok")';
+                var demoGlobalValue=@demoGlobal;
+
+                this->prop=`console.log('${demoGlobalValue}')`;
                 
                 @dom->body.appendChild(
 
-                    <div onclick = { 'console.log("hello world")' } >
-
+                    <div onclick = { @demo->prop } >
+                        
                         <region>
 
-                            t
+                            text
 
                         </region>
 

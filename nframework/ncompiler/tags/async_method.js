@@ -34,7 +34,7 @@ tag.Compile = function(element, childsCode, code) {
             compiledCodeFunc += strChar;
             i++;
             for (; i < codeFunc.length; i++) {
-                if (codeFunc[i] == '"' || codeFunc[i] == '`' || codeFunc[i] == `"`) {
+                if (codeFunc[i] == strChar) {
                     break;
                 }
                 compiledCodeFunc += codeFunc[i];

@@ -240,6 +240,7 @@ class Tag {
     GetContent(element, childsCode, code) {
         let result = [];
 
+
         let endTagIndex = element.startContentIndex;
 
         let curlyBracketCount=0;
@@ -323,6 +324,7 @@ class Tag {
         }
 
         result.push(currentContentPart);
+
 
         return result;
     }
