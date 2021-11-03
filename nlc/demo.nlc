@@ -6,7 +6,7 @@
 
         <ui:style>
 
-            my-button{
+            my-mb{
                 color: red;
             }
 
@@ -42,9 +42,10 @@
         return(
             <>
 
+                OK
+
                 <my-mb>
 
-                    OK
 
                 </my-mb>
 

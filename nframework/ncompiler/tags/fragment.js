@@ -15,6 +15,9 @@ tag.Compile = function(element, childsCode, code) {
         if(contents[i].type=='childCode'){
             compiledCode += contents[i].code + ',';
         }
+        else{
+            compiledCode += '`'+contents[i].code + '`,';
+        }
     }
 
     compiledCode = `[${compiledCode}]`;
