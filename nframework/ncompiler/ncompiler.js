@@ -197,6 +197,118 @@ class NCompiler {
 
     }
 
+    CompileShortFragmentTags(code){
+        let newCode='';
+
+        let isInStr=false;
+        let strChr='';
+
+        function isFragmentOpenTag(i){
+            let result=new Object();
+            result.value=true;
+            result.offset=i;
+
+            let j=i;
+
+            if(code[j]!='<'){
+                result.value=false;
+                return result;
+            }
+            else{
+                j++;
+            }
+
+            for(;j<code.length;j++){
+                if(code[j]!='>' && code[j]!=' '){
+                    result.value=false;
+                    return result;
+                }
+                else{
+                    if(code[j]=='>'){
+                        result.offset=j;
+                        break;
+                    }
+                }
+            }
+
+            return result;
+        }
+        function isFragmentCloseTag(i){
+            let result=new Object();
+            result.value=true;
+            result.offset=i;
+
+
+            let j=i;
+
+            if(code[j]!='<'){
+                result.value=false;
+                return result;
+            }
+            else{
+                j++;
+            }
+
+            for(;j<code.length;j++){
+                if(code[j]!='/' && code[j]!=' '){
+                    result.value=false;
+                    return result;
+                }
+                else{
+                    if(code[j]=='/'){
+                        j++;
+                        break;
+                    }
+                }
+            }
+
+            for(;j<code.length;j++){
+                if(code[j]!='>' && code[j]!=' '){
+                    result.value=false;
+                    return result;
+                }
+                else{
+                    if(code[j]=='>'){
+                        result.offset=j;
+                        break;
+                    }
+                }
+            }
+
+
+            return result;
+        }
+
+        for(let i=0;i<code.length;i++){
+            if(!isInStr && (code[i]=='"' || code[i]=='"' || code[i]=='`')){
+                isInStr=true;
+                strChr=code[i];
+            }
+            if(isInStr && code[i]==strChr){
+                isInStr=false;
+            }
+
+            let isOpenTagAndIsFragment=isFragmentOpenTag(i);
+            let isCloseTagAndIsFragment=isFragmentCloseTag(i);
+
+            if(isOpenTagAndIsFragment.value){
+                newCode+='<fragment>';
+                i=isOpenTagAndIsFragment.offset;
+            }
+            else if(isCloseTagAndIsFragment.value){
+                newCode+='</fragment>';
+                i=isCloseTagAndIsFragment.offset;
+            }
+            else {
+                newCode+=code[i];
+            }
+
+        }
+
+
+        return newCode;
+    }
+
     IsStartTag(index, code) {
         let result = true;
 
@@ -1085,6 +1197,10 @@ ${code}`;
 
         this.useBases = [];
         this.useLevel = 0;
+
+        let newCode=this.CompileShortFragmentTags(code);
+
+        code=newCode;
 
         let removedCommentsCode = this.RemoveComments(code);
 
