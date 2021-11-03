@@ -45,14 +45,14 @@ tag.Compile = function(element, childsCode, code,manager,nlcPath,compiler) {
 
             let tagCheck = tag.tagChecks[checkKey];
 
-            tagCheck.name=tag.name;
-            tagCheck.componentName=tag.componentName;
+            tagCheck.name=this.name;
+            tagCheck.componentName=this.componentName;
 
-            let cresult = tagCheck.Compile(element, childsCode, code,manager,nlcPath,compiler);;
+            let cresult = tagCheck.Compile(element, childsCode, code,manager,nlcPath,compiler);
 
             newCode+=`
             if(window.NFramework.customTags['${checkKey}']!=null){
-                if(window.NFramework.customTags['${checkKey}']['${tag.componentName}']!=null){
+                if(window.NFramework.customTags['${checkKey}']['${this.componentName}']!=null){
                     let r_${tag.componentName} = ${cresult};
                     return r_${tag.componentName};
                 }

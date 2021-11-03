@@ -1,6 +1,33 @@
 <use html>
 <use dom>
 
+<ui:component my-mb>
+    render(){
+
+        <ui:style>
+
+            my-button{
+                color: red;
+            }
+
+        </ui:style>
+
+        
+        return(
+            <>
+
+                <h1>
+
+                    my-mb
+
+                </h1>
+            
+            </>
+        );
+
+    }
+</ui:component>
+
 <ui:component my-button>
     render(){
 
@@ -14,17 +41,12 @@
 
         return(
             <>
-                <h1>
-                    h1
-                </h1>
 
-                <h1>
-                    h2
-                </h1>
+                <my-mb>
 
-                <h1>
-                    h3
-                </h1>
+                    OK
+
+                </my-mb>
 
             </>
         )
@@ -42,8 +64,6 @@
 
                 @dom->body.appendChild(
                     <my-button>
-
-                        Youtube
 
                     </my-button>
 

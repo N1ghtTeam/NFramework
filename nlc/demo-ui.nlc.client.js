@@ -1,1 +1,1 @@
-manager = window.NFramework.nmoduleManager;
+/* NFRAMEWORK */manager=window.NFramework.nmoduleManager;

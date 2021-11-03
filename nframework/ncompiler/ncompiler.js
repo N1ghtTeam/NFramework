@@ -414,11 +414,11 @@ class NCompiler {
         if(element.tag!=null){
             defTag.isAutoClose=element.tag.isAutoClose;
             defTag.name=element.tag.name;
+            defTag.componentName=element.tag.componentName;
             //console.log(defTag.GetInputs(element, '', code));
 
             if(element.tag.notFound){
                 let inputs = (defTag.GetInputs(element, '', {'data':code}));
-                
                 element.tag.tagChecks['ui']=require('./tags/UITag');
             }
 
@@ -429,6 +429,7 @@ class NCompiler {
             newElement.childs[i] = this.PrepareElements(element.childs[i],code);
 
         }
+        
 
         return newElement;
     }
@@ -635,6 +636,7 @@ class NCompiler {
 
         }
 
+
         return tagsOrder;
     }
 
@@ -717,6 +719,7 @@ class NCompiler {
         let code = '';
         let einputCode = new Object();
 
+        
 
         einputCode.data = codeinput;
 
@@ -770,6 +773,7 @@ ${code}`;
                     `;
                 }
 
+                
                 code = element.tag.Compile(element, childsCode, einputCode, manager, nlcPath,this);
                 element.code = code;
             }
