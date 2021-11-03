@@ -193,8 +193,6 @@ class NCompiler {
 
         }
 
-        console.log(isAutoClose);
-
         return isAutoClose;
 
     }
