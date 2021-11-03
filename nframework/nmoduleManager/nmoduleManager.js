@@ -61,8 +61,12 @@ class NModuleManager {
         let nmm = this;
 
         let recompile_when_startup = this.NFramework.recompile_when_startup;
+        
+        let compiler = this.NFramework.ncompiler;
 
         const buildmpa = function(file) {
+
+
             let parts = file.split('.');
             if (parts[parts.length - 1] == 'nlc') nmm.modulePaths.push(file);
             else if (parts[parts.length - 1] == 'showjs') fs.unlinkSync(file);
@@ -73,7 +77,21 @@ class NModuleManager {
                 (parts[parts.length - 2] == 'server' || parts[parts.length - 2] == 'client')
             ) {
 
-                fs.unlinkSync(file);
+                let nlcPath='';
+
+                for(let i=0;i<parts.length-2;i++){
+                    nlcPath+=parts[i];
+                    if(i<parts.length-3){
+                        nlcPath+='.';
+                    }
+                }
+            
+                let nlcMsgs = compiler.ReadNLCMsgs(nlcPath);
+
+                let isNeedCompile=!nlcMsgs.includes('NOCOMPILE');
+
+                if(isNeedCompile)
+                    fs.unlinkSync(file);
             }
         };
 
@@ -104,6 +122,7 @@ class NModuleManager {
         return this.jsCode[name];
     }
 
+
     CompileOrImportModules() {
         for (let filePath of this.watches)
             fs.unwatchFile(filePath);
@@ -115,7 +134,12 @@ class NModuleManager {
         compiler.SetupCompile();
 
         for (let modulePath of this.modulePaths) {
-            let cr = (this.NFramework.recompile_when_startup) ?
+
+            let nlcMsgs = compiler.ReadNLCMsgs(modulePath);
+
+            let isNeedCompile=!nlcMsgs.includes('NOCOMPILE');
+
+            let cr = (this.NFramework.recompile_when_startup && isNeedCompile) ?
                       compiler.CompileFile(modulePath) :
                       compiler.CreateModuleFromCode(null, null, modulePath);
 

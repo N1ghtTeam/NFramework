@@ -1,3 +1,5 @@
+NLC:NOCOMPILE
+
 <use html>
 <use dom>
 
@@ -7,7 +9,7 @@
         <ui:style>
 
             my-mb{
-                color: red;
+                color: blue;
             }
 
         </ui:style>
@@ -43,6 +45,8 @@
             <>
 
                 OK
+
+                OKH
 
                 <my-mb>
 
