@@ -12,20 +12,22 @@
 
         </ui:style>
 
-        console.log(
+        return(
             <>
                 <h1>
                     h1
                 </h1>
+
                 <h1>
                     h2
                 </h1>
+
                 <h1>
                     h3
                 </h1>
-            </>
-        );
 
+            </>
+        )
         
     }
 </ui:component>

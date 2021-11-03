@@ -376,7 +376,12 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
             ${childsAndTextContents}
             
             if(result_${rfid}.render!=null){
-                result_${rfid}.render();
+                let childs = result_${rfid}.render();
+                if(childs!=null){
+                    for(let child of childs){
+                        result_${rfid}.appendChild(child);
+                    }
+                }
             }
 
     `;
