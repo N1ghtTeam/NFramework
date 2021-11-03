@@ -11,28 +11,33 @@ class NCompiler {
     ReadNLCMsgs(modulePath){
         let result=[];
 
-        let code=fs.readFileSync(modulePath).toString();
+        try{
+            let code=fs.readFileSync(modulePath).toString();
 
-        for(let i=0;i<code.length;i++){
-            if(code[i]+code[i+1]+code[i+2]+code[i+3]=='NLC:'){
-                let startMsg=i+4;
-                let isStarted=false;
-                i+=4;
-                for(;i<code.length;i++){
-                    if(code[i]!=' ' && !isStarted){
-                        startMsg=i;
-                        isStarted=true;
-                    }
-                    if(code[i]=='\n' || code[i]=='\r' || i==code.length-1 || (code[i]==' ' && isStarted)){
-                        let msg=code.substring(startMsg,i);
-                        result.push(msg);
-                        break;
+            for(let i=0;i<code.length;i++){
+                if(code[i]+code[i+1]+code[i+2]+code[i+3]=='NLC:'){
+                    let startMsg=i+4;
+                    let isStarted=false;
+                    i+=4;
+                    for(;i<code.length;i++){
+                        if(code[i]!=' ' && !isStarted){
+                            startMsg=i;
+                            isStarted=true;
+                        }
+                        if(code[i]=='\n' || code[i]=='\r' || i==code.length-1 || (code[i]==' ' && isStarted)){
+                            let msg=code.substring(startMsg,i);
+                            result.push(msg);
+                            break;
+                        }
                     }
                 }
+                else{
+                    break;
+                }
             }
-            else{
-                break;
-            }
+        }
+        catch{
+            
         }
 
 

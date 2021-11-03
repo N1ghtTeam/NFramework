@@ -1,0 +1,23 @@
+<use html>
+<use dom>
+    
+
+<ui:component demo-ui>
+
+    render(){
+
+        return(
+            <>
+            
+                Hello World
+            
+                <demo-ui-c1>
+                    
+                </demo-ui-c1>
+
+            </>
+        );
+    }
+
+</ui:component>
+

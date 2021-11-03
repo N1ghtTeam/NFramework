@@ -1,76 +1,17 @@
-NLC:NOCOMPILE
-
 <use html>
 <use dom>
 
-<ui:component my-mb>
-    render(){
-
-        <ui:style>
-
-            my-mb{
-                color: blue;
-            }
-
-        </ui:style>
-
-        
-        return(
-            <>
-
-                <h1>
-
-                    my-mb
-
-                </h1>
-            
-            </>
-        );
-
-    }
-</ui:component>
-
-<ui:component my-button>
-    render(){
-
-        <ui:style>
-
-            my-button{
-                color: blue;
-            }
-
-        </ui:style>
-
-        return(
-            <>
-
-                OK
-
-                OKH
-
-                <my-mb>
-
-
-                </my-mb>
-
-            </>
-        )
-        
-    }
-</ui:component>
-
 <module demo>
-    <property prop/>
+    
     <client-only>
+        
         <async-method setup>
             function(){
 
-                this->prop='console.log("clicked");';
-
                 @dom->body.appendChild(
-                    <my-button>
+                    <demo-ui>
 
-                    </my-button>
+                    </demo-ui>
 
                 );
 

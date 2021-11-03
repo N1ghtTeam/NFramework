@@ -1,0 +1,7 @@
+/* NFRAMEWORK */if(manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned.c524f791_8df9_4161_a531_e41be0158b70){window.NFramework.nmoduleManager.nlcElementRunned.c524f791_8df9_4161_a531_e41be0158b70=!0,null==window.NFramework.customTags.ui&&(window.NFramework.customTags.ui=new Object),window.NFramework.customTags.ui.demo_ui=!0;class a extends HTMLElement{constructor(){super(),this.componentName="demo-ui"}render(){return(()=>{let e=[`
+            
+                Hello World
+            
+                `,(()=>{if(null!=window.NFramework.customTags.ui&&null!=window.NFramework.customTags.ui.demo_ui_c1)return(()=>{var e=document.createElement("demo-ui-c1");if(e.innerHTML+="\r\n                    \r\n                ",null!=e.render){var n=e.render();if(null!=n)for(var r of n)try{e.appendChild(r)}catch{e.innerHTML+=r}}return e})()})(),`
+
+            `];return e.elements=[(()=>{if(null!=window.NFramework.customTags.ui&&null!=window.NFramework.customTags.ui.demo_ui_c1)return(()=>{var e=document.createElement("demo-ui-c1");if(e.innerHTML+="\r\n                    \r\n                ",null!=e.render){var n=e.render();if(null!=n)for(var r of n)try{e.appendChild(r)}catch{e.innerHTML+=r}}return e})()})()],e})()}}customElements.define("demo-ui",a)}

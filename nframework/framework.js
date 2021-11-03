@@ -9,6 +9,13 @@ class NFramework {
     constructor() {
         this.framework_nmodules_src_dir = __dirname + '/nmodules';
 
+        //event listeners
+        this.eventListeners=new Object();
+
+        //on server started event listeners
+        this.eventListeners['server_listening']=[];
+
+
         // N compiler
         this.ncompiler = new NCompiler();
         this.ncompiler.NFramework = this;
@@ -120,6 +127,15 @@ class NFramework {
             framework.ioRouterManager.SetupFor(csocket);
             csocket.on('disconnect', () => framework.clientManager.RemoveClient(csocket));
         });
+
+        for(let server_listening_listener of this.eventListeners['server_listening']){
+            console.log('server_listening');
+        }
+    }
+
+    Listen(eventName,callback){
+        this.eventListeners[eventName].push(callback);
+        console.log(this.eventListeners);
     }
 }
 

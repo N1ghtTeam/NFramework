@@ -34,6 +34,12 @@ tag.Compile = function(element, childsCode, code) {
             for(var globalObjectName of globalObjects){
                 miejs+="\\n<script src='/nlc/"+globalObjectName+"'></script>";
             }
+            
+            var uiComponents=manager.pages['${pageName}'].uiComponents;
+
+            for(var uiComponent of uiComponents){
+                miejs+="\\n<script src='/nlc/"+uiComponent+"'></script>";
+            }
 
             miejs+="\\n<script src='/appcl'></script>";
 

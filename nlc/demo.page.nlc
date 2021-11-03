@@ -8,6 +8,11 @@
 
     <dom-modules/>
 
+    <ui:components 
+        demo-ui
+        demo-ui-c1
+    />
+
     <modules  
         demo
     />

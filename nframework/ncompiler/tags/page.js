@@ -33,6 +33,8 @@ tag.Compile = function(element, childsCode, code) {
     let page_${inputs[0]}=new Page();
 
     page_${inputs[0]}.customTypeDatas=[];
+    
+    page_${inputs[0]}.uiComponents=[];
 
     page_${inputs[0]}.useAllGlobalObjects=false;
 

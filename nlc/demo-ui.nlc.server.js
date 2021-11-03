@@ -1,1 +1,0 @@
-/* NFRAMEWORK */const JSCLPath="D:\\MyTechs\\nframework/nlc/demo-ui.nlc.client.js";module.exports=e=>{let s=new Object;return s.customTypeDatas=[],s.customTypeDatas.Add=function(e,t){s.customTypeDatas.push({key:e,value:t})},s.nmodules=[],s.pages=[],s};
