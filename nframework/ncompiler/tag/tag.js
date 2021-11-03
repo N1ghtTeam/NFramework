@@ -99,11 +99,9 @@ class Tag {
                 (code.data[i] == '"' || code.data[i] == "'" || code.data[i] == '`')) {
                 strChr = code.data[i];
                 isInStr = true;
-                i++;
             }
             else if (isInStr && code.data[i] == strChr) {
                 isInStr = false;
-                i++;
             }
 
             if(!isInStr){
@@ -121,12 +119,14 @@ class Tag {
                 }
             }
 
-            if (!isInStr)
+            if (!isInStr){
+                
                 if ((code.data[i] == '>' && !this.isAutoClose && (roundBracketCount==0 && curlyBracketCount==0)) ||
                     (code.data[i] == '/' && (this.isAutoClose)  && (roundBracketCount==0 && curlyBracketCount==0))) {
                     endTagIndex = i;
                     break;
                 }
+            }
         }
 
         let startInputIndex = element.startContentIndex;
@@ -281,6 +281,7 @@ class Tag {
         }
 
         let startContent = endTagIndex + 1;
+        
 
         let currentContentPart = new Object();
         currentContentPart.code = '';
@@ -325,6 +326,9 @@ class Tag {
 
         result.push(currentContentPart);
 
+        if(this.name=='demo_component'){
+            //console.log(code.data.substring(element.startContentIndex,element.endContentIndex));
+        }
 
         return result;
     }

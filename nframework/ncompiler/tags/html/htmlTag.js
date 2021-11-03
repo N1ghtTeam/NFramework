@@ -331,7 +331,7 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
                     key:'${atbName}',
                     value:(()=>{return a${rfid}${inputs[i]}})()
                 });
-                result_${rfid}.setAttribute(attributes_${rfid}[attributes_${rfid}.length-1].key,attributes_${rfid}[attributes_${rfid}.length-1].value);
+                result_${rfid}.setAttribute('${atbName}',(()=>{return a${rfid}${inputs[i]}})());
             `;
         }
     }

@@ -13,32 +13,20 @@
     }
 </ui:component>
 
-<ui:component demo-component-2>
-    render(){
-        this.appendChild(            
-            <html:style>
-                demo-component-2{
-                    color:blue;
-                }
-            </html:style>
-        );
-    }
-</ui:component>
-
 <module demo>
+
     <client-only>
 
         <async-method setup>
 
             function(){
 
-
                 @dom->body.appendChild(
-                    <demo-component-2>
+                    <demo-component  onclick='console.log("ok");'>
 
                         Hello World
 
-                    </demo-component-2>
+                    </demo-component>
                 );
 
             }

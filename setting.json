@@ -4,7 +4,7 @@
     "use_uglify_js":false,
     "debug": {
         "show_nlc_compiled_js": false,
-        "client_nlc": true,
+        "client_nlc": false,
         "auto_restart_when_nlc_changed": false
     },
     "server":{

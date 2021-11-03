@@ -2,8 +2,8 @@ manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['28e360a1_3294_49aa_ade0_00b37068b7ff']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['28e360a1_3294_49aa_ade0_00b37068b7ff']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['9a3df4fc_3da5_4c49_826e_12c3647b69d1']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['9a3df4fc_3da5_4c49_826e_12c3647b69d1']=true;
                          manager.customTypeDatas['demoGlobal']=(()=>{
             let data=
 

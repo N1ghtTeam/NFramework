@@ -145,6 +145,60 @@ class NCompiler {
         return result;
     }
 
+    CheckIsAutoCloseTag(index, code){
+        let regex = /^[a-zA-Z]+$/;
+
+        let isOverTagName=false;
+
+        let isAutoClose=false;
+
+        let isInStr=false;
+        let strChr='';
+
+        let curlyBracketCount=0;
+
+        for (let i = index + 1; i < code.length; i++) {
+
+            let ch = code[i];
+
+            if(ch.match(regex)){
+                isOverTagName=true;
+            }
+
+            if(!isInStr && (ch=='"' || ch=="'" || ch=='`')){
+                isInStr=true;
+                strChr=ch;
+            }
+            if(isInStr && ch==strChr){
+                isInStr=false;
+            }
+
+            if(!isInStr){
+
+                if(ch=='{'){
+                    curlyBracketCount++;
+                }
+                if(ch=='}'){
+                    curlyBracketCount--;
+                }
+
+            }
+
+            if(!isInStr && ch=='/' && curlyBracketCount==0){
+                if(isOverTagName){
+                    isAutoClose=true;
+                    break;
+                }
+            }
+
+        }
+
+        console.log(isAutoClose);
+
+        return isAutoClose;
+
+    }
+
     IsStartTag(index, code) {
         let result = true;
 
@@ -152,9 +206,19 @@ class NCompiler {
         let strChr='';
 
         let curlyBracketCount=0;
+
+        let regex = /^[a-zA-Z]+$/;
+
+        let isOverTagName=false;
+
+        let isAutoClose=false;
         
         for (let i = index + 1; i < code.length; i++) {
             let ch = code[i];
+
+            if(ch.match(regex)){
+                isOverTagName=true;
+            }
             
             if(!isInStr && (ch=='"' || ch=="'" || ch=='`')){
                 isInStr=true;
@@ -178,6 +242,11 @@ class NCompiler {
                 result = false;
                 break;
             } else if ((ch == '>' || ch == '/') && !isInStr) {
+                if(ch=='/'){
+                    if(isOverTagName){
+                        isAutoClose=true;
+                    }
+                }
                 break;
             }
         }
@@ -280,12 +349,14 @@ class NCompiler {
             let regex = /^[a-zA-Z]+$/;
             let regex2 = /^[0-9]+$/;
 
-            if (ch == '<' && this.IsStartTag(i, code)) {
+            let isAutoClosei=this.IsStartTag(i, code);
+
+            if (ch == '<' && isAutoClosei) {
                 let tagStart = i;
                 let tagEnd = i;
                 let startN = i + 1;
                 let isFragmentTag=false;
-                let isAutoCloseTag=true;
+                let isAutoCloseTag=false;
                 for (let j = i + 1; j < code.length; j++) {
                     let chj = code[j];
 
@@ -305,13 +376,13 @@ class NCompiler {
                 }
                 let endTagName = startN + 1;
 
-                if(!isFragmentTag){
+                if(true){
                     for (let j = startN + 1; j < code.length; j++) {
                         let chj = code[j];
 
                         if ((chj == ' ' || chj == '>' || chj == '/')) {
-                            if(chj == '>'){
-                                isAutoCloseTag=false;
+                            if(chj == '/'){
+                                
                             }
                             endTagName = j - 1;
                             break;
@@ -412,6 +483,7 @@ class NCompiler {
                 };
 
                 if(tag.notFound){
+                    let newIsAutoClose = this.CheckIsAutoCloseTag(i,code);
                     tag.isAutoClose=isAutoCloseTag;
                 }
 

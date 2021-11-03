@@ -20,10 +20,6 @@ module.exports = (manager) => {
 
                     
 
-                
-
-                    
-
         var NModule=
         function() {
             return require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule");
@@ -48,6 +44,7 @@ module.exports = (manager) => {
 
         nmodule.RunExternalMethod(function(){
     
+
     
 
 

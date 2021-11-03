@@ -56,7 +56,6 @@ module.exports = (manager) => {
     
 
         this.modules.push('demo');
-        this.modules.push('demo-2');
         
 
     
