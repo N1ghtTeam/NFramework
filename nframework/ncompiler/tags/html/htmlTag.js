@@ -166,7 +166,6 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
         }
 
         inputs=newInputs;
-        console.log(inputs);
 
 
         newInputs=[];
@@ -231,8 +230,6 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
         newInputs=newInputsStr.split('\n');
 
         inputs=newInputs;
-
-        console.log(inputs);
         
         newInputs=[];
 

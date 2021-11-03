@@ -20,23 +20,23 @@ manager = window.NFramework.nmoduleManager;
 
         
 
-            var result_830f8a61_7bc2_4b05_8669_a7b51e87b2fe=document.createElement('style');
+            var result_9986c64a_500a_4063_9fb5_881cd5e37f26=document.createElement('style');
             
             
-        var attributes_830f8a61_7bc2_4b05_8669_a7b51e87b2fe=[];
+        var attributes_9986c64a_500a_4063_9fb5_881cd5e37f26=[];
     
 
-            result_830f8a61_7bc2_4b05_8669_a7b51e87b2fe.innerHTML+=
+            result_9986c64a_500a_4063_9fb5_881cd5e37f26.innerHTML+=
 ""+'\r\n                demo-component{\r\n                    color:red;\r\n                }\r\n            '+""
 ;
             
-            if(result_830f8a61_7bc2_4b05_8669_a7b51e87b2fe.render!=null){
-                result_830f8a61_7bc2_4b05_8669_a7b51e87b2fe.render();
+            if(result_9986c64a_500a_4063_9fb5_881cd5e37f26.render!=null){
+                result_9986c64a_500a_4063_9fb5_881cd5e37f26.render();
             }
 
     
         
-        return result_830f8a61_7bc2_4b05_8669_a7b51e87b2fe;
+        return result_9986c64a_500a_4063_9fb5_881cd5e37f26;
 
     })()
         
@@ -55,8 +55,8 @@ manager = window.NFramework.nmoduleManager;
                 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['f3dc9a61_b4cd_4148_8d5e_e385d5ed2df9']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['f3dc9a61_b4cd_4148_8d5e_e385d5ed2df9']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['30d7d793_c0e7_406b_bd34_cf6696d6886d']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['30d7d793_c0e7_406b_bd34_cf6696d6886d']=true;
                         
             (()=>{
                 
@@ -106,30 +106,30 @@ manager = window.NFramework.nmoduleManager;
 
         
 
-            var result_5f5f398e_9d38_44d8_a05b_613101c47770=document.createElement('demo-component');
+            var result_1880ea0f_e695_40fa_9e52_58429eb10940=document.createElement('demo-component');
             
             
-        var attributes_5f5f398e_9d38_44d8_a05b_613101c47770=[];
+        var attributes_1880ea0f_e695_40fa_9e52_58429eb10940=[];
     
-                var a5f5f398e_9d38_44d8_a05b_613101c47770onclick=true;
-                attributes_5f5f398e_9d38_44d8_a05b_613101c47770.push({
+                var a1880ea0f_e695_40fa_9e52_58429eb10940onclick=true;
+                attributes_1880ea0f_e695_40fa_9e52_58429eb10940.push({
                     key:'onclick',
-                    value:(()=>{return a5f5f398e_9d38_44d8_a05b_613101c47770onclick='console.log("ok");'})()
+                    value:(()=>{return a1880ea0f_e695_40fa_9e52_58429eb10940onclick='console.log("ok");'})()
                 });
-                result_5f5f398e_9d38_44d8_a05b_613101c47770.setAttribute('onclick',(()=>{return a5f5f398e_9d38_44d8_a05b_613101c47770onclick='console.log("ok");'})());
+                result_1880ea0f_e695_40fa_9e52_58429eb10940.setAttribute('onclick',(()=>{return a1880ea0f_e695_40fa_9e52_58429eb10940onclick='console.log("ok");'})());
             
 
-            result_5f5f398e_9d38_44d8_a05b_613101c47770.innerHTML+=
+            result_1880ea0f_e695_40fa_9e52_58429eb10940.innerHTML+=
 ""+'\r\n\r\n                        Hello World\r\n\r\n                    '+""
 ;
             
-            if(result_5f5f398e_9d38_44d8_a05b_613101c47770.render!=null){
-                result_5f5f398e_9d38_44d8_a05b_613101c47770.render();
+            if(result_1880ea0f_e695_40fa_9e52_58429eb10940.render!=null){
+                result_1880ea0f_e695_40fa_9e52_58429eb10940.render();
             }
 
     
         
-        return result_5f5f398e_9d38_44d8_a05b_613101c47770;
+        return result_1880ea0f_e695_40fa_9e52_58429eb10940;
 
     })()
         
