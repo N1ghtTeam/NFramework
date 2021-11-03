@@ -166,6 +166,7 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
         }
 
         inputs=newInputs;
+        console.log(inputs);
 
 
         newInputs=[];
@@ -193,12 +194,13 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
             let strChar='';
             let isInStr=false;
 
-            if(inputsStr[i]=='\n' && curlyBracketCount==0){
+            if(inputsStr[i]=='\n' && curlyBracketCount!=0){
                 inputIndex++;
             }
             else{
-                if(inputsStr[i]!='\n')
+                if(inputsStr[i]!='\n' || curlyBracketCount==0){
                     newInputsStr+=inputsStr[i];
+                }
                 else{
                     newInputsStr+=' ';
                 }
@@ -226,11 +228,11 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
 
         }
 
-
         newInputs=newInputsStr.split('\n');
 
         inputs=newInputs;
 
+        console.log(inputs);
         
         newInputs=[];
 
@@ -283,6 +285,7 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
 
         inputs=newInputs;
     }
+
 
 
     var rfid = uuidv4();
