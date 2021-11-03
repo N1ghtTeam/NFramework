@@ -1,33 +1,37 @@
 <use html>
 <use dom>
 
-<ui:component demo-component>
+<ui:component my-button>
     render(){
-        this.appendChild(            
-            <html:style>
-                demo-component{
-                    color:red;
-                }
-            </html:style>
-        );
+
+        <ui:style>
+
+            my-button{
+                color: blue;
+            }
+
+        </ui:style>
+        
     }
 </ui:component>
 
 <module demo>
-
+    <property prop/>
     <client-only>
-
         <async-method setup>
-
             function(){
 
+                this->prop='console.log("clicked");';
+
                 @dom->body.appendChild(
-                    <demo-component  onclick='console.log("ok");'>
+                    <my-button>
 
-                        Hello World
+                        Youtube
 
-                    </demo-component>
+                    </my-button>
+
                 );
+
 
             }
 

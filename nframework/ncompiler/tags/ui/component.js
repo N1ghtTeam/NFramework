@@ -44,6 +44,7 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
 
                 constructor(){
                     super();
+                    this.componentName='${rawComponentName}';
                 }                
 
             ${compiledCode}
