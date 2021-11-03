@@ -1,7 +1,7 @@
 {
     "nmodules_src_dir": "./nlc",
     "recompile_when_startup": true,
-    "use_uglify_js":true,
+    "use_uglify_js":false,
     "debug": {
         "show_nlc_compiled_js": false,
         "client_nlc": true,

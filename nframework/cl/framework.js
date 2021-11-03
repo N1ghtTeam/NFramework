@@ -1,5 +1,7 @@
 class NFramework {
-    constructor() {}
+    constructor() {
+        this.customTags=new Object();
+    }
 
     IOConnectToServer() {
         const socket = io();

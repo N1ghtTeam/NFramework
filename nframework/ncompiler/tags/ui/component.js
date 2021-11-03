@@ -6,9 +6,10 @@ tag.isAutoClose = false;
 
 tag.isJSTag = true;
 
-tag.Compile = function(element, childsCode, code) {
+tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
     if(!element.forSV){
         let inputs = tag.GetInputs(element, childsCode, code);
+
 
         let componentName='';
         let rawComponentName=inputs[0];
@@ -22,6 +23,10 @@ tag.Compile = function(element, childsCode, code) {
             }
         }
 
+        compiler.customTags.push({
+            'key':'ui',
+            'name':componentName
+        });
     
         let contents = tag.GetContent(element, childsCode, code);
     
@@ -32,6 +37,9 @@ tag.Compile = function(element, childsCode, code) {
         }
 
         compiledCode = `
+            if(window.NFramework.customTags['ui']==null)
+                window.NFramework.customTags['ui']=new Object();
+            window.NFramework.customTags['ui']['${componentName}']=true;
             class ${componentName}_class extends HTMLElement{
 
                 constructor(){

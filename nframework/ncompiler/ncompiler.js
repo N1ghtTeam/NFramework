@@ -2,7 +2,8 @@ const fs                = require('fs');
 const Element           = require('./element/element');
 const Uglify            = require('uglify-js');
 const { v4: uuidv4 }    = require('uuid');
-
+const Tag = require('./tag/tag');
+let defTag=new Tag();
 
 class NCompiler {
     constructor() {}
@@ -118,6 +119,7 @@ class NCompiler {
                         return result;
                     }
                 }
+                /*
                 if(!useUI){
                     result = require('./tags/region.js');
                     result.name = name;
@@ -126,9 +128,15 @@ class NCompiler {
                 else{
                     result = require('./tags/UITag.js');
                     result.componentName=name;
+                    result
                     result.name = name;
                     return result;
                 }
+                */
+                result = require('./tags/notFoundTag');
+                result.componentName=name;
+                result.name = name;
+                return result;
             }
         } else {
             result = require('./tags/region.js');
@@ -219,6 +227,31 @@ class NCompiler {
         }
 
         return name.substring(start, end + 1);
+    }
+
+    PrepareElements(element,code){
+        let newElement = element;
+
+        if(element.tag!=null){
+            defTag.isAutoClose=element.tag.isAutoClose;
+            defTag.name=element.tag.name;
+            //console.log(defTag.GetInputs(element, '', code));
+
+            if(element.tag.notFound){
+                let inputs = (defTag.GetInputs(element, '', {'data':code}));
+                
+                element.tag.tagChecks['ui']=require('./tags/UITag');
+            }
+
+        }
+
+        for(let i=0;i<element.childs.length;i++){
+
+            newElement.childs[i] = this.PrepareElements(element.childs[i],code);
+
+        }
+
+        return newElement;
     }
 
     GetTagsOrder(code, nlcPath) {
@@ -378,11 +411,11 @@ class NCompiler {
                     ...this.GetTag(tagName)
                 };
 
-                if(tag.isUITag){
+                if(tag.notFound){
                     tag.isAutoClose=isAutoCloseTag;
                 }
 
-                if (tag.notFound) {
+                if (false){//(tag.notFound) {
                     let line = 1;
                     for (let i = 0; i < startN; i++)
                         if (code[i] == '\n')
@@ -491,7 +524,7 @@ class NCompiler {
         let result = [];
         let tagsOrder = this.GetTagsOrder(code, nlcPath);
         let elements = this.GetElementsFromTagsOrder(tagsOrder, code);
-
+        elements = this.PrepareElements(elements,code);
         result = elements;
 
         return result;
@@ -1013,6 +1046,13 @@ ${code}`;
         let cResult = this.CreateModuleFromCode(compiledCodeSV, compiledCodeCL, path);
 
         return cResult;
+    }
+
+    SetupCompile(){
+        this.customTags = [];
+    }
+    EndCompile(){
+        
     }
 
 }

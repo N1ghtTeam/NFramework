@@ -1,0 +1,27 @@
+<use html>
+<use dom>
+    
+
+<module demo-2>
+    <client-only>
+
+        <async-method setup>
+
+            function(){
+
+
+                @dom->body.appendChild(
+                    <demo-component-2>
+
+                        Hello World
+
+                    </demo-component-2>
+                );
+
+            }
+
+        </method>
+
+    </client-only>
+
+</module>

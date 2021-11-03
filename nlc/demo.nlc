@@ -1,6 +1,5 @@
 <use html>
 <use dom>
-<use ui>
 
 <ui:component demo-component>
     render(){
@@ -8,6 +7,18 @@
             <html:style>
                 demo-component{
                     color:red;
+                }
+            </html:style>
+        );
+    }
+</ui:component>
+
+<ui:component demo-component-2>
+    render(){
+        this.appendChild(            
+            <html:style>
+                demo-component-2{
+                    color:blue;
                 }
             </html:style>
         );
@@ -23,11 +34,11 @@
 
 
                 @dom->body.appendChild(
-                    <demo-component>
+                    <demo-component-2>
 
                         Hello World
 
-                    </demo-component>
+                    </demo-component-2>
                 );
 
             }

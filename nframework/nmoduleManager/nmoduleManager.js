@@ -112,6 +112,8 @@ class NModuleManager {
 
         let compiler = this.NFramework.ncompiler;
 
+        compiler.SetupCompile();
+
         for (let modulePath of this.modulePaths) {
             let cr = (this.NFramework.recompile_when_startup) ?
                       compiler.CompileFile(modulePath) :
@@ -150,6 +152,8 @@ class NModuleManager {
                 });
             }
         }
+
+        compiler.EndCompile();
     }
 
     ReRoutingModulesForClient() {

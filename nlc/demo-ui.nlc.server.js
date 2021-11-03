@@ -1,4 +1,4 @@
-const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";
+const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo-ui.nlc.client.js";
 
 module.exports = (manager) => {
     let exports     = new Object();
@@ -16,14 +16,6 @@ module.exports = (manager) => {
 
                     
 
-                
-
-                    
-
-                
-
-                    
-
         var NModule=
         function() {
             return require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule");
@@ -37,7 +29,7 @@ module.exports = (manager) => {
 
         nmodule.side='both';
 
-        nmodule.name='demo';
+        nmodule.name='demo-2';
 
         nmodule.__TYPE='NMODULE';
 
@@ -61,7 +53,7 @@ module.exports = (manager) => {
         nmodule.client_js_code=fs.readFileSync(clientVersion);
 
         if(nmodule.side!='server'){
-            nmodule.Routing('/nlc/demo', (req, res) => res.send(nmodule.client_js_code));
+            nmodule.Routing('/nlc/demo-2', (req, res) => res.send(nmodule.client_js_code));
         }
 
         
