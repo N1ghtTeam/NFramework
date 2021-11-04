@@ -67,6 +67,7 @@ class NFramework {
             <script src='/nframework'></script>
             <script src='/nmodule-manager'></script>
             <script src='/nmodule'></script>
+            <script src='/ui/component'></script>
         `;
     }
 
@@ -77,16 +78,19 @@ class NFramework {
         const nmoduleCLJSFilePath       = __dirname + '/cl/nmodule.js';
         const nmoduleMCLJSFilePath      = __dirname + '/cl/nmoduleManager.js';
         const appCLJSFilePath           = __dirname + '/cl/app.js';
+        const UIComponentFilePath           = __dirname + '/cl/ui/component.js';
 
         let frameworkCLJSCode           = fs.readFileSync(frameworkCLJSFilePath).toString();
         let nmoduleCLJSCode             = fs.readFileSync(nmoduleCLJSFilePath).toString();
         let nmoduleMCLJSCode            = fs.readFileSync(nmoduleMCLJSFilePath).toString();
         let appCLJSCode                 = fs.readFileSync(appCLJSFilePath).toString();
+        let UIComponentCode                 = fs.readFileSync(UIComponentFilePath).toString();
 
         this.express_server.get('/nframework', (req, res)       => res.send(frameworkCLJSCode));
         this.express_server.get('/nmodule', (req, res)          => res.send(nmoduleCLJSCode));
         this.express_server.get('/nmodule-manager', (req, res)  => res.send(nmoduleMCLJSCode));
         this.express_server.get('/appcl', (req, res)            => res.send(appCLJSCode));
+        this.express_server.get('/ui/component', (req, res)            => res.send(UIComponentCode));
     }
 
     LoadSetting(path) {

@@ -378,14 +378,7 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
             if(result_${rfid}.render!=null){
                 let childs = result_${rfid}.render();
                 if(childs!=null){
-                    for(let child of childs){
-                        try{
-                            result_${rfid}.appendChild(child);
-                        }
-                        catch{
-                            result_${rfid}.innerHTML+=child;
-                        }
-                    }
+                    result_${rfid}.AppendChilds(childs);
                 }
             }
 

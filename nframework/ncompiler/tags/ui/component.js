@@ -45,7 +45,7 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
             if(window.NFramework.customTags['ui']==null)
                 window.NFramework.customTags['ui']=new Object();
             window.NFramework.customTags['ui']['${componentName}']=true;
-            class ${componentName}_class extends HTMLElement{
+            class ${componentName}_class extends UIComponent{
 
                 constructor(){
                     super();
