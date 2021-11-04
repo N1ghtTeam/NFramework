@@ -24,6 +24,11 @@ tag.Compile = function(element, childsCode, code) {
 
             miejs+=frameworkCLEJS;
 
+            if(modules=='*')
+            {
+                modules=Object.keys(manager.modules);
+            }
+            
             for(var i=0;i<modules.length;i++){
                 var module=modules[i];
                 miejs+=' <script  src="/nlc/'+module+'"></script>';
@@ -37,6 +42,11 @@ tag.Compile = function(element, childsCode, code) {
             
             var uiComponents=manager.pages['${pageName}'].uiComponents;
 
+            if(uiComponents=='*')
+            {
+                uiComponents=manager.uiComponents;
+            }
+            
             for(var uiComponent of uiComponents){
                 miejs+="\\n<script src='/nlc/"+uiComponent+"'></script>";
             }

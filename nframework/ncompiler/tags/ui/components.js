@@ -12,6 +12,13 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
     
     let inputs = tag.GetInputs(element, childsCode, code);
 
+    
+    if(inputs[0]=='*'){
+        return `
+            this.uiComponents='*';
+        `;
+    }
+
     let compiledCode=`
     
     `;

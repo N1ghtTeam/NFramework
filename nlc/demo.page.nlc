@@ -3,18 +3,19 @@
 <page demoPage>
 
     <src demo.ejs />
-    
-    <global-objects * />
 
     <dom-modules/>
+    
+    <global-objects 
+        * 
+    />
 
     <ui:components 
-        demo-ui
-        demo-ui-c1
+        *
     />
 
     <modules  
-        demo
+        *
     />
 
 </page>

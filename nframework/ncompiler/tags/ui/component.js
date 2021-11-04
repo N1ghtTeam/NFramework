@@ -75,6 +75,8 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
 
             let ${componentName}_path='/nlc/${rawComponentName}';
 
+            manager.uiComponents.push('${rawComponentName}');
+
             express_server.get(${componentName}_path, (req, res) => {
 
                 res.send(${componentName}_code);

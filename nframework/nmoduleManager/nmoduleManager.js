@@ -10,6 +10,7 @@ class NModuleManager {
         this.modules                    = new Object();
         this.textContents               = new Object();
         this.globalObjectSourceCodes    = new Object();
+        this.uiComponents               = [];
 
         this.modulePaths                = [];
         this.svMJSPaths                 = [];

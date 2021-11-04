@@ -1,4 +1,4 @@
-/* NFRAMEWORK */if(manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned.c524f791_8df9_4161_a531_e41be0158b70){window.NFramework.nmoduleManager.nlcElementRunned.c524f791_8df9_4161_a531_e41be0158b70=!0,null==window.NFramework.customTags.ui&&(window.NFramework.customTags.ui=new Object),window.NFramework.customTags.ui.demo_ui=!0;class a extends HTMLElement{constructor(){super(),this.componentName="demo-ui"}render(){return(()=>{let e=[`
+/* NFRAMEWORK */if(manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned.b7683a84_481f_4ee0_847b_e15a54f3d4ea){window.NFramework.nmoduleManager.nlcElementRunned.b7683a84_481f_4ee0_847b_e15a54f3d4ea=!0,null==window.NFramework.customTags.ui&&(window.NFramework.customTags.ui=new Object),window.NFramework.customTags.ui.demo_ui=!0;class a extends HTMLElement{constructor(){super(),this.componentName="demo-ui"}render(){return(()=>{let e=[`
             
                 Hello World
             
