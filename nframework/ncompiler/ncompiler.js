@@ -70,6 +70,102 @@ class NCompiler {
                 }
     
                 if(!isInStr){
+                    if(code.substring(i,i+11) == 'short_tfunc'){
+    
+                        compile=false;
+
+                        let j=i+1;
+    
+                        let endTFunc=i+10;
+    
+                        let roundBracketCount=0;
+    
+                        let endParamsRoundBracket=j;
+    
+                        for(;j<code.length;j++){
+    
+                            if(!isInStr && (code[j]=='"' || code[j]=='`' || code[j]=="'")){
+                                isInStr=true;
+                                strChr=code[j];
+                            }
+                            else
+                            if(isInStr && code[j]==strChr){
+                                isInStr=false;
+                            }
+    
+                            if(!isInStr){
+    
+                                if(code[j]=='('){
+                                    roundBracketCount++;
+                                }
+                                if(code[j]==')'){
+                                    roundBracketCount--;
+                                
+                                    if(roundBracketCount==0){
+                                        endParamsRoundBracket=j;
+                                        break;
+                                    }
+                                
+                                }
+    
+                            }
+    
+                        }
+    
+    
+                        let curlyBracketCount=0;
+    
+                        let endParamsCurlyBracket=j;
+    
+                        j++;
+    
+                        for(;j<code.length;j++){
+    
+                            if(!isInStr && (code[j]=='"' || code[j]=='`' || code[j]=="'")){
+                                isInStr=true;
+                                strChr=code[j];
+                            }
+                            else
+                            if(isInStr && code[j]==strChr){
+                                isInStr=false;
+                            }
+    
+                            if(!isInStr){
+    
+                                if(code[j]=='{'){
+                                    curlyBracketCount++;
+                                }
+                                if(code[j]=='}'){
+                                    curlyBracketCount--;
+                                
+                                    if(curlyBracketCount==0){
+                                        endParamsCurlyBracket=j;
+                                        break;
+                                    }
+                                
+                                }
+    
+                            }
+    
+                        }
+    
+    
+                        let tfuncSrc=code.substring(endTFunc+1,j+1);
+    
+    
+                        let newCode=`
+                        {
+                            execute:function(T){
+                                var src=(function${tfuncSrc});
+                                var srcR=src();
+                                return srcR;
+                            }
+                        }
+                        `;
+                        result+=newCode;
+                        i=j+1;
+                    }
+                    else                    
                     if(code.substring(i,i+5) == 'tfunc'){
     
                         compile=false;
@@ -167,6 +263,7 @@ class NCompiler {
                         result+=newCode;
                         i=j+1;
                     }
+                    else
                     if(code[i]+code[i+1]=='::'){
     
                         i++;

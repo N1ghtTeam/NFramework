@@ -10,11 +10,7 @@
         return(
             <>
             
-                Hello World
             
-                <demo-ui-c1>
-                    
-                </demo-ui-c1>
 
             </>
         );

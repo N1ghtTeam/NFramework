@@ -22,41 +22,36 @@
         <async-method setup>
             function(){
 
-                @dom->body.appendChild(
-                    <demo-ui onclick={
-                        (()=>{
-                            return 'console.log("demo ui clicked");';
-                        })()
-                    }>
+                let demo_ui = (
+                    <demo-ui 
+                        onclick={
+                            'console.log("demo ui clicked");'
+                        }
+                    >
                         
                     </demo-ui>
-
                 );
-                
-                class NewT{
-                    constructor(){
 
-                    }
-                }
-                class NewT1{
-                    constructor(){
+                @dom->body.appendChild(
+                    demo_ui
+                );
 
-                    }
-                }
 
-                let demoTemplate = tfunc () {
+                let log = short_tfunc () {
                     
-                    console.log(T);
+                    console.log(...T);
 
                     return(
-                        demoTemplate
+                        log
                     );
 
                 };
 
-                let targs=[NewT,NewT];
-                
-                demoTemplate()::targs;
+                log
+                    ::['Hello','World']
+                    ::['Hello','World']
+                    ::['Hello','World']
+                ;
 
             }
 
