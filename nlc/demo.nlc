@@ -2,55 +2,45 @@
 <use dom>
 
 <module demo>
-
-    <sync-property prop/>
-
-    <server-only>
-
-        <method setup>
-
-            function(){
-                this->prop=5;
-            }
-
-        </method>
-
-    </server-only>
     
     <client-only>
         
+        <property prop/>
+
         <async-method setup>
             function(){
 
-                let demo_ui = (
-                    <demo-ui 
-                        onclick={
-                            'console.log("demo ui clicked");'
-                        }
-                    >
+                
+                // let demo_ui = (
+                //     <demo-ui 
+                //         onclick={
+                //             'console.log("demo ui clicked");'
+                //         }
+                //     >
                         
-                    </demo-ui>
-                );
+                //     </demo-ui>
+                // );
 
-                @dom->body.appendChild(
-                    demo_ui
-                );
+                // @dom->body.appendChild(
+                //     demo_ui
+                // );
 
 
-                let log = short_tfunc () {
+                
+                this->prop = tfunc (a) {
                     
-                    console.log(...T);
+                    console.log(a,...T);
 
                     return(
-                        log
+                        this
                     );
 
                 };
 
-                log
-                    ::['Hello','World']
-                    ::['Hello','World']
-                    ::['Hello','World']
+                this->prop
+                    ('ok')::['Hello','World']
+                    ('ok')::['Hello','World']
+                    ('ok')::['Hello','World']
                 ;
 
             }

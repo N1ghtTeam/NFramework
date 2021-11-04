@@ -157,7 +157,7 @@ class NCompiler {
                         {
                             execute:function(T){
                                 var src=(function${tfuncSrc});
-                                var srcR=src();
+                                var srcR=src.call(this);
                                 return srcR;
                             }
                         }
@@ -248,13 +248,25 @@ class NCompiler {
     
                         let tfuncSrc=code.substring(endTFunc+1,j+1);
     
+                        let tfuncId = uuidv4();
+
+                        let tfuncId2='a';
+
+                        for(let i=0;i<tfuncId.length;i++){
+                            if(tfuncId[i]=='-'){
+                                tfuncId2+='_';
+                            }
+                            else{
+                                tfuncId2+=tfuncId[i];
+                            }
+                        }
     
                         let newCode=`
-                        (...params)=>{
+                        function ${tfuncId2}(...params){
                             return {
                                 execute:function(T){
                                     var src=(function${tfuncSrc});
-                                    var srcR=src(...params);
+                                    var srcR=src.call(${tfuncId2},...params);
                                     return srcR;
                                 }
                             }
