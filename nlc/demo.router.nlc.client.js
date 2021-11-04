@@ -1,1 +1,126 @@
-/* NFRAMEWORK */manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned["45964e67_dc90_4f7f_a390_3dd924542df9"]&&(window.NFramework.nmoduleManager.nlcElementRunned["45964e67_dc90_4f7f_a390_3dd924542df9"]=!0,(()=>{var r=new window.NFramework.NModule;r.side="both",r.name="demo-router",r.__TYPE="NMODULE",r.RunExternalMethod=function(e){e.call(r)},r.RunExternalMethod(function(){path="/",callback=(e,r)=>{(e=>{var r=manager.NFramework,a=manager.pages.demoPage.modules,n="";n+=r.clejs,"*"==a&&(a=Object.keys(manager.modules));for(var o,m=0;m<a.length;m++)n+=' <script  src="/nlc/'+a[m]+'"><\/script>';for(o of manager.pages.demoPage.customTypeDatas)n+="\n<script src='/nlc/"+o+"'><\/script>";var d,r=manager.pages.demoPage.uiComponents;for(d of r="*"==r?manager.uiComponents:r)n+="\n<script src='/nlc/"+d+"'><\/script>";n="<nframework-scripts>"+(n+="\n<script src='/appcl'><\/script>")+"</nframework-scripts>",e.render(manager.pages.demoPage.src,{NFramework:n})})(r)}}),window.NFramework.nmoduleManager.ImportModule(r)})());
+manager = window.NFramework.nmoduleManager;
+
+
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['a28347a2_9cd1_43dc_9def_ad565aa96c10']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['a28347a2_9cd1_43dc_9def_ad565aa96c10']=true;
+                        
+            (()=>{
+                
+
+        var NModule=
+            function() {
+                return window.NFramework.NModule;
+            }()
+
+        ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        nmodule.side='both';
+
+        nmodule.name='demo-router';
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+
+    
+        
+
+        
+        path=
+    
+            '/'
+        
+
+    
+
+        
+        callback=
+    
+            (req,res)=>{
+                
+                
+
+        ((req,res)=>{
+            var framework=manager.NFramework;
+
+            var modules=manager.pages['demoPage'].modules;
+
+            var miejs='';
+
+            var frameworkCLEJS=framework.clejs;
+
+            miejs+=frameworkCLEJS;
+            
+            miejs+="\n<nlc>";
+
+            if(modules=='*')
+            {
+                modules=Object.keys(manager.modules);
+            }
+            
+            for(var i=0;i<modules.length;i++){
+                var module=modules[i];
+                miejs+=' <script  src="/nlc/'+module+'"></script>';
+            }
+
+            var globalObjects=manager.pages['demoPage'].customTypeDatas;
+
+            for(var globalObjectName of globalObjects){
+                miejs+="\n<script src='/nlc/"+globalObjectName+"'></script>";
+            }
+            
+            var uiComponents=manager.pages['demoPage'].uiComponents;
+
+            if(uiComponents=='*')
+            {
+                uiComponents=manager.uiComponents;
+            }
+            
+            for(var uiComponent of uiComponents){
+                miejs+="\n<script src='/nlc/"+uiComponent+"'></script>";
+            }
+
+            miejs+="\n</nlc>";
+
+            miejs+="\n<script src='/appcl'></script>";
+
+            miejs="<nframework-scripts>" +miejs+ "</nframework-scripts>";
+
+            res.render( manager.pages['demoPage'].src,{
+                NFramework:miejs
+            });
+        })(req,res);
+
+    
+            }
+        
+
+    
+
+    
+    
+
+
+        });
+    
+
+            var nmoduleManager = window.NFramework.nmoduleManager;
+            nmoduleManager.ImportModule(nmodule);
+        
+            })();
+        
+                    }
+                
+
+                

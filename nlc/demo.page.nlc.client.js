@@ -1,1 +1,15 @@
-/* NFRAMEWORK */manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned["30f06625_9d8c_475a_8e78_8c15f25dc229"]&&(window.NFramework.nmoduleManager.nlcElementRunned["30f06625_9d8c_475a_8e78_8c15f25dc229"]=!0);
+manager = window.NFramework.nmoduleManager;
+
+
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['f5e896ca_9188_47e4_9389_1b4f285da29d']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['f5e896ca_9188_47e4_9389_1b4f285da29d']=true;
+                        
+
+    
+
+    
+                    }
+                
+
+                

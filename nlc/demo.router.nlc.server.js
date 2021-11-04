@@ -1,1 +1,155 @@
-/* NFRAMEWORK */const JSCLPath="D:\\MyTechs\\nframework/nlc/demo.router.nlc.client.js";module.exports=n=>{let s=new Object,e=[];s.customTypeDatas=[],s.customTypeDatas.Add=function(e,r){s.customTypeDatas.push({key:e,value:r})};var c=new(require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule"));c.side="both",c.name="demo-router",c.__TYPE="NMODULE",c.RunExternalMethod=function(e){e.call(c)},c.RunExternalMethod(function(){path="",callback=()=>{},path="/",callback=(e,r)=>{(e=>{var r=n.NFramework,s=n.pages.demoPage.modules,c="";c+=r.clejs,"*"==s&&(s=Object.keys(n.modules));for(var o,t=0;t<s.length;t++)c+=' <script  src="/nlc/'+s[t]+'"><\/script>';for(o of n.pages.demoPage.customTypeDatas)c+="\n<script src='/nlc/"+o+"'><\/script>";var a,r=n.pages.demoPage.uiComponents;for(a of r="*"==r?n.uiComponents:r)c+="\n<script src='/nlc/"+a+"'><\/script>";e.render(n.pages.demoPage.src,{NFramework:c="<nframework-scripts>"+(c+="\n<script src='/appcl'><\/script>")+"</nframework-scripts>"})})(r)},c.Routing(path,callback)});var r=require("fs"),o=JSCLPath;return c.client_js_code=r.readFileSync(o),"server"!=c.side&&c.Routing("/nlc/demo-router",(e,r)=>r.send(c.client_js_code)),e.push(c),s.nmodules=e,s.pages=[],s};
+const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.client.js";
+
+module.exports = (manager) => {
+    let exports     = new Object();
+    let nmodules    = [];
+    let pages       = [];
+    exports.customTypeDatas=[];
+    exports.customTypeDatas.Add=function(key,value){
+        exports.customTypeDatas.push({
+            'key':key,
+            'value':value
+        });
+    }
+
+    
+
+                    
+
+        var NModule=
+        function() {
+            return require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule");
+        }()
+
+    ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        nmodule.side='both';
+
+        nmodule.name='demo-router';
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+
+    
+        
+        {
+            path='';
+            callback=()=>{};
+            
+
+        
+        path=
+    
+            '/'
+        
+
+    
+
+        
+        callback=
+    
+            (req,res)=>{
+                
+                
+
+        ((req,res)=>{
+            var framework=manager.NFramework;
+
+            var modules=manager.pages['demoPage'].modules;
+
+            var miejs='';
+
+            var frameworkCLEJS=framework.clejs;
+
+            miejs+=frameworkCLEJS;
+            
+            miejs+="\n<nlc>";
+
+            if(modules=='*')
+            {
+                modules=Object.keys(manager.modules);
+            }
+            
+            for(var i=0;i<modules.length;i++){
+                var module=modules[i];
+                miejs+=' <script  src="/nlc/'+module+'"></script>';
+            }
+
+            var globalObjects=manager.pages['demoPage'].customTypeDatas;
+
+            for(var globalObjectName of globalObjects){
+                miejs+="\n<script src='/nlc/"+globalObjectName+"'></script>";
+            }
+            
+            var uiComponents=manager.pages['demoPage'].uiComponents;
+
+            if(uiComponents=='*')
+            {
+                uiComponents=manager.uiComponents;
+            }
+            
+            for(var uiComponent of uiComponents){
+                miejs+="\n<script src='/nlc/"+uiComponent+"'></script>";
+            }
+
+            miejs+="\n</nlc>";
+
+            miejs+="\n<script src='/appcl'></script>";
+
+            miejs="<nframework-scripts>" +miejs+ "</nframework-scripts>";
+
+            res.render( manager.pages['demoPage'].src,{
+                NFramework:miejs
+            });
+        })(req,res);
+
+    
+            }
+        
+
+    
+
+    
+            nmodule.Routing(path,callback);
+        }
+
+    
+    
+
+
+        });
+    
+
+        var fs=require('fs');
+
+        var clientVersion=JSCLPath;
+
+        nmodule.client_js_code=fs.readFileSync(clientVersion);
+
+        if(nmodule.side!='server'){
+            nmodule.Routing('/nlc/demo-router', (req, res) => res.send(nmodule.client_js_code));
+        }
+
+        
+
+            nmodules.push(nmodule);
+
+        
+
+                
+
+    exports.nmodules=nmodules;
+    exports.pages=pages;
+    return exports;
+}

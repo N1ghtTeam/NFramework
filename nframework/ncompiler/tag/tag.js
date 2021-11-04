@@ -161,38 +161,6 @@ class Tag {
             oneinput += (inputsStr[i] != '\r' && inputsStr[i] != '\n' && inputsStr[i] != ' ') ?
                          inputsStr[i] : ' ';
 
-        const Split = function(data) {
-            let resultStr = [];
-
-            let s = '';
-
-            let isInStr = false;
-            let strChr = '"';
-
-            for (let i = 0; i < data.length; i++) {
-                if (!isInStr && (data[i] == '"' || data[i] == "'" || data[i] == '`')) {
-                    strChr = data[i];
-                    isInStr = true;
-                }
-
-                if ((data[i] == ' ' && !isInStr) || i == (data.length - 1)) {
-                    if (i == (data.length - 1) && (data[i] != ' ')) {
-                        s += data[i];
-                    }
-                    resultStr.push(s);
-                    s = '';
-                }
-                else {
-                    s += data[i];
-                }
-
-                if (!isInStr && data[i] == strChr) {
-                    isInStr = false;
-                }
-            }
-
-            return resultStr;
-        }
 
         inputs = oneinput.split(' ');
 

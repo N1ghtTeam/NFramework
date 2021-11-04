@@ -23,6 +23,8 @@ tag.Compile = function(element, childsCode, code) {
             var frameworkCLEJS=framework.clejs;
 
             miejs+=frameworkCLEJS;
+            
+            miejs+="\\n<nlc>";
 
             if(modules=='*')
             {
@@ -50,6 +52,8 @@ tag.Compile = function(element, childsCode, code) {
             for(var uiComponent of uiComponents){
                 miejs+="\\n<script src='/nlc/"+uiComponent+"'></script>";
             }
+
+            miejs+="\\n</nlc>";
 
             miejs+="\\n<script src='/appcl'></script>";
 

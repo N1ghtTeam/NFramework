@@ -2,6 +2,20 @@
 <use dom>
 
 <module demo>
+
+    <sync-property prop/>
+
+    <server-only>
+
+        <method setup>
+
+            function(){
+                this->prop=5;
+            }
+
+        </method>
+
+    </server-only>
     
     <client-only>
         
@@ -9,16 +23,44 @@
             function(){
 
                 @dom->body.appendChild(
-                    <demo-ui>
-
+                    <demo-ui onclick={
+                        (()=>{
+                            return 'console.log("demo ui clicked");';
+                        })()
+                    }>
+                        
                     </demo-ui>
 
                 );
+                
+                class NewT{
+                    constructor(){
 
+                    }
+                }
+                class NewT1{
+                    constructor(){
+
+                    }
+                }
+
+                let demoTemplate = tfunc () {
+                    
+                    console.log(T);
+
+                    return(
+                        demoTemplate
+                    );
+
+                };
+
+                let targs=[NewT,NewT];
+                
+                demoTemplate()::targs;
 
             }
 
-        </method>
+        </async-method>
 
     </client-only>
 

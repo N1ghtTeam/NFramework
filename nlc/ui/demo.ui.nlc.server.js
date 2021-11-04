@@ -1,1 +1,43 @@
-/* NFRAMEWORK */const JSCLPath="D:\\MyTechs\\nframework/nlc/ui/demo.ui.nlc.client.js";module.exports=e=>{let t=new Object;t.customTypeDatas=[],t.customTypeDatas.Add=function(e,s){t.customTypeDatas.push({key:e,value:s})};var n=require("fs").readFileSync(JSCLPath).toString();let s=e.NFramework.express_server;return e.uiComponents.push("demo-ui"),s.get("/nlc/demo-ui",(e,s)=>{s.send(n)}),t.nmodules=[],t.pages=[],t};
+const JSCLPath = "D:\\MyTechs\\nframework/nlc/ui/demo.ui.nlc.client.js";
+
+module.exports = (manager) => {
+    let exports     = new Object();
+    let nmodules    = [];
+    let pages       = [];
+    exports.customTypeDatas=[];
+    exports.customTypeDatas.Add=function(key,value){
+        exports.customTypeDatas.push({
+            'key':key,
+            'value':value
+        });
+    }
+
+    
+
+                    
+        
+            var fs=require('fs');
+
+            var demo_ui_code=fs.readFileSync(JSCLPath).toString();
+
+            let express_server = manager.NFramework.express_server;
+
+            let demo_ui_path='/nlc/demo-ui';
+
+            manager.uiComponents.push('demo-ui');
+
+            express_server.get(demo_ui_path, (req, res) => {
+
+                res.send(demo_ui_code);
+
+            });
+
+        
+        
+
+                
+
+    exports.nmodules=nmodules;
+    exports.pages=pages;
+    return exports;
+}

@@ -44,6 +44,229 @@ class NCompiler {
         return result;
     }
 
+    CompileTemplate(code){
+        let result='';
+
+        let isInStr=false;
+        let strChr='';
+
+        let compile=true;
+        
+        
+        let regex = /^[a-zA-Z0-9]+$/;
+
+        for(let i=0;i<code.length;i++){
+            if(!compile){
+                result+=code[i];
+            }
+            else{
+                if(!isInStr && (code[i]=='"' || code[i]=='`' || code[i]=="'")){
+                    isInStr=true;
+                    strChr=code[i];
+                }
+                else
+                if(isInStr && code[i]==strChr){
+                    isInStr=false;
+                }
+    
+                if(!isInStr){
+                    if(code.substring(i,i+5) == 'tfunc'){
+    
+                        compile=false;
+
+                        let j=i+1;
+    
+                        let endTFunc=i+4;
+    
+                        let roundBracketCount=0;
+    
+                        let endParamsRoundBracket=j;
+    
+                        for(;j<code.length;j++){
+    
+                            if(!isInStr && (code[j]=='"' || code[j]=='`' || code[j]=="'")){
+                                isInStr=true;
+                                strChr=code[j];
+                            }
+                            else
+                            if(isInStr && code[j]==strChr){
+                                isInStr=false;
+                            }
+    
+                            if(!isInStr){
+    
+                                if(code[j]=='('){
+                                    roundBracketCount++;
+                                }
+                                if(code[j]==')'){
+                                    roundBracketCount--;
+                                
+                                    if(roundBracketCount==0){
+                                        endParamsRoundBracket=j;
+                                        break;
+                                    }
+                                
+                                }
+    
+                            }
+    
+                        }
+    
+    
+                        let curlyBracketCount=0;
+    
+                        let endParamsCurlyBracket=j;
+    
+                        j++;
+    
+                        for(;j<code.length;j++){
+    
+                            if(!isInStr && (code[j]=='"' || code[j]=='`' || code[j]=="'")){
+                                isInStr=true;
+                                strChr=code[j];
+                            }
+                            else
+                            if(isInStr && code[j]==strChr){
+                                isInStr=false;
+                            }
+    
+                            if(!isInStr){
+    
+                                if(code[j]=='{'){
+                                    curlyBracketCount++;
+                                }
+                                if(code[j]=='}'){
+                                    curlyBracketCount--;
+                                
+                                    if(curlyBracketCount==0){
+                                        endParamsCurlyBracket=j;
+                                        break;
+                                    }
+                                
+                                }
+    
+                            }
+    
+                        }
+    
+    
+                        let tfuncSrc=code.substring(endTFunc+1,j+1);
+    
+    
+                        let newCode=`
+                        (...params)=>{
+                            return {
+                                execute:function(T){
+                                    var src=(function${tfuncSrc});
+                                    var srcR=src(...params);
+                                    return srcR;
+                                }
+                            }
+                        }
+                        `;
+                        result+=newCode;
+                        i=j+1;
+                    }
+                    if(code[i]+code[i+1]=='::'){
+    
+                        i++;
+
+                        let isTFuncCallArgs=true;
+    
+                        let di=i;
+    
+                        i++;
+    
+                        for(;i<code.length;i++){
+                            if(code[i]!=' ' && code[i]!='\n' && code[i]!='\r'){
+                                break;
+                            }
+                        }                    
+    
+                        if(code[i]!='['){
+                            isTFuncCallArgs=false;
+                        }
+    
+                        if(!isTFuncCallArgs){
+                            
+                            compile=false;
+                            
+                            let startTArgs=i;
+                            let endTArgs=i;
+                            
+                            for(;i<code.length;i++){
+                                if(code[i]!='_' && !code[i].match(regex)){
+                                    endTArgs=i;
+                                    break;
+                                }
+                            }
+
+                            let targs = code.substring(startTArgs,endTArgs);
+                            result+=`.execute(${targs})`;
+                        }
+                        else{
+    
+                            compile=false;
+
+                            let endArray=i;
+    
+                            let arrayChrCount=0;
+    
+                            for(;endArray<code.length;endArray++){
+    
+                                if(!isInStr && (code[endArray]=='"' || code[endArray]=='`' || code[endArray]=="'")){
+                                    isInStr=true;
+                                    strChr=code[endArray];
+                                }
+                                else
+                                if(isInStr && code[endArray]==strChr){
+                                    isInStr=false;
+                                }
+    
+                                if(!isInStr){
+    
+                                    if(code[endArray]=='['){
+                                        arrayChrCount++;
+                                    }
+                                    if(code[endArray]==']'){
+                                        arrayChrCount--;
+                                        if(arrayChrCount==0){
+                                            break;
+                                        }
+                                    }
+    
+                                }
+    
+                            }
+    
+                            let TArgs = code.substring(i,endArray+1);
+                            result+=`.execute(${TArgs})`;
+    
+                            i=endArray;
+    
+                        }
+                        
+    
+                    }
+                    else{
+                        result+=code[i];
+                    }
+    
+                }
+                else{
+                    result+=code[i];
+                }
+            }
+
+        }
+
+        if(compile==false){
+            result=this.CompileTemplate(result);
+        }
+
+        return result;
+    }
+
     CreateModuleFromCode(codeSV, codeCL, path) {
         let fileNLCPath = path;
         let fileJSSVPath = path;
@@ -205,6 +428,7 @@ class NCompiler {
                 isInStr=true;
                 strChr=ch;
             }
+            else
             if(isInStr && ch==strChr){
                 isInStr=false;
             }
@@ -320,6 +544,7 @@ class NCompiler {
                 isInStr=true;
                 strChr=code[i];
             }
+            else
             if(isInStr && code[i]==strChr){
                 isInStr=false;
             }
@@ -369,6 +594,7 @@ class NCompiler {
             if(!isInStr && (ch=='"' || ch=="'" || ch=='`')){
                 isInStr=true;
             }
+            else
             if(isInStr && ch==strChr){
                 isInStr=false;
             }
@@ -1133,6 +1359,7 @@ ${code}`;
                                 ncStrChr=nextCode[t];
                                 ncIsInStr=true;
                             }
+                            else
                             if(ncStrChr && nextCode[t]==ncStrChr){
                                 ncIsInStr=false;
                             }
@@ -1239,6 +1466,8 @@ ${code}`;
         this.useLevel = 0;
 
         let removedCommentsCode = this.RemoveComments(code);
+
+        removedCommentsCode=this.CompileTemplate(removedCommentsCode);
 
         removedCommentsCode=this.CompileShortFragmentTags(removedCommentsCode);
 
