@@ -58,16 +58,49 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
 
             customElements.define('${rawComponentName}', ${componentName}_class);
 
-            let nframeworkAppUI = document.createElement('${rawComponentName}');
+            {
+    
 
-            document.body.appendChild(nframeworkAppUI);
+                (()=>{     
+                    var NModule = window.NFramework.NModule;
 
-            if(nframeworkAppUI.render!=null){
-                let childs = nframeworkAppUI.render();
-                if(childs!=null){
-                    nframeworkAppUI.AppendChilds(childs);
-                }
+                    var nmodule = new NModule();
+    
+                    nmodule.side='client';
+            
+                    nmodule.name='nframework-app-ui';
+    
+                    nmodule.__TYPE='NMODULE';
+    
+                    
+                    nmodule.RunExternalMethod=function(callback){
+                        callback.call(nmodule);
+                    }
+    
+    
+                    nmodule.RunExternalMethod(function(){
+                        nmodule.AddMethod('setup',function(){
+                            
+                            let nframeworkAppUI = document.createElement('${rawComponentName}');
+
+                            document.body.appendChild(nframeworkAppUI);
+                
+                            if(nframeworkAppUI.render!=null){
+                                let childs = nframeworkAppUI.render();
+                                if(childs!=null){
+                                    nframeworkAppUI.AppendChilds(childs);
+                                }
+                            }
+    
+                        });
+                    });           
+                    
+                    var nmoduleManager = window.NFramework.nmoduleManager;
+                    nmoduleManager.ImportModule(nmodule);
+
+                })();
             }
+            
 
         `;
     

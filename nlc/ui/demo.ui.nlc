@@ -4,13 +4,13 @@
     
 <ui:component demo-ui>
 
-render(){
-    return(
-        <>        
-            Hello World        
-        </>
-    );
-}
+    render(){
+        return(
+            <>        
+                Hello World    
+            </>
+        );
+    }
 
 </ui:component>
 
