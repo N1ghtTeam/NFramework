@@ -1,14 +1,129 @@
-/* NFRAMEWORK */manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned["38ba8fd7_e498_400e_b64a_0eeb6cf537a7"]&&(window.NFramework.nmoduleManager.nlcElementRunned["38ba8fd7_e498_400e_b64a_0eeb6cf537a7"]=!0,(()=>{var n=new window.NFramework.NModule;n.side="both",n.name="demo",n.__TYPE="NMODULE",n.RunExternalMethod=function(e){e.call(n)},n.RunExternalMethod(function(){this.AddProperty("prop"),this.AddMethod("CreateEC",(...e)=>{return function(...e){let t=this;return function(n){return function(e){return new n}.call(t,...e)}}.call(this,...e)}),this.AddMethod("setup",async(...e)=>{let n=async function(){await manager.Get("NLC").GetThisWithCallback(e=>e.Get("Execute"))(`
-                    <use html>
-                    <use dom>
+manager = window.NFramework.nmoduleManager;
+
+
                     
-                    <region>
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['4cafa048_1a36_4525_bbb4_323c84d6e8d3']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['4cafa048_1a36_4525_bbb4_323c84d6e8d3']=true;
+                        
+            (()=>{
+                
 
-                        @dom->body.appendChild(
-                            <div>
-                                Hello World
-                            </div>
-                        );
+        var NModule=
+            function() {
+                return window.NFramework.NModule;
+            }()
 
-                    </region>
-                `)}.bind(this);return n(...e)})}),window.NFramework.nmoduleManager.ImportModule(n)})());
+        ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        nmodule.side='both';
+
+        nmodule.name='demo';
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+    
+    
+        
+        
+
+    this.AddProperty('prop');
+
+    
+
+        
+        this.AddMethod('CreateEC',(...args) => {
+            let f=
+    
+
+            
+                        function abca6285a_fd9f_4e6b_9a5e_5b90f529169d(...params){
+                            let this_abca6285a_fd9f_4e6b_9a5e_5b90f529169d=this;
+                            return (
+                                function tfresult_abca6285a_fd9f_4e6b_9a5e_5b90f529169d(T){
+                                    var src=(function (e) {
+                return(
+                    new T()
+                );
+            });
+                                    var srcR=src.call(this_abca6285a_fd9f_4e6b_9a5e_5b90f529169d,...params);
+                                    return srcR;
+                                }
+                            );
+                        }
+                        
+
+        
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+        
+        this.AddMethod('setup',async (...args)=>{
+                let f=async function(){
+
+                (manager.Get('dom')).GetThisWithCallback((module)=>{
+                            return module.Get('body');
+                        }).appendChild(
+                    await (manager.Get('NLC')).GetThisWithCallback((module)=>{
+                            return module.Get('TExecute');
+                        })()
+                        ((
+                                `
+                                    <use html>
+                                    <use dom>
+                                    
+                                    <region>
+
+                                        return(
+                                            <div>
+                                                Hello World
+                                            </div>
+                                        );
+
+                                    </region>
+                                `
+                            ))
+                );
+            
+            }
+
+        
+                let f2=f.bind(this);
+                return await f2(...args);
+            }
+
+        );
+
+    
+
+    
+
+
+        });
+    
+
+            var nmoduleManager = window.NFramework.nmoduleManager;
+            nmoduleManager.ImportModule(nmodule);
+        
+            })();
+        
+                    }
+                
+
+                

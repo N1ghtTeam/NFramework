@@ -19,8 +19,10 @@ tag.Compile = function(element, childsCode, code) {
     let compiledCodeFunc = '';
 
     let start = 0;
+    let regex = /^[a-zA-Z0-9]+$/;
+
     for (; start < codeFunc.length; start++) {
-        if (codeFunc[start] == 'f') {
+        if (codeFunc[start].match(regex)) {
             start;
             break;
         }

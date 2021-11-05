@@ -1,5 +1,49 @@
-/* NFRAMEWORK */if(manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned["8ffeb61a_d765_446a_8969_acc8440889fa"]){window.NFramework.nmoduleManager.nlcElementRunned["8ffeb61a_d765_446a_8969_acc8440889fa"]=!0,null==window.NFramework.customTags.ui&&(window.NFramework.customTags.ui=new Object),window.NFramework.customTags.ui.demo_ui_c1=!0;class a extends UIComponent{constructor(){super(),this.componentName="demo-ui-c1"}render(){return(()=>{let e=[`
+manager = window.NFramework.nmoduleManager;
+
+
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['9405893f_3b6e_4e27_ab73_476d335809d0']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['9405893f_3b6e_4e27_ab73_476d335809d0']=true;
+                        
+            if(window.NFramework.customTags['ui']==null)
+                window.NFramework.customTags['ui']=new Object();
+            window.NFramework.customTags['ui']['demo_ui_c1']=true;
+            class demo_ui_c1_class extends UIComponent{
+
+                constructor(){
+                    super();
+                    this.componentName='demo-ui-c1';
+                }                
+
+            
+
+    render(){
+
+        return(
+            (()=>{
+                        let __result__453yh5b6jnu76imk76 = [`
             
                 Hello World C1
             
-            `];return e.elements=[],e})()}}customElements.define("demo-ui-c1",a)}
+            `,];  
+
+                        __result__453yh5b6jnu76imk76.elements=[];
+
+                        return __result__453yh5b6jnu76imk76;
+                    })()
+        );
+    }
+
+
+        
+            }
+
+            customElements.define('demo-ui-c1', demo_ui_c1_class);
+
+
+
+        
+                    }
+                
+
+                

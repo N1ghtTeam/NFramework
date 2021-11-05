@@ -1,1 +1,18 @@
-/* NFRAMEWORK */manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned["4a3f3194_f02b_4554_b614_fb86686dcbdb"]&&(window.NFramework.nmoduleManager.nlcElementRunned["4a3f3194_f02b_4554_b614_fb86686dcbdb"]=!0,manager.customTypeDatas.demoGlobal="Hello World");
+manager = window.NFramework.nmoduleManager;
+
+
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['630dcf87_0b00_4354_a4f0_03e97feb137a']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['630dcf87_0b00_4354_a4f0_03e97feb137a']=true;
+                         manager.customTypeDatas['demoGlobal']=(()=>{
+            let data=
+
+'Hello World'
+
+;
+            return data;
+        })();
+                    }
+                
+
+                

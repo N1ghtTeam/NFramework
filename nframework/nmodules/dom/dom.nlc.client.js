@@ -1,1 +1,189 @@
-/* NFRAMEWORK */var a52d4116f_22ea_4e9b_8908_fd3245ad090c_module;manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned.fae21c27_6c49_4566_b00e_443e1f968935&&(window.NFramework.nmoduleManager.nlcElementRunned.fae21c27_6c49_4566_b00e_443e1f968935=!0,(()=>{var t=new window.NFramework.NModule;t.side="both",t.name="dom",t.__TYPE="NMODULE",t.RunExternalMethod=function(e){e.call(t)},t.RunExternalMethod(function(){this.AddProperty("body"),this.AddMethod("setup",(...e)=>{return function(){this.GetThisWithCallback(e=>{a52d4116f_22ea_4e9b_8908_fd3245ad090c_module=e});let e={set stter(e){a52d4116f_22ea_4e9b_8908_fd3245ad090c_module.Set("body",e)}};e.stter=document.body}.call(this,...e)}),this.AddMethod("getElementById",(...e)=>{return function(e){return document.getElementById(e)}.call(this,...e)}),this.AddMethod("getElementsByName",(...e)=>{return function(e){return document.getElementsByName(e)}.call(this,...e)}),this.AddMethod("getElementsByClassName",(...e)=>{return function(e){return document.getElementsByClassName(e)}.call(this,...e)}),this.AddMethod("getElementsByTagName",(...e)=>{return function(e){return document.getElementsByTagName(e)}.call(this,...e)}),this.AddMethod("querySelector",(...e)=>{return function(e){return document.querySelector(e)}.call(this,...e)}),this.AddMethod("querySelectorAll",(...e)=>{return function(e){return document.querySelectorAll(e)}.call(this,...e)})}),window.NFramework.nmoduleManager.ImportModule(t)})());
+
+                            var ad1ebd250_3b81_4aac_95af_4826f569e52d_module;
+                        manager = window.NFramework.nmoduleManager;
+
+
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['a0433c23_0085_4837_be64_d2ed48ba5050']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['a0433c23_0085_4837_be64_d2ed48ba5050']=true;
+                        
+            (()=>{
+                
+
+        var NModule=
+            function() {
+                return window.NFramework.NModule;
+            }()
+
+        ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        nmodule.side='both';
+
+        nmodule.name='dom';
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+
+    
+
+        
+
+    this.AddProperty('body');
+
+    
+
+        
+        this.AddMethod('setup',(...args) => {
+            let f=
+    
+
+            function(){
+                this.GetThisWithCallback((module)=>{
+                            ad1ebd250_3b81_4aac_95af_4826f569e52d_module=module;
+                        })
+                        let getterObjd1ebd250_3b81_4aac_95af_4826f569e52d={
+                            set stter(value) {
+                                ad1ebd250_3b81_4aac_95af_4826f569e52d_module.Set('body',value);
+                            }
+                        }
+                        getterObjd1ebd250_3b81_4aac_95af_4826f569e52d.stter=document.body;
+            }
+
+        
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+        
+        this.AddMethod('getElementById',(...args) => {
+            let f=
+    
+            function(pr0){
+                return document.getElementById(pr0);
+            }
+        
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+        
+        this.AddMethod('getElementsByName',(...args) => {
+            let f=
+    
+            function(pr0){
+                return document.getElementsByName(pr0);
+            }
+        
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+        
+        this.AddMethod('getElementsByClassName',(...args) => {
+            let f=
+    
+            function(pr0){
+                return document.getElementsByClassName(pr0);
+            }
+        
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+        
+        this.AddMethod('getElementsByTagName',(...args) => {
+            let f=
+    
+            function(pr0){
+                return document.getElementsByTagName(pr0);
+            }
+        
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+        
+        this.AddMethod('querySelector',(...args) => {
+            let f=
+    
+            function(pr0){
+                return document.querySelector(pr0);
+            }
+        
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+        
+        this.AddMethod('querySelectorAll',(...args) => {
+            let f=
+    
+            function(pr0){
+                return document.querySelectorAll(pr0);
+            }
+        
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+    
+
+
+        });
+    
+
+            var nmoduleManager = window.NFramework.nmoduleManager;
+            nmoduleManager.ImportModule(nmodule);
+        
+            })();
+        
+                    }
+                
+
+                

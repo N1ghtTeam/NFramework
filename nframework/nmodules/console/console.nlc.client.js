@@ -1,1 +1,52 @@
-/* NFRAMEWORK */manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned["756e5099_3936_455d_abc1_225bd7eab8a1"]&&(window.NFramework.nmoduleManager.nlcElementRunned["756e5099_3936_455d_abc1_225bd7eab8a1"]=!0,(()=>{var n=new window.NFramework.NModule;n.side="both",n.name="console",n.__TYPE="NMODULE",n.RunExternalMethod=function(e){e.call(n)},n.RunExternalMethod(function(){}),window.NFramework.nmoduleManager.ImportModule(n)})());
+manager = window.NFramework.nmoduleManager;
+
+
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['c3cda58c_223f_4a88_9221_744e3a09a355']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['c3cda58c_223f_4a88_9221_744e3a09a355']=true;
+                        
+            (()=>{
+                
+
+        var NModule=
+            function() {
+                return window.NFramework.NModule;
+            }()
+
+        ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        nmodule.side='both';
+
+        nmodule.name='console';
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+
+    
+
+
+
+
+        });
+    
+
+            var nmoduleManager = window.NFramework.nmoduleManager;
+            nmoduleManager.ImportModule(nmodule);
+        
+            })();
+        
+                    }
+                
+
+                

@@ -274,6 +274,117 @@ class NCompiler {
                         result+=newCode;
                         i=j+1;
                     }
+                    else                    
+                    if(code.substring(i,i+11) == 'async_tfunc'){
+    
+                        compile=false;
+
+                        let j=i+1;
+    
+                        let endTFunc=i+10;
+    
+                        let roundBracketCount=0;
+    
+                        let endParamsRoundBracket=j;
+    
+                        for(;j<code.length;j++){
+    
+                            if(!isInStr && (code[j]=='"' || code[j]=='`' || code[j]=="'")){
+                                isInStr=true;
+                                strChr=code[j];
+                            }
+                            else
+                            if(isInStr && code[j]==strChr){
+                                isInStr=false;
+                            }
+    
+                            if(!isInStr){
+    
+                                if(code[j]=='('){
+                                    roundBracketCount++;
+                                }
+                                if(code[j]==')'){
+                                    roundBracketCount--;
+                                
+                                    if(roundBracketCount==0){
+                                        endParamsRoundBracket=j;
+                                        break;
+                                    }
+                                
+                                }
+    
+                            }
+    
+                        }
+    
+    
+                        let curlyBracketCount=0;
+    
+                        let endParamsCurlyBracket=j;
+    
+                        j++;
+    
+                        for(;j<code.length;j++){
+    
+                            if(!isInStr && (code[j]=='"' || code[j]=='`' || code[j]=="'")){
+                                isInStr=true;
+                                strChr=code[j];
+                            }
+                            else
+                            if(isInStr && code[j]==strChr){
+                                isInStr=false;
+                            }
+    
+                            if(!isInStr){
+    
+                                if(code[j]=='{'){
+                                    curlyBracketCount++;
+                                }
+                                if(code[j]=='}'){
+                                    curlyBracketCount--;
+                                
+                                    if(curlyBracketCount==0){
+                                        endParamsCurlyBracket=j;
+                                        break;
+                                    }
+                                
+                                }
+    
+                            }
+    
+                        }
+    
+    
+                        let tfuncSrc=code.substring(endTFunc+1,j+1);
+    
+                        let tfuncId = uuidv4();
+
+                        let tfuncId2='a';
+
+                        for(let i=0;i<tfuncId.length;i++){
+                            if(tfuncId[i]=='-'){
+                                tfuncId2+='_';
+                            }
+                            else{
+                                tfuncId2+=tfuncId[i];
+                            }
+                        }
+    
+                        let newCode=`
+                        function ${tfuncId2}(...params){
+                            let this_${tfuncId2}=this;
+                            return (
+                                async function tfresult_${tfuncId2}(T){
+                                    var src=(async function ${tfuncSrc});
+                                    var srcR=await src(...params);
+                                    return srcR;
+                                }
+                            );
+                        }
+                        `;
+                        result+=newCode;
+                        i=j+1;
+                    }
                     else
                     if(code[i]+code[i+1]=='::'){
     
@@ -294,7 +405,7 @@ class NCompiler {
                         let bracketChr='';
                         let InvBracketChr='';
     
-                        if(code[i]=='[' || code[i]=='(' || code[i]=='{'){
+                        if(code[i]=='[' || code[i]=='(' || code[i]=='{' ){
                             bracketChr=code[i];
                             if(code[i]=='['){
                                 InvBracketChr=']';
@@ -363,7 +474,7 @@ class NCompiler {
                             }
     
                             let TArgs = code.substring(i,endArray+1);
-                            result+=`.execute(${TArgs})`;
+                            result+=`(${TArgs})`;
     
                             i=endArray;
     

@@ -70,6 +70,18 @@
 
         </async-method>
 
+        <method TExecute>
+            
+            async_tfunc (forSV){
+
+                let compiledCode = await @NLC->Compile(T,forSV);
+
+                return Function(compiledCode)();
+
+            }
+
+        </method>
+
         <async-method Compile>
 
             function(code){

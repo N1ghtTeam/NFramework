@@ -1,1 +1,163 @@
-/* NFRAMEWORK */const JSCLPath="D:\\MyTechs\\nframework\\nframework/nmodules/nlc/NLC.nlc.client.js";module.exports=o=>{let n=new Object,e=[];n.customTypeDatas=[],n.customTypeDatas.Add=function(e,t){n.customTypeDatas.push({key:e,value:t})};var l=new(require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule"));l.side="both",l.name="NLC",l.__TYPE="NMODULE",l.RunExternalMethod=function(e){e.call(l)},l.RunExternalMethod(function(){this.AddMethod("start",(...e)=>{return function(){this.Routing("/nlc-compile/:code",(e,t)=>{e=e.params.code,e={compiledCode:o.Get("NLC").GetThisWithCallback(e=>e.Get("Compile"))(e,!1)};t.send(JSON.stringify(e))})}.call(this,...e)}),this.AddMethod("Execute",(...e)=>{return function(e,t){t=this.GetThisWithCallback(e=>e.Get("Compile"))(e,t);return Function(t)()}.call(this,...e)}),this.AddMethod("Compile",(...e)=>{return function(e,t){null==t&&(t=!0);let n=o.NFramework.ncompiler;return n.CompileCode(e,t,"")}.call(this,...e)})});var t=require("fs"),i=JSCLPath;return l.client_js_code=t.readFileSync(i),"server"!=l.side&&l.Routing("/nlc/NLC",(e,t)=>t.send(l.client_js_code)),e.push(l),n.nmodules=e,n.pages=[],n};
+const JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/nlc/NLC.nlc.client.js";
+
+module.exports = (manager) => {
+    let exports     = new Object();
+    let nmodules    = [];
+    let pages       = [];
+    exports.customTypeDatas=[];
+    exports.customTypeDatas.Add=function(key,value){
+        exports.customTypeDatas.push({
+            'key':key,
+            'value':value
+        });
+    }
+
+    
+
+                    
+
+        var NModule=
+        function() {
+            return require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule");
+        }()
+
+    ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        nmodule.side='both';
+
+        nmodule.name='NLC';
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+
+    
+
+        
+        this.AddMethod('start',(...args) => {
+            let f=
+    
+
+            function(){
+
+                this.Routing(
+                    '/nlc-compile/:code',
+                    (req,res)=>{
+                        let code=req.params.code;
+                        let result = {
+                            'compiledCode':(manager.Get('NLC')).GetThisWithCallback((module)=>{
+                            return module.Get('Compile');
+                        })(code,false)
+                        }
+                        res.send(JSON.stringify(result));
+                    }
+                );
+
+            }
+
+        
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+        
+        this.AddMethod('Execute',(...args) => {
+            let f=
+    
+            
+            function(code,forSV){
+
+                let compiledCode = this.GetThisWithCallback((module)=>{
+                            return module.Get('Compile');
+                        })(code,forSV);
+
+                return Function(compiledCode)();
+
+            }
+
+        
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+        
+        this.AddMethod('Compile',(...args) => {
+            let f=
+    
+
+            function(code,forSV){
+
+                if(forSV == null){
+                    forSV = true;
+                }
+
+                let compiledCode = '';
+                
+                let compiler = manager.NFramework.ncompiler;
+                
+                compiledCode = compiler.CompileCode(code,forSV,'');
+
+                return compiledCode;
+
+            }
+
+        
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+    
+
+    
+
+
+        });
+    
+
+        var fs=require('fs');
+
+        var clientVersion=JSCLPath;
+
+        nmodule.client_js_code=fs.readFileSync(clientVersion);
+
+        if(nmodule.side!='server'){
+            nmodule.Routing('/nlc/NLC', (req, res) => res.send(nmodule.client_js_code));
+        }
+
+        
+
+            nmodules.push(nmodule);
+
+        
+
+                
+
+    exports.nmodules=nmodules;
+    exports.pages=pages;
+    return exports;
+}
