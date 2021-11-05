@@ -40,7 +40,7 @@ class NFramework {
         this.server = new Object();
         this.server.PORT = 7070;
 
-        this.clejs = this.GetCLEJS();
+        this.MakeCLEJS();
     }
 
     Init() {
@@ -61,36 +61,49 @@ class NFramework {
         this.nmoduleManager.Start();
     }
 
-    GetCLEJS() {
-        return `
-            <script src="/socket.io/socket.io.js"></script>
-            <script src='/nframework'></script>
-            <script src='/nmodule-manager'></script>
-            <script src='/nmodule'></script>
-            <script src='/ui/component'></script>
-        `;
+    MakeCLEJS(){
+        this.clejs=`<script src="/socket.io/socket.io.js"></script>\n`;
+
+        let clfiles=JSON.parse(fs.readFileSync(__dirname+'/cl/clfiles.json').toString());
+
+        for(let clfile of clfiles){
+            this.clejs+=`<script src='${clfile.router}'></script>\n`;
+        }
     }
 
     SetupCLEJSRouters() {
         //framework js
 
-        const frameworkCLJSFilePath     = __dirname + '/cl/framework.js';
-        const nmoduleCLJSFilePath       = __dirname + '/cl/nmodule.js';
-        const nmoduleMCLJSFilePath      = __dirname + '/cl/nmoduleManager.js';
+        // const frameworkCLJSFilePath     = __dirname + '/cl/framework.js';
+        // const nmoduleCLJSFilePath       = __dirname + '/cl/nmodule.js';
+        // const nmoduleMCLJSFilePath      = __dirname + '/cl/nmoduleManager.js';
         const appCLJSFilePath           = __dirname + '/cl/app.js';
-        const UIComponentFilePath           = __dirname + '/cl/ui/component.js';
+        // const UIComponentFilePath       = __dirname + '/cl/ui/component.js';
+        // const nlcFilePath               = __dirname + '/cl/nlc.js';
 
-        let frameworkCLJSCode           = fs.readFileSync(frameworkCLJSFilePath).toString();
-        let nmoduleCLJSCode             = fs.readFileSync(nmoduleCLJSFilePath).toString();
-        let nmoduleMCLJSCode            = fs.readFileSync(nmoduleMCLJSFilePath).toString();
+        // let frameworkCLJSCode           = fs.readFileSync(frameworkCLJSFilePath).toString();
+        // let nmoduleCLJSCode             = fs.readFileSync(nmoduleCLJSFilePath).toString();
+        // let nmoduleMCLJSCode            = fs.readFileSync(nmoduleMCLJSFilePath).toString();
         let appCLJSCode                 = fs.readFileSync(appCLJSFilePath).toString();
-        let UIComponentCode                 = fs.readFileSync(UIComponentFilePath).toString();
+        // let UIComponentCode             = fs.readFileSync(UIComponentFilePath).toString();
+        // let nlcFileCode                 = fs.readFileSync(nlcFilePath).toString();
 
-        this.express_server.get('/nframework', (req, res)       => res.send(frameworkCLJSCode));
-        this.express_server.get('/nmodule', (req, res)          => res.send(nmoduleCLJSCode));
-        this.express_server.get('/nmodule-manager', (req, res)  => res.send(nmoduleMCLJSCode));
+        // this.express_server.get('/nframework', (req, res)       => res.send(frameworkCLJSCode));
+        // this.express_server.get('/nmodule', (req, res)          => res.send(nmoduleCLJSCode));
+        // this.express_server.get('/nmodule-manager', (req, res)  => res.send(nmoduleMCLJSCode));
         this.express_server.get('/appcl', (req, res)            => res.send(appCLJSCode));
-        this.express_server.get('/ui/component', (req, res)            => res.send(UIComponentCode));
+        // this.express_server.get('/ui/component', (req, res)     => res.send(UIComponentCode));
+        // this.express_server.get('/nlc', (req, res)              => res.send(nlcFileCode));
+
+        let clfiles=JSON.parse(fs.readFileSync(__dirname+'/cl/clfiles.json').toString());
+
+        for(let clfile of clfiles){
+            const filePath               = __dirname + '/cl/'+clfile.path;
+    
+            let fileCode           = fs.readFileSync(filePath).toString();
+    
+            this.express_server.get(clfile.router, (req, res)       => res.send(fileCode));
+        }
     }
 
     LoadSetting(path) {

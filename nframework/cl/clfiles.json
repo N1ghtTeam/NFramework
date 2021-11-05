@@ -1,0 +1,22 @@
+[
+    {
+        "path":"framework.js",
+        "router":"/nframework"
+    },
+    {
+        "path":"nmoduleManager.js",
+        "router":"/nmodule-manager"
+    },
+    {
+        "path":"nmodule.js",
+        "router":"/nmodule"
+    },
+    {
+        "path":"ui/component.js",
+        "router":"/ui/component"
+    },
+    {
+        "path":"nlc.js",
+        "router":"/nlc"
+    }
+]

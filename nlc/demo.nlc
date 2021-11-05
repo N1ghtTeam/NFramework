@@ -20,40 +20,20 @@
         <async-method setup>
             function(){
 
-                
-                // let demo_ui = (
-                //     <demo-ui 
-                //         onclick={
-                //             'console.log("demo ui clicked");'
-                //         }
-                //     >
-                        
-                //     </demo-ui>
-                // );
-
-                // @dom->body.appendChild(
-                //     demo_ui
-                // );
-
-                class EC1{
-                    constructor(){
-
-                    }
-                }
-
-                class E{
-                    constructor(){
-
-                    }
-                }
-
-                let e=new E();
-
-                console.log(
-                    this->CreateEC(e)::EC1
-                );
-
+                await @NLC->Execute(`
+                    <use html>
+                    <use dom>
                     
+                    <region>
+
+                        @dom->body.appendChild(
+                            <div>
+                                Hello World
+                            </div>
+                        );
+
+                    </region>
+                `);
             
             }
 

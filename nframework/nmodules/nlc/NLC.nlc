@@ -1,0 +1,95 @@
+
+<module NLC>
+
+    <server-only>
+
+        <method start>
+
+            function(){
+
+                this.Routing(
+                    '/nlc-compile/:code',
+                    (req,res)=>{
+                        let code=req.params.code;
+                        let result = {
+                            'compiledCode':@NLC->Compile(code,false)
+                        }
+                        res.send(JSON.stringify(result));
+                    }
+                );
+
+            }
+
+        </method>
+
+        <method Execute>
+            
+            function(code,forSV){
+
+                let compiledCode = this->Compile(code,forSV);
+
+                return Function(compiledCode)();
+
+            }
+
+        </method>
+
+        <method Compile>
+
+            function(code,forSV){
+
+                if(forSV == null){
+                    forSV = true;
+                }
+
+                let compiledCode = '';
+                
+                let compiler = manager.NFramework.ncompiler;
+                
+                compiledCode = compiler.CompileCode(code,forSV,'');
+
+                return compiledCode;
+
+            }
+
+        </method>
+
+    </server-only>
+
+    <client-only>
+
+        <async-method Execute>
+            
+            function(code){
+
+                let compiledCode = await this->Compile(code);
+
+                return Function(compiledCode)();
+
+            }
+
+        </async-method>
+
+        <async-method Compile>
+
+            function(code){
+
+                let url=window.origin+'/nlc-compile/';
+
+                let parsedCodeForURL = encodeURIComponent(code);
+
+                url += parsedCodeForURL;
+
+                let response = await fetch(url); 
+
+                let data = await response.json();
+
+                return data.compiledCode;
+
+            }
+
+        </async-method>
+
+    </client-only>
+
+</module>
