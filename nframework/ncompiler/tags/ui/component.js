@@ -71,9 +71,9 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
 
             var ${componentName}_code=fs.readFileSync(JSCLPath).toString();
 
-            let express_server = manager.NFramework.express_server;
+            var express_server = manager.NFramework.express_server;
 
-            let ${componentName}_path='/nlc/${rawComponentName}';
+            var ${componentName}_path='/nlc/${rawComponentName}';
 
             manager.uiComponents.push('${rawComponentName}');
 

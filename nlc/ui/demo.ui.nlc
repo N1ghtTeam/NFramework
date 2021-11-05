@@ -1,15 +1,27 @@
 <use html>
 <use dom>
 
+    
+<ui:component demo-ui>
+
+render(){
+    return(
+        <>        
+            Hello World        
+        </>
+    );
+}
+
+</ui:component>
+
+
 <ui:main-component demo-main-ui>
 
     render(){
         return (
             <>
                 <demo-ui>
-
                     
-
                 </demo-ui>
             </>
         );
