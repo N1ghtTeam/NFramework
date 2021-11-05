@@ -154,13 +154,11 @@ class NCompiler {
     
     
                         let newCode=`
-                        {
-                            execute:function(T){
-                                var src=(function${tfuncSrc});
-                                var srcR=src.call(this);
-                                return srcR;
-                            }
-                        }
+                            function(T){
+                                    var src=(function${tfuncSrc});
+                                    var srcR=src.call(this);
+                                    return srcR;
+                            }                        
                         `;
                         result+=newCode;
                         i=j+1;
@@ -263,13 +261,14 @@ class NCompiler {
     
                         let newCode=`
                         function ${tfuncId2}(...params){
-                            return {
-                                execute:function(T){
+                            let this_${tfuncId2}=this;
+                            return (
+                                function tfresult_${tfuncId2}(T){
                                     var src=(function${tfuncSrc});
-                                    var srcR=src.call(${tfuncId2},...params);
+                                    var srcR=src.call(this_${tfuncId2},...params);
                                     return srcR;
                                 }
-                            }
+                            );
                         }
                         `;
                         result+=newCode;
@@ -290,9 +289,24 @@ class NCompiler {
                             if(code[i]!=' ' && code[i]!='\n' && code[i]!='\r'){
                                 break;
                             }
-                        }                    
+                        }           
+                        
+                        let bracketChr='';
+                        let InvBracketChr='';
     
-                        if(code[i]!='['){
+                        if(code[i]=='[' || code[i]=='(' || code[i]=='{'){
+                            bracketChr=code[i];
+                            if(code[i]=='['){
+                                InvBracketChr=']';
+                            }
+                            if(code[i]=='('){
+                                InvBracketChr=')';
+                            }
+                            if(code[i]=='{'){
+                                InvBracketChr='}';
+                            }
+                        }
+                        else{
                             isTFuncCallArgs=false;
                         }
     
@@ -311,7 +325,7 @@ class NCompiler {
                             }
 
                             let targs = code.substring(startTArgs,endTArgs);
-                            result+=`.execute(${targs})`;
+                            result+=`(${targs})`;
                         }
                         else{
     
@@ -334,10 +348,10 @@ class NCompiler {
     
                                 if(!isInStr){
     
-                                    if(code[endArray]=='['){
+                                    if(code[endArray]==bracketChr){
                                         arrayChrCount++;
                                     }
-                                    if(code[endArray]==']'){
+                                    if(code[endArray]==InvBracketChr){
                                         arrayChrCount--;
                                         if(arrayChrCount==0){
                                             break;

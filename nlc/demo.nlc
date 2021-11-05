@@ -7,6 +7,16 @@
         
         <property prop/>
 
+        <method CreateEC>
+
+            tfunc (e) {
+                return(
+                    new T()
+                );
+            }
+
+        </method>
+
         <async-method setup>
             function(){
 
@@ -25,24 +35,26 @@
                 //     demo_ui
                 // );
 
+                class EC1{
+                    constructor(){
 
-                
-                this->prop = tfunc (a) {
+                    }
+                }
+
+                class E{
+                    constructor(){
+
+                    }
+                }
+
+                let e=new E();
+
+                console.log(
+                    this->CreateEC(e)::EC1
+                );
+
                     
-                    console.log(a,...T);
-
-                    return(
-                        this
-                    );
-
-                };
-
-                this->prop
-                    ('ok')::['Hello','World']
-                    ('ok')::['Hello','World']
-                    ('ok')::['Hello','World']
-                ;
-
+            
             }
 
         </async-method>
