@@ -2,8 +2,8 @@ manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['4cafa048_1a36_4525_bbb4_323c84d6e8d3']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['4cafa048_1a36_4525_bbb4_323c84d6e8d3']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['d4c40c6a_db70_4f73_937b_2f80807f33bd']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['d4c40c6a_db70_4f73_937b_2f80807f33bd']=true;
                         
             (()=>{
                 
@@ -47,16 +47,16 @@ manager = window.NFramework.nmoduleManager;
     
 
             
-                        function abca6285a_fd9f_4e6b_9a5e_5b90f529169d(...params){
-                            let this_abca6285a_fd9f_4e6b_9a5e_5b90f529169d=this;
+                        function aa6f0fabc_7eff_4e60_a375_bf402b8cfc4c(...params){
+                            let this_aa6f0fabc_7eff_4e60_a375_bf402b8cfc4c=this;
                             return (
-                                function tfresult_abca6285a_fd9f_4e6b_9a5e_5b90f529169d(T){
+                                function tfresult_aa6f0fabc_7eff_4e60_a375_bf402b8cfc4c(T){
                                     var src=(function (e) {
                 return(
                     new T()
                 );
             });
-                                    var srcR=src.call(this_abca6285a_fd9f_4e6b_9a5e_5b90f529169d,...params);
+                                    var srcR=src.call(this_aa6f0fabc_7eff_4e60_a375_bf402b8cfc4c,...params);
                                     return srcR;
                                 }
                             );
@@ -77,29 +77,7 @@ manager = window.NFramework.nmoduleManager;
         this.AddMethod('setup',async (...args)=>{
                 let f=async function(){
 
-                (manager.Get('dom')).GetThisWithCallback((module)=>{
-                            return module.Get('body');
-                        }).appendChild(
-                    await (manager.Get('NLC')).GetThisWithCallback((module)=>{
-                            return module.Get('TExecute');
-                        })()
-                        ((
-                                `
-                                    <use html>
-                                    <use dom>
-                                    
-                                    <region>
 
-                                        return(
-                                            <div>
-                                                Hello World
-                                            </div>
-                                        );
-
-                                    </region>
-                                `
-                            ))
-                );
             
             }
 

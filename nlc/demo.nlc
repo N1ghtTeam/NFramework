@@ -20,25 +20,7 @@
         <async-method setup>
             function(){
 
-                @dom->body.appendChild(
-                    await @NLC->TExecute()
-                        ::  (
-                                `
-                                    <use html>
-                                    <use dom>
-                                    
-                                    <region>
 
-                                        return(
-                                            <div>
-                                                Hello World
-                                            </div>
-                                        );
-
-                                    </region>
-                                `
-                            )
-                );
             
             }
 

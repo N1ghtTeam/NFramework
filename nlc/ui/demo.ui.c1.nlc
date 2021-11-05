@@ -2,14 +2,14 @@
 <use dom>
     
 
-<ui:component demo-ui-c1>
+<ui:component demo-ui>
 
     render(){
 
         return(
             <>
             
-                Hello World C1
+                Hello World
             
             </>
         );

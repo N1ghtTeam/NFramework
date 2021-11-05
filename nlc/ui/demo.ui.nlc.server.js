@@ -18,17 +18,17 @@ module.exports = (manager) => {
         
             var fs=require('fs');
 
-            var demo_ui_code=fs.readFileSync(JSCLPath).toString();
+            var demo_main_ui_code=fs.readFileSync(JSCLPath).toString();
 
             let express_server = manager.NFramework.express_server;
 
-            let demo_ui_path='/nlc/demo-ui';
+            let demo_main_ui_path='/nlc/demo-main-ui';
 
-            manager.uiComponents.push('demo-ui');
+            manager.uiComponents.push('demo-main-ui');
 
-            express_server.get(demo_ui_path, (req, res) => {
+            express_server.get(demo_main_ui_path, (req, res) => {
 
-                res.send(demo_ui_code);
+                res.send(demo_main_ui_code);
 
             });
 

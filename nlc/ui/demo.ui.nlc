@@ -1,20 +1,18 @@
 <use html>
 <use dom>
-    
 
-<ui:component demo-ui>
+<ui:main-component demo-main-ui>
 
     render(){
-
-
-        return(
+        return (
             <>
-            
-            
+                <demo-ui>
 
+                    
+
+                </demo-ui>
             </>
         );
     }
 
-</ui:component>
-
+</ui:main-component>

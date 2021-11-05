@@ -2,17 +2,17 @@ manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['9405893f_3b6e_4e27_ab73_476d335809d0']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['9405893f_3b6e_4e27_ab73_476d335809d0']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['07c57ae0_d69b_4a3d_884e_f987e1cdf07a']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['07c57ae0_d69b_4a3d_884e_f987e1cdf07a']=true;
                         
             if(window.NFramework.customTags['ui']==null)
                 window.NFramework.customTags['ui']=new Object();
-            window.NFramework.customTags['ui']['demo_ui_c1']=true;
-            class demo_ui_c1_class extends UIComponent{
+            window.NFramework.customTags['ui']['demo_ui']=true;
+            class demo_ui_class extends UIComponent{
 
                 constructor(){
                     super();
-                    this.componentName='demo-ui-c1';
+                    this.componentName='demo-ui';
                 }                
 
             
@@ -23,7 +23,7 @@ manager = window.NFramework.nmoduleManager;
             (()=>{
                         let __result__453yh5b6jnu76imk76 = [`
             
-                Hello World C1
+                Hello World
             
             `,];  
 
@@ -38,7 +38,7 @@ manager = window.NFramework.nmoduleManager;
         
             }
 
-            customElements.define('demo-ui-c1', demo_ui_c1_class);
+            customElements.define('demo-ui', demo_ui_class);
 
 
 
