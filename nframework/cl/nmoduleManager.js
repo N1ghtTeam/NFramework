@@ -24,6 +24,8 @@ class NModuleManager {
     }
 
     Setup() {
+
+
         let keys = Object.keys(this.modules);
         for (let key of keys)
             this.modules[key].Setup();

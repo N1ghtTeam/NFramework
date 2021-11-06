@@ -12,6 +12,13 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
 
     let inputs = tag.GetInputs(element, childsCode, code);
 
+    let extendClass='UIComponent';
+
+    if(inputs[1]=='extends'){
+        extendClass=inputs[2];
+    }
+
+    let compiledExtends=`'${extendClass}'`;
 
     let componentName='';
     let rawComponentName=inputs[0];
@@ -45,6 +52,8 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
             if(window.NFramework.customTags['ui']==null)
                 window.NFramework.customTags['ui']=new Object();
             window.NFramework.customTags['ui']['${componentName}']=true;
+
+            /*
             class ${componentName}_class extends UIComponent{
 
                 constructor(){
@@ -55,49 +64,58 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
                 ${compiledCode}
 
             }
+            */
+            
 
-            customElements.define('${rawComponentName}', ${componentName}_class);
+            (()=>{
+                var uiManager = window.NFramework.uiManager;
+
+
+                uiManager.uiComponentClassCreators.push(
+                    {
+                        'classCreator': ()=>{
+                            class ${componentName}_class extends uiManager.uiComponentClasses[${compiledExtends}]{
+                
+                                constructor(){
+                                    super();
+                                    this.componentName='${rawComponentName}';
+                                }                
+                
+                            ${compiledCode}
+                        
+                            }
+
+                            
+                            uiManager.mainUIComponentClass = ${componentName}_class;
+                            uiManager.mainUIComponentName = '${rawComponentName}';
+
+                            return ${componentName}_class;
+
+                        },
+                        'extends':${compiledExtends},
+                        'name':'${rawComponentName}'
+                    }
+                );
+
+            })();
+            
 
             {
     
 
                 (()=>{     
-                    var NModule = window.NFramework.NModule;
+/*
+                    let nframeworkAppUI = document.createElement('${rawComponentName}');
 
-                    var nmodule = new NModule();
-    
-                    nmodule.side='client';
-            
-                    nmodule.name='nframework-app-ui';
-    
-                    nmodule.__TYPE='NMODULE';
-    
-                    
-                    nmodule.RunExternalMethod=function(callback){
-                        callback.call(nmodule);
+                    document.body.appendChild(nframeworkAppUI);
+        
+                    if(nframeworkAppUI.render!=null){
+                        let childs = nframeworkAppUI.render();
+                        if(childs!=null){
+                            nframeworkAppUI.AppendChilds(childs);
+                        }
                     }
-    
-    
-                    nmodule.RunExternalMethod(function(){
-                        nmodule.AddMethod('setup',function(){
-                            
-                            let nframeworkAppUI = document.createElement('${rawComponentName}');
-
-                            document.body.appendChild(nframeworkAppUI);
-                
-                            if(nframeworkAppUI.render!=null){
-                                let childs = nframeworkAppUI.render();
-                                if(childs!=null){
-                                    nframeworkAppUI.AppendChilds(childs);
-                                }
-                            }
-    
-                        });
-                    });           
-                    
-                    var nmoduleManager = window.NFramework.nmoduleManager;
-                    nmoduleManager.ImportModule(nmodule);
-
+*/
                 })();
             }
             

@@ -12,6 +12,13 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
 
     let inputs = tag.GetInputs(element, childsCode, code);
 
+    let extendClass='UIComponent';
+
+    if(inputs[1]=='extends'){
+        extendClass=inputs[2];
+    }
+
+    let compiledExtends=`'${extendClass}'`;
 
     let componentName='';
     let rawComponentName=inputs[0];
@@ -45,6 +52,8 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
             if(window.NFramework.customTags['ui']==null)
                 window.NFramework.customTags['ui']=new Object();
             window.NFramework.customTags['ui']['${componentName}']=true;
+
+            /*
             class ${componentName}_class extends UIComponent{
 
                 constructor(){
@@ -55,10 +64,34 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
             ${compiledCode}
         
             }
+            */
 
-            customElements.define('${rawComponentName}', ${componentName}_class);
 
+            (()=>{
 
+                var uiManager = window.NFramework.uiManager;
+                //uiManager.uiComponentClasses['${rawComponentName}']=${componentName}_class;
+
+                uiManager.uiComponentClassCreators.push(
+                    {
+                        'classCreator': ()=>{
+                            return class ${componentName}_class extends uiManager.uiComponentClasses[${compiledExtends}]{
+                
+                                constructor(){
+                                    super();
+                                    this.componentName='${rawComponentName}';
+                                }                
+                
+                            ${compiledCode}
+                        
+                            }
+                        },
+                        'extends':${compiledExtends},
+                        'name':'${rawComponentName}'
+                    }
+                );
+
+            })();
 
         `;
     

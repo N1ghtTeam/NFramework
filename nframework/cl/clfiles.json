@@ -12,6 +12,10 @@
         "router":"/nmodule"
     },
     {
+        "path":"uimanager.js",
+        "router":"/ui/manager"
+    },
+    {
         "path":"ui/component.js",
         "router":"/ui/component"
     },
