@@ -35,13 +35,45 @@
 
 <ui:main-component demo-main-ui>
 
-    render(){
+    async render(){
+
+
         return (
-            <>
+            <async-fragment>
+                
+                <region>
+                    await (async ()=>{
+                        
+                        return (
+                            
+                            await @NLC->Execute(
+                                `
+                                    <use html>
+
+                                    <region>
+                                    
+                                        return (
+                                            <div>
+                                                Hello World
+                                            </div>
+                
+                                        );
+                
+                                    </region>
+
+                                `
+                            )
+                            
+                        );
+
+                    })()
+                </region>
+
                 <demo-ui>
-                    
+
                 </demo-ui>
-            </>
+
+            </async-fragment>
         );
     }
 

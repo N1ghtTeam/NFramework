@@ -91,9 +91,26 @@ class UIManager{
             document.body.appendChild(nframeworkAppUI);
 
             if(nframeworkAppUI.render!=null){
-                let childs = nframeworkAppUI.render();
-                if(childs!=null){
-                    nframeworkAppUI.AppendChilds(childs);
+
+                const AsyncFunction = (async () => {}).constructor;
+
+                let isAsyncRender = nframeworkAppUI.render instanceof AsyncFunction;
+
+                if(!isAsyncRender){
+                    let childs = nframeworkAppUI.render();
+                    if(childs!=null){
+                        nframeworkAppUI.AppendChilds(childs);
+                    }
+                }
+                else{
+                    (async ()=>{
+                        
+                        let childs = await nframeworkAppUI.render();
+                        if(childs!=null){
+                            nframeworkAppUI.AppendChilds(childs);
+                        }
+
+                    })();
                 }
             }
 

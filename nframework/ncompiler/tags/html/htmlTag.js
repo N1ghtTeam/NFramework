@@ -376,9 +376,25 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
             ${childsAndTextContents}
             
             if(result_${rfid}.render!=null){
-                let childs = result_${rfid}.render();
-                if(childs!=null){
-                    result_${rfid}.AppendChilds(childs);
+                const AsyncFunction = (async () => {}).constructor;
+
+                let isAsyncRender = (result_${rfid}.render instanceof AsyncFunction);
+
+                if(!isAsyncRender){
+                    let childs = result_${rfid}.render();
+                    if(childs!=null){
+                        result_${rfid}.AppendChilds(childs);
+                    }
+                }
+                else{
+                    (async ()=>{
+                        
+                        let childs = await result_${rfid}.render();
+                        if(childs!=null){
+                            result_${rfid}.AppendChilds(childs);
+                        }
+
+                    })();
                 }
             }
 
