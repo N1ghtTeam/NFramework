@@ -2,9 +2,11 @@
 <use dom>
 
 <module demo
+
         extends {
             demo-base
         }
+
         side {
             server
         }
@@ -13,7 +15,7 @@
     <method setup>
         function(){
 
-            console.log(this->propb);
+
         
         }
 

@@ -2,6 +2,7 @@
 <use dom>
 
 <module demo-base
+
         side {
             server
         }

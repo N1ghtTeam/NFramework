@@ -10,7 +10,7 @@ tag.Compile = function(element, childsCode, code) {
     let result = ``;
 
     for (let i = 0; i < inputs.length; i++) {
-        result += `this.modules.push('${inputs[i]}');
+        result += `if(this.modules.push!=null)this.modules.push('${inputs[i]}');
         `;
     }
 

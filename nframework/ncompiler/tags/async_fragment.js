@@ -1,4 +1,5 @@
 const Tag = require('../tag/tag');
+const { v4: uuidv4 }    = require('uuid');
 
 let tag = new Tag();
 
@@ -23,12 +24,24 @@ tag.Compile = function(element, childsCode, code) {
         }
     }
 
+    let rfid  = uuidv4();
+    let rfid2 = '';
+
+    for(let i=0;i<rfid.length;i++){
+        if(rfid[i]=='-'){
+            rfid2+='_';
+        }
+        else{
+            rfid2+=rfid[i];
+        }
+    }
+
+    rfid=rfid2;
+
     compiledCode = `await (async ()=>{
-                        let __result__453yh5b6jnu76imk76 = [${compiledCode}];  
+                        let __result__${rfid} = [${compiledCode}];  
 
-                        __result__453yh5b6jnu76imk76.elements=[${elementsCode}];
-
-                        return __result__453yh5b6jnu76imk76;
+                        return __result__${rfid};
                     })()`;
 
     return compiledCode;
