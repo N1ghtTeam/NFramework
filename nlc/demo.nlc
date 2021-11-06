@@ -5,6 +5,9 @@
         extends {
             demo-base
         }
+        side {
+            server
+        }
 >
 
     <method setup>

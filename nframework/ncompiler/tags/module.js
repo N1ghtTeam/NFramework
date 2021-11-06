@@ -44,6 +44,15 @@ tag.Compile = function(element, childsCode, code) {
 
     inputs = newInputs;
 
+    //get side
+    let side='both';
+    for(let i=0;i<inputs.length;i++){
+        if(inputs[i]=='side'){
+            side=inputs[i+2];
+            break;
+        }
+    }
+
     //get extendedModule
     let extendedModulesStr='';
 
@@ -94,8 +103,6 @@ tag.Compile = function(element, childsCode, code) {
         `;
     }
 
-    let side = 'both';
-
     if (!element.forSV) {
 
     }
@@ -108,13 +115,13 @@ tag.Compile = function(element, childsCode, code) {
 
         var This=nmodule;
 
-        nmodule.side='${side}';
-
         nmodule.name='${moduleName}';
 
         nmodule.__TYPE='NMODULE';
 
         nmodule.baseModules = ${extendedModulesStr};
+
+        nmodule.side = '${side}';
 
         nmodule.RunExternalMethod=function(callback){
             callback.call(nmodule);

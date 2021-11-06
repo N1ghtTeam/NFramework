@@ -33,7 +33,8 @@ tag.Compile = function(element, childsCode, code) {
             
             for(var i=0;i<modules.length;i++){
                 var module=modules[i];
-                miejs+=' <script  src="/nlc/'+module+'"></script>';
+                if(manager.modules[module].side=='both' || manager.modules[module].side=='client')
+                    miejs+=' <script  src="/nlc/'+module+'"></script>';
             }
 
             var globalObjects=manager.pages['${pageName}'].customTypeDatas;
@@ -58,6 +59,7 @@ tag.Compile = function(element, childsCode, code) {
             miejs+="\\n<script src='/appcl'></script>";
 
             miejs="<nframework-scripts>" +miejs+ "</nframework-scripts>";
+
 
             res.render( manager.pages['${pageName}'].src,{
                 NFramework:miejs
