@@ -15,6 +15,8 @@ class UIComponent extends HTMLElement{
         }
     }
 
+      
+
 }
 
 window.NFramework.UIComponent=UIComponent;

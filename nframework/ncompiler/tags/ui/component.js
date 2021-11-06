@@ -72,19 +72,47 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
                 var uiManager = window.NFramework.uiManager;
                 //uiManager.uiComponentClasses['${rawComponentName}']=${componentName}_class;
 
+                let UIClass = function(name){
+                    return uiManager.uiComponentClasses[name];
+                }
+
                 uiManager.uiComponentClassCreators.push(
                     {
                         'classCreator': ()=>{
-                            return class ${componentName}_class extends uiManager.uiComponentClasses[${compiledExtends}]{
+                            class ${componentName}_class extends uiManager.uiComponentClasses[${compiledExtends}]{
                 
                                 constructor(){
                                     super();
+                                    this.UIClass=UIClass;
                                     this.componentName='${rawComponentName}';
                                 }                
                 
                             ${compiledCode}
                         
                             }
+
+                            ${componentName}_class.render=function(target){
+                                let result=[];
+                                if(${componentName}_class.prototype.render!=null){
+                                    result = ${componentName}_class.prototype.render.call(target);
+                                }
+                                result.add=function(data){
+                                    for(let element of data){
+                                        result.push(element);
+                                    }
+                                    return result;
+                                }
+                                result.addBefore=function(data){
+                                    let nData=data;
+                                    for(let element of result){
+                                        nData.push(element);
+                                    }
+                                    return nData;
+                                }
+                                return result;
+                            }
+
+                            return ${componentName}_class;
                         },
                         'extends':${compiledExtends},
                         'name':'${rawComponentName}'

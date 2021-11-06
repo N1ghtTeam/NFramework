@@ -8,10 +8,13 @@
 >
 
     render(){
+
         return(
-            <>     
-                Hello World   
-            </>
+            UIClass('demo-ui-base').render(this).add(
+                <>     
+                    Hello
+                </>
+            )
         );
     }
 

@@ -70,6 +70,10 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
             (()=>{
                 var uiManager = window.NFramework.uiManager;
 
+                let UIClass = function(name){
+                    return uiManager.uiComponentClasses[name];
+                }
+
 
                 uiManager.uiComponentClassCreators.push(
                     {
@@ -78,6 +82,7 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
                 
                                 constructor(){
                                     super();
+                                    this.UIClass=UIClass;
                                     this.componentName='${rawComponentName}';
                                 }                
                 
@@ -85,12 +90,32 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
                         
                             }
 
+                            ${componentName}_class.render=function(target){
+                                let result=[];
+                                if(${componentName}_class.prototype.render!=null){
+                                    result = ${componentName}_class.prototype.render.call(target);
+                                }
+                                result.add=function(data){
+                                    for(let element of data){
+                                        result.push(element);
+                                    }
+                                    return result;
+                                }
+                                result.addBefore=function(data){
+                                    let nData=data;
+                                    for(let element of result){
+                                        nData.push(element);
+                                    }
+                                    return nData;
+                                }
+                                return result;
+                            }
+
                             
                             uiManager.mainUIComponentClass = ${componentName}_class;
                             uiManager.mainUIComponentName = '${rawComponentName}';
 
                             return ${componentName}_class;
-
                         },
                         'extends':${compiledExtends},
                         'name':'${rawComponentName}'
