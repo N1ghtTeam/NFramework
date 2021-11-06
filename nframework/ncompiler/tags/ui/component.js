@@ -12,11 +12,30 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
 
     let inputs = tag.GetInputs(element, childsCode, code);
 
+    let newInputs = [];
+
+    for(let input of inputs){
+        if(input[0]=='}' && input.length!=1){
+            newInputs.push('}');
+            newInputs.push(input.substring(1,input.length));
+        }
+        else
+        if(input[input.length-1]=='{' && input.length!=1){
+            newInputs.push(input.substring(0,input.length-1));
+            newInputs.push('{');
+        }
+        else{
+            newInputs.push(input);
+        }
+    }
+
+    inputs = newInputs;
+
     let extendClass='UIComponent';
 
     for(let i=0;i<inputs[0].length;i++){
         if(inputs[i]=='extends'){
-            extendClass=inputs[i+1];
+            extendClass=inputs[i+2];
             break;
         }
     }

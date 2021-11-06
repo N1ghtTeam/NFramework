@@ -28,14 +28,14 @@ tag.Compile = function(element, childsCode, code) {
     let newInputs = [];
 
     for(let input of inputs){
-        if(input[0]==','){
-            newInputs.push(',');
+        if(input[0]=='}' && input.length!=1){
+            newInputs.push('}');
             newInputs.push(input.substring(1,input.length));
         }
         else
-        if(input[input.length-1]==','){
+        if(input[input.length-1]=='{' && input.length!=1){
             newInputs.push(input.substring(0,input.length-1));
-            newInputs.push(',');
+            newInputs.push('{');
         }
         else{
             newInputs.push(input);
@@ -52,19 +52,17 @@ tag.Compile = function(element, childsCode, code) {
     let isNeedGetExtendedModuleName=false;
 
     for(let i=0;i<inputs.length;i++){
+        if(isNeedGetExtendedModuleName && inputs[i]=='}'){
+            break;
+        }
         if(isNeedGetExtendedModuleName){
 
             extendedModules.push(inputs[i]);
 
-            i++;
-
-            if(inputs[i]!=','){
-                break;
-            }
-
         }
         if(inputs[i]=='extends'){
             isNeedGetExtendedModuleName=true;
+            i++;
         }
     }
 

@@ -39,8 +39,9 @@
     
 <ui:component   demo-ui 
 
-                extends demo-ui-base
-
+                extends {
+                    demo-ui-base
+                }
 >
 
     render(){

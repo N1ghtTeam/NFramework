@@ -2,15 +2,15 @@
 <use dom>
 
 <module demo
-        extends
+        extends {
             demo-base
+        }
 >
 
     <method setup>
         function(){
 
             console.log(this->propb);
-            console.log(this->propb2);
         
         }
 
