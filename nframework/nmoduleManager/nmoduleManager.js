@@ -73,7 +73,7 @@ class NModuleManager {
             else if (parts[parts.length - 1] == 'showjs') fs.unlinkSync(file);
             else if (
                 recompile_when_startup &&
-                parts[parts.length - 3] == 'nlc' &&
+                (parts[parts.length - 3] == 'nlc') &&
                 parts[parts.length - 1] == 'js' &&
                 (parts[parts.length - 2] == 'server' || parts[parts.length - 2] == 'client')
             ) {

@@ -1,11 +1,15 @@
 {
     "files.exclude": {
         "**/*.nlc.client.js": true,
-        "**/*.nlc.server.js": true
+        "**/*.nlc.server.js": true,
+        "**/*.nlcs.client.js": true,
+        "**/*.nlcs.server.js": true
     },
     "typescript.validate.enable": false,
     "javascript.validate.enable": false,
+    "css.validate": false,
     "files.associations": {
-        "*.nlc": "javascript"
+        "*.nlc": "javascript",
+        "*.nstyle": "css"
     }
 }
