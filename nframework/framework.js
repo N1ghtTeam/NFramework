@@ -4,6 +4,7 @@ const NModuleManager      = require('./nmoduleManager/nmoduleManager');
 const ClientManager       = require('./clientManager/clientManager');
 const NModule             = require('./nmodule/nmodule');
 const IORouterManager     = require('./ioroutermanager/ioRouterManager');
+const Uglify            = require('uglify-js');
 
 class NFramework {
     constructor() {
@@ -74,26 +75,18 @@ class NFramework {
     SetupCLEJSRouters() {
         //framework js
 
-        // const frameworkCLJSFilePath     = __dirname + '/cl/framework.js';
-        // const nmoduleCLJSFilePath       = __dirname + '/cl/nmodule.js';
-        // const nmoduleMCLJSFilePath      = __dirname + '/cl/nmoduleManager.js';
+        
         const appCLJSFilePath           = __dirname + '/cl/app.js';
-        // const UIComponentFilePath       = __dirname + '/cl/ui/component.js';
-        // const nlcFilePath               = __dirname + '/cl/nlc.js';
-
-        // let frameworkCLJSCode           = fs.readFileSync(frameworkCLJSFilePath).toString();
-        // let nmoduleCLJSCode             = fs.readFileSync(nmoduleCLJSFilePath).toString();
-        // let nmoduleMCLJSCode            = fs.readFileSync(nmoduleMCLJSFilePath).toString();
+        
         let appCLJSCode                 = fs.readFileSync(appCLJSFilePath).toString();
-        // let UIComponentCode             = fs.readFileSync(UIComponentFilePath).toString();
-        // let nlcFileCode                 = fs.readFileSync(nlcFilePath).toString();
 
-        // this.express_server.get('/nframework', (req, res)       => res.send(frameworkCLJSCode));
-        // this.express_server.get('/nmodule', (req, res)          => res.send(nmoduleCLJSCode));
-        // this.express_server.get('/nmodule-manager', (req, res)  => res.send(nmoduleMCLJSCode));
+        if(this.use_uglify_js){
+            appCLJSCode = Uglify.minify(appCLJSCode).code;
+        }
+
         this.express_server.get('/appcl', (req, res)            => res.send(appCLJSCode));
-        // this.express_server.get('/ui/component', (req, res)     => res.send(UIComponentCode));
-        // this.express_server.get('/nlc', (req, res)              => res.send(nlcFileCode));
+        
+        
 
         let clfiles=JSON.parse(fs.readFileSync(__dirname+'/cl/clfiles.json').toString());
 
@@ -102,6 +95,10 @@ class NFramework {
     
             let fileCode           = fs.readFileSync(filePath).toString();
     
+            if(this.use_uglify_js){
+                fileCode = Uglify.minify(fileCode).code;
+            }
+
             this.express_server.get(clfile.router, (req, res)       => res.send(fileCode));
         }
     }
