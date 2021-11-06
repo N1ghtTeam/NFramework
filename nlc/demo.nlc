@@ -1,31 +1,19 @@
 <use html>
 <use dom>
 
-<module demo>
-    
-    <client-only>
+<module demo
+        extends
+            demo-base
+>
+
+    <method setup>
+        function(){
+
+            console.log(this->propb);
+            console.log(this->propb2);
         
-        <property prop/>
+        }
 
-        <method CreateEC>
-
-            tfunc (e) {
-                return(
-                    new T()
-                );
-            }
-
-        </method>
-
-        <async-method setup>
-            function(){
-
-
-            
-            }
-
-        </async-method>
-
-    </client-only>
+    </method>
 
 </module>

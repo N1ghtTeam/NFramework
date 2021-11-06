@@ -1,0 +1,14 @@
+<use html>
+<use dom>
+
+<module demo-base2>
+    
+    <property propb2/>
+
+    <region>
+
+        this->propb2=2;
+
+    </region>
+
+</module>

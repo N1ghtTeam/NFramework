@@ -25,7 +25,60 @@ tag.Compile = function(element, childsCode, code) {
 
     let inputs = tag.GetInputs(element, childsCode, code);
 
-    let moduleName = inputs[inputs.length - 1];
+    let newInputs = [];
+
+    for(let input of inputs){
+        if(input[0]==','){
+            newInputs.push(',');
+            newInputs.push(input.substring(1,input.length));
+        }
+        else
+        if(input[input.length-1]==','){
+            newInputs.push(input.substring(0,input.length-1));
+            newInputs.push(',');
+        }
+        else{
+            newInputs.push(input);
+        }
+    }
+
+    inputs = newInputs;
+
+    //get extendedModule
+    let extendedModulesStr='';
+
+    let extendedModules=[];
+
+    let isNeedGetExtendedModuleName=false;
+
+    for(let i=0;i<inputs.length;i++){
+        if(isNeedGetExtendedModuleName){
+
+            extendedModules.push(inputs[i]);
+
+            i++;
+
+            if(inputs[i]!=','){
+                break;
+            }
+
+        }
+        if(inputs[i]=='extends'){
+            isNeedGetExtendedModuleName=true;
+        }
+    }
+
+    for(let i=0;i<extendedModules.length;i++){
+        extendedModulesStr+=`'${extendedModules[i]}'`;
+        if(i<extendedModules.length-1){
+            extendedModulesStr+=',';
+        }
+    }
+    extendedModulesStr = `[${extendedModulesStr}]`;
+
+
+
+    let moduleName = inputs[0];
 
     let nmoduleImportCode = `
         function() {
@@ -62,6 +115,8 @@ tag.Compile = function(element, childsCode, code) {
         nmodule.name='${moduleName}';
 
         nmodule.__TYPE='NMODULE';
+
+        nmodule.baseModules = ${extendedModulesStr};
 
         nmodule.RunExternalMethod=function(callback){
             callback.call(nmodule);

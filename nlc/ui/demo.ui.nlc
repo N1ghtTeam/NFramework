@@ -1,10 +1,46 @@
 <use html>
 <use dom>
+
+<ui:main-component demo-main-ui>
+
+    async render(){
+
+        return (
+            <async-fragment>
+                
+                <region>
+                    await @NLC->Execute(
+                        `
+                            <use html>
+
+                            <region>
+                            
+                                return (
+                                    <div>
+                                        Hello World
+                                    </div>                
+                                );
+        
+                            </region>
+
+                        `
+                    )
+                </region>
+
+                <demo-ui>
+
+                </demo-ui>
+
+            </async-fragment>
+        );
+    }
+
+</ui:main-component>
     
 <ui:component   demo-ui 
 
-                extends 
-                    demo-ui-base
+                extends demo-ui-base
+
 >
 
     render(){
@@ -31,50 +67,3 @@
     }
 
 </ui:component>
-
-
-<ui:main-component demo-main-ui>
-
-    async render(){
-
-
-        return (
-            <async-fragment>
-                
-                <region>
-                    await (async ()=>{
-                        
-                        return (
-                            
-                            await @NLC->Execute(
-                                `
-                                    <use html>
-
-                                    <region>
-                                    
-                                        return (
-                                            <div>
-                                                Hello World
-                                            </div>
-                
-                                        );
-                
-                                    </region>
-
-                                `
-                            )
-                            
-                        );
-
-                    })()
-                </region>
-
-                <demo-ui>
-
-                </demo-ui>
-
-            </async-fragment>
-        );
-    }
-
-</ui:main-component>

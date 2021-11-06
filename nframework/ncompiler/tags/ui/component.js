@@ -14,8 +14,11 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
 
     let extendClass='UIComponent';
 
-    if(inputs[1]=='extends'){
-        extendClass=inputs[2];
+    for(let i=0;i<inputs[0].length;i++){
+        if(inputs[i]=='extends'){
+            extendClass=inputs[i+1];
+            break;
+        }
     }
 
     let compiledExtends=`'${extendClass}'`;

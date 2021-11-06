@@ -1,0 +1,16 @@
+<use html>
+<use dom>
+
+<module demo-base
+            extends demo-base2
+>
+    
+    <property propb/>
+
+    <region>
+
+        this->propb=5;
+
+    </region>
+
+</module>
