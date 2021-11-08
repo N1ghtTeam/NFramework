@@ -248,6 +248,7 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
 
                 for(let absR of autoBindingSyntaxRs){
                     let parsedTextContent = tag.ParseToHTMLElementTextcontent(absR.value);
+                    
                     if(absR.type=='child'){
                         childsAndTextContents+= `result_${rfid}.appendChild(${absR.value});`;
                     }

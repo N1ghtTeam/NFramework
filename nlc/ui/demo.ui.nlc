@@ -13,26 +13,18 @@
 
     constructor(){
         super();
+
     }    
 
     render(){
 
-        let a=(
-            <div>
-
-                OK
-
-            </div>
-        );
+        let a=5;
 
         return (
             <>
-                
-                [@demo,prop]
-
-                {a}
-
                 <demo-ui>
+
+                    {{{a}}}
 
                 </demo-ui>
 

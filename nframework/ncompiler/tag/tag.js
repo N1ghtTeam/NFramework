@@ -16,6 +16,7 @@ class Tag {
     ParseToHTMLElementTextcontent(str) {
         let result = '';
 
+        /*
         str.split('').map(str => result += this.specialCharacters[str] || `'${str}'+`);
 
         let rcache2 = '';
@@ -47,6 +48,18 @@ class Tag {
         if(rcache[rcache.length - 4] == rcache[rcache.length - 5]) rcache = '\n' + '""+' + result + '""' + '\n';
 
         result = rcache;
+        */
+
+        for(let i=0;i<str.length;i++){
+            if(str[i]=='`'){
+                result+='`+"`"+`';
+            }
+            else{
+                result+=str[i];
+            }
+        }
+
+        result='`'+result+'`';
 
         return result;
     }
