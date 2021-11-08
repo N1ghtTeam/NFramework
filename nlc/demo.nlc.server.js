@@ -1,8 +1,8 @@
 const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";
 
-                            var a3094979f_e410_4f1e_9bd8_89d575ab30b2_module;
+                            var a34f72a51_2997_45d7_9c45_64c940941d7f_module;
                         
-                            var aa16f4126_6006_4d17_845c_0fa6a4cd11df_module;
+                            var a471081a8_cdfa_4c44_934c_0b71d0f22c94_module;
                         
 module.exports = (manager) => {
     let exports     = new Object();
@@ -66,23 +66,23 @@ module.exports = (manager) => {
         function(){
 
             this.GetThisWithCallback((module)=>{
-                            a3094979f_e410_4f1e_9bd8_89d575ab30b2_module=module;
+                            a34f72a51_2997_45d7_9c45_64c940941d7f_module=module;
                         })
-                        let getterObj3094979f_e410_4f1e_9bd8_89d575ab30b2={
+                        let getterObj34f72a51_2997_45d7_9c45_64c940941d7f={
                             set stter(value) {
-                                a3094979f_e410_4f1e_9bd8_89d575ab30b2_module.Set('prop',value);
+                                a34f72a51_2997_45d7_9c45_64c940941d7f_module.Set('prop',value);
                             }
                         }
-                        getterObj3094979f_e410_4f1e_9bd8_89d575ab30b2.stter= 5;
+                        getterObj34f72a51_2997_45d7_9c45_64c940941d7f.stter= 5;
             this.GetThisWithCallback((module)=>{
-                            aa16f4126_6006_4d17_845c_0fa6a4cd11df_module=module;
+                            a471081a8_cdfa_4c44_934c_0b71d0f22c94_module=module;
                         })
-                        let getterObja16f4126_6006_4d17_845c_0fa6a4cd11df={
+                        let getterObj471081a8_cdfa_4c44_934c_0b71d0f22c94={
                             set stter(value) {
-                                aa16f4126_6006_4d17_845c_0fa6a4cd11df_module.Set('prop2',value);
+                                a471081a8_cdfa_4c44_934c_0b71d0f22c94_module.Set('prop2',value);
                             }
                         }
-                        getterObja16f4126_6006_4d17_845c_0fa6a4cd11df.stter= 10;
+                        getterObj471081a8_cdfa_4c44_934c_0b71d0f22c94.stter= 10;
         
         }
 

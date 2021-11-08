@@ -1,13 +1,13 @@
 
-                            var a42cafb1a_86cd_4648_8d94_1642bd1d4b00_module;
+                            var ad4cd48ab_1740_478b_a048_1fe8805a0697_module;
                         
-                            var a5a41f865_9847_43e6_a991_5e235adc1626_module;
+                            var a3ce7039f_69f8_42e2_96ce_ea80256852a9_module;
                         manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['21a5d493_21c0_4720_b8fe_4e16ee1d49eb']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['21a5d493_21c0_4720_b8fe_4e16ee1d49eb']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['4fcb5ec9_567f_47dc_bc53_886e363150f0']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['4fcb5ec9_567f_47dc_bc53_886e363150f0']=true;
                         
             (()=>{
                 
@@ -58,23 +58,23 @@
         function(){
 
             this.GetThisWithCallback((module)=>{
-                            a42cafb1a_86cd_4648_8d94_1642bd1d4b00_module=module;
+                            ad4cd48ab_1740_478b_a048_1fe8805a0697_module=module;
                         })
-                        let getterObj42cafb1a_86cd_4648_8d94_1642bd1d4b00={
+                        let getterObjd4cd48ab_1740_478b_a048_1fe8805a0697={
                             set stter(value) {
-                                a42cafb1a_86cd_4648_8d94_1642bd1d4b00_module.Set('prop',value);
+                                ad4cd48ab_1740_478b_a048_1fe8805a0697_module.Set('prop',value);
                             }
                         }
-                        getterObj42cafb1a_86cd_4648_8d94_1642bd1d4b00.stter= 5;
+                        getterObjd4cd48ab_1740_478b_a048_1fe8805a0697.stter= 5;
             this.GetThisWithCallback((module)=>{
-                            a5a41f865_9847_43e6_a991_5e235adc1626_module=module;
+                            a3ce7039f_69f8_42e2_96ce_ea80256852a9_module=module;
                         })
-                        let getterObj5a41f865_9847_43e6_a991_5e235adc1626={
+                        let getterObj3ce7039f_69f8_42e2_96ce_ea80256852a9={
                             set stter(value) {
-                                a5a41f865_9847_43e6_a991_5e235adc1626_module.Set('prop2',value);
+                                a3ce7039f_69f8_42e2_96ce_ea80256852a9_module.Set('prop2',value);
                             }
                         }
-                        getterObj5a41f865_9847_43e6_a991_5e235adc1626.stter= 10;
+                        getterObj3ce7039f_69f8_42e2_96ce_ea80256852a9.stter= 10;
         
         }
 

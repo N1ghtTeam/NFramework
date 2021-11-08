@@ -1,7 +1,13 @@
 <use html>
 <use dom>
 
-<ui:main-component demo-main-ui>
+<ui:component   
+
+    demo-main-ui
+
+    tag { main }
+
+>
 
     constructor(){
         super();
@@ -34,11 +40,12 @@
 
 </ui:main-component>
     
-<ui:component   demo-ui 
+<ui:component   
 
-                extends {
-                    demo-ui-base
-                }
+    demo-ui 
+
+    extends { demo-ui-base }
+
 >
 
     constructor(){
@@ -58,7 +65,11 @@
 
 </ui:component>
 
-<ui:component   demo-ui-base >
+<ui:component   
+
+    demo-ui-base 
+
+>
 
     constructor(){
         super();

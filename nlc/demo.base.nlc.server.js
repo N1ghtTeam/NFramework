@@ -1,6 +1,6 @@
 const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.base.nlc.client.js";
 
-                            var ac23e1867_95f0_49c0_98b3_24b7244becf1_module;
+                            var aa6f11f68_1c38_4e62_be01_ec263bb77d0f_module;
                         
 module.exports = (manager) => {
     let exports     = new Object();
@@ -54,14 +54,14 @@ module.exports = (manager) => {
     
 
         this.GetThisWithCallback((module)=>{
-                            ac23e1867_95f0_49c0_98b3_24b7244becf1_module=module;
+                            aa6f11f68_1c38_4e62_be01_ec263bb77d0f_module=module;
                         })
-                        let getterObjc23e1867_95f0_49c0_98b3_24b7244becf1={
+                        let getterObja6f11f68_1c38_4e62_be01_ec263bb77d0f={
                             set stter(value) {
-                                ac23e1867_95f0_49c0_98b3_24b7244becf1_module.Set('propb',value);
+                                aa6f11f68_1c38_4e62_be01_ec263bb77d0f_module.Set('propb',value);
                             }
                         }
-                        getterObjc23e1867_95f0_49c0_98b3_24b7244becf1.stter=5;
+                        getterObja6f11f68_1c38_4e62_be01_ec263bb77d0f.stter=5;
 
     
 

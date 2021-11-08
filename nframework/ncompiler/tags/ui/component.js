@@ -67,6 +67,15 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
         compiledCode += contents[i].code;
     }
 
+    let componentTag='';
+
+    for(let i=0;i<inputs[0].length;i++){
+        if(inputs[i]=='tag'){
+            componentTag=inputs[i+2];
+            break;
+        }
+    }
+
 
     if(!element.forSV){
 
@@ -126,6 +135,21 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
                                 }
                                 return result;
                             }
+
+                            ${
+                                (()=>{
+                                    if(componentTag=='main'){
+                                        return `
+                                            uiManager.mainUIComponentClass = ${componentName}_class;
+                                            uiManager.mainUIComponentName = '${rawComponentName}';
+                                        `;
+                                    }
+                                    else{
+                                        return '';
+                                    }
+                                })()
+                            }
+
 
                             return ${componentName}_class;
                         },

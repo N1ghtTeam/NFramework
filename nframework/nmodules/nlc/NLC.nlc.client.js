@@ -2,8 +2,8 @@ manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['b3eb920c_93ff_42af_afc6_650e14d32fcf']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['b3eb920c_93ff_42af_afc6_650e14d32fcf']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['577c0123_19c8_444f_9560_7a5983a9ae8b']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['577c0123_19c8_444f_9560_7a5983a9ae8b']=true;
                         
             (()=>{
                 
@@ -66,10 +66,10 @@ manager = window.NFramework.nmoduleManager;
     
             
             
-                        function ac9644d51_abb6_4ea5_98e9_28ace92fe3e8(...params){
-                            let this_ac9644d51_abb6_4ea5_98e9_28ace92fe3e8=this;
+                        function a328ed0f7_43ef_452f_ba8c_4f0f1d51091e(...params){
+                            let this_a328ed0f7_43ef_452f_ba8c_4f0f1d51091e=this;
                             return (
-                                async function tfresult_ac9644d51_abb6_4ea5_98e9_28ace92fe3e8(T){
+                                async function tfresult_a328ed0f7_43ef_452f_ba8c_4f0f1d51091e(T){
                                     var src=(async function  (forSV){
 
                 let compiledCode = await (manager.Get('NLC')).GetThisWithCallback((module)=>{
