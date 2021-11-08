@@ -2,8 +2,8 @@ manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['4fd6b5d1_9251_4bad_9851_56e1019351f1']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['4fd6b5d1_9251_4bad_9851_56e1019351f1']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['62233c8a_4cc9_403f_b0d6_7f77696558ec']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['62233c8a_4cc9_403f_b0d6_7f77696558ec']=true;
                         
             (()=>{
                 

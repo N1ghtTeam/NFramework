@@ -14,6 +14,7 @@
     <property prop2/>
 
     <method setup>
+        
         function(){
 
             this->prop  = 5;
