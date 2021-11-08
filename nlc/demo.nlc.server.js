@@ -1,8 +1,8 @@
 const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";
 
-                            var ae92a29f1_59a1_46fe_85a5_01f493b5f310_module;
+                            var a8fa861d6_809f_4abb_89be_baace883a28e_module;
                         
-                            var a6d14d182_5119_4347_990d_0fb297d15ced_module;
+                            var a2781cbca_f751_45ad_b4b6_bd974078d76f_module;
                         
 module.exports = (manager) => {
     let exports     = new Object();
@@ -67,23 +67,23 @@ module.exports = (manager) => {
         function(){
 
             this.GetThisWithCallback((module)=>{
-                            ae92a29f1_59a1_46fe_85a5_01f493b5f310_module=module;
+                            a8fa861d6_809f_4abb_89be_baace883a28e_module=module;
                         })
-                        let getterObje92a29f1_59a1_46fe_85a5_01f493b5f310={
+                        let getterObj8fa861d6_809f_4abb_89be_baace883a28e={
                             set stter(value) {
-                                ae92a29f1_59a1_46fe_85a5_01f493b5f310_module.Set('prop',value);
+                                a8fa861d6_809f_4abb_89be_baace883a28e_module.Set('prop',value);
                             }
                         }
-                        getterObje92a29f1_59a1_46fe_85a5_01f493b5f310.stter= 5;
+                        getterObj8fa861d6_809f_4abb_89be_baace883a28e.stter= 5;
             this.GetThisWithCallback((module)=>{
-                            a6d14d182_5119_4347_990d_0fb297d15ced_module=module;
+                            a2781cbca_f751_45ad_b4b6_bd974078d76f_module=module;
                         })
-                        let getterObj6d14d182_5119_4347_990d_0fb297d15ced={
+                        let getterObj2781cbca_f751_45ad_b4b6_bd974078d76f={
                             set stter(value) {
-                                a6d14d182_5119_4347_990d_0fb297d15ced_module.Set('prop2',value);
+                                a2781cbca_f751_45ad_b4b6_bd974078d76f_module.Set('prop2',value);
                             }
                         }
-                        getterObj6d14d182_5119_4347_990d_0fb297d15ced.stter= 10;
+                        getterObj2781cbca_f751_45ad_b4b6_bd974078d76f.stter= 10;
         
         }
 

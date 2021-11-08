@@ -527,7 +527,14 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
                         childsAndTextContents+= `result_${rfid}.appendChild(${absR.value});`;
                     }
                     else if(absR.type=='scriptText'){
-                        childsAndTextContents+= `result_${rfid}.innerHTML+=(${absR.value});`;
+                        childsAndTextContents+= `
+                            try{
+                                result_${rfid}.appendChild(${absR.value});
+                            }
+                            catch{
+                                result_${rfid}.innerHTML+=(${absR.value});
+                            }
+                        `;
                     }
                     else{
                         childsAndTextContents+= `result_${rfid}.innerHTML+=${parsedTextContent};`;

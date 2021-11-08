@@ -1,11 +1,11 @@
 
-                            var a35b838cf_8b2f_4a97_aa67_81e4601142d8_module;
+                            var a570ed1f6_ff1c_4b00_9fe4_dfc45e064366_module;
                         manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['7b10979b_bab0_4d9f_84d3_a56dc8cd1f98']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['7b10979b_bab0_4d9f_84d3_a56dc8cd1f98']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['544349df_dddc_4ec0_942d_b14e7983ce96']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['544349df_dddc_4ec0_942d_b14e7983ce96']=true;
                         
             (()=>{
                 
@@ -46,14 +46,14 @@
     
 
         this.GetThisWithCallback((module)=>{
-                            a35b838cf_8b2f_4a97_aa67_81e4601142d8_module=module;
+                            a570ed1f6_ff1c_4b00_9fe4_dfc45e064366_module=module;
                         })
-                        let getterObj35b838cf_8b2f_4a97_aa67_81e4601142d8={
+                        let getterObj570ed1f6_ff1c_4b00_9fe4_dfc45e064366={
                             set stter(value) {
-                                a35b838cf_8b2f_4a97_aa67_81e4601142d8_module.Set('propb',value);
+                                a570ed1f6_ff1c_4b00_9fe4_dfc45e064366_module.Set('propb',value);
                             }
                         }
-                        getterObj35b838cf_8b2f_4a97_aa67_81e4601142d8.stter=5;
+                        getterObj570ed1f6_ff1c_4b00_9fe4_dfc45e064366.stter=5;
 
     
 
