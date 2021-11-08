@@ -28,15 +28,9 @@
         return (
             <>
                 
-                <div>
-                    
-                    [@demo,prop]
-                    
-                    [@demo,prop2]
+                [@demo,prop]
 
-                    {a}
-
-                </div>
+                {a}
 
                 <demo-ui>
 
