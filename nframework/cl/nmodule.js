@@ -10,6 +10,8 @@ class NModule {
         this.routers                = [];
 
         this.isImported             = false;
+
+        this.nTextBindings          = new Object();
     }
 
     async GetSyncProperty(name) {
@@ -195,12 +197,22 @@ class NModule {
         }
         if (!r)
             throw new Error(`Module ${this.name}: Not Found ${name} `);
+        else{
+            
+        }
     }
 
     Set(name, data) {
         let r = false;
         if (name in this.properties) {
             this.properties[name] = data;
+
+            for(let nuiid of this.nTextBindings[name]){
+                let element = document.querySelector(`[NUI_id='${nuiid}']`);
+                element.textContent = data;
+            }
+            
+
             r = true;
         }
         else if (name in this.methods) {
@@ -240,6 +252,7 @@ class NModule {
 
     AddProperty(name) {
         this.properties[name] = null;
+        this.nTextBindings[name]=[];
     }
 
     AddSyncProperty(name) {

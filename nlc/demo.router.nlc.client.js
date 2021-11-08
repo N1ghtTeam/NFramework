@@ -1,1 +1,130 @@
-/* NFRAMEWORK */manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned["2cbf4465_e01b_4ea3_a272_1da4072ea288"]&&(window.NFramework.nmoduleManager.nlcElementRunned["2cbf4465_e01b_4ea3_a272_1da4072ea288"]=!0,(()=>{var a=new window.NFramework.NModule;a.name="demo-router",a.__TYPE="NMODULE",a.baseModules=[],a.side="both",a.RunExternalMethod=function(e){e.call(a)},a.RunExternalMethod(function(){path="/",callback=(e,a)=>{(e=>{var a=manager.NFramework,r=manager.pages.demoPage.modules,n="";n+=a.clejs,n+="\n<nlc>","*"==r&&(r=Object.keys(manager.modules));for(var o,m=0;m<r.length;m++){var s=r[m];"both"!=manager.modules[s].side&&"client"!=manager.modules[s].side||(n+=' <script  src="/nlc/'+s+'"><\/script>')}for(o of manager.pages.demoPage.customTypeDatas)n+="\n<script src='/nlc/"+o+"'><\/script>";var c,a=manager.pages.demoPage.uiComponents;for(c of a="*"==a?manager.uiComponents:a)n+="\n<script src='/nlc/"+c+"'><\/script>";n+="\n</nlc>",n="<nframework-scripts>"+(n+="\n<script src='/appcl'><\/script>")+"</nframework-scripts>",e.render(manager.pages.demoPage.src,{NFramework:n})})(a)}}),window.NFramework.nmoduleManager.ImportModule(a)})());
+manager = window.NFramework.nmoduleManager;
+
+
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['8935c153_aa30_4056_ba61_74855dc39692']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['8935c153_aa30_4056_ba61_74855dc39692']=true;
+                        
+            (()=>{
+                
+
+        var NModule=
+            function() {
+                return window.NFramework.NModule;
+            }()
+
+        ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        nmodule.name='demo-router';
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.baseModules = [];
+
+        nmodule.side = 'both';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+
+    
+        
+
+        
+        path=
+    
+            '/'
+        
+
+    
+
+        
+        callback=
+    
+            (req,res)=>{
+                
+                
+
+        ((req,res)=>{
+            var framework=manager.NFramework;
+
+            var modules=manager.pages['demoPage'].modules;
+
+            var miejs='';
+
+            var frameworkCLEJS=framework.clejs;
+
+            miejs+=frameworkCLEJS;
+            
+            miejs+="\n<nlc>";
+
+            if(modules=='*')
+            {
+                modules=Object.keys(manager.modules);
+            }
+            
+            for(var i=0;i<modules.length;i++){
+                var module=modules[i];
+                if(manager.modules[module].side=='both' || manager.modules[module].side=='client')
+                    miejs+=' <script  src="/nlc/'+module+'"></script>';
+            }
+
+            var globalObjects=manager.pages['demoPage'].customTypeDatas;
+
+            for(var globalObjectName of globalObjects){
+                miejs+="\n<script src='/nlc/"+globalObjectName+"'></script>";
+            }
+            
+            var uiComponents=manager.pages['demoPage'].uiComponents;
+
+            if(uiComponents=='*')
+            {
+                uiComponents=manager.uiComponents;
+            }
+            
+            for(var uiComponent of uiComponents){
+                miejs+="\n<script src='/nlc/"+uiComponent+"'></script>";
+            }
+
+            miejs+="\n</nlc>";
+
+            miejs+="\n<script src='/appcl'></script>";
+
+            miejs="<nframework-scripts>" +miejs+ "</nframework-scripts>";
+
+
+            res.render( manager.pages['demoPage'].src,{
+                NFramework:miejs
+            });
+        })(req,res);
+
+    
+            }
+        
+
+    
+
+    
+    
+
+
+        });
+    
+
+            var nmoduleManager = window.NFramework.nmoduleManager;
+            nmoduleManager.ImportModule(nmodule);
+        
+            })();
+        
+                    }
+                
+
+                

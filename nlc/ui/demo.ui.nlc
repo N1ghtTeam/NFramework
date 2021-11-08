@@ -3,35 +3,32 @@
 
 <ui:main-component demo-main-ui>
 
-    async render(){
+    constructor(){
+        super();
+    }    
+
+    render(){
+
+        let a=5;
 
         return (
-            <async-fragment>
+            <>
                 
-                <region>
-                    await @NLC->Execute(
-                        `
-                            <use html>
+                <div>
+                    
+                    [@demo,prop]
+                    
+                    [@demo,prop2]
 
-                            <region>
-                            
-                                return (
-                                    <div>
-                                        Hello World
-                                    </div>                
-                                );
-        
-                            </region>
+                    {a}
 
-                        `
-                    )
-                </region>
+                </div>
 
                 <demo-ui>
 
                 </demo-ui>
 
-            </async-fragment>
+            </>
         );
     }
 
@@ -43,6 +40,10 @@
                     demo-ui-base
                 }
 >
+
+    constructor(){
+        super();
+    }    
 
     render(){
 
@@ -58,6 +59,10 @@
 </ui:component>
 
 <ui:component   demo-ui-base >
+
+    constructor(){
+        super();
+    }    
 
     render(){
         return(

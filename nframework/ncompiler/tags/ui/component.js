@@ -76,12 +76,7 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
             window.NFramework.customTags['ui']['${componentName}']=true;
 
             /*
-            class ${componentName}_class extends UIComponent{
-
-                constructor(){
-                    super();
-                    this.componentName='${rawComponentName}';
-                }                
+            class ${componentName}_class extends UIComponent{    
 
             ${compiledCode}
         
@@ -102,16 +97,14 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
                     {
                         'classCreator': ()=>{
                             class ${componentName}_class extends uiManager.uiComponentClasses[${compiledExtends}]{
-                
-                                constructor(){
-                                    super();
-                                    this.UIClass=UIClass;
-                                    this.componentName='${rawComponentName}';
-                                }                
+                        
                 
                             ${compiledCode}
                         
                             }
+
+                            ${componentName}_class.prototype.componentName='${rawComponentName}';
+                            ${componentName}_class.prototype.UIClass=UIClass;
 
                             ${componentName}_class.render=function(target){
                                 let result=[];

@@ -1,1 +1,73 @@
-/* NFRAMEWORK */const JSCLPath="D:\\MyTechs\\nframework\\nframework/nmodules/dom/dom.nlc.client.js";module.exports=e=>{let o=new Object,n=[];o.customTypeDatas=[],o.customTypeDatas.Add=function(e,n){o.customTypeDatas.push({key:e,value:n})};var s=new(require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule"));s.name="dom",s.__TYPE="NMODULE",s.baseModules=[],s.side="both",s.RunExternalMethod=function(e){e.call(s)},s.RunExternalMethod(function(){});var t=require("fs"),a=JSCLPath;return s.client_js_code=t.readFileSync(a),"server"!=s.side&&s.Routing("/nlc/dom",(e,n)=>n.send(s.client_js_code)),n.push(s),o.nmodules=n,o.pages=[],o};
+const JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/dom/dom.nlc.client.js";
+
+module.exports = (manager) => {
+    let exports     = new Object();
+    let nmodules    = [];
+    let pages       = [];
+    exports.customTypeDatas=[];
+    exports.customTypeDatas.Add=function(key,value){
+        exports.customTypeDatas.push({
+            'key':key,
+            'value':value
+        });
+    }
+
+    
+
+                    
+
+        var NModule=
+        function() {
+            return require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule");
+        }()
+
+    ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        nmodule.name='dom';
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.baseModules = [];
+
+        nmodule.side = 'both';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+
+    
+
+
+        });
+    
+
+        var fs=require('fs');
+
+        var clientVersion=JSCLPath;
+
+        nmodule.client_js_code=fs.readFileSync(clientVersion);
+
+        if(nmodule.side!='server'){
+            nmodule.Routing('/nlc/dom', (req, res) => res.send(nmodule.client_js_code));
+        }
+
+        
+
+            nmodules.push(nmodule);
+
+        
+
+                
+
+    exports.nmodules=nmodules;
+    exports.pages=pages;
+    return exports;
+}

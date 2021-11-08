@@ -81,17 +81,14 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
                 uiManager.uiComponentClassCreators.push(
                     {
                         'classCreator': ()=>{
-                            class ${componentName}_class extends uiManager.uiComponentClasses[${compiledExtends}]{
-                
-                                constructor(){
-                                    super();
-                                    this.UIClass=UIClass;
-                                    this.componentName='${rawComponentName}';
-                                }                
+                            class ${componentName}_class extends uiManager.uiComponentClasses[${compiledExtends}]{       
                 
                             ${compiledCode}
                         
                             }
+
+                            ${componentName}_class.prototype.componentName='${rawComponentName}';
+                            ${componentName}_class.prototype.UIClass=UIClass;
 
                             ${componentName}_class.render=function(target){
                                 let result=[];

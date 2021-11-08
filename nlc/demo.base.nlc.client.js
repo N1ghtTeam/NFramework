@@ -1,1 +1,72 @@
-/* NFRAMEWORK */var a0de50260_e9a2_4da8_84e2_2661437921b8_module;manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned["5d4bf821_678c_4588_9545_3c533ee2857c"]&&(window.NFramework.nmoduleManager.nlcElementRunned["5d4bf821_678c_4588_9545_3c533ee2857c"]=!0,(()=>{var a=new window.NFramework.NModule;a.name="demo-base",a.__TYPE="NMODULE",a.baseModules=[],a.side="server",a.RunExternalMethod=function(e){e.call(a)},a.RunExternalMethod(function(){this.AddProperty("propb"),this.GetThisWithCallback(e=>{a0de50260_e9a2_4da8_84e2_2661437921b8_module=e});let e={set stter(e){a0de50260_e9a2_4da8_84e2_2661437921b8_module.Set("propb",e)}};e.stter=5}),window.NFramework.nmoduleManager.ImportModule(a)})());
+
+                            var abac35832_e8aa_49f9_8dbc_23870746b56d_module;
+                        manager = window.NFramework.nmoduleManager;
+
+
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['37983c03_0393_4a2a_822b_498b7b2e4625']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['37983c03_0393_4a2a_822b_498b7b2e4625']=true;
+                        
+            (()=>{
+                
+
+        var NModule=
+            function() {
+                return window.NFramework.NModule;
+            }()
+
+        ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        nmodule.name='demo-base';
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.baseModules = [];
+
+        nmodule.side = 'server';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+    
+    
+
+    this.AddProperty('propb');
+
+    
+
+    
+
+        this.GetThisWithCallback((module)=>{
+                            abac35832_e8aa_49f9_8dbc_23870746b56d_module=module;
+                        })
+                        let getterObjbac35832_e8aa_49f9_8dbc_23870746b56d={
+                            set stter(value) {
+                                abac35832_e8aa_49f9_8dbc_23870746b56d_module.Set('propb',value);
+                            }
+                        }
+                        getterObjbac35832_e8aa_49f9_8dbc_23870746b56d.stter=5;
+
+    
+
+
+        });
+    
+
+            var nmoduleManager = window.NFramework.nmoduleManager;
+            nmoduleManager.ImportModule(nmodule);
+        
+            })();
+        
+                    }
+                
+
+                

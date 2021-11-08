@@ -1,125 +1,283 @@
-/*
-
-const { v4: uuidv4 } = require('uuid');
-
-module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
-    var isAutoClose=tag.isAutoClose;
-
-    var contents=tag.GetContent(element,childsCode,code);
-    
-    var inputs=tag.GetInputs(element,childsCode,code);
-
-    var rfid = uuidv4();
-
-    var rfid2='';
-
-    for(var i=0;i<rfid.length;i++){
-        if(rfid[i]!='-'){
-            rfid2+=rfid[i];
-        }
-        else
-        rfid2+='_'
-    }
-
-    rfid=rfid2;
-
-    var childs=``;
-
-    if(isAutoClose!=true){
-        for(var i=0;i<contents.length;i++){
-            if(contents[i].type=='childCode'){
-                childs+=`
-                result_${rfid}.appendChild(${contents[i].code});
-                `;
-            }
-        }
-    }
-
-
-
-    var attributes=`
-        var attributes_${rfid}=[];
-    `;
-
-    var regex=/^[a-zA-Z]+$/;
-    var regex2=/^[0-9]+$/;
-
-    for(var i=0;i<inputs.length;i++){
-        var atbName='';
-        var isStart=false;
-        for(var j=0;j<inputs[i].length;j++){
-            if(!isStart && (inputs[i][j].match(regex) || inputs[i][j].match(regex2) || inputs[i][j]=='-' || inputs[i][j]=='_')){
-                isStart=true;
-            }
-            if(isStart && !(inputs[i][j].match(regex) || inputs[i][j].match(regex2) || inputs[i][j]=='-' || inputs[i][j]=='_')){
-                isStart=false;
-                break;
-            }
-            if(isStart){
-                atbName+=inputs[i][j];
-            }
-        }
-        attributes+=`
-            var a${rfid}${atbName}=true;
-            attributes_${rfid}.push({
-                key:'${atbName}',
-                value:(()=>{return a${rfid}${inputs[i]}})()
-            });
-        `;
-    }
-
-    attributes+=`
-        for(var attribue of attributes_${rfid}){
-            result_${rfid}.setAttribute(attribue.key,attribue.value);
-        }
-    `;
-
-    var textContent=``;//result.textContent+=
-
-
-
-    for(var i=0;i<contents.length;i++){
-        if(contents[i].type=='textContent'){
-            var fid = uuidv4();
-            manager.textContents[fid]=contents[i].code;
-            textContent+=`result_${rfid}.textContent+=manager.GetTextContent('${fid}');
-            `;
-        }
-    }
-
-
-    var compiledCode=`
-
-            var result_${rfid}=document.createElement('${htmlTagName}');
-            
-            ${attributes}
-
-            ${textContent}
-
-            ${childs}
-            
-
-    `;
-
-    return `
-
-    (()=>{
-
-        ${compiledCode}
-        
-        return result_${rfid};
-
-    })()
-        
-
-`;
-}
-
-*/
-
 const { v4: uuidv4 } = require('uuid');
 
 var tag=require('../../tag/tag');
+
+CompileAutoBindingSyntax=function(code){
+
+    let result=[];
+
+    let level=0;
+
+    let strChr='';
+    let isInStr=false;
+
+    function UpdateIsInStr(i){
+        if(!isInStr && (code[i] == '"' || code[i] == '`' || code[i] == "'")){
+            isInStr = true;
+            strChr  = code[i];
+        }
+        else
+        if(isInStr && code[i] == strChr){
+            isInStr = false;
+        }
+    }
+
+    for(let i=0;i<code.length;i++){
+
+        if(code[i]=='[' && code[i+1]!='['){
+
+
+            let start   = i;
+
+            i++;
+
+            let end     = i;
+
+            let commaIndex   = -1;
+
+            let bracketLevel        = 0;
+            let curlyBracketLevel   = 0;
+            let roundBracketLevel   = 0;
+
+            for(;i<code.length;i++){
+                UpdateIsInStr(i);
+
+                if(!isInStr){
+
+                    if(commaIndex == -1){
+                        if(code[i]=='['){
+                            bracketLevel++;
+                        }
+                        if(code[i]==']'){
+                            bracketLevel--;
+                        }
+                        if(code[i]=='{'){
+                            curlyBracketLevel++;
+                        }
+                        if(code[i]=='}'){
+                            curlyBracketLevel--;
+                        }
+                        if(code[i]=='('){
+                            roundBracketLevel++;
+                        }
+                        if(code[i]==')'){
+                            roundBracketLevel--;
+                        }
+                    }
+                    else{
+                        if(code[i]==']'){
+                            end=i;
+                            break;
+                        }
+                    }
+
+                    if(
+                        (
+                            curlyBracketLevel    == 0
+                            && roundBracketLevel == 0
+                            && bracketLevel      == 0
+                        )
+                        && code[i] == ','
+                    ){
+
+                        commaIndex = i; 
+
+                    }
+
+
+                }
+
+            }
+
+            let autoBindingSyntax = code.substring(start,end+1);
+
+            
+            var rfid = uuidv4();
+
+            var rfid2='';
+
+            for(var l=0;l<rfid.length;l++){
+                if(rfid[l]!='-'){
+                    rfid2+=rfid[l];
+                }
+                else
+                rfid2+='_'
+            }
+
+            rfid=rfid2;
+
+            let moduleScript = `(${code.substring(start+1,commaIndex)})`;
+
+            let newPropName = '';
+
+            let propStart = commaIndex+1;
+            let propEnd = end-1;
+
+            for(;propStart<end;propStart++){
+                if(code[propStart]!=' '){
+                    break;
+                }
+            }
+            for(;propEnd>commaIndex;propEnd--){
+                if(code[propEnd]!=' '){
+                    break;
+                }
+            }
+
+            let propName = `${code.substring(propStart,propEnd+1)}`;
+
+            result.push({
+                'value':`
+                            (()=>{
+                                var tag_${rfid}=document.createElement('n-text');
+
+                                tag_${rfid}.setAttribute('NUI_id','${rfid}');
+
+                                ${moduleScript}.nTextBindings['${propName}'].push('${rfid}');
+
+                                tag_${rfid}.textContent = ${moduleScript}.Get('${propName}');
+
+                                return tag_${rfid};
+                            })()
+                        `,
+                'type':'child'
+            });
+
+            i=end;
+
+        }
+        else if(code[i]=='[' && code[i+1]=='['){
+            i++;
+            result.push({
+                'value':'[',
+                'type':'textContent'
+            });
+        }
+        else if(code[i]==']' && code[i+1]==']'){
+            i++;
+            result.push({
+                'value':']',
+                'type':'textContent'
+            });
+        }
+        else if(code[i]=='{' && code[i+1]!='{'){
+
+            let start   = i;
+
+            i++;
+
+            let end     = i;
+
+            let bracketLevel        = 0;
+            let curlyBracketLevel   = 0;
+            let roundBracketLevel   = 0;
+
+            for(;i<code.length;i++){
+                UpdateIsInStr(i);
+
+                if(!isInStr){
+
+                    if(code[i]=='['){
+                        bracketLevel++;
+                    }
+                    if(code[i]==']'){
+                        bracketLevel--;
+                    }
+                    if(code[i]=='{'){
+                        curlyBracketLevel++;
+                    }
+                    if(code[i]=='}'){
+                        if(curlyBracketLevel==0){
+                            
+                            end=i;
+                            break;
+
+                        }
+                        curlyBracketLevel--;
+                    }
+                    if(code[i]=='('){
+                        roundBracketLevel++;
+                    }
+                    if(code[i]==')'){
+                        roundBracketLevel--;
+                    }
+
+                }
+
+            }
+
+            
+
+            let scriptText = `(${code.substring(start+1,end)})`;
+
+            result.push({
+                'value':`
+                            (()=>{
+
+                                return ${scriptText};
+                            })()
+                        `,
+                'type':'scriptText'
+            });
+
+
+            i=end;
+
+        }
+        else if(code[i]=='{' && code[i+1]=='{'){
+            i++;
+            result.push({
+                'value':'{',
+                'type':'textContent'
+            });
+        }
+        else if(code[i]=='}' && code[i+1]=='}'){
+            i++;
+            result.push({
+                'value':'}',
+                'type':'textContent'
+            });
+        }
+        else{
+            result.push({
+                'value':code[i],
+                'type':'textContent'
+            });
+        }
+
+    }
+
+    let rcache=[];
+
+    for(let i=0;i<result.length;i++){
+        if(result[i].type=='child'){
+            let newR=result[i];
+            rcache.push(newR);
+        }
+        else if(result[i].type=='scriptText'){
+            let newR=result[i];
+            rcache.push(newR);
+        }
+        else{
+            let j=i+1;
+            let newR=result[i];
+            for(;j<result.length;j++){
+                if(result[j].type=='textContent'){
+                    newR.value+=result[j].value;
+                }
+                else{
+                    break;
+                }
+            }
+            rcache.push(newR);
+            i=j-1;
+        }
+    }
+
+    result=rcache;
+
+    return result;
+}
 
 module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
     tag.isJSTag=true;
@@ -360,8 +518,22 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
             else
             if(contents[i].type=='textContent'){
                 let fid = uuidv4();
-                let parsedTextContent=tag.ParseToHTMLElementTextcontent(contents[i].code);
-                childsAndTextContents+=`result_${rfid}.innerHTML+=${parsedTextContent};`;
+
+                let autoBindingSyntaxRs = CompileAutoBindingSyntax(contents[i].code);
+
+                for(let absR of autoBindingSyntaxRs){
+                    let parsedTextContent = tag.ParseToHTMLElementTextcontent(absR.value);
+                    if(absR.type=='child'){
+                        childsAndTextContents+= `result_${rfid}.appendChild(${absR.value});`;
+                    }
+                    else if(absR.type=='scriptText'){
+                        childsAndTextContents+= `result_${rfid}.innerHTML+=(${absR.value});`;
+                    }
+                    else{
+                        childsAndTextContents+= `result_${rfid}.innerHTML+=${parsedTextContent};`;
+                    }
+                }
+
             }
         }
     }
@@ -370,10 +542,19 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
     var compiledCode=`
 
             var result_${rfid}=document.createElement('${htmlTagName}');
-            
-            ${attributes}
 
-            ${childsAndTextContents}
+            result_${rfid}.setAttribute('NUI_id','${rfid}');
+            
+            result_${rfid}.callInside=function(){
+
+                ${attributes}
+    
+                ${childsAndTextContents}
+
+            }
+
+            result_${rfid}.callInside.call(result_${rfid});
+
             
             if(result_${rfid}.render!=null){
                 const AsyncFunction = (async () => {}).constructor;

@@ -3,19 +3,21 @@
 
 <module demo
 
-        extends {
-            demo-base
+        side {
+            both
         }
 
-        side {
-            server
-        }
 >
+
+    <property prop/>
+
+    <property prop2/>
 
     <method setup>
         function(){
 
-
+            this->prop  = 5;
+            this->prop2 = 10;
         
         }
 

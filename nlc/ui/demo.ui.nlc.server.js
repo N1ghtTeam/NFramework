@@ -1,1 +1,89 @@
-/* NFRAMEWORK */const JSCLPath="D:\\MyTechs\\nframework/nlc/ui/demo.ui.nlc.client.js";module.exports=e=>{let r=new Object;r.customTypeDatas=[],r.customTypeDatas.Add=function(e,s){r.customTypeDatas.push({key:e,value:s})};var n=require("fs").readFileSync(JSCLPath).toString(),s=e.NFramework.express_server;e.uiComponents.push("demo-main-ui"),s.get("/nlc/demo-main-ui",(e,s)=>{s.send(n)});var t=require("fs").readFileSync(JSCLPath).toString(),s=e.NFramework.express_server;e.uiComponents.push("demo-ui"),s.get("/nlc/demo-ui",(e,s)=>{s.send(t)});var o=require("fs").readFileSync(JSCLPath).toString(),s=e.NFramework.express_server;return e.uiComponents.push("demo-ui-base"),s.get("/nlc/demo-ui-base",(e,s)=>{s.send(o)}),r.nmodules=[],r.pages=[],r};
+const JSCLPath = "D:\\MyTechs\\nframework/nlc/ui/demo.ui.nlc.client.js";
+
+module.exports = (manager) => {
+    let exports     = new Object();
+    let nmodules    = [];
+    let pages       = [];
+    exports.customTypeDatas=[];
+    exports.customTypeDatas.Add=function(key,value){
+        exports.customTypeDatas.push({
+            'key':key,
+            'value':value
+        });
+    }
+
+    
+
+                    
+        
+            var fs=require('fs');
+
+            var demo_main_ui_code=fs.readFileSync(JSCLPath).toString();
+
+            var express_server = manager.NFramework.express_server;
+
+            var demo_main_ui_path='/nlc/demo-main-ui';
+
+            manager.uiComponents.push('demo-main-ui');
+
+            express_server.get(demo_main_ui_path, (req, res) => {
+
+                res.send(demo_main_ui_code);
+
+            });
+
+        
+        
+
+                
+
+                    
+        
+            var fs=require('fs');
+
+            var demo_ui_code=fs.readFileSync(JSCLPath).toString();
+
+            var express_server = manager.NFramework.express_server;
+
+            var demo_ui_path='/nlc/demo-ui';
+
+            manager.uiComponents.push('demo-ui');
+
+            express_server.get(demo_ui_path, (req, res) => {
+
+                res.send(demo_ui_code);
+
+            });
+
+        
+        
+
+                
+
+                    
+        
+            var fs=require('fs');
+
+            var demo_ui_base_code=fs.readFileSync(JSCLPath).toString();
+
+            var express_server = manager.NFramework.express_server;
+
+            var demo_ui_base_path='/nlc/demo-ui-base';
+
+            manager.uiComponents.push('demo-ui-base');
+
+            express_server.get(demo_ui_base_path, (req, res) => {
+
+                res.send(demo_ui_base_code);
+
+            });
+
+        
+        
+
+                
+
+    exports.nmodules=nmodules;
+    exports.pages=pages;
+    return exports;
+}
