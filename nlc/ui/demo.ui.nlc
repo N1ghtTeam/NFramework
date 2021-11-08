@@ -7,7 +7,7 @@
 
     demo-main-ui
 
-    tag { main }
+    tag { 'main' }
 
 >
 
@@ -22,11 +22,12 @@
 
         return (
             <>
+
+
                 <demo-ui>
 
-                    {{{a}}}
-
                 </demo-ui>
+                
 
             </>
         );

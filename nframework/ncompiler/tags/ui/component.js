@@ -67,7 +67,7 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
         compiledCode += contents[i].code;
     }
 
-    let componentTag='';
+    let componentTag='""';
 
     for(let i=0;i<inputs[0].length;i++){
         if(inputs[i]=='tag'){
@@ -136,18 +136,9 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
                                 return result;
                             }
 
-                            ${
-                                (()=>{
-                                    if(componentTag=='main'){
-                                        return `
-                                            uiManager.mainUIComponentClass = ${componentName}_class;
-                                            uiManager.mainUIComponentName = '${rawComponentName}';
-                                        `;
-                                    }
-                                    else{
-                                        return '';
-                                    }
-                                })()
+                            if(${componentTag}=='main'){
+                                uiManager.mainUIComponentClass = ${componentName}_class;
+                                uiManager.mainUIComponentName = '${rawComponentName}';
                             }
 
 

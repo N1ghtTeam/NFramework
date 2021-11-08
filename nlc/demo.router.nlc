@@ -1,17 +1,14 @@
 <module demo-router>
 
-    <routing>
+    <routing
+        path { '/' }
+    >
 
-        <var path>
-            '/'
-        </var>
-
-        <var callback>
-            (req,res)=>{
-                
-                <render-page demoPage/>
-            }
-        </var>
+        (req,res)=>{
+            
+            @demoPage.Render(req,res);
+            
+        }
 
     </routing>
 

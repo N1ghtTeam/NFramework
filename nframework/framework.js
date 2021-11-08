@@ -79,6 +79,8 @@ class NFramework {
         const appCLJSFilePath           = __dirname + '/cl/app.js';
         
         let appCLJSCode                 = fs.readFileSync(appCLJSFilePath).toString();
+        
+        appCLJSCode = `(()=>{${appCLJSCode}})()`;
 
         if(this.use_uglify_js){
             appCLJSCode = Uglify.minify(appCLJSCode).code;
@@ -94,6 +96,8 @@ class NFramework {
             const filePath               = __dirname + '/cl/'+clfile.path;
     
             let fileCode           = fs.readFileSync(filePath).toString();
+
+            fileCode = `(()=>{${fileCode}})()`;
     
             if(this.use_uglify_js){
                 fileCode = Uglify.minify(fileCode).code;
