@@ -119,7 +119,17 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
                 uiManager.uiComponentClassCreators.push(
                     {
                         'classCreator': ()=>{
-                            class ${componentName}_class extends uiManager.uiComponentClasses[${compiledExtends}]{
+
+                            let baseClassName = (()=>{
+                                try{
+                                    return (${compiledExtends});
+                                }
+                                catch{  
+                                    return `+'`'+`${compiledExtends}`+'`'+`;
+                                }
+                            })();
+
+                            class ${componentName}_class extends uiManager.uiComponentClasses[baseClassName]{
                         
                 
                             ${compiledCode}

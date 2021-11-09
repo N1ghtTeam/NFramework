@@ -1,1 +1,88 @@
-/* NFRAMEWORK */manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned.dc7dbab9_696e_4273_b763_5dbe94ba9e30&&(window.NFramework.nmoduleManager.nlcElementRunned.dc7dbab9_696e_4273_b763_5dbe94ba9e30=!0,(()=>{var e,n=window.NFramework.NModule,a=new n;a.name="demo",a.__TYPE="NMODULE",a.baseModules=[(e=manager.Get("demo-base"))instanceof n?e.name:e],a.side="both",a.RunExternalMethod=function(e){e.call(a)},a.RunExternalMethod(function(){this.AddMethod("setup",(...e)=>{return function(){}.call(this,...e)})}),window.NFramework.nmoduleManager.ImportModule(a)})());
+manager = window.NFramework.nmoduleManager;
+
+
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['a517ffb8_154d_4bec_96ea_0f3c423121a5']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['a517ffb8_154d_4bec_96ea_0f3c423121a5']=true;
+                        
+            (()=>{
+                
+
+        var NModule=
+            function() {
+                return window.NFramework.NModule;
+            }()
+
+        ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        nmodule.name='demo';
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.baseModules = [
+            (()=>{
+                let me=(()=>{
+                    try{
+                        return (demo-base);
+                    }
+                    catch{
+                        return `demo-base`;
+                    }
+                })();
+                if(me instanceof NModule){
+                    return me.name;
+                }
+                else{
+                    return me;
+                }
+            })()
+        ];
+
+        nmodule.side = 'both';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+
+    
+        this.AddMethod('setup',(...args) => {
+            let f=
+    
+        
+        function(){
+            
+            
+
+        }
+
+    
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+
+        });
+    
+
+            var nmoduleManager = window.NFramework.nmoduleManager;
+            nmoduleManager.ImportModule(nmodule);
+        
+            })();
+        
+                    }
+                
+
+                

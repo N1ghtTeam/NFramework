@@ -1,1 +1,109 @@
-/* NFRAMEWORK */const JSCLPath="D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";module.exports=e=>{let t=new Object,n=[];t.customTypeDatas=[],t.customTypeDatas.Add=function(e,n){t.customTypeDatas.push({key:e,value:n})};var o=require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule"),s=new o;s.name="demo",s.__TYPE="NMODULE",s.baseModules=[(e=e.Get("demo-base"))instanceof o?e.name:e],s.side="both",s.RunExternalMethod=function(e){e.call(s)},s.RunExternalMethod(function(){this.AddMethod("setup",(...e)=>{return function(){}.call(this,...e)})});o=require("fs"),e=JSCLPath;return s.client_js_code=o.readFileSync(e),"server"!=s.side&&s.Routing("/nlc/demo",(e,n)=>n.send(s.client_js_code)),n.push(s),t.nmodules=n,t.pages=[],t};
+const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";
+
+module.exports = (manager) => {
+    let exports     = new Object();
+    let nmodules    = [];
+    let pages       = [];
+    exports.customTypeDatas=[];
+    exports.customTypeDatas.Add=function(key,value){
+        exports.customTypeDatas.push({
+            'key':key,
+            'value':value
+        });
+    }
+
+    
+
+                    
+
+        var NModule=
+        function() {
+            return require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule");
+        }()
+
+    ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        nmodule.name='demo';
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.baseModules = [
+            (()=>{
+                let me=(()=>{
+                    try{
+                        return (demo-base);
+                    }
+                    catch{
+                        return `demo-base`;
+                    }
+                })();
+                if(me instanceof NModule){
+                    return me.name;
+                }
+                else{
+                    return me;
+                }
+            })()
+        ];
+
+        nmodule.side = 'both';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+
+    
+        this.AddMethod('setup',(...args) => {
+            let f=
+    
+        
+        function(){
+            
+            
+
+        }
+
+    
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+
+        });
+    
+
+        var fs=require('fs');
+
+        var clientVersion=JSCLPath;
+
+        nmodule.client_js_code=fs.readFileSync(clientVersion);
+
+        if(nmodule.side!='server'){
+            nmodule.Routing('/nlc/demo', (req, res) => res.send(nmodule.client_js_code));
+        }
+
+        
+
+            nmodules.push(nmodule);
+
+        
+
+                
+
+    exports.nmodules=nmodules;
+    exports.pages=pages;
+    return exports;
+}

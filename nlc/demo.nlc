@@ -6,7 +6,7 @@
         side { 'both' }
 
         extends { 
-            @demo-base 
+            demo-base 
         }
 
 >
@@ -14,7 +14,9 @@
     <method setup>
         
         function(){
-        
+            
+            
+
         }
 
     </method>
