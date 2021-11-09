@@ -37,6 +37,14 @@ tag.Compile = function(element, childsCode, code) {
             newInputs.push(input.substring(0,input.length-1));
             newInputs.push('{');
         }
+        else if(input[input.length-1]=='}' && input.length!=1){
+            newInputs.push(input.substring(0,input.length-1));
+            newInputs.push('{');
+        }
+        else if(input[0]=='{' && input.length!=1){
+            newInputs.push('{');
+            newInputs.push(input.substring(1,input.length));
+        }
         else{
             newInputs.push(input);
         }
@@ -82,8 +90,6 @@ tag.Compile = function(element, childsCode, code) {
         }
     }
     extendedModulesStr = `[${extendedModulesStr}]`;
-
-
 
     let moduleName = inputs[0];
 

@@ -5,6 +5,11 @@
 
         side { 'both' }
 
+        extends { 
+            demo-base 
+            demo-base2
+        }
+
 >
 
     <property prop/>
@@ -17,6 +22,9 @@
 
             this->prop  = 5;
             this->prop2 = 10;
+
+            console.log(this->propb);
+            console.log(this->propb2);
         
         }
 
