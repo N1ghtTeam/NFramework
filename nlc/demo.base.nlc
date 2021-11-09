@@ -3,9 +3,7 @@
 
 <module demo-base
 
-        side {
-            server
-        }
+        side { 'server' }
 >
     
     <property propb/>

@@ -140,7 +140,7 @@ tag.Compile = function(element, childsCode, code) {
 
     page_${inputs[0]}.modules=${modulesStr};
 
-    page_${inputs[0]}.src='${src}';
+    page_${inputs[0]}.src=${src};
 
     page_${inputs[0]}.Setup=function(){
 

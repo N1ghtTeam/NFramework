@@ -5,9 +5,9 @@
     >
 
         (req,res)=>{
-            
-            @demoPage.Render(req,res);
-            
+                
+            @demoPage.Render(req,res)
+                
         }
 
     </routing>

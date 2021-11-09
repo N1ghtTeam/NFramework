@@ -45,7 +45,7 @@ tag.Compile = function(element, childsCode, code) {
     inputs = newInputs;
 
     //get side
-    let side='both';
+    let side=`'both'`;
     for(let i=0;i<inputs.length;i++){
         if(inputs[i]=='side'){
             side=inputs[i+2];
@@ -121,7 +121,7 @@ tag.Compile = function(element, childsCode, code) {
 
         nmodule.baseModules = ${extendedModulesStr};
 
-        nmodule.side = '${side}';
+        nmodule.side = ${side};
 
         nmodule.RunExternalMethod=function(callback){
             callback.call(nmodule);

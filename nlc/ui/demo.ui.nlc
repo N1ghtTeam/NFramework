@@ -1,13 +1,9 @@
 <use html>
 <use dom>
 
+<ui:component   demo-main-ui
 
-
-<ui:component   
-
-    demo-main-ui
-
-    tag { 'main' }
+                tag { 'main' }
 
 >
 
@@ -23,11 +19,11 @@
         return (
             <>
 
+                
 
                 <demo-ui>
 
                 </demo-ui>
-                
 
             </>
         );

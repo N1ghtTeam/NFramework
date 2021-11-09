@@ -3,9 +3,7 @@
 
 <module demo
 
-        side {
-            both
-        }
+        side { 'both' }
 
 >
 
