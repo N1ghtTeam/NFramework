@@ -6,25 +6,14 @@
         side { 'both' }
 
         extends { 
-            'demo-base' 
-            'demo-base2'
+            @demo-base 
         }
 
 >
 
-    <property prop/>
-
-    <property prop2/>
-
     <method setup>
         
         function(){
-
-            this->prop  = 5;
-            this->prop2 = 10;
-
-            console.log(this->propb);
-            console.log(this->propb2);
         
         }
 

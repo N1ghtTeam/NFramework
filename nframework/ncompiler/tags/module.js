@@ -82,6 +82,20 @@ tag.Compile = function(element, childsCode, code) {
             i++;
         }
     }
+    
+    for(let i=0;i<extendedModules.length;i++){
+        extendedModules[i]=`
+            (()=>{
+                let me=${extendedModules[i]};
+                if(me instanceof NModule){
+                    return me.name;
+                }
+                else{
+                    return me;
+                }
+            })()
+        `;
+    }
 
     for(let i=0;i<extendedModules.length;i++){
         extendedModulesStr+=`${extendedModules[i]}`;

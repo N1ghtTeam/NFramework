@@ -44,8 +44,9 @@ class NModuleManager {
     Get(name) {
         if (name in this.modules)
             return this.modules[name];
-        if (name in this.customTypeDatas)
+        else if (name in this.customTypeDatas)
             return this.customTypeDatas[name];
+        else return name;
     }
 
     AutoSetParentForModules() {

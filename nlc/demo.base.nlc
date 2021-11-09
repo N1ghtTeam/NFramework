@@ -1,32 +1,9 @@
 <use html>
 <use dom>
 
-<module demo-base2
-
-        side { 'both' }
->
-    
-    <property propb2/>
-
-    <region>
-
-        this->propb2=5;
-
-    </region>
-
-</module>
-
 <module demo-base
 
         side { 'both' }
 >
-    
-    <property propb/>
-
-    <region>
-
-        this->propb=5;
-
-    </region>
 
 </module>

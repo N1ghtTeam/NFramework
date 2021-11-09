@@ -277,6 +277,7 @@ class NModuleManager {
             return this.pages[name];
         else if (name in this.customTypeDatas)
             return this.customTypeDatas[name];
+        else return name;
     }
 }
 
