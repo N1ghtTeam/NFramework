@@ -84,7 +84,7 @@ tag.Compile = function(element, childsCode, code) {
     }
 
     for(let i=0;i<extendedModules.length;i++){
-        extendedModulesStr+=`'${extendedModules[i]}'`;
+        extendedModulesStr+=`${extendedModules[i]}`;
         if(i<extendedModules.length-1){
             extendedModulesStr+=',';
         }

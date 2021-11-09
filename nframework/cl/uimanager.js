@@ -88,6 +88,8 @@ class UIManager{
 
             let nframeworkAppUI = document.createElement(manager.mainUIComponentName);
 
+            nframeworkAppUI.setAttribute('NUI_id',manager.mainComponentNUI_id);
+
             document.body.appendChild(nframeworkAppUI);
 
             if(nframeworkAppUI.render!=null){

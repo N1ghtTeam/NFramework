@@ -19,8 +19,6 @@
         return (
             <>
 
-                
-
                 <demo-ui>
 
                 </demo-ui>
@@ -35,7 +33,7 @@
 
     demo-ui 
 
-    extends { demo-ui-base }
+    extends { 'demo-ui-base' }
 
 >
 

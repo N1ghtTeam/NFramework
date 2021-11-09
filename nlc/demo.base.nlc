@@ -3,7 +3,7 @@
 
 <module demo-base2
 
-        side { 'server' }
+        side { 'both' }
 >
     
     <property propb2/>
@@ -18,7 +18,7 @@
 
 <module demo-base
 
-        side { 'server' }
+        side { 'both' }
 >
     
     <property propb/>

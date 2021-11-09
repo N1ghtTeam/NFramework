@@ -6,8 +6,8 @@
         side { 'both' }
 
         extends { 
-            demo-base 
-            demo-base2
+            'demo-base' 
+            'demo-base2'
         }
 
 >

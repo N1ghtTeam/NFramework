@@ -1,4 +1,5 @@
 const Tag = require('../../tag/tag');
+const { v4: uuidv4 }    = require('uuid');
 
 let tag = new Tag();
 
@@ -31,7 +32,7 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
 
     inputs = newInputs;
 
-    let extendClass='UIComponent';
+    let extendClass='"UIComponent"';
 
     for(let i=0;i<inputs[0].length;i++){
         if(inputs[i]=='extends'){
@@ -40,7 +41,7 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
         }
     }
 
-    let compiledExtends=`'${extendClass}'`;
+    let compiledExtends=`${extendClass}`;
 
     let componentName='';
     let rawComponentName=inputs[0];
@@ -76,6 +77,19 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
         }
     }
 
+    let rfid  = uuidv4();
+    let rfid2 = '';
+
+    for(let i=0;i<rfid.length;i++){
+        if(rfid[i]=='-'){
+            rfid2+='_';
+        }
+        else{
+            rfid2+=rfid[i];
+        }
+    }
+
+    rfid=rfid2;
 
     if(!element.forSV){
 
@@ -139,6 +153,7 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
                             if(${componentTag}=='main'){
                                 uiManager.mainUIComponentClass = ${componentName}_class;
                                 uiManager.mainUIComponentName = '${rawComponentName}';
+                                uiManager.mainComponentNUI_id = '${rfid}';
                             }
 
 
