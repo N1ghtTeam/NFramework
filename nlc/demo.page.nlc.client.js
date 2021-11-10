@@ -1,1 +1,1 @@
-/* NFRAMEWORK */manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned.d0912a53_d27c_416a_8f11_59411aeaa7e7&&(window.NFramework.nmoduleManager.nlcElementRunned.d0912a53_d27c_416a_8f11_59411aeaa7e7=!0);
+/* NFRAMEWORK */(()=>{var e=[];manager=window.NFramework.nmoduleManager,e.push("demo-namespace"),null==window.NFramework.nmoduleManager.nlcElementRunned["94fb9cff_86e8_4887_934b_3923a1bdb6c8"]&&(window.NFramework.nmoduleManager.nlcElementRunned["94fb9cff_86e8_4887_934b_3923a1bdb6c8"]=!0),e.splice(e.length-1,1)})();

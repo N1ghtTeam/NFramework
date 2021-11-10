@@ -19,26 +19,50 @@ tag.Compile = function(element, childsCode, code, manager) {
         compiledCode += contents[i].code;
     }
 
+    
+    let globalObjName = inputs[0];
+
+    globalObjName = `
+
+        ((()=>{
+            
+            if(namespace.length==0){
+                return `+'`'+`${globalObjName}`+'`'+`;
+            }
+            else{
+                let result=`+'`'+`${globalObjName}`+'`'+`;
+                for(var i=namespace.length-1;i>=0;i--){
+                    result = namespace[i]+':'+result;
+                }
+                return result;
+            }
+
+        })())
+
+    `;
+
+
     if (element.forSV) {
 
         let compiledJSCode = '' + compiledCode + '';
 
         manager.jsCode[inputs[0]] = compiledJSCode;
 
+
         compiledCode = `
         (()=>{
             let fs=require('fs');
             let clientVersion=JSCLPath;
             let client_js_code=fs.readFileSync(clientVersion).toString();
-            manager.globalObjectSourceCodes['${inputs[0]}']=client_js_code;
+            manager.globalObjectSourceCodes[${globalObjName}]=client_js_code;
             let data=${compiledCode};
             return data;
         })()`
 
-        return `exports.customTypeDatas.Add('${inputs[0]}',${compiledCode})`;
+        return `exports.customTypeDatas.Add(${globalObjName},${compiledCode})`;
     } else{
 
-        return ` manager.customTypeDatas['${inputs[0]}']=(()=>{
+        return ` manager.customTypeDatas[${globalObjName}]=(()=>{
             let data=${compiledCode};
             return data;
         })();`;

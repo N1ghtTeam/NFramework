@@ -1745,13 +1745,6 @@ ${code}`;
         let strChr  = '';
 
         for(let i=0;i<code.length;i++){
-            if(!isInStr && (code[i]=='"' || code[i]==`'` || code[i]=='`')){
-                isInStr = true;
-                strChr  = code[i];
-            }
-            else if(code[i]==strChr){
-                isInStr = false;
-            }
             
             if(nframeworkNamespaceReport == code.substring(i,i+nframeworkNamespaceReport.length)){
                 let namespaceName = '';
@@ -1776,17 +1769,29 @@ ${code}`;
 
             }
             else
-            if(nframeworkNamespaceReport == code.substring(i,i+nframeworkEndNamespaceReport.length)){
+            {
                 
-                namespaces.splice(namespaces.length-1,1);
+                if(!isInStr && (code[i]=='"' || code[i]==`'` || code[i]=='`')){
+                    isInStr = true;
+                    strChr  = code[i];
+                }
+                else if(code[i]==strChr){
+                    isInStr = false;
+                }
 
-            }
-            if(!isInStr && code[i]=='@' && code[i+1]==':'){
-                result+='@'+currentNamespaceName+':';
-                i++;
-            }
-            else{
-                result += code[i];
+                if(nframeworkNamespaceReport == code.substring(i,i+nframeworkEndNamespaceReport.length)){
+                    
+                    namespaces.splice(namespaces.length-1,1);
+
+                }
+                if(!isInStr && code[i]=='@' && code[i+1]==':'){
+                    result+='@'+currentNamespaceName+':';
+                    i++;
+                }
+                else{
+                    result += code[i];
+                }
+
             }
         }
 

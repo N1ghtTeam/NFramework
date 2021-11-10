@@ -1,21 +1,25 @@
 <use dom/>
 
-<page   demoPage
+<namespace demo-namespace>
+        
+    <page   demoPage
 
-        src { 'demo.ejs' }
+            src { 'demo.ejs' }
 
->
-    
-    <global-objects 
-        * 
-    />
+    >
+        
+        <global-objects 
+            * 
+        />
 
-    <ui:components 
-        *
-    />
+        <ui:components 
+            *
+        />
 
-    <modules  
-        *
-    />
+        <modules  
+            *
+        />
 
-</page>
+    </page>
+
+</namespace>

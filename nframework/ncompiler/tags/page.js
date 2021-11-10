@@ -43,6 +43,30 @@ tag.Compile = function(element, childsCode, code) {
 
     inputs = newInputs;
 
+    
+    let pageName = inputs[0];
+
+    pageName = `
+
+        ((()=>{
+            
+            if(namespace.length==0){
+                return `+'`'+`${pageName}`+'`'+`;
+            }
+            else{
+                let result=`+'`'+`${pageName}`+'`'+`;
+                for(var i=namespace.length-1;i>=0;i--){
+                    result = namespace[i]+':'+result;
+                }
+                return result;
+            }
+
+        })())
+
+    `;
+
+
+
     //src
     let src='';
 
@@ -134,7 +158,7 @@ tag.Compile = function(element, childsCode, code) {
 
     page_${inputs[0]}.useAllGlobalObjects=false;
 
-    page_${inputs[0]}.name='${inputs[0]}';
+    page_${inputs[0]}.name=${pageName};
 
     page_${inputs[0]}.__TYPE='PAGE';
 

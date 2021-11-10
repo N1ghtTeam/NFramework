@@ -1,24 +1,32 @@
 <use html>
 <use dom>
 
-<module demo
 
-        side { 'both' }
+<namespace demo-namespace>
 
-        extends { 
-            demo-base 
-        }
+    <global gobj>
 
->
+        5
 
-    <method setup>
+    </global>
 
-        function(){
-            
-            
+    <module demo
 
-        }
+            side { 'both' }
 
-    </method>
+            extends { 
+                demo-base 
+            }
 
-</module>
+    >
+        <method setup>
+            function(){
+
+                console.log(@:demoPage);
+
+            }
+        </method>
+
+    </module>
+
+</namespace>
