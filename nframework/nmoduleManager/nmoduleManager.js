@@ -1,5 +1,7 @@
 const fs                = require('fs');
 const global_nmodule    = require('./global_nmodule/global_nmodule');
+let Scope               = require('../scope/scope');
+let nodejsPath               = require('path');
 
 class NModuleManager {
     constructor() {
@@ -11,6 +13,8 @@ class NModuleManager {
         this.textContents               = new Object();
         this.globalObjectSourceCodes    = new Object();
         this.uiComponents               = [];
+
+        this.scopes                     = new Object();
 
         this.modulePaths                = [];
         this.svMJSPaths                 = [];
@@ -104,19 +108,41 @@ class NModuleManager {
             return isD;
         }
 
+        var manager = this;
+
         const DoWithAllFile = function(dirPath) {
             fs.readdirSync(dirPath).forEach(file => {
 
                 const filePath = dirPath + '/' + file;
 
-                if (isDir(filePath)) DoWithAllFile(filePath);
+                if (isDir(filePath)) {
+                    let newScope = new Scope(filePath);
+
+                    manager.AddScope(newScope);
+
+                    DoWithAllFile(filePath);
+                }
                 else buildmpa(filePath);
             });
         }
 
+        let frameworkModulesScope = new Scope(framework_src_path);
+        let appModulesScope = new Scope(src_path);
+
+        this.AddScope(frameworkModulesScope);
+        this.AddScope(appModulesScope);
+
         DoWithAllFile(framework_src_path);
         DoWithAllFile(src_path);
 
+    }
+    
+    AddScope(scope){
+        this.scopes[scope.path]=scope;
+    }
+
+    GetScope(path){
+        return this.scopes[nodejsPath.normalize(path)];
     }
 
     GetJSCode(name) {
@@ -215,6 +241,10 @@ class NModuleManager {
         for (let modulePath of this.svMJSPaths) {
             let eps = require(modulePath)(this);
 
+            let scope = null;
+            if(eps.ScopeId!=null)
+                scope = (this.scopes[eps.ScopeId]);
+
             let ctdindex = 0;
             for (let ctData of eps.customTypeDatas) {
                 this.customTypeDatas[ctData.key] = ctData.value;
@@ -226,17 +256,39 @@ class NModuleManager {
 
             eps.manager = this;
             let modules = eps.nmodules;
-            for (let [i, module] of modules.entries()) {
+            for (let [i, moduleExport] of modules.entries()) {
+
+                let module      = moduleExport.module;
+                let accessRange = moduleExport.accessRange;
+                
+
                 let moduleName = module.name;
+                module = module;
+                module.manager = this;
+                module.clMJSPath = this.clMJSPaths[i];
+                module.AfterImported();
+                
                 this.modules[moduleName] = module;
-                this.modules[moduleName].manager = this;
-                this.modules[moduleName].clMJSPath = this.clMJSPaths[i];
-                this.modules[moduleName].AfterImported();
+
+                if(scope!=null){
+                    scope.accessRange[moduleName]=accessRange;
+                    scope.modules[moduleName] = module;
+                }
             }
 
             let pages = eps.pages;
-            for (let page of pages) {
+            for (let pageExport of pages) {
+
+                let page        = pageExport.page;
+                let accessRange = pageExport.accessRange;
+
                 this.pages[page.name] = page;
+
+                if(scope!=null){
+                    scope.accessRange[page.name]=accessRange;
+                    scope.pages[page.name] = page;
+                }
+
                 if (page.useAllGlobalObjects)
                     useALlGlobalObjs_pages.push(page.name);
             }
@@ -270,13 +322,51 @@ class NModuleManager {
         return this.pages[name];
     }
 
-    Get(name) {
-        if (name in this.modules)
-            return this.modules[name];
-        else if (name in this.pages)
-            return this.pages[name];
-        else if (name in this.customTypeDatas)
-            return this.customTypeDatas[name];
+    Get(name, scopeId) {
+        scopeId = nodejsPath.normalize(scopeId);
+        if(scopeId in this.scopes){
+            let scope = this.scopes[scopeId];
+
+            let success = false;
+
+            if(scope.IsExist(name)){
+
+                success=true;
+                return scope.Get(name);
+
+            }
+            else {
+
+                let scopeIds = Object.keys(this.scopes);
+
+                for(let cscopeId of scopeIds){
+
+                    if(cscopeId != scopeId){
+
+                        let cScope = this.scopes[cscopeId];
+
+                        if (cScope.IsExist(name)){
+
+                            if (cScope.IsInAccessRange(name,scopeId)){
+
+                                success = true;
+
+                                return cScope.Get(name);
+
+                            }
+                            else{
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
         else return name;
     }
 }

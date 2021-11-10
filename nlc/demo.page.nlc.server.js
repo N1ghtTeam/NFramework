@@ -1,9 +1,19 @@
 (()=>{
-            var ScopeId = "D:\\MyTechs\\nframework/nlc";
+            var IS_PUBLIC = 0;
+            var ScopeId = "D:\\MyTechs\\nframework\\nlc";
 const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo.page.nlc.server.js";
 const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.page.nlc.client.js";
 
+            try{
+                ScopeId = ScopeId;
+            }
+            catch{
+                ScopeId = null;
+            }
+            
 module.exports = (manager) => {
+    var isServer=true;
+    IS_PUBLIC       = 0;
     let exports     = new Object();
     let nmodules    = [];
     let pages       = [];
@@ -60,7 +70,10 @@ module.exports = (manager) => {
         page_demoPage.Setup.call(page_demoPage);
         page_demoPage.manager=manager;
         page_demoPage.AfterSetup();
-        pages.push( page_demoPage);
+        pages.push({ 
+            'page':page_demoPage ,
+            'accessRange':(IS_PUBLIC)
+        });
 
     
 
@@ -70,6 +83,9 @@ module.exports = (manager) => {
 
     exports.nmodules=nmodules;
     exports.pages=pages;
+    exports.ScopeId=ScopeId;
     return exports;
 }
+        
+            IS_PUBLIC = -1;
         })()

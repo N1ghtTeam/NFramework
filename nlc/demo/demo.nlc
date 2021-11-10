@@ -1,0 +1,23 @@
+<use html>
+<use dom>
+
+
+<public>
+
+    <module demo
+
+            side { 'both' }
+
+    >
+
+        <method setup>
+            
+            function(){
+
+            }
+
+        </method>
+
+    </module>
+
+</public>

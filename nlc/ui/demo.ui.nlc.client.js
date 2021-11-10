@@ -1,13 +1,21 @@
 (()=>{
-            var ScopeId = "D:\\MyTechs\\nframework/nlc/ui";
+            var IS_PUBLIC = 0;
+            var ScopeId = "D:\\MyTechs\\nframework\\nlc\\ui";
 const JSSVPath = "D:\\MyTechs\\nframework/nlc/ui/demo.ui.nlc.server.js";
 const JSCLPath = "D:\\MyTechs\\nframework/nlc/ui/demo.ui.nlc.client.js";
-manager = window.NFramework.nmoduleManager;
+
+            try{
+                ScopeId = ScopeId;
+            }
+            catch{
+                ScopeId = null;
+            }
+            manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['73c5ce04_6585_48cd_a36f_5efab428759e']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['73c5ce04_6585_48cd_a36f_5efab428759e']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['b90699fe_5fe4_4761_aada_f47ba9568253']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['b90699fe_5fe4_4761_aada_f47ba9568253']=true;
                         
             if(window.NFramework.customTags['ui']==null)
                 window.NFramework.customTags['ui']=new Object();
@@ -30,7 +38,7 @@ manager = window.NFramework.nmoduleManager;
         return (
             (()=>{
         
-                        let __result__0f7df702_b96c_4e7f_b223_e8041021f2ba = [`
+                        let __result__fa8677a8_5ec2_4019_a15e_c522c648bf0f = [`
 
                 `,
             (()=>{
@@ -43,42 +51,42 @@ manager = window.NFramework.nmoduleManager;
 
         
 
-            var result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0=document.createElement('demo-ui');
+            var result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8=document.createElement('demo-ui');
 
-            result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.setAttribute('NUI_id','8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0');
+            result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.setAttribute('NUI_id','e0bc7d71_f4c0_429f_a0ee_1e32757f01d8');
             
-            result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.callInside=function(){
+            result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.callInside=function(){
 
                 
-        var attributes_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0=[];
+        var attributes_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8=[];
     
     
-                result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.innerHTML+=`
+                result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.innerHTML+=`
 
                 `;
 
             }
 
-            result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.callInside.call(result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0);
+            result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.callInside.call(result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8);
 
             
-            if(result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.render!=null){
+            if(result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.render!=null){
                 const AsyncFunction = (async () => {}).constructor;
 
-                let isAsyncRender = (result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.render instanceof AsyncFunction);
+                let isAsyncRender = (result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.render instanceof AsyncFunction);
 
                 if(!isAsyncRender){
-                    let childs = result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.render();
+                    let childs = result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.render();
                     if(childs!=null){
-                        result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.AppendChilds(childs);
+                        result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.AppendChilds(childs);
                     }
                 }
                 else{
                     (async ()=>{
                         
-                        let childs = await result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.render();
+                        let childs = await result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.render();
                         if(childs!=null){
-                            result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.AppendChilds(childs);
+                            result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.AppendChilds(childs);
                         }
 
                     })();
@@ -87,7 +95,7 @@ manager = window.NFramework.nmoduleManager;
 
     
         
-        return result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0;
+        return result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8;
 
     })()
         
@@ -102,7 +110,7 @@ manager = window.NFramework.nmoduleManager;
 
             `,];  
 
-                        return __result__0f7df702_b96c_4e7f_b223_e8041021f2ba;
+                        return __result__fa8677a8_5ec2_4019_a15e_c522c648bf0f;
                     })()
         );
     }
@@ -152,7 +160,7 @@ manager = window.NFramework.nmoduleManager;
         return (
             (()=>{
         
-                        let __result__0f7df702_b96c_4e7f_b223_e8041021f2ba = [`
+                        let __result__fa8677a8_5ec2_4019_a15e_c522c648bf0f = [`
 
                 `,
             (()=>{
@@ -165,42 +173,42 @@ manager = window.NFramework.nmoduleManager;
 
         
 
-            var result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0=document.createElement('demo-ui');
+            var result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8=document.createElement('demo-ui');
 
-            result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.setAttribute('NUI_id','8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0');
+            result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.setAttribute('NUI_id','e0bc7d71_f4c0_429f_a0ee_1e32757f01d8');
             
-            result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.callInside=function(){
+            result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.callInside=function(){
 
                 
-        var attributes_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0=[];
+        var attributes_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8=[];
     
     
-                result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.innerHTML+=`
+                result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.innerHTML+=`
 
                 `;
 
             }
 
-            result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.callInside.call(result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0);
+            result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.callInside.call(result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8);
 
             
-            if(result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.render!=null){
+            if(result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.render!=null){
                 const AsyncFunction = (async () => {}).constructor;
 
-                let isAsyncRender = (result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.render instanceof AsyncFunction);
+                let isAsyncRender = (result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.render instanceof AsyncFunction);
 
                 if(!isAsyncRender){
-                    let childs = result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.render();
+                    let childs = result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.render();
                     if(childs!=null){
-                        result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.AppendChilds(childs);
+                        result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.AppendChilds(childs);
                     }
                 }
                 else{
                     (async ()=>{
                         
-                        let childs = await result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.render();
+                        let childs = await result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.render();
                         if(childs!=null){
-                            result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0.AppendChilds(childs);
+                            result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8.AppendChilds(childs);
                         }
 
                     })();
@@ -209,7 +217,7 @@ manager = window.NFramework.nmoduleManager;
 
     
         
-        return result_8a8e35b2_f074_4c62_a1d4_b0d28d7fcbf0;
+        return result_e0bc7d71_f4c0_429f_a0ee_1e32757f01d8;
 
     })()
         
@@ -224,7 +232,7 @@ manager = window.NFramework.nmoduleManager;
 
             `,];  
 
-                        return __result__0f7df702_b96c_4e7f_b223_e8041021f2ba;
+                        return __result__fa8677a8_5ec2_4019_a15e_c522c648bf0f;
                     })()
         );
     }
@@ -260,7 +268,7 @@ manager = window.NFramework.nmoduleManager;
                             if('main'=='main'){
                                 uiManager.mainUIComponentClass = demo_main_ui_class;
                                 uiManager.mainUIComponentName = 'demo-main-ui';
-                                uiManager.mainComponentNUI_id = 'e56dbe07_95cc_4315_895d_158c9b2e672e';
+                                uiManager.mainComponentNUI_id = '1f1ab1c6_9614_430c_9039_b9b35fd127e5';
                             }
 
 
@@ -280,8 +288,8 @@ manager = window.NFramework.nmoduleManager;
                 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['28387c73_885a_4f0e_8d24_9415e885ca67']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['28387c73_885a_4f0e_8d24_9415e885ca67']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['e0f41889_c821_4297_b94d_b3e6b1356c9c']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['e0f41889_c821_4297_b94d_b3e6b1356c9c']=true;
                         
             if(window.NFramework.customTags['ui']==null)
                 window.NFramework.customTags['ui']=new Object();
@@ -302,11 +310,11 @@ manager = window.NFramework.nmoduleManager;
             UIClass('demo-ui-base').render(this).add(
                 (()=>{
         
-                        let __result__f5638aae_3ece_40b2_9da4_a20c2f0c8f32 = [`     
+                        let __result__b1580d4a_9ac0_411f_b023_5cd09f5bc9c3 = [`     
                     Hello
                 `,];  
 
-                        return __result__f5638aae_3ece_40b2_9da4_a20c2f0c8f32;
+                        return __result__b1580d4a_9ac0_411f_b023_5cd09f5bc9c3;
                     })()
             )
         );
@@ -355,11 +363,11 @@ manager = window.NFramework.nmoduleManager;
             UIClass('demo-ui-base').render(this).add(
                 (()=>{
         
-                        let __result__f5638aae_3ece_40b2_9da4_a20c2f0c8f32 = [`     
+                        let __result__b1580d4a_9ac0_411f_b023_5cd09f5bc9c3 = [`     
                     Hello
                 `,];  
 
-                        return __result__f5638aae_3ece_40b2_9da4_a20c2f0c8f32;
+                        return __result__b1580d4a_9ac0_411f_b023_5cd09f5bc9c3;
                     })()
             )
         );
@@ -396,7 +404,7 @@ manager = window.NFramework.nmoduleManager;
                             if(""=='main'){
                                 uiManager.mainUIComponentClass = demo_ui_class;
                                 uiManager.mainUIComponentName = 'demo-ui';
-                                uiManager.mainComponentNUI_id = 'c1c94f42_1184_42fc_a25b_9ba22cac456b';
+                                uiManager.mainComponentNUI_id = '8ca86908_2e7a_47b6_af4c_af00a1fef53c';
                             }
 
 
@@ -416,8 +424,8 @@ manager = window.NFramework.nmoduleManager;
                 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['3bdf406a_15ed_4d1d_be21_1ba7bd1185b5']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['3bdf406a_15ed_4d1d_be21_1ba7bd1185b5']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['76a1ab90_0062_4d87_a693_7c23fa4f36d3']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['76a1ab90_0062_4d87_a693_7c23fa4f36d3']=true;
                         
             if(window.NFramework.customTags['ui']==null)
                 window.NFramework.customTags['ui']=new Object();
@@ -436,11 +444,11 @@ manager = window.NFramework.nmoduleManager;
         return(
             (()=>{
         
-                        let __result__9e5a1569_878b_4304_9b3f_2a958736ffbc = [`        
+                        let __result__5128b57d_6d0d_45f3_9838_ff563f7593be = [`        
                 Hello World Base
             `,];  
 
-                        return __result__9e5a1569_878b_4304_9b3f_2a958736ffbc;
+                        return __result__5128b57d_6d0d_45f3_9838_ff563f7593be;
                     })()
         );
     }
@@ -486,11 +494,11 @@ manager = window.NFramework.nmoduleManager;
         return(
             (()=>{
         
-                        let __result__9e5a1569_878b_4304_9b3f_2a958736ffbc = [`        
+                        let __result__5128b57d_6d0d_45f3_9838_ff563f7593be = [`        
                 Hello World Base
             `,];  
 
-                        return __result__9e5a1569_878b_4304_9b3f_2a958736ffbc;
+                        return __result__5128b57d_6d0d_45f3_9838_ff563f7593be;
                     })()
         );
     }
@@ -526,7 +534,7 @@ manager = window.NFramework.nmoduleManager;
                             if(""=='main'){
                                 uiManager.mainUIComponentClass = demo_ui_base_class;
                                 uiManager.mainUIComponentName = 'demo-ui-base';
-                                uiManager.mainComponentNUI_id = '4eeafee4_4bf5_448a_9ece_e3aca0ac231a';
+                                uiManager.mainComponentNUI_id = '73d79ad0_666c_451c_a87a_4c165c743fe2';
                             }
 
 
@@ -544,4 +552,6 @@ manager = window.NFramework.nmoduleManager;
                 
 
                 
+        
+            IS_PUBLIC = -1;
         })()

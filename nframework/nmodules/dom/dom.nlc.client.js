@@ -1,15 +1,23 @@
 (()=>{
-            var ScopeId = "D:\\MyTechs\\nframework\\nframework/nmodules/dom";
+            var IS_PUBLIC = 0;
+            var ScopeId = "D:\\MyTechs\\nframework\\nframework\\nmodules\\dom";
 const JSSVPath = "D:\\MyTechs\\nframework\\nframework/nmodules/dom/dom.nlc.server.js";
 const JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/dom/dom.nlc.client.js";
 
-                            var af97cfc97_0439_433d_8a82_dcedc8955d17_module;
+            try{
+                ScopeId = ScopeId;
+            }
+            catch{
+                ScopeId = null;
+            }
+            
+                            var a57c3e2ba_e2c1_4876_8787_511dd09ff6d4_module;
                         manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['ac54ef20_4d42_471e_9665_9a7ae755d5df']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['ac54ef20_4d42_471e_9665_9a7ae755d5df']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['843f61b6_12cd_474f_b75e_ddb50be85e62']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['843f61b6_12cd_474f_b75e_ddb50be85e62']=true;
                         
             (()=>{
                 
@@ -56,14 +64,14 @@ const JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/dom/dom.nlc.clien
 
             function(){
                 this.GetThisWithCallback((module)=>{
-                            af97cfc97_0439_433d_8a82_dcedc8955d17_module=module;
+                            a57c3e2ba_e2c1_4876_8787_511dd09ff6d4_module=module;
                         })
-                        let getterObjf97cfc97_0439_433d_8a82_dcedc8955d17={
+                        let getterObj57c3e2ba_e2c1_4876_8787_511dd09ff6d4={
                             set stter(value) {
-                                af97cfc97_0439_433d_8a82_dcedc8955d17_module.Set('body',value);
+                                a57c3e2ba_e2c1_4876_8787_511dd09ff6d4_module.Set('body',value);
                             }
                         }
-                        getterObjf97cfc97_0439_433d_8a82_dcedc8955d17.stter=document.body;
+                        getterObj57c3e2ba_e2c1_4876_8787_511dd09ff6d4.stter=document.body;
             }
 
         
@@ -193,4 +201,6 @@ const JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/dom/dom.nlc.clien
                 
 
                 
+        
+            IS_PUBLIC = -1;
         })()

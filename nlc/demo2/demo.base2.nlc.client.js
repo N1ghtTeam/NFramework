@@ -1,8 +1,8 @@
 (()=>{
             var IS_PUBLIC = 0;
-            var ScopeId = "D:\\MyTechs\\nframework\\nlc";
-const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.server.js";
-const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.client.js";
+            var ScopeId = "D:\\MyTechs\\nframework\\nlc\\demo2";
+const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo2/demo.base2.nlc.server.js";
+const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo2/demo.base2.nlc.client.js";
 
             try{
                 ScopeId = ScopeId;
@@ -14,8 +14,13 @@ const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.client.js";
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['8f2df30b_3731_4603_99c8_06ecc7dc1ebe']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['8f2df30b_3731_4603_99c8_06ecc7dc1ebe']=true;
+        var preISPUBLIC=IS_PUBLIC;
+        IS_PUBLIC = 0;
+        
+
+        
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['a3e57c8e_0ed1_427d_992b_694c9b039c47']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['a3e57c8e_0ed1_427d_992b_694c9b039c47']=true;
                         
             (()=>{
                 
@@ -31,7 +36,7 @@ const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.client.js";
 
         var This=nmodule;
 
-        nmodule.name='demo-router';
+        nmodule.name='demo-base2';
 
         nmodule.__TYPE='NMODULE';
 
@@ -47,19 +52,7 @@ const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.client.js";
         nmodule.RunExternalMethod(function(){
     
 
-    
         
-
-        (req,res)=>{
-                
-            (manager.Get('demoPage',ScopeId)).Render(req,res)
-                
-        }
-
-    
-    
-
-
         });
     
 
@@ -70,6 +63,10 @@ const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.client.js";
         
                     }
                 
+
+
+        IS_PUBLIC = preISPUBLIC;    
+    
 
                 
         

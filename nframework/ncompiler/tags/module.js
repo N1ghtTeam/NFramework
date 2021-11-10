@@ -191,7 +191,10 @@ tag.Compile = function(element, childsCode, code) {
     if (element.forSV) {
         compiledCode += `
 
-            nmodules.push(nmodule);
+            nmodules.push({
+                'module':nmodule,
+                'accessRange':(IS_PUBLIC)
+            });
 
         `;
     }

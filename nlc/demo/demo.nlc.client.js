@@ -1,8 +1,8 @@
 (()=>{
             var IS_PUBLIC = 0;
-            var ScopeId = "D:\\MyTechs\\nframework\\nlc";
-const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.server.js";
-const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.client.js";
+            var ScopeId = "D:\\MyTechs\\nframework\\nlc\\demo";
+const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo/demo.nlc.server.js";
+const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo/demo.nlc.client.js";
 
             try{
                 ScopeId = ScopeId;
@@ -14,8 +14,13 @@ const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.client.js";
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['8f2df30b_3731_4603_99c8_06ecc7dc1ebe']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['8f2df30b_3731_4603_99c8_06ecc7dc1ebe']=true;
+        var preISPUBLIC=IS_PUBLIC;
+        IS_PUBLIC = 0;
+        
+
+    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['ae79894f_0e0e_4a3c_8a98_1196cf72f4bb']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['ae79894f_0e0e_4a3c_8a98_1196cf72f4bb']=true;
                         
             (()=>{
                 
@@ -31,7 +36,7 @@ const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.client.js";
 
         var This=nmodule;
 
-        nmodule.name='demo-router';
+        nmodule.name='demo';
 
         nmodule.__TYPE='NMODULE';
 
@@ -47,19 +52,26 @@ const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.client.js";
         nmodule.RunExternalMethod(function(){
     
 
+        
+        this.AddMethod('setup',(...args) => {
+            let f=
     
+            
+            function(){
+
+            }
+
         
 
-        (req,res)=>{
-                
-            (manager.Get('demoPage',ScopeId)).Render(req,res)
-                
-        }
+    return f.call(this,...args);
+
+}
+
+    );
 
     
+
     
-
-
         });
     
 
@@ -70,6 +82,10 @@ const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.client.js";
         
                     }
                 
+
+
+        IS_PUBLIC = preISPUBLIC;    
+    
 
                 
         

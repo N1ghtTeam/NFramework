@@ -1,13 +1,21 @@
 (()=>{
-            var ScopeId = "D:\\MyTechs\\nframework\\nframework/nmodules/nlc";
+            var IS_PUBLIC = 0;
+            var ScopeId = "D:\\MyTechs\\nframework\\nframework\\nmodules\\nlc";
 const JSSVPath = "D:\\MyTechs\\nframework\\nframework/nmodules/nlc/NLC.nlc.server.js";
 const JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/nlc/NLC.nlc.client.js";
-manager = window.NFramework.nmoduleManager;
+
+            try{
+                ScopeId = ScopeId;
+            }
+            catch{
+                ScopeId = null;
+            }
+            manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['3a271229_7c53_49c9_82cb_201f5aad8e0f']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['3a271229_7c53_49c9_82cb_201f5aad8e0f']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['ffa08336_beee_4d4e_a6c4_a21f98d6eb82']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['ffa08336_beee_4d4e_a6c4_a21f98d6eb82']=true;
                         
             (()=>{
                 
@@ -70,13 +78,13 @@ manager = window.NFramework.nmoduleManager;
     
             
             
-                        function a64beb37f_075e_4acc_a8e6_63f5c32793f9(...params){
-                            let this_a64beb37f_075e_4acc_a8e6_63f5c32793f9=this;
+                        function acee77c26_fbd7_48cd_b27b_965a7e5a332a(...params){
+                            let this_acee77c26_fbd7_48cd_b27b_965a7e5a332a=this;
                             return (
-                                async function tfresult_a64beb37f_075e_4acc_a8e6_63f5c32793f9(T){
+                                async function tfresult_acee77c26_fbd7_48cd_b27b_965a7e5a332a(T){
                                     var src=(async function  (forSV){
 
-                let compiledCode = await (manager.Get('NLC')).GetThisWithCallback((module)=>{
+                let compiledCode = await (manager.Get('NLC',ScopeId)).GetThisWithCallback((module)=>{
                             return module.Get('Compile');
                         })(T,forSV);
 
@@ -142,4 +150,6 @@ manager = window.NFramework.nmoduleManager;
                 
 
                 
+        
+            IS_PUBLIC = -1;
         })()

@@ -1,13 +1,13 @@
 <use html>
 <use dom>
 
-<protected>
+<public>
 
-        <module demo-base
+        <module demo-base2
 
                 side { 'both' }
         >
 
         </module>
 
-</protected>
+</public>

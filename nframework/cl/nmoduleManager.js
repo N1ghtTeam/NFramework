@@ -41,7 +41,7 @@ class NModuleManager {
         return this.modules[name];
     }
 
-    Get(name) {
+    Get(name, scopeId) {
         if (name in this.modules)
             return this.modules[name];
         else if (name in this.customTypeDatas)

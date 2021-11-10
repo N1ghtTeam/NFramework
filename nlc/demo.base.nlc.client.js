@@ -1,13 +1,26 @@
 (()=>{
-            var ScopeId = "D:\\MyTechs\\nframework/nlc";
+            var IS_PUBLIC = 0;
+            var ScopeId = "D:\\MyTechs\\nframework\\nlc";
 const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo.base.nlc.server.js";
 const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.base.nlc.client.js";
-manager = window.NFramework.nmoduleManager;
+
+            try{
+                ScopeId = ScopeId;
+            }
+            catch{
+                ScopeId = null;
+            }
+            manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['83b462a9_0349_474b_abee_b5b5f1feda6a']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['83b462a9_0349_474b_abee_b5b5f1feda6a']=true;
+        var preISPUBLIC=IS_PUBLIC;
+        IS_PUBLIC = 1;
+        
+
+        
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['55103e80_a327_416d_89b5_dd4e496225e5']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['55103e80_a327_416d_89b5_dd4e496225e5']=true;
                         
             (()=>{
                 
@@ -39,7 +52,7 @@ manager = window.NFramework.nmoduleManager;
         nmodule.RunExternalMethod(function(){
     
 
-
+        
         });
     
 
@@ -51,5 +64,11 @@ manager = window.NFramework.nmoduleManager;
                     }
                 
 
+
+        IS_PUBLIC = preISPUBLIC;    
+    
+
                 
+        
+            IS_PUBLIC = -1;
         })()

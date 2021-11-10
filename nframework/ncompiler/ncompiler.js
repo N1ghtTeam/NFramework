@@ -551,7 +551,7 @@ class NCompiler {
 
         let isNeedSaveCode = ((codeSV != null) || (codeCL != null));
 
-        let scopeId = nodejsPath.dirname(fileNLCPath);
+        let scopeId = nodejsPath.normalize(nodejsPath.dirname(fileNLCPath));
 
         let prs_scopeId = '';
 
@@ -567,7 +567,9 @@ class NCompiler {
         codeSV = 'var ScopeId = "' + prs_scopeId + '";\n' + codeSV;
 
         codeSV = `(()=>{
+            var IS_PUBLIC = 0;
             ${codeSV}
+            IS_PUBLIC = -1;
         })()`;
 
 
@@ -576,7 +578,9 @@ class NCompiler {
         codeCL = 'var ScopeId = "' + prs_scopeId + '";\n' + codeCL;
 
         codeCL = `(()=>{
+            var IS_PUBLIC = 0;
             ${codeCL}
+            IS_PUBLIC = -1;
         })()`;
 
         if(this.NFramework.use_uglify_js){
@@ -1269,6 +1273,8 @@ class NCompiler {
 
             code = (element.forSV) ? `
 module.exports = (manager) => {
+    var isServer=true;
+    IS_PUBLIC       = 0;
     let exports     = new Object();
     let nmodules    = [];
     let pages       = [];
@@ -1284,6 +1290,7 @@ module.exports = (manager) => {
 
     exports.nmodules=nmodules;
     exports.pages=pages;
+    exports.ScopeId=ScopeId;
     return exports;
 }` :
                 `manager = window.NFramework.nmoduleManager;
@@ -1392,7 +1399,7 @@ ${code}`;
 
                     let name = code.substring(startName, endName);
 
-                    result += `(manager.Get('${name}'))`;
+                    result += `(manager.Get('${name}',ScopeId))`;
 
                     i -= 1;
                 } else {
@@ -1755,6 +1762,16 @@ ${code}`;
         let cnmfgas = cmpiledNModuleFastGetterAndSetter.top + cmpiledNModuleFastGetterAndSetter.code;
 
         result = this.CompileFastGet(cnmfgas);
+
+        result = `
+            try{
+                ScopeId = ScopeId;
+            }
+            catch{
+                ScopeId = null;
+            }
+            ${result}
+        `;
 
         return result;
     }

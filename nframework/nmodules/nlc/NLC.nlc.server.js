@@ -1,9 +1,19 @@
 (()=>{
-            var ScopeId = "D:\\MyTechs\\nframework\\nframework/nmodules/nlc";
+            var IS_PUBLIC = 0;
+            var ScopeId = "D:\\MyTechs\\nframework\\nframework\\nmodules\\nlc";
 const JSSVPath = "D:\\MyTechs\\nframework\\nframework/nmodules/nlc/NLC.nlc.server.js";
 const JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/nlc/NLC.nlc.client.js";
 
+            try{
+                ScopeId = ScopeId;
+            }
+            catch{
+                ScopeId = null;
+            }
+            
 module.exports = (manager) => {
+    var isServer=true;
+    IS_PUBLIC       = 0;
     let exports     = new Object();
     let nmodules    = [];
     let pages       = [];
@@ -60,7 +70,7 @@ module.exports = (manager) => {
                     (req,res)=>{
                         let code=req.params.code;
                         let result = {
-                            'compiledCode':(manager.Get('NLC')).GetThisWithCallback((module)=>{
+                            'compiledCode':(manager.Get('NLC',ScopeId)).GetThisWithCallback((module)=>{
                             return module.Get('Compile');
                         })(code,false)
                         }
@@ -156,7 +166,10 @@ module.exports = (manager) => {
 
         
 
-            nmodules.push(nmodule);
+            nmodules.push({
+                'module':nmodule,
+                'accessRange':(IS_PUBLIC)
+            });
 
         
 
@@ -164,6 +177,9 @@ module.exports = (manager) => {
 
     exports.nmodules=nmodules;
     exports.pages=pages;
+    exports.ScopeId=ScopeId;
     return exports;
 }
+        
+            IS_PUBLIC = -1;
         })()

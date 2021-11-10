@@ -1,13 +1,21 @@
 (()=>{
-            var ScopeId = "D:\\MyTechs\\nframework/nlc";
+            var IS_PUBLIC = 0;
+            var ScopeId = "D:\\MyTechs\\nframework\\nlc";
 const JSSVPath = "D:\\MyTechs\\nframework/nlc/demoGlobal.nlc.server.js";
 const JSCLPath = "D:\\MyTechs\\nframework/nlc/demoGlobal.nlc.client.js";
-manager = window.NFramework.nmoduleManager;
+
+            try{
+                ScopeId = ScopeId;
+            }
+            catch{
+                ScopeId = null;
+            }
+            manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['6f00ac7d_4a3b_42c9_ba33_94a88af26324']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['6f00ac7d_4a3b_42c9_ba33_94a88af26324']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['0e21cf8e_9ad4_43c2_90c1_75560510f811']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['0e21cf8e_9ad4_43c2_90c1_75560510f811']=true;
                          manager.customTypeDatas['demoGlobal']=(()=>{
             let data=
 
@@ -20,4 +28,6 @@ manager = window.NFramework.nmoduleManager;
                 
 
                 
+        
+            IS_PUBLIC = -1;
         })()

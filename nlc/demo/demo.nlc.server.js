@@ -1,8 +1,8 @@
 (()=>{
             var IS_PUBLIC = 0;
-            var ScopeId = "D:\\MyTechs\\nframework\\nlc";
-const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo.base.nlc.server.js";
-const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.base.nlc.client.js";
+            var ScopeId = "D:\\MyTechs\\nframework\\nlc\\demo";
+const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo/demo.nlc.server.js";
+const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo/demo.nlc.client.js";
 
             try{
                 ScopeId = ScopeId;
@@ -29,10 +29,10 @@ module.exports = (manager) => {
 
                     
         var preISPUBLIC=IS_PUBLIC;
-        IS_PUBLIC = 1;
+        IS_PUBLIC = 0;
         
 
-        
+    
 
         var NModule=
         function() {
@@ -45,7 +45,7 @@ module.exports = (manager) => {
 
         var This=nmodule;
 
-        nmodule.name='demo-base';
+        nmodule.name='demo';
 
         nmodule.__TYPE='NMODULE';
 
@@ -62,6 +62,25 @@ module.exports = (manager) => {
     
 
         
+        this.AddMethod('setup',(...args) => {
+            let f=
+    
+            
+            function(){
+
+            }
+
+        
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+    
         });
     
 
@@ -72,7 +91,7 @@ module.exports = (manager) => {
         nmodule.client_js_code=fs.readFileSync(clientVersion);
 
         if(nmodule.side!='server'){
-            nmodule.Routing('/nlc/demo-base', (req, res) => res.send(nmodule.client_js_code));
+            nmodule.Routing('/nlc/demo', (req, res) => res.send(nmodule.client_js_code));
         }
 
         

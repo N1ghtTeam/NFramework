@@ -1,9 +1,19 @@
 (()=>{
-            var ScopeId = "D:\\MyTechs\\nframework/nlc";
-const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.server.js";
-const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";
+            var IS_PUBLIC = 0;
+            var ScopeId = "D:\\MyTechs\\nframework\\nlc\\demo2";
+const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo2/demo.base2.nlc.server.js";
+const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo2/demo.base2.nlc.client.js";
 
+            try{
+                ScopeId = ScopeId;
+            }
+            catch{
+                ScopeId = null;
+            }
+            
 module.exports = (manager) => {
+    var isServer=true;
+    IS_PUBLIC       = 0;
     let exports     = new Object();
     let nmodules    = [];
     let pages       = [];
@@ -18,6 +28,11 @@ module.exports = (manager) => {
     
 
                     
+        var preISPUBLIC=IS_PUBLIC;
+        IS_PUBLIC = 0;
+        
+
+        
 
         var NModule=
         function() {
@@ -30,28 +45,11 @@ module.exports = (manager) => {
 
         var This=nmodule;
 
-        nmodule.name='demo';
+        nmodule.name='demo-base2';
 
         nmodule.__TYPE='NMODULE';
 
-        nmodule.baseModules = [
-            (()=>{
-                let me=(()=>{
-                    try{
-                        return (demo-base);
-                    }
-                    catch{
-                        return `demo-base`;
-                    }
-                })();
-                if(me instanceof NModule){
-                    return me.name;
-                }
-                else{
-                    return me;
-                }
-            })()
-        ];
+        nmodule.baseModules = [];
 
         nmodule.side = 'both';
 
@@ -63,28 +61,7 @@ module.exports = (manager) => {
         nmodule.RunExternalMethod(function(){
     
 
-    
-        this.AddMethod('setup',(...args) => {
-            let f=
-    
         
-        function(){
-            
-            
-
-        }
-
-    
-
-    return f.call(this,...args);
-
-}
-
-    );
-
-    
-
-
         });
     
 
@@ -95,19 +72,29 @@ module.exports = (manager) => {
         nmodule.client_js_code=fs.readFileSync(clientVersion);
 
         if(nmodule.side!='server'){
-            nmodule.Routing('/nlc/demo', (req, res) => res.send(nmodule.client_js_code));
+            nmodule.Routing('/nlc/demo-base2', (req, res) => res.send(nmodule.client_js_code));
         }
 
         
 
-            nmodules.push(nmodule);
+            nmodules.push({
+                'module':nmodule,
+                'accessRange':(IS_PUBLIC)
+            });
 
         
+
+
+        IS_PUBLIC = preISPUBLIC;    
+    
 
                 
 
     exports.nmodules=nmodules;
     exports.pages=pages;
+    exports.ScopeId=ScopeId;
     return exports;
 }
+        
+            IS_PUBLIC = -1;
         })()
