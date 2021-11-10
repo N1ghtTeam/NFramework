@@ -1,9 +1,35 @@
+(()=>{
+            const JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/dom/dom.nlc.client.js";
+const JSSVPath = "D:\\MyTechs\\nframework\\nframework/nmodules/dom/dom.nlc.server.js";
+var scopeId = "D:\\MyTechs\\nframework\\nframework/nmodules/dom";
 
+<<<<<<< Updated upstream
                             var ab2c02d66_ba63_423a_a050_2dcfeef50eca_module;
                         manager=window.NFramework.nmoduleManager;
             
 
                     
+=======
+
+            var IS_THIS_PUBLIC = true;
+
+            try{
+                scopeId = scopeId;
+            }
+            catch{
+                scopeId = 'global';
+            }
+
+            
+                            var a43a64539_39cb_4e53_80c2_38969ead0d1b_module;
+                        manager = window.NFramework.nmoduleManager;
+
+
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['84aa0fd7_a366_4b92_bfe5_c3d47d2b83c6']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['84aa0fd7_a366_4b92_bfe5_c3d47d2b83c6']=true;
+                        
+>>>>>>> Stashed changes
             (()=>{
                 
 
@@ -49,6 +75,7 @@
 
             function(){
                 this.GetThisWithCallback((module)=>{
+<<<<<<< Updated upstream
                             ab2c02d66_ba63_423a_a050_2dcfeef50eca_module=module;
                         })
                         var getterObjb2c02d66_ba63_423a_a050_2dcfeef50eca={
@@ -57,6 +84,16 @@
                             }
                         }
                         getterObjb2c02d66_ba63_423a_a050_2dcfeef50eca.stter= document.body;
+=======
+                            a43a64539_39cb_4e53_80c2_38969ead0d1b_module=module;
+                        })
+                        let getterObj43a64539_39cb_4e53_80c2_38969ead0d1b={
+                            set stter(value) {
+                                a43a64539_39cb_4e53_80c2_38969ead0d1b_module.Set('body',value);
+                            }
+                        }
+                        getterObj43a64539_39cb_4e53_80c2_38969ead0d1b.stter=document.body;
+>>>>>>> Stashed changes
             }
 
         
@@ -184,4 +221,12 @@
         
 
                 
+<<<<<<< Updated upstream
             
+=======
+            
+            IS_THIS_PUBLIC=false;
+            
+        
+        })()
+>>>>>>> Stashed changes

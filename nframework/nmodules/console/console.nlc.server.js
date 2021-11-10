@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 var JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/console/console.nlc.client.js";module.exports=(manager)=>{
             var exports=new Object();
                 var nmodules=[];
@@ -9,6 +10,35 @@ var JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/console/console.nlc
                         'value':value
                     });
                 }
+=======
+(()=>{
+            const JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/console/console.nlc.client.js";
+const JSSVPath = "D:\\MyTechs\\nframework\\nframework/nmodules/console/console.nlc.server.js";
+var scopeId = "D:\\MyTechs\\nframework\\nframework/nmodules/console";
+
+
+            var IS_THIS_PUBLIC = true;
+
+            try{
+                scopeId = scopeId;
+            }
+            catch{
+                scopeId = 'global';
+            }
+
+            
+module.exports = (manager) => {
+    let exports     = new Object();
+    let nmodules    = [];
+    let pages       = [];
+    exports.customTypeDatas=[];
+    exports.customTypeDatas.Add=function(key,value){
+        exports.customTypeDatas.push({
+            'key':key,
+            'value':value
+        });
+    }
+>>>>>>> Stashed changes
 
                 
 
@@ -143,8 +173,20 @@ var JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/console/console.nlc
 
                 
 
+<<<<<<< Updated upstream
                 exports.nmodules=nmodules;
                 exports.pages=pages;
                 return exports;
             }
             
+=======
+    exports.nmodules=nmodules;
+    exports.pages=pages;
+    return exports;
+}
+            
+            IS_THIS_PUBLIC=false;
+            
+        
+        })()
+>>>>>>> Stashed changes

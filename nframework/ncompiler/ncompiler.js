@@ -1,5 +1,15 @@
+<<<<<<< Updated upstream
 const fs = require('fs');
 const Element = require('./element/element');
+=======
+const fs                = require('fs');
+const Element           = require('./element/element');
+const Uglify            = require('uglify-js');
+const { v4: uuidv4 }    = require('uuid');
+const nodejsPath        = require('path');
+const Tag = require('./tag/tag');
+let defTag=new Tag();
+>>>>>>> Stashed changes
 
 class NCompiler {
     constructor() {}
@@ -43,9 +53,54 @@ class NCompiler {
             prs_fileJSCPath += fileJSCPath[i];
         }
 
+<<<<<<< Updated upstream
         codeSV = 'var JSCLPath = "' + prs_fileJSCPath + '";' + codeSV;
 
         fs.writeFileSync(fileJSSVPath, codeSV);
+=======
+        let prs_fileJSSPath = '';
+
+        for (let i = 0; i < fileJSSVPath.length; i++) {
+            if (fileJSSVPath[i] == '\\') {
+                prs_fileJSSPath += '\\';
+            }
+            prs_fileJSSPath += fileJSSVPath[i];
+        }
+
+        let isNeedSaveCode = ((codeSV != null) || (codeCL != null));
+
+        let codeDir = nodejsPath.dirname(fileNLCPath);
+
+        let scopeId = codeDir;
+        
+        let prs_ScopeId = '';
+
+        for (let i = 0; i < scopeId.length; i++) {
+            if (scopeId[i] == '\\') {
+                prs_ScopeId += '\\';
+            }
+            prs_ScopeId += scopeId[i];
+        }
+
+        codeSV = 'const JSCLPath = "' + prs_fileJSCPath + '";\n' +
+                 'const JSSVPath = "' + prs_fileJSSPath + '";\n' + 
+                 'var scopeId = "' + prs_ScopeId + '";\n' + 
+                  codeSV;
+        codeCL = 'const JSCLPath = "' + prs_fileJSCPath + '";\n' +
+                 'const JSSVPath = "' + prs_fileJSSPath + '";\n' + 
+                 'var scopeId = "' + prs_ScopeId + '";\n' + 
+                  codeCL;
+        //codeSV = 'const JSCLPath = "' + prs_fileJSCPath + '";\n' + codeSV;
+
+        codeSV = `(()=>{
+            ${codeSV}
+        })()`;
+
+        codeCL = `(()=>{
+            ${codeCL}
+        })()`;
+
+>>>>>>> Stashed changes
 
         fs.writeFileSync(fileJSCPath, codeCL);
 
@@ -560,7 +615,7 @@ class NCompiler {
 
                     let name = code.substring(startName, endName);
 
-                    result += `(manager.Get('${name}'))`;
+                    result += `(manager.Get('${name}',scopeId))`;
 
                     i -= 1;
                 } else {
@@ -884,6 +939,23 @@ class NCompiler {
         let cnmfgas = cmpiledNModuleFastGetterAndSetter.top + cmpiledNModuleFastGetterAndSetter.code;
 
         result = this.CompileFastGet(cnmfgas);
+
+        result = `
+
+            var IS_THIS_PUBLIC = true;
+
+            try{
+                scopeId = scopeId;
+            }
+            catch{
+                scopeId = 'global';
+            }
+
+            ${result}
+            
+            IS_THIS_PUBLIC=false;
+            
+        `;
 
         return result;
     }

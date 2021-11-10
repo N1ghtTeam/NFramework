@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 var JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";module.exports=(manager)=>{
             var exports=new Object();
                 var nmodules=[];
@@ -9,10 +10,45 @@ var JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";module.exports=(
                         'value':value
                     });
                 }
+=======
+(()=>{
+            const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";
+const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.server.js";
+var scopeId = "D:\\MyTechs\\nframework/nlc";
+
+
+            var IS_THIS_PUBLIC = true;
+
+            try{
+                scopeId = scopeId;
+            }
+            catch{
+                scopeId = 'global';
+            }
+
+            
+module.exports = (manager) => {
+    let exports     = new Object();
+    let nmodules    = [];
+    let pages       = [];
+    exports.customTypeDatas=[];
+    exports.customTypeDatas.Add=function(key,value){
+        exports.customTypeDatas.push({
+            'key':key,
+            'value':value
+        });
+    }
+>>>>>>> Stashed changes
 
                 
 
                     
+
+        IS_THIS_PUBLIC=true;
+
+        
+
+    
 
         var NModule=
         function(){
@@ -41,6 +77,7 @@ var JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";module.exports=(
         nmodule.RunExternalMethod(function(){
     
 
+<<<<<<< Updated upstream
     
         this.AddMethod('setup',(...args)=>{
             var f=
@@ -50,6 +87,20 @@ var JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";module.exports=(
             console.log('running');
         }
 
+=======
+        
+        this.AddMethod('setup',(...args) => {
+            let f=
+    
+            
+            function(){
+                
+                (manager.Get('demo-base',scopeId))
+
+            }
+
+        
+>>>>>>> Stashed changes
 
     
         
@@ -61,7 +112,7 @@ var JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";module.exports=(
     
     
 
-
+    
         });
     
         
@@ -86,10 +137,26 @@ var JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";module.exports=(
         
         
 
+
+
+    
+
                 
 
+<<<<<<< Updated upstream
                 exports.nmodules=nmodules;
                 exports.pages=pages;
                 return exports;
             }
             
+=======
+    exports.nmodules=nmodules;
+    exports.pages=pages;
+    return exports;
+}
+            
+            IS_THIS_PUBLIC=false;
+            
+        
+        })()
+>>>>>>> Stashed changes

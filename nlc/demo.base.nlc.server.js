@@ -1,20 +1,7 @@
-<<<<<<< Updated upstream
-var JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/dom/dom.nlc.client.js";module.exports=(manager)=>{
-            var exports=new Object();
-                var nmodules=[];
-                var pages=[];
-                exports.customTypeDatas=[];
-                exports.customTypeDatas.Add=function(key,value){
-                    exports.customTypeDatas.push({
-                        'key':key,
-                        'value':value
-                    });
-                }
-=======
 (()=>{
-            const JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/dom/dom.nlc.client.js";
-const JSSVPath = "D:\\MyTechs\\nframework\\nframework/nmodules/dom/dom.nlc.server.js";
-var scopeId = "D:\\MyTechs\\nframework\\nframework/nmodules/dom";
+            const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.base.nlc.client.js";
+const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo.base.nlc.server.js";
+var scopeId = "D:\\MyTechs\\nframework/nlc";
 
 
             var IS_THIS_PUBLIC = true;
@@ -38,30 +25,29 @@ module.exports = (manager) => {
             'value':value
         });
     }
->>>>>>> Stashed changes
 
-                
+    
 
                     
 
         var NModule=
-        function(){
-
+        function() {
             return require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule");
-
         }()
-    
+
     ;
-    
+
         var nmodule=new NModule();
 
         var This=nmodule;
 
-        nmodule.side='both';
-
-        nmodule.name='dom';
+        nmodule.name='demo-base';
 
         nmodule.__TYPE='NMODULE';
+
+        nmodule.baseModules = [];
+
+        nmodule.side = 'both';
 
         nmodule.RunExternalMethod=function(callback){
             callback.call(nmodule);
@@ -71,42 +57,28 @@ module.exports = (manager) => {
         nmodule.RunExternalMethod(function(){
     
 
-    
-
 
         });
     
-        
-    
+
         var fs=require('fs');
 
         var clientVersion=JSCLPath;
 
         nmodule.client_js_code=fs.readFileSync(clientVersion);
 
-        
-        
         if(nmodule.side!='server'){
-            nmodule.Routing('/nmodules/dom',(req,res)=>{
-                res.send(nmodule.client_js_code);
-            });
+            nmodule.Routing('/nlc/demo-base', (req, res) => res.send(nmodule.client_js_code));
         }
 
         
 
             nmodules.push(nmodule);
-        
+
         
 
                 
 
-<<<<<<< Updated upstream
-                exports.nmodules=nmodules;
-                exports.pages=pages;
-                return exports;
-            }
-            
-=======
     exports.nmodules=nmodules;
     exports.pages=pages;
     return exports;
@@ -116,4 +88,3 @@ module.exports = (manager) => {
             
         
         })()
->>>>>>> Stashed changes

@@ -1,7 +1,32 @@
+<<<<<<< Updated upstream
 manager=window.NFramework.nmoduleManager;
             
 
                     
+=======
+(()=>{
+            const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.client.js";
+const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.server.js";
+var scopeId = "D:\\MyTechs\\nframework/nlc";
+
+
+            var IS_THIS_PUBLIC = true;
+
+            try{
+                scopeId = scopeId;
+            }
+            catch{
+                scopeId = 'global';
+            }
+
+            manager = window.NFramework.nmoduleManager;
+
+
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['c0378584_8331_47b7_affa_da415d9b3dab']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['c0378584_8331_47b7_affa_da415d9b3dab']=true;
+                        
+>>>>>>> Stashed changes
             (()=>{
                 
 
@@ -48,6 +73,10 @@ manager=window.NFramework.nmoduleManager;
     
             (req,res)=>{
                 
+<<<<<<< Updated upstream
+=======
+            (manager.Get('demoPage',scopeId)).Render(req,res)
+>>>>>>> Stashed changes
                 
 
         ((req,res)=>{
@@ -101,4 +130,12 @@ manager=window.NFramework.nmoduleManager;
         
 
                 
+<<<<<<< Updated upstream
             
+=======
+            
+            IS_THIS_PUBLIC=false;
+            
+        
+        })()
+>>>>>>> Stashed changes

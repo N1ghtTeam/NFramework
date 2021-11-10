@@ -1,7 +1,32 @@
+<<<<<<< Updated upstream
 manager=window.NFramework.nmoduleManager;
             
 
                     
+=======
+(()=>{
+            const JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/console/console.nlc.client.js";
+const JSSVPath = "D:\\MyTechs\\nframework\\nframework/nmodules/console/console.nlc.server.js";
+var scopeId = "D:\\MyTechs\\nframework\\nframework/nmodules/console";
+
+
+            var IS_THIS_PUBLIC = true;
+
+            try{
+                scopeId = scopeId;
+            }
+            catch{
+                scopeId = 'global';
+            }
+
+            manager = window.NFramework.nmoduleManager;
+
+
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['2e72d045_7a45_4d06_a28d_d9e43337e716']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['2e72d045_7a45_4d06_a28d_d9e43337e716']=true;
+                        
+>>>>>>> Stashed changes
             (()=>{
                 
 
@@ -118,4 +143,12 @@ manager=window.NFramework.nmoduleManager;
         
 
                 
+<<<<<<< Updated upstream
             
+=======
+            
+            IS_THIS_PUBLIC=false;
+            
+        
+        })()
+>>>>>>> Stashed changes

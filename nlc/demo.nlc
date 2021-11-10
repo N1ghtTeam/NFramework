@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <module demo>
 
     <method setup>
@@ -8,5 +9,33 @@
 
 
     </method>
+=======
+<use html>
+<use dom>
 
-</module>
+<public>
+
+    <module demo
+
+            side { 'both' }
+
+            extends { 
+                demo-base 
+            }
+
+    >
+
+        <method setup>
+            
+            function(){
+                
+                @demo-base
+
+            }
+
+        </method>
+
+    </module>
+>>>>>>> Stashed changes
+
+</public>
