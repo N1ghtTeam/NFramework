@@ -114,6 +114,25 @@ tag.Compile = function(element, childsCode, code) {
 
     let moduleName = inputs[0];
 
+    moduleName = `
+
+        ((()=>{
+            
+            if(namespace.length==0){
+                return `+'`'+`${moduleName}`+'`'+`;
+            }
+            else{
+                let result=`+'`'+`${moduleName}`+'`'+`;
+                for(var i=namespace.length-1;i>=0;i--){
+                    result = namespace[i]+':'+result;
+                }
+                return result;
+            }
+
+        })())
+
+    `;
+
     let nmoduleImportCode = `
         function() {
             return require("${nmodulePath}");
@@ -142,7 +161,11 @@ tag.Compile = function(element, childsCode, code) {
 
         var This=nmodule;
 
-        nmodule.name='${moduleName}';
+        var nmoduleName = ${moduleName};
+
+        nmodule.name=nmoduleName;
+
+        nmodule.shortName=`+'`'+`${inputs[0]}`+'`'+`;
 
         nmodule.__TYPE='NMODULE';
 
@@ -176,7 +199,7 @@ tag.Compile = function(element, childsCode, code) {
         nmodule.client_js_code=fs.readFileSync(clientVersion);
 
         if(nmodule.side!='server'){
-            nmodule.Routing('/nlc/${moduleName}', (req, res) => res.send(nmodule.client_js_code));
+            nmodule.Routing('/nlc/'+nmoduleName, (req, res) => res.send(nmodule.client_js_code));
         }
 
         `;

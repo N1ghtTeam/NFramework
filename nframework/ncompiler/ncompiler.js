@@ -1384,7 +1384,7 @@ ${code}`;
                     let regex2 = /^[0-9]+$/;
 
                     for (; i < code.length; i++) {
-                        if (!(code[i].match(regex) || code[i].match(regex2) || code[i] == '_' || code[i] == '-')) {
+                        if (!(code[i].match(regex) || code[i].match(regex2) || code[i] == '_' || code[i] == '-' || code[i] == ':')) {
                             endName = i;
                             break;
                         }
@@ -1730,6 +1730,70 @@ ${code}`;
         return result;
     }
 
+    CompileLocalNamespaceGet(code){
+
+        let nframeworkNamespaceReport = `'NFRAMEWORK';'NAMESPACE';`;
+        let nframeworkEndNamespaceReport = `'NFRAMEWORK';'ENDNAMESPACE';`;
+
+        let currentNamespaceName='';
+
+        let namespaces = [];
+
+        let result = '';
+
+        let isInStr = false;
+        let strChr  = '';
+
+        for(let i=0;i<code.length;i++){
+            if(!isInStr && (code[i]=='"' || code[i]==`'` || code[i]=='`')){
+                isInStr = true;
+                strChr  = code[i];
+            }
+            else if(code[i]==strChr){
+                isInStr = false;
+            }
+            
+            if(nframeworkNamespaceReport == code.substring(i,i+nframeworkNamespaceReport.length)){
+                let namespaceName = '';
+                let endNamespaceName=i;
+                for(let j=i+nframeworkNamespaceReport.length+1;j<code.length;j++){
+                    if(code[j]=="'"){
+                        endNamespaceName=j+1;
+                        break;
+                    }
+                    namespaceName+=code[j];
+                }
+                
+                namespaces.push(namespaceName);
+
+                currentNamespaceName = namespaces[0];
+
+                for(let j=1;j<namespaces.length;j++){
+                    currentNamespaceName += ':' + namespaces[j];
+                }
+
+                i = endNamespaceName;
+
+            }
+            else
+            if(nframeworkNamespaceReport == code.substring(i,i+nframeworkEndNamespaceReport.length)){
+                
+                namespaces.splice(namespaces.length-1,1);
+
+            }
+            if(!isInStr && code[i]=='@' && code[i+1]==':'){
+                result+='@'+currentNamespaceName+':';
+                i++;
+            }
+            else{
+                result += code[i];
+            }
+        }
+
+
+        return result;
+    }
+
     CompileCode(code, forSV, nlcPath) {
         let result = code;
 
@@ -1754,7 +1818,14 @@ ${code}`;
 
         let cnmfgas = cmpiledNModuleFastGetterAndSetter.top + cmpiledNModuleFastGetterAndSetter.code;
 
-        result = this.CompileFastGet(cnmfgas);
+        result = this.CompileLocalNamespaceGet(cnmfgas);
+
+        result = this.CompileFastGet(result);
+
+        result = `
+            var namespace=[];
+            ${result}
+        `;
 
         return result;
     }
