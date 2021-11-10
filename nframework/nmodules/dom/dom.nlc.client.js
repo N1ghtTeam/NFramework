@@ -1,11 +1,15 @@
+(()=>{
+            var ScopeId = "D:\\MyTechs\\nframework\\nframework/nmodules/dom";
+const JSSVPath = "D:\\MyTechs\\nframework\\nframework/nmodules/dom/dom.nlc.server.js";
+const JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/dom/dom.nlc.client.js";
 
-                            var a48ea09a7_64fe_4a41_b40a_b761f2fc3c6d_module;
+                            var af97cfc97_0439_433d_8a82_dcedc8955d17_module;
                         manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['84223a09_18be_4771_b460_a4f0a014c705']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['84223a09_18be_4771_b460_a4f0a014c705']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['ac54ef20_4d42_471e_9665_9a7ae755d5df']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['ac54ef20_4d42_471e_9665_9a7ae755d5df']=true;
                         
             (()=>{
                 
@@ -52,14 +56,14 @@
 
             function(){
                 this.GetThisWithCallback((module)=>{
-                            a48ea09a7_64fe_4a41_b40a_b761f2fc3c6d_module=module;
+                            af97cfc97_0439_433d_8a82_dcedc8955d17_module=module;
                         })
-                        let getterObj48ea09a7_64fe_4a41_b40a_b761f2fc3c6d={
+                        let getterObjf97cfc97_0439_433d_8a82_dcedc8955d17={
                             set stter(value) {
-                                a48ea09a7_64fe_4a41_b40a_b761f2fc3c6d_module.Set('body',value);
+                                af97cfc97_0439_433d_8a82_dcedc8955d17_module.Set('body',value);
                             }
                         }
-                        getterObj48ea09a7_64fe_4a41_b40a_b761f2fc3c6d.stter=document.body;
+                        getterObjf97cfc97_0439_433d_8a82_dcedc8955d17.stter=document.body;
             }
 
         
@@ -189,3 +193,4 @@
                 
 
                 
+        })()

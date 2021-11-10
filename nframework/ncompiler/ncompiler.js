@@ -2,6 +2,7 @@ const fs                = require('fs');
 const Element           = require('./element/element');
 const Uglify            = require('uglify-js');
 const { v4: uuidv4 }    = require('uuid');
+const nodejsPath    = require('path');
 const Tag = require('./tag/tag');
 let defTag=new Tag();
 
@@ -538,9 +539,45 @@ class NCompiler {
             prs_fileJSCPath += fileJSCPath[i];
         }
 
+
+        let prs_fileJSSPath = '';
+
+        for (let i = 0; i < fileJSSVPath.length; i++) {
+            if (fileJSSVPath[i] == '\\') {
+                prs_fileJSSPath += '\\';
+            }
+            prs_fileJSSPath += fileJSSVPath[i];
+        }
+
         let isNeedSaveCode = ((codeSV != null) || (codeCL != null));
 
+        let scopeId = nodejsPath.dirname(fileNLCPath);
+
+        let prs_scopeId = '';
+
+        for (let i = 0; i < scopeId.length; i++) {
+            if (scopeId[i] == '\\') {
+                prs_scopeId += '\\';
+            }
+            prs_scopeId += scopeId[i];
+        }
+
         codeSV = 'const JSCLPath = "' + prs_fileJSCPath + '";\n' + codeSV;
+        codeSV = 'const JSSVPath = "' + prs_fileJSSPath + '";\n' + codeSV;
+        codeSV = 'var ScopeId = "' + prs_scopeId + '";\n' + codeSV;
+
+        codeSV = `(()=>{
+            ${codeSV}
+        })()`;
+
+
+        codeCL = 'const JSCLPath = "' + prs_fileJSCPath + '";\n' + codeCL;
+        codeCL = 'const JSSVPath = "' + prs_fileJSSPath + '";\n' + codeCL;
+        codeCL = 'var ScopeId = "' + prs_scopeId + '";\n' + codeCL;
+
+        codeCL = `(()=>{
+            ${codeCL}
+        })()`;
 
         if(this.NFramework.use_uglify_js){
             //add js file header

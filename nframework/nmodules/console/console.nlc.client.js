@@ -1,9 +1,13 @@
+(()=>{
+            var ScopeId = "D:\\MyTechs\\nframework\\nframework/nmodules/console";
+const JSSVPath = "D:\\MyTechs\\nframework\\nframework/nmodules/console/console.nlc.server.js";
+const JSCLPath = "D:\\MyTechs\\nframework\\nframework/nmodules/console/console.nlc.client.js";
 manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['676fdc6f_4fa8_4039_88d6_db2d3d73f32a']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['676fdc6f_4fa8_4039_88d6_db2d3d73f32a']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['31d5fec0_1221_40b5_82f2_aaad25b69b5e']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['31d5fec0_1221_40b5_82f2_aaad25b69b5e']=true;
                         
             (()=>{
                 
@@ -52,3 +56,4 @@ manager = window.NFramework.nmoduleManager;
                 
 
                 
+        })()

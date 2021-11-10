@@ -1,3 +1,6 @@
+(()=>{
+            var ScopeId = "D:\\MyTechs\\nframework/nlc";
+const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.server.js";
 const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.router.nlc.client.js";
 
 module.exports = (manager) => {
@@ -90,3 +93,4 @@ module.exports = (manager) => {
     exports.pages=pages;
     return exports;
 }
+        })()
