@@ -1,1 +1,33 @@
-/* NFRAMEWORK */(()=>{var e=[];manager=window.NFramework.nmoduleManager,e.push("demo-namespace"),null==window.NFramework.nmoduleManager.nlcElementRunned["94fb9cff_86e8_4887_934b_3923a1bdb6c8"]&&(window.NFramework.nmoduleManager.nlcElementRunned["94fb9cff_86e8_4887_934b_3923a1bdb6c8"]=!0),e.splice(e.length-1,1)})();
+(()=>{
+            var ScopeId = "D:\\MyTechs\\nframework/nlc";
+const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo.page.nlc.server.js";
+const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.page.nlc.client.js";
+
+            var namespace=[];
+            manager = window.NFramework.nmoduleManager;
+
+
+                    
+        namespace.push('demo-namespace');
+        
+    
+        
+    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['dd802714_ef3e_433f_a728_2b68dfedc6a5']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['dd802714_ef3e_433f_a728_2b68dfedc6a5']=true;
+                        
+
+    
+
+    
+                    }
+                
+
+
+        namespace.splice(namespace.length-1,1);
+        'NFRAMEWORK';'ENDNAMESPACE';
+    
+
+                
+        
+        })()

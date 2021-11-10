@@ -1,1 +1,163 @@
-/* NFRAMEWORK */(()=>{var e,n,a,o=[];manager=window.NFramework.nmoduleManager,o.push("demo-namespace"),null==window.NFramework.nmoduleManager.nlcElementRunned["571f7c75_bd4e_4d5f_b18a_d5af9e8ffbda"]&&(window.NFramework.nmoduleManager.nlcElementRunned["571f7c75_bd4e_4d5f_b18a_d5af9e8ffbda"]=!0,manager.customTypeDatas[(()=>{if(0==o.length)return"gobj";{let e="gobj";for(var n=o.length-1;0<=n;n--)e=o[n]+":"+e;return e}})()]=5),null==window.NFramework.nmoduleManager.nlcElementRunned["1ca7941e_fe97_4681_a920_6fab9c065c99"]&&(window.NFramework.nmoduleManager.nlcElementRunned["1ca7941e_fe97_4681_a920_6fab9c065c99"]=!0,e=window.NFramework.NModule,n=new e,a=(()=>{if(0==o.length)return"demo";{let e="demo";for(var n=o.length-1;0<=n;n--)e=o[n]+":"+e;return e}})(),n.name=a,n.shortName="demo",n.__TYPE="NMODULE",n.baseModules=[(a=(()=>{try{return demo-base}catch{return"demo-base"}})())instanceof e?a.name:a],n.side="both",n.RunExternalMethod=function(e){e.call(n)},n.RunExternalMethod(function(){this.AddMethod("setup",(...e)=>{return function(){console.log(manager.Get("demo-namespace:demoPage"))}.call(this,...e)})}),window.NFramework.nmoduleManager.ImportModule(n)),o.splice(o.length-1,1)})();
+(()=>{
+            var ScopeId = "D:\\MyTechs\\nframework/nlc";
+const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.server.js";
+const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";
+
+            var namespace=[];
+            manager = window.NFramework.nmoduleManager;
+
+
+                    
+        namespace.push('demo-namespace');
+        
+    
+
+    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['87f24769_3b0d_481f_a511_37fd9c7a6369']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['87f24769_3b0d_481f_a511_37fd9c7a6369']=true;
+                         manager.customTypeDatas[
+
+        ((()=>{
+            
+            if(namespace.length==0){
+                return `gobj`;
+            }
+            else{
+                let result=`gobj`;
+                for(var i=namespace.length-1;i>=0;i--){
+                    result = namespace[i]+':'+result;
+                }
+                return result;
+            }
+
+        })())
+
+    ]=(()=>{
+            let data=
+
+        5
+
+    ;
+            return data;
+        })();
+                    }
+                
+
+    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['0644d051_93e5_4662_a3b6_72c8b75c028a']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['0644d051_93e5_4662_a3b6_72c8b75c028a']=true;
+                        
+            (()=>{
+                
+
+        var NModule=
+            function() {
+                return window.NFramework.NModule;
+            }()
+
+        ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        var nmoduleName = 
+
+        ((()=>{
+            
+            if(namespace.length==0){
+                return `demo`;
+            }
+            else{
+                let result=`demo`;
+                for(var i=namespace.length-1;i>=0;i--){
+                    result = namespace[i]+':'+result;
+                }
+                return result;
+            }
+
+        })())
+
+    ;
+
+        nmodule.name=nmoduleName;
+
+        nmodule.shortName=`demo`;
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.baseModules = [
+            (()=>{
+                let me=(()=>{
+                    try{
+                        return (demo-base);
+                    }
+                    catch{
+                        return `demo-base`;
+                    }
+                })();
+                if(me instanceof NModule){
+                    return me.name;
+                }
+                else{
+                    return me;
+                }
+            })()
+        ];
+
+        nmodule.side = 'both';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+        
+        this.AddMethod('setup',(...args) => {
+            let f=
+    
+            function(){
+
+                
+                            var bd5e0c8c6_8944_48d3_86fe_afaf39039ccd = {
+                                set stter(value){
+                                    manager.Set('demo-namespace:gobj',value);
+                                }
+                            }
+                            bd5e0c8c6_8944_48d3_86fe_afaf39039ccd.stter = 7;
+
+                console.log((manager.Get('demo-namespace:gobj')));
+
+            }
+        
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+    
+        });
+    
+
+            var nmoduleManager = window.NFramework.nmoduleManager;
+            nmoduleManager.ImportModule(nmodule);
+        
+            })();
+        
+                    }
+                
+
+
+        namespace.splice(namespace.length-1,1);
+        'NFRAMEWORK';'ENDNAMESPACE';
+    
+
+                
+        
+        })()

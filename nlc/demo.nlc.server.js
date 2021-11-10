@@ -1,1 +1,200 @@
-/* NFRAMEWORK */(()=>{const a="D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";var c=[];module.exports=t=>{let r=new Object,e=[];r.customTypeDatas=[],r.customTypeDatas.Add=function(e,n){r.customTypeDatas.push({key:e,value:n})},c.push("demo-namespace"),r.customTypeDatas.Add((()=>{if(0==c.length)return"gobj";{let e="gobj";for(var n=c.length-1;0<=n;n--)e=c[n]+":"+e;return e}})(),(()=>{let e=require("fs");a;var n=e.readFileSync("D:\\MyTechs\\nframework/nlc/demo.nlc.client.js").toString();t.globalObjectSourceCodes[(()=>{if(0==c.length)return"gobj";{let e="gobj";for(var n=c.length-1;0<=n;n--)e=c[n]+":"+e;return e}})()]=n;return 5})());var n=require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule"),o=new n,s=(()=>{if(0==c.length)return"demo";{let e="demo";for(var n=c.length-1;0<=n;n--)e=c[n]+":"+e;return e}})();o.name=s,o.shortName="demo",o.__TYPE="NMODULE",o.baseModules=[(l=(()=>{try{return demo-base}catch{return"demo-base"}})())instanceof n?l.name:l],o.side="both",o.RunExternalMethod=function(e){e.call(o)},o.RunExternalMethod(function(){this.AddMethod("setup",(...e)=>{return function(){console.log(t.Get("demo-namespace:demoPage"))}.call(this,...e)})});var l=require("fs");a;return o.client_js_code=l.readFileSync("D:\\MyTechs\\nframework/nlc/demo.nlc.client.js"),"server"!=o.side&&o.Routing("/nlc/"+s,(e,n)=>n.send(o.client_js_code)),e.push(o),c.splice(c.length-1,1),r.nmodules=e,r.pages=[],r}})();
+(()=>{
+            var ScopeId = "D:\\MyTechs\\nframework/nlc";
+const JSSVPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.server.js";
+const JSCLPath = "D:\\MyTechs\\nframework/nlc/demo.nlc.client.js";
+
+            var namespace=[];
+            
+module.exports = (manager) => {
+    let exports     = new Object();
+    let nmodules    = [];
+    let pages       = [];
+    exports.customTypeDatas=[];
+    exports.customTypeDatas.Add=function(key,value){
+        exports.customTypeDatas.push({
+            'key':key,
+            'value':value
+        });
+    }
+
+    
+
+                    
+        namespace.push('demo-namespace');
+        
+    
+
+    exports.customTypeDatas.Add(
+
+        ((()=>{
+            
+            if(namespace.length==0){
+                return `gobj`;
+            }
+            else{
+                let result=`gobj`;
+                for(var i=namespace.length-1;i>=0;i--){
+                    result = namespace[i]+':'+result;
+                }
+                return result;
+            }
+
+        })())
+
+    ,
+        (()=>{
+            let fs=require('fs');
+            let clientVersion=JSCLPath;
+            let client_js_code=fs.readFileSync(clientVersion).toString();
+            manager.globalObjectSourceCodes[
+
+        ((()=>{
+            
+            if(namespace.length==0){
+                return `gobj`;
+            }
+            else{
+                let result=`gobj`;
+                for(var i=namespace.length-1;i>=0;i--){
+                    result = namespace[i]+':'+result;
+                }
+                return result;
+            }
+
+        })())
+
+    ]=client_js_code;
+            let data=
+
+        5
+
+    ;
+            return data;
+        })())
+
+    
+
+        var NModule=
+        function() {
+            return require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule");
+        }()
+
+    ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        var nmoduleName = 
+
+        ((()=>{
+            
+            if(namespace.length==0){
+                return `demo`;
+            }
+            else{
+                let result=`demo`;
+                for(var i=namespace.length-1;i>=0;i--){
+                    result = namespace[i]+':'+result;
+                }
+                return result;
+            }
+
+        })())
+
+    ;
+
+        nmodule.name=nmoduleName;
+
+        nmodule.shortName=`demo`;
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.baseModules = [
+            (()=>{
+                let me=(()=>{
+                    try{
+                        return (demo-base);
+                    }
+                    catch{
+                        return `demo-base`;
+                    }
+                })();
+                if(me instanceof NModule){
+                    return me.name;
+                }
+                else{
+                    return me;
+                }
+            })()
+        ];
+
+        nmodule.side = 'both';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+        
+        this.AddMethod('setup',(...args) => {
+            let f=
+    
+            function(){
+
+                
+                            var b3f713db1_9aab_4fb1_b478_7f5cdc246c7b = {
+                                set stter(value){
+                                    manager.Set('demo-namespace:gobj',value);
+                                }
+                            }
+                            b3f713db1_9aab_4fb1_b478_7f5cdc246c7b.stter = 7;
+
+                console.log((manager.Get('demo-namespace:gobj')));
+
+            }
+        
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+    
+        });
+    
+
+        var fs=require('fs');
+
+        var clientVersion=JSCLPath;
+
+        nmodule.client_js_code=fs.readFileSync(clientVersion);
+
+        if(nmodule.side!='server'){
+            nmodule.Routing('/nlc/'+nmoduleName, (req, res) => res.send(nmodule.client_js_code));
+        }
+
+        
+
+            nmodules.push(nmodule);
+
+        
+
+
+        namespace.splice(namespace.length-1,1);
+        'NFRAMEWORK';'ENDNAMESPACE';
+    
+
+                
+
+    exports.nmodules=nmodules;
+    exports.pages=pages;
+    return exports;
+}
+        
+        })()

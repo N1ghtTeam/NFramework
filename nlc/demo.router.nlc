@@ -6,7 +6,7 @@
 
         (req,res)=>{
                 
-            @demoPage.Render(req,res)
+            @demo-namespace:demoPage.Render(req,res)
                 
         }
 

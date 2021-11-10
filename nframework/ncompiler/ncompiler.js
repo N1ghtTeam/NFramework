@@ -1392,7 +1392,47 @@ ${code}`;
 
                     let name = code.substring(startName, endName);
 
-                    result += `(manager.Get('${name}'))`;
+                    let isSetter = false;
+
+                    for(let i=endName;i<code.length;i++){
+                        if(code[i]!=' '){
+                            if(code[i]=='='){
+                                isSetter = true;
+                            }
+                            break;
+                        }
+                    }
+
+
+                    let rfid = uuidv4();
+
+                    let rfid2='';
+
+                    for(let i=0;i<rfid.length;i++){
+                        if(rfid[i]=='-'){
+                            rfid2 += '_';
+                        }
+                        else{
+                            rfid2 += rfid[i];
+                        }
+                    }
+
+                    rfid = rfid2;
+
+
+                    if(!isSetter)
+                        result += `(manager.Get('${name}'))`;
+                    else{
+
+                        result += `
+                            var b${rfid} = {
+                                set stter(value){
+                                    manager.Set('${name}',value);
+                                }
+                            }
+                            b${rfid}.stter`;
+
+                    }
 
                     i -= 1;
                 } else {

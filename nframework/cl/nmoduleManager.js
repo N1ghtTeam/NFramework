@@ -48,6 +48,16 @@ class NModuleManager {
             return this.customTypeDatas[name];
         else return name;
     }
+    
+    Set(name,value) {
+        if (name in this.modules){
+            this.modules[name] = value;
+        }
+        else if (name in this.customTypeDatas){
+            this.customTypeDatas[name] = value;
+        }
+        else return name;
+    }
 
     AutoSetParentForModules() {
         let moduleNames = Object.keys(this.modules);

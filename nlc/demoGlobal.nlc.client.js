@@ -1,1 +1,43 @@
-/* NFRAMEWORK */(()=>{var n=[];manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned["5611e9c1_0f53_44c7_ae3a_66d5c5580a47"]&&(window.NFramework.nmoduleManager.nlcElementRunned["5611e9c1_0f53_44c7_ae3a_66d5c5580a47"]=!0,manager.customTypeDatas[(()=>{if(0==n.length)return"demoGlobal";{let e="demoGlobal";for(var a=n.length-1;0<=a;a--)e=n[a]+":"+e;return e}})()]="Hello World")})();
+(()=>{
+            var ScopeId = "D:\\MyTechs\\nframework/nlc";
+const JSSVPath = "D:\\MyTechs\\nframework/nlc/demoGlobal.nlc.server.js";
+const JSCLPath = "D:\\MyTechs\\nframework/nlc/demoGlobal.nlc.client.js";
+
+            var namespace=[];
+            manager = window.NFramework.nmoduleManager;
+
+
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['851845de_2559_48c4_911c_8d89f8468fd0']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['851845de_2559_48c4_911c_8d89f8468fd0']=true;
+                         manager.customTypeDatas[
+
+        ((()=>{
+            
+            if(namespace.length==0){
+                return `demoGlobal`;
+            }
+            else{
+                let result=`demoGlobal`;
+                for(var i=namespace.length-1;i>=0;i--){
+                    result = namespace[i]+':'+result;
+                }
+                return result;
+            }
+
+        })())
+
+    ]=(()=>{
+            let data=
+
+'Hello World'
+
+;
+            return data;
+        })();
+                    }
+                
+
+                
+        
+        })()

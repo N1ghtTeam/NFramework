@@ -22,7 +22,9 @@
         <method setup>
             function(){
 
-                console.log(@:demoPage);
+                @:gobj = 7;
+
+                console.log(@:gobj);
 
             }
         </method>
