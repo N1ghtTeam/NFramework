@@ -1,1 +1,169 @@
-/* NFRAMEWORK */(()=>{var e,n,t=[];manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned["30270f8a_4e26_45c3_9c6f_3903524a50d1"]&&(window.NFramework.nmoduleManager.nlcElementRunned["30270f8a_4e26_45c3_9c6f_3903524a50d1"]=!0,e=new window.NFramework.NModule,n=(()=>{if(0==t.length)return"NLC";{let n="NLC";for(var e=t.length-1;0<=e;e--)n=t[e]+":"+n;return n}})(),e.name=n,e.shortName="NLC",e.__TYPE="NMODULE",e.baseModules=[],e.side="both",e.RunExternalMethod=function(n){n.call(e)},e.RunExternalMethod(function(){this.AddMethod("Execute",async(...n)=>{let e=async function(n){n=await this.GetThisWithCallback(n=>n.Get("Compile"))(n);return Function(n)()}.bind(this);return e(...n)}),this.AddMethod("TExecute",(...n)=>{return function(...n){return async function(e){return await async function(n){n=await manager.Get("NLC").GetThisWithCallback(n=>n.Get("Compile"))(e,n);return Function(n)()}(...n)}}.call(this,...n)}),this.AddMethod("Compile",async(...n)=>{let e=async function(n){var e=window.origin+"/nlc-compile/";e+=encodeURIComponent(n);let t=await fetch(e);return(await t.json()).compiledCode}.bind(this);return e(...n)})}),window.NFramework.nmoduleManager.ImportModule(e))})();
+(()=>{
+            var ScopeId = "D:\\NLCDemoWeb\\nframework/nmodules/nlc";
+const JSSVPath = "D:\\NLCDemoWeb\\nframework/nmodules/nlc/NLC.nlc.server.js";
+const JSCLPath = "D:\\NLCDemoWeb\\nframework/nmodules/nlc/NLC.nlc.client.js";
+
+            var namespace=[];
+            manager = window.NFramework.nmoduleManager;
+
+
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['35a847de_ec89_4073_a0f4_7fdd702fb3c1']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['35a847de_ec89_4073_a0f4_7fdd702fb3c1']=true;
+                        
+            (()=>{
+                
+
+        var NModule=
+            function() {
+                return window.NFramework.NModule;
+            }()
+
+        ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        var nmoduleName = 
+
+        ((()=>{
+            
+            if(namespace.length==0){
+                return `NLC`;
+            }
+            else{
+                let result=`NLC`;
+                for(var i=namespace.length-1;i>=0;i--){
+                    result = namespace[i]+':'+result;
+                }
+                return result;
+            }
+
+        })())
+
+    ;
+
+        nmodule.name=nmoduleName;
+
+        nmodule.shortName=`NLC`;
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.baseModules = [];
+
+        nmodule.side = 'both';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+
+    
+
+    
+
+        
+        this.AddMethod('Execute',async (...args)=>{
+                let f=async function(code){
+
+                let compiledCode = await this.GetThisWithCallback((module)=>{
+                            return module.Get('Compile');
+                        })(code);
+
+                return Function(compiledCode)();
+
+            }
+
+        
+                let f2=f.bind(this);
+                return await f2(...args);
+            }
+
+        );
+
+    
+
+        
+        this.AddMethod('TExecute',(...args) => {
+            let f=
+    
+            
+            
+                        function a12b49e8d_c3db_46d5_b8ef_8c08fed12181(...params){
+                            let this_a12b49e8d_c3db_46d5_b8ef_8c08fed12181=this;
+                            return (
+                                async function tfresult_a12b49e8d_c3db_46d5_b8ef_8c08fed12181(T){
+                                    var src=(async function  (forSV){
+
+                let compiledCode = await (manager.Get('NLC')).GetThisWithCallback((module)=>{
+                            return module.Get('Compile');
+                        })(T,forSV);
+
+                return Function(compiledCode)();
+
+            });
+                                    var srcR=await src(...params);
+                                    return srcR;
+                                }
+                            );
+                        }
+                        
+
+        
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+        
+        this.AddMethod('Compile',async (...args)=>{
+                let f=async function(code){
+
+                let url=window.origin+'/nlc-compile/';
+
+                let parsedCodeForURL = encodeURIComponent(code);
+
+                url += parsedCodeForURL;
+
+                let response = await fetch(url); 
+
+                let data = await response.json();
+
+                return data.compiledCode;
+
+            }
+
+        
+                let f2=f.bind(this);
+                return await f2(...args);
+            }
+
+        );
+
+    
+
+    
+
+
+        });
+    
+
+            var nmoduleManager = window.NFramework.nmoduleManager;
+            nmoduleManager.ImportModule(nmodule);
+        
+            })();
+        
+                    }
+                
+
+                
+        
+        })()

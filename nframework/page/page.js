@@ -70,14 +70,38 @@ class Page {
         
         for(var i=0;i<modules.length;i++){
             var module=modules[i];
+            
+            var parsedPath = '';
+
+            for (let i=0;i<module.length;i++){
+                if(module[i]==':'){
+                    parsedPath += '--';
+                }
+                else{
+                    parsedPath += module[i];
+                }
+            }
+
             if(this.manager.modules[module].side=='both' || this.manager.modules[module].side=='client')
-                miejs+=' <script  src="/nlc/'+module+'"></script>';
+                miejs+=' <script  src="/nlc/'+parsedPath+'"></script>';
         }
 
         var globalObjects=this.customTypeDatas;
 
         for(var globalObjectName of globalObjects){
-            miejs+="\n<script src='/nlc/"+globalObjectName+"'></script>";
+            
+            var parsedPath = '';
+
+            for (let i=0;i<globalObjectName.length;i++){
+                if(globalObjectName[i]==':'){
+                    parsedPath += '--';
+                }
+                else{
+                    parsedPath += globalObjectName[i];
+                }
+            }
+
+            miejs+="\n<script src='/nlc/"+parsedPath+"'></script>";
         }
         
         var uiComponents=this.uiComponents;

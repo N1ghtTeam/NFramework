@@ -13,24 +13,48 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
 
     let inputs = tag.GetInputs(element, childsCode, code);
 
-    let newInputs = [];
 
-    for(let input of inputs){
-        if(input[0]=='}' && input.length!=1){
-            newInputs.push('}');
-            newInputs.push(input.substring(1,input.length));
+    function checkInput(inputs){
+        let newInputs = [];
+
+        let needReCheck = false;
+
+        for(let input of inputs){
+            if(input[0]=='}' && input.length!=1){
+                newInputs.push('}');
+                newInputs.push(input.substring(1,input.length));
+                needReCheck = true;
+            }
+            else
+            if(input[input.length-1]=='{' && input.length!=1){
+                newInputs.push(input.substring(0,input.length-1));
+                newInputs.push('{');
+                needReCheck = true;
+            }
+            else if(input[input.length-1]=='}' && input.length!=1){
+                newInputs.push(input.substring(0,input.length-1));
+                newInputs.push('}');
+                needReCheck = true;
+            }
+            else if(input[0]=='{' && input.length!=1){
+                newInputs.push('{');
+                newInputs.push(input.substring(1,input.length));
+                needReCheck = true;
+            }
+            else{
+                newInputs.push(input);
+            }
         }
-        else
-        if(input[input.length-1]=='{' && input.length!=1){
-            newInputs.push(input.substring(0,input.length-1));
-            newInputs.push('{');
+
+        if(needReCheck){
+            newInputs = checkInput(newInputs);
         }
-        else{
-            newInputs.push(input);
-        }
+
+        return newInputs;
+
     }
 
-    inputs = newInputs;
+    inputs = checkInput(inputs);
 
     let extendClass='"UIComponent"';
 
