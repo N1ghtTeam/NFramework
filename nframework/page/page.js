@@ -14,6 +14,20 @@ class Page {
 
                 let url = `/nlc/${globalObjName}`;
 
+                
+                let parsedPath = '';
+
+                for (let i=0;i<url.length;i++){
+                    if(url[i]==':'){
+                        parsedPath += '--';
+                    }
+                    else{
+                        parsedPath += url[i];
+                    }
+                }
+                
+                url = parsedPath;
+
                 let data = manager.globalObjectSourceCodes[globalObjName];
 
                 data = `

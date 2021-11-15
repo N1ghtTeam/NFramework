@@ -197,9 +197,21 @@ tag.Compile = function(element, childsCode, code) {
         var clientVersion=JSCLPath;
 
         nmodule.client_js_code=fs.readFileSync(clientVersion);
+        
+
+        var parsedPath = '';
+
+        for (let i=0;i<nmoduleName.length;i++){
+            if(nmoduleName[i]==':'){
+                parsedPath += '--';
+            }
+            else{
+                parsedPath += nmoduleName[i];
+            }
+        }
 
         if(nmodule.side!='server'){
-            nmodule.Routing('/nlc/'+nmoduleName, (req, res) => res.send(nmodule.client_js_code));
+            nmodule.Routing('/nlc/'+parsedPath, (req, res) => res.send(nmodule.client_js_code));
         }
 
         `;
