@@ -74,7 +74,19 @@ class Page {
         }
         
         for(var uiComponent of uiComponents){
-            miejs+="\n<script src='/nlc/"+uiComponent+"'></script>";
+            
+            var parsedPath = '';
+
+            for (let i=0;i<uiComponent.length;i++){
+                if(uiComponent[i]==':'){
+                    parsedPath += '--';
+                }
+                else{
+                    parsedPath += uiComponent[i];
+                }
+            }
+
+            miejs+="\n<script src='/nlc/"+parsedPath+"'></script>";
         }
 
         miejs+="\n</nlc>";

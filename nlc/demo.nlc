@@ -2,33 +2,36 @@
 <use dom>
 
 
-<namespace demo-namespace>
+<client-only>
 
-    <global gobj>
+    <namespace demo-namespace>
 
-        5
+        <global gobj>
+            5
+        </global>
 
-    </global>
+        <module demo
+                side { 'both' }
+                extends { 
+                    demo-base 
+                }
+        >
+            <method setup>
+                function(){
 
-    <module demo
+                    document.body.appendChild(
+                        <div>
 
-            side { 'both' }
+                            {@:gobj}
+                                                    
+                        </div>
+                    );
 
-            extends { 
-                demo-base 
-            }
+                }
+            </method>
 
-    >
-        <method setup>
-            function(){
+        </module>
 
-                @:gobj = 7;
+    </namespace>
 
-                console.log(@:gobj);
-
-            }
-        </method>
-
-    </module>
-
-</namespace>
+</client-only>

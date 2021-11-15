@@ -191,6 +191,19 @@ tag.Compile = function(element, childsCode, code,manager, nlcPath, compiler) {
 
             var ${componentName}_path='/nlc/${rawComponentName}';
 
+            var parsedPath = '';
+
+            for (let i=0;i<${componentName}_path.length;i++){
+                if(${componentName}_path[i]==':'){
+                    parsedPath += '--';
+                }
+                else{
+                    parsedPath += ${componentName}_path[i];
+                }
+            }
+
+            ${componentName}_path = parsedPath;
+
             manager.uiComponents.push('${rawComponentName}');
 
             express_server.get(${componentName}_path, (req, res) => {
