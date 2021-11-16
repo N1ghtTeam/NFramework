@@ -11,6 +11,60 @@ tag.oneTime = true;
 tag.Compile = function(element, childsCode, code, manager) {
     let inputs = tag.GetInputs(element, childsCode, code);
 
+    function checkInput(inputs){
+        let newInputs = [];
+
+        let needReCheck = false;
+
+        for(let input of inputs){
+            if(input[0]=='}' && input.length!=1){
+                newInputs.push('}');
+                newInputs.push(input.substring(1,input.length));
+                needReCheck = true;
+            }
+            else
+            if(input[input.length-1]=='{' && input.length!=1){
+                newInputs.push(input.substring(0,input.length-1));
+                newInputs.push('{');
+                needReCheck = true;
+            }
+            else if(input[input.length-1]=='}' && input.length!=1){
+                newInputs.push(input.substring(0,input.length-1));
+                newInputs.push('}');
+                needReCheck = true;
+            }
+            else if(input[0]=='{' && input.length!=1){
+                newInputs.push('{');
+                newInputs.push(input.substring(1,input.length));
+                needReCheck = true;
+            }
+            else{
+                newInputs.push(input);
+            }
+        }
+
+        if(needReCheck){
+            newInputs = checkInput(newInputs);
+        }
+
+        return newInputs;
+
+    }
+
+    inputs = checkInput(inputs);
+
+
+    //get side
+    let side=`'both'`;
+    for(let i=0;i<inputs.length;i++){
+        if(inputs[i]=='side'){
+            side=inputs[i+2];
+            break;
+        }
+    }
+
+
+
     let contents = tag.GetContent(element, childsCode, code);
 
     let compiledCode = '';
@@ -55,7 +109,9 @@ tag.Compile = function(element, childsCode, code, manager) {
             let clientVersion=JSCLPath;
             let client_js_code=fs.readFileSync(clientVersion).toString();
             manager.globalObjectSourceCodes[${globalObjName}]=client_js_code;
-            let data=${compiledCode};
+            let data;
+            if(${side} == 'both' || ${side} == 'server' )
+                data = (${compiledCode});
             return data;
         })()`
 

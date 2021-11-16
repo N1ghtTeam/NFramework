@@ -8,8 +8,8 @@ const JSCLPath = "D:\\NLCDemoWeb\\nframework/nmodules/console/console.nlc.client
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['208715b9_8fca_4e75_9b11_e452efdc41c2']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['208715b9_8fca_4e75_9b11_e452efdc41c2']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['978950cf_4eb5_4132_ae5d_856c27bff624']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['978950cf_4eb5_4132_ae5d_856c27bff624']=true;
                         
             (()=>{
                 

@@ -7,6 +7,7 @@ class Page {
         let manager = this.manager;
 
         for (let globalObjName of this.customTypeDatas) {
+            
             let info = manager.customTypeDataInfos[globalObjName];
 
             if(!info.isSetupCLRouter) {

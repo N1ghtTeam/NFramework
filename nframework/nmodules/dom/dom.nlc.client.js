@@ -5,13 +5,13 @@ const JSCLPath = "D:\\NLCDemoWeb\\nframework/nmodules/dom/dom.nlc.client.js";
 
             var namespace=[];
             
-                            var a5c5fbcfa_6e2e_4f20_92cf_729ca7a53ab9_module;
+                            var aa60d0394_2289_49f6_80b3_64d422a38784_module;
                         manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['925f5f0e_e1df_4c53_937e_ebe6cf1d48fc']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['925f5f0e_e1df_4c53_937e_ebe6cf1d48fc']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['5d3cf7d2_15be_4f3b_8457_cdc39b132689']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['5d3cf7d2_15be_4f3b_8457_cdc39b132689']=true;
                         
             (()=>{
                 
@@ -79,14 +79,14 @@ const JSCLPath = "D:\\NLCDemoWeb\\nframework/nmodules/dom/dom.nlc.client.js";
 
             function(){
                 this.GetThisWithCallback((module)=>{
-                            a5c5fbcfa_6e2e_4f20_92cf_729ca7a53ab9_module=module;
+                            aa60d0394_2289_49f6_80b3_64d422a38784_module=module;
                         })
-                        let getterObj5c5fbcfa_6e2e_4f20_92cf_729ca7a53ab9={
+                        let getterObja60d0394_2289_49f6_80b3_64d422a38784={
                             set stter(value) {
-                                a5c5fbcfa_6e2e_4f20_92cf_729ca7a53ab9_module.Set('body',value);
+                                aa60d0394_2289_49f6_80b3_64d422a38784_module.Set('body',value);
                             }
                         }
-                        getterObj5c5fbcfa_6e2e_4f20_92cf_729ca7a53ab9.stter=document.body;
+                        getterObja60d0394_2289_49f6_80b3_64d422a38784.stter=document.body;
             }
 
         
