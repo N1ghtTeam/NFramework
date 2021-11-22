@@ -11,6 +11,7 @@ class NModuleManager {
         this.textContents               = new Object();
         this.globalObjectSourceCodes    = new Object();
         this.uiComponents               = [];
+        this.packages                    = new Object();
 
         this.modulePaths                = [];
         this.svMJSPaths                 = [];
@@ -240,6 +241,13 @@ class NModuleManager {
                 if (page.useAllGlobalObjects)
                     useALlGlobalObjs_pages.push(page.name);
             }
+
+            let packages = eps.packages;
+            for (let p of packages) {
+                this.packages[p.name] = p;
+            }
+
+            
         }
 
         let moduleNames = Object.keys(this.modules);
@@ -277,6 +285,8 @@ class NModuleManager {
             return this.pages[name];
         else if (name in this.customTypeDatas)
             return this.customTypeDatas[name];
+        if (name in this.packages)
+            return this.packages[name];            
         else return name;
     }
     

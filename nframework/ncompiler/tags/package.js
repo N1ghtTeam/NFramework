@@ -169,29 +169,36 @@ tag.Compile = function(element, childsCode, code) {
 
     let contents = tag.GetContent(element, childsCode, code);
 
+    let packName = '';
+
+    for(let i of inputs[0]){
+        if(i=='-'){
+            packName+='_';
+        }
+        else{
+            packName+=i;
+        }
+    }
+
     let pageCode = `
 
-    let Page=require('${pagePath}');
+    let pack_${packName}=new Object();
 
-    let page_${inputs[0]}=new Page();
-
-    page_${inputs[0]}.customTypeDatas=[];
+    pack_${packName}.customTypeDatas=[];
     
-    page_${inputs[0]}.uiComponents=${uicomponentsStr};
+    pack_${packName}.uiComponents=${uicomponentsStr};
 
-    page_${inputs[0]}.useAllGlobalObjects=false;
+    pack_${packName}.useAllGlobalObjects=false;
 
-    page_${inputs[0]}.name=${pageName};
+    pack_${packName}.name=${pageName};
 
-    page_${inputs[0]}.__TYPE='PAGE';
+    pack_${packName}.__TYPE='Package';
 
-    page_${inputs[0]}.modules=${modulesStr};
+    pack_${packName}.modules=${modulesStr};
 
-    page_${inputs[0]}.packages=[];
+    pack_${packName}.packages=[];
 
-    page_${inputs[0]}.src = ${src};
-
-    page_${inputs[0]}.Setup=function(){
+    pack_${packName}.Setup=function(){
 
     `;
 
@@ -202,12 +209,13 @@ tag.Compile = function(element, childsCode, code) {
 
     pageCode += `
     }
-        page_${inputs[0]}.Setup.call(page_${inputs[0]});
-        page_${inputs[0]}.manager=manager;
-        page_${inputs[0]}.AfterSetup();
-        pages.push( page_${inputs[0]});
+        pack_${packName}.Setup.call(pack_${packName});
+        pack_${packName}.manager=manager;
+        
+        packages.push(pack_${packName});
 
     `;
+
     if (!element.forSV) {
         pageCode = '';
     }

@@ -1,13 +1,14 @@
 (()=>{
-            var ScopeId = "D:\\NLCDemoWeb\\nframework/nmodules/nlc";
-const JSSVPath = "D:\\NLCDemoWeb\\nframework/nmodules/nlc/NLC.nlc.server.js";
-const JSCLPath = "D:\\NLCDemoWeb\\nframework/nmodules/nlc/NLC.nlc.client.js";
+            var ScopeId = "D:\\NCity\\nframework/nmodules/nlc";
+const JSSVPath = "D:\\NCity\\nframework/nmodules/nlc/NLC.nlc.server.js";
+const JSCLPath = "D:\\NCity\\nframework/nmodules/nlc/NLC.nlc.client.js";
 
             var namespace=[];
             
 module.exports = (manager) => {
     let exports     = new Object();
     let nmodules    = [];
+    let packages    = [];
     let pages       = [];
     exports.customTypeDatas=[];
     exports.customTypeDatas.Add=function(key,value){
@@ -23,7 +24,7 @@ module.exports = (manager) => {
 
         var NModule=
         function() {
-            return require("D:\\NLCDemoWeb\\nframework\\ncompiler\\tags/../../nmodule/nmodule");
+            return require("D:\\NCity\\nframework\\ncompiler\\tags/../../nmodule/nmodule");
         }()
 
     ;
@@ -199,6 +200,7 @@ module.exports = (manager) => {
 
     exports.nmodules=nmodules;
     exports.pages=pages;
+    exports.packages=packages;
     return exports;
 }
         

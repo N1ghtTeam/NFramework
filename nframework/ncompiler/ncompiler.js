@@ -1271,6 +1271,7 @@ class NCompiler {
 module.exports = (manager) => {
     let exports     = new Object();
     let nmodules    = [];
+    let packages    = [];
     let pages       = [];
     exports.customTypeDatas=[];
     exports.customTypeDatas.Add=function(key,value){
@@ -1284,6 +1285,7 @@ module.exports = (manager) => {
 
     exports.nmodules=nmodules;
     exports.pages=pages;
+    exports.packages=packages;
     return exports;
 }` :
                 `manager = window.NFramework.nmoduleManager;

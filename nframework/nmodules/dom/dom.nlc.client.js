@@ -1,17 +1,17 @@
 (()=>{
-            var ScopeId = "D:\\NLCDemoWeb\\nframework/nmodules/dom";
-const JSSVPath = "D:\\NLCDemoWeb\\nframework/nmodules/dom/dom.nlc.server.js";
-const JSCLPath = "D:\\NLCDemoWeb\\nframework/nmodules/dom/dom.nlc.client.js";
+            var ScopeId = "D:\\NCity\\nframework/nmodules/dom";
+const JSSVPath = "D:\\NCity\\nframework/nmodules/dom/dom.nlc.server.js";
+const JSCLPath = "D:\\NCity\\nframework/nmodules/dom/dom.nlc.client.js";
 
             var namespace=[];
             
-                            var aa60d0394_2289_49f6_80b3_64d422a38784_module;
+                            var a46138217_d1da_4629_a57e_c65b3a37cd06_module;
                         manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['5d3cf7d2_15be_4f3b_8457_cdc39b132689']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['5d3cf7d2_15be_4f3b_8457_cdc39b132689']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['ca440d2b_bdcd_4a93_944d_f6f150e36fe7']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['ca440d2b_bdcd_4a93_944d_f6f150e36fe7']=true;
                         
             (()=>{
                 
@@ -79,14 +79,14 @@ const JSCLPath = "D:\\NLCDemoWeb\\nframework/nmodules/dom/dom.nlc.client.js";
 
             function(){
                 this.GetThisWithCallback((module)=>{
-                            aa60d0394_2289_49f6_80b3_64d422a38784_module=module;
+                            a46138217_d1da_4629_a57e_c65b3a37cd06_module=module;
                         })
-                        let getterObja60d0394_2289_49f6_80b3_64d422a38784={
+                        let getterObj46138217_d1da_4629_a57e_c65b3a37cd06={
                             set stter(value) {
-                                aa60d0394_2289_49f6_80b3_64d422a38784_module.Set('body',value);
+                                a46138217_d1da_4629_a57e_c65b3a37cd06_module.Set('body',value);
                             }
                         }
-                        getterObja60d0394_2289_49f6_80b3_64d422a38784.stter=document.body;
+                        getterObj46138217_d1da_4629_a57e_c65b3a37cd06.stter=document.body;
             }
 
         

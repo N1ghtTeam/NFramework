@@ -115,7 +115,32 @@ tag.Compile = function(element, childsCode, code, manager) {
             return data;
         })()`
 
-        return `exports.customTypeDatas.Add(${globalObjName},${compiledCode})`;
+        return `exports.customTypeDatas.Add(${globalObjName},${compiledCode});
+                
+                
+                if(${side} == 'both' || ${side} == 'client' ){
+                    var fs=require('fs');
+    
+                    var gobjclientVersion=JSCLPath;
+    
+                    var gobjclient_js_code=fs.readFileSync(gobjclientVersion);
+
+                    let express_server = manager.NFramework.express_server;
+
+                    let newPath = '';
+
+                    for(let c of ${globalObjName}){
+                        if(c==':'){
+                            newPath += '--';
+                        }
+                        else newPath += c;
+                    }
+
+                    newPath = '/nlc/' + newPath;
+            
+                    express_server.get(newPath, (req, res) => res.send(gobjclient_js_code));
+                }
+        `;
     } else{
 
         return ` manager.customTypeDatas[${globalObjName}]=(()=>{

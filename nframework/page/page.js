@@ -42,13 +42,90 @@ class Page {
                 compiledData = compiledData.code;
                 compiledData = compiler.CompileFastGet(compiledData);
 
-                express_server.get(url, (req, res) => res.send(compiledData));
+                express_server.get(url, (req, res) => {
+                    res.send(compiledData);
+                });
             }
         }
     }
 
+    GetDataFromPackage(pack){
+        let manager = this.manager;
+        if(this.modules!='*'){
+            let moduleNamesObj = new Object();
+
+            for(let moduleName of this.modules){
+                moduleNamesObj[moduleName] = true;
+            }
+
+            for(let moduleName of pack.modules){
+                moduleNamesObj[moduleName] = true;
+            }
+
+            let moduleNames = Object.keys(moduleNamesObj);
+
+            this.modules = moduleNames;
+        }
+        
+        if(pack.modules == '*') this.modules = pack.modules;
+
+        if(!this.useAllGlobalObjects){
+            let namesObj = new Object();
+
+            for(let name of this.customTypeDatas){
+                namesObj[name] = true;
+            }
+
+            for(let name of pack.customTypeDatas){
+                namesObj[name] = true;
+            }
+
+            let names = Object.keys(namesObj);
+
+            this.customTypeDatas = names;
+        }
+
+        if(pack.useAllGlobalObjects) this.useAllGlobalObjects = '*';
+        
+        if(this.uiComponents != '*'){
+            let namesObj = new Object();
+
+            for(let name of this.uiComponents){
+                namesObj[name] = true;
+            }
+
+            for(let name of pack.uiComponents){
+                namesObj[name] = true;
+            }
+
+            let names = Object.keys(namesObj);
+
+            this.uiComponents = names;
+        }
+        if(pack.uiComponents == '*') this.uiComponents = pack.uiComponents;
+
+        for(let packChildName of pack.packages){
+            var packChild = manager.Get(packChildName);
+            this.GetDataFromPackage(packChild);
+        }
+    }
+
+    GetDataFromPackages(){
+        let manager = this.manager;
+        
+        for(let packName of this.packages){
+            
+            var pack = manager.Get(packName);
+
+            this.GetDataFromPackage(pack);
+            
+        }
+
+    }
+
     AfterSetup() {
-        this.SetupGlobalObjectsRouter();
+        this.GetDataFromPackages();
+        //this.SetupGlobalObjectsRouter();
     }
 
     Render(req,res){
@@ -89,6 +166,26 @@ class Page {
 
         var globalObjects=this.customTypeDatas;
 
+        if(this.useAllGlobalObjects)
+        {
+            
+            for(var globalObjectName of Object.keys(this.manager.customTypeDatas)){
+                
+                var parsedPath = '';
+    
+                for (let i=0;i<globalObjectName.length;i++){
+                    if(globalObjectName[i]==':'){
+                        parsedPath += '--';
+                    }
+                    else{
+                        parsedPath += globalObjectName[i];
+                    }
+                }
+    
+                miejs+="\n<script src='/nlc/"+parsedPath+"'></script>";
+            }
+        }
+        else
         for(var globalObjectName of globalObjects){
             
             var parsedPath = '';
