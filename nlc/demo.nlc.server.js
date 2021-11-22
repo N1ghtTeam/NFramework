@@ -1,1 +1,1 @@
-/* NFRAMEWORK */module.exports=e=>{let s=new Object;return s.customTypeDatas=[],s.customTypeDatas.Add=function(e,t){s.customTypeDatas.push({key:e,value:t})},s.nmodules=[],s.pages=[],s};
+/* NFRAMEWORK */module.exports=e=>{let t=new Object;return t.customTypeDatas=[],t.customTypeDatas.Add=function(e,s){t.customTypeDatas.push({key:e,value:s})},t.nmodules=[],t.pages=[],t.packages=[],t};

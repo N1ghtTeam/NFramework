@@ -138,8 +138,7 @@ class NModule {
         let isExist = false;
 
         result = (this.properties[name]     || this.methods[name]       ||
-                 this.serverMethods[name]   || this.clientMethods[name] ||
-                 this.GetSyncProperty(name))|| null;
+                 this.serverMethods[name]   || this.clientMethods[name])|| null;
 
         isExist = (name in this.properties)     || (name in this.methods)       ||
                   (name in this.serverMethods)  || (name in this.clientMethods) ||
