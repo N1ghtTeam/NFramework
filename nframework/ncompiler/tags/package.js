@@ -185,6 +185,8 @@ tag.Compile = function(element, childsCode, code) {
     let pack_${packName}=new Object();
 
     pack_${packName}.customTypeDatas=[];
+
+    pack_${inputs[0]}.jsScripts=[];
     
     pack_${packName}.uiComponents=${uicomponentsStr};
 

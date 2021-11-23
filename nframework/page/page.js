@@ -103,6 +103,22 @@ class Page {
             this.uiComponents = names;
         }
         if(pack.uiComponents == '*') this.uiComponents = pack.uiComponents;
+        
+        if(this.jsScripts != '*'){
+            let namesObj = new Object();
+
+            for(let name of this.jsScripts){
+                namesObj[name] = true;
+            }
+
+            for(let name of pack.jsScripts){
+                namesObj[name] = true;
+            }
+
+            let names = Object.keys(namesObj);
+
+            this.jsScripts = names;
+        }
 
         for(let packChildName of pack.packages){
             var packChild = manager.Get(packChildName);
@@ -223,6 +239,13 @@ class Page {
             }
 
             miejs+="\n<script src='/nlc/"+parsedPath+"'></script>";
+        }
+        
+        for(var jsScript of this.jsScripts){
+            
+            
+
+            miejs+=`\n<script src="`+jsScript+`"></script>`;
         }
 
         miejs+="\n</nlc>";

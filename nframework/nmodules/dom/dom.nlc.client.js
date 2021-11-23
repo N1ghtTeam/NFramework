@@ -5,13 +5,13 @@ const JSCLPath = "D:\\ThreejsDemos\\Demo1\\nframework/nmodules/dom/dom.nlc.clien
 
             var namespace=[];
             
-                            var aa99f41d9_8838_491c_a8a0_31428accbdbf_module;
+                            var a67b0defc_10bc_4410_aada_ff75d0ad79fc_module;
                         manager = window.NFramework.nmoduleManager;
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['4c15a25a_f5c1_4f8e_8181_c31bb3d70aaa']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['4c15a25a_f5c1_4f8e_8181_c31bb3d70aaa']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['c5dbfe0c_1a66_4b39_98ef_ff844c5445d0']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['c5dbfe0c_1a66_4b39_98ef_ff844c5445d0']=true;
                         
             (()=>{
                 
@@ -79,14 +79,14 @@ const JSCLPath = "D:\\ThreejsDemos\\Demo1\\nframework/nmodules/dom/dom.nlc.clien
 
             function(){
                 this.GetThisWithCallback((module)=>{
-                            aa99f41d9_8838_491c_a8a0_31428accbdbf_module=module;
+                            a67b0defc_10bc_4410_aada_ff75d0ad79fc_module=module;
                         })
-                        let getterObja99f41d9_8838_491c_a8a0_31428accbdbf={
+                        let getterObj67b0defc_10bc_4410_aada_ff75d0ad79fc={
                             set stter(value) {
-                                aa99f41d9_8838_491c_a8a0_31428accbdbf_module.Set('body',value);
+                                a67b0defc_10bc_4410_aada_ff75d0ad79fc_module.Set('body',value);
                             }
                         }
-                        getterObja99f41d9_8838_491c_a8a0_31428accbdbf.stter=document.body;
+                        getterObj67b0defc_10bc_4410_aada_ff75d0ad79fc.stter=document.body;
             }
 
         

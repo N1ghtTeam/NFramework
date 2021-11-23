@@ -176,6 +176,8 @@ tag.Compile = function(element, childsCode, code) {
     let page_${inputs[0]}=new Page();
 
     page_${inputs[0]}.customTypeDatas=[];
+
+    page_${inputs[0]}.jsScripts=[];
     
     page_${inputs[0]}.uiComponents=${uicomponentsStr};
 

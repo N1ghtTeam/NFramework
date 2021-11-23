@@ -8,8 +8,8 @@ const JSCLPath = "D:\\ThreejsDemos\\Demo1\\nframework/nmodules/nlc/NLC.nlc.clien
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['26462f81_5765_4d84_8d05_65f719953174']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['26462f81_5765_4d84_8d05_65f719953174']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['68afff3e_8c04_4e00_831d_5101baa7a012']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['68afff3e_8c04_4e00_831d_5101baa7a012']=true;
                         
             (()=>{
                 
@@ -93,10 +93,10 @@ const JSCLPath = "D:\\ThreejsDemos\\Demo1\\nframework/nmodules/nlc/NLC.nlc.clien
     
             
             
-                        function a448c3f14_5647_4740_a7f0_f340bf48193a(...params){
-                            let this_a448c3f14_5647_4740_a7f0_f340bf48193a=this;
+                        function a06c336d0_de11_470a_8bd6_38963680fa15(...params){
+                            let this_a06c336d0_de11_470a_8bd6_38963680fa15=this;
                             return (
-                                async function tfresult_a448c3f14_5647_4740_a7f0_f340bf48193a(T){
+                                async function tfresult_a06c336d0_de11_470a_8bd6_38963680fa15(T){
                                     var src=(async function  (forSV){
 
                 let compiledCode = await (manager.Get('NLC')).GetThisWithCallback((module)=>{

@@ -8,8 +8,8 @@ const JSCLPath = "D:\\ThreejsDemos\\Demo1\\nframework/nmodules/console/console.n
 
 
                     
-                    if(window.NFramework.nmoduleManager.nlcElementRunned['a9190190_8cf6_4f8b_9988_a7f1b574af99']==null){
-                        window.NFramework.nmoduleManager.nlcElementRunned['a9190190_8cf6_4f8b_9988_a7f1b574af99']=true;
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['5337098c_bb02_4404_a853_ec05ae40627e']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['5337098c_bb02_4404_a853_ec05ae40627e']=true;
                         
             (()=>{
                 
