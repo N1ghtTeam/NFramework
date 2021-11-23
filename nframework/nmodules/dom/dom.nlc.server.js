@@ -1,1 +1,115 @@
-/* NFRAMEWORK */(()=>{var l=[];module.exports=e=>{let r=new Object,n=[];r.customTypeDatas=[],r.customTypeDatas.Add=function(e,n){r.customTypeDatas.push({key:e,value:n})};var o=new(require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule")),t=(()=>{if(0==l.length)return"dom";{let e="dom";for(var n=l.length-1;0<=n;n--)e=l[n]+":"+e;return e}})();o.name=t,o.shortName="dom",o.__TYPE="NMODULE",o.baseModules=[],o.side="both",o.RunExternalMethod=function(e){e.call(o)},o.RunExternalMethod(function(){});var a=require("fs");o.client_js_code=a.readFileSync("D:\\MyTechs\\nframework\\nframework/nmodules/dom/dom.nlc.client.js");var s="";for(let e=0;e<t.length;e++)":"==t[e]?s+="--":s+=t[e];return"server"!=o.side&&o.Routing("/nlc/"+s,(e,n)=>n.send(o.client_js_code)),n.push(o),r.nmodules=n,r.pages=[],r.packages=[],r}})();
+(()=>{
+            var ScopeId = "D:\\ThreejsDemos\\Demo1\\nframework/nmodules/dom";
+const JSSVPath = "D:\\ThreejsDemos\\Demo1\\nframework/nmodules/dom/dom.nlc.server.js";
+const JSCLPath = "D:\\ThreejsDemos\\Demo1\\nframework/nmodules/dom/dom.nlc.client.js";
+
+            var namespace=[];
+            
+module.exports = (manager) => {
+    let exports     = new Object();
+    let nmodules    = [];
+    let packages    = [];
+    let pages       = [];
+    exports.customTypeDatas=[];
+    exports.customTypeDatas.Add=function(key,value){
+        exports.customTypeDatas.push({
+            'key':key,
+            'value':value
+        });
+    }
+
+    
+
+                    
+
+        var NModule=
+        function() {
+            return require("D:\\ThreejsDemos\\Demo1\\nframework\\ncompiler\\tags/../../nmodule/nmodule");
+        }()
+
+    ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        var nmoduleName = 
+
+        ((()=>{
+            
+            if(namespace.length==0){
+                return `dom`;
+            }
+            else{
+                let result=`dom`;
+                for(var i=namespace.length-1;i>=0;i--){
+                    result = namespace[i]+':'+result;
+                }
+                return result;
+            }
+
+        })())
+
+    ;
+
+        nmodule.name=nmoduleName;
+
+        nmodule.shortName=`dom`;
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.baseModules = [];
+
+        nmodule.side = 'both';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+
+    
+
+
+        });
+    
+
+        var fs=require('fs');
+
+        var clientVersion=JSCLPath;
+
+        nmodule.client_js_code=fs.readFileSync(clientVersion);
+        
+
+        var parsedPath = '';
+
+        for (let i=0;i<nmoduleName.length;i++){
+            if(nmoduleName[i]==':'){
+                parsedPath += '--';
+            }
+            else{
+                parsedPath += nmoduleName[i];
+            }
+        }
+
+        if(nmodule.side!='server'){
+            nmodule.Routing('/nlc/'+parsedPath, (req, res) => res.send(nmodule.client_js_code));
+        }
+
+        
+
+            nmodules.push(nmodule);
+
+        
+
+                
+
+    exports.nmodules=nmodules;
+    exports.pages=pages;
+    exports.packages=packages;
+    return exports;
+}
+        
+        })()

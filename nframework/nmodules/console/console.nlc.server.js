@@ -1,1 +1,188 @@
-/* NFRAMEWORK */(()=>{var a=[];module.exports=o=>{let t=new Object,e=[];t.customTypeDatas=[],t.customTypeDatas.Add=function(e,n){t.customTypeDatas.push({key:e,value:n})};var r=new(require("D:\\MyTechs\\nframework\\nframework\\ncompiler\\tags/../../nmodule/nmodule")),n=(()=>{if(0==a.length)return"console";{let e="console";for(var n=a.length-1;0<=n;n--)e=a[n]+":"+e;return e}})();r.name=n,r.shortName="console",r.__TYPE="NMODULE",r.baseModules=[],r.side="both",r.RunExternalMethod=function(e){e.call(r)},r.RunExternalMethod(function(){if(o.NFramework.console.enable){const e=require("readline"),n=e.createInterface({input:process.stdin,output:process.stdout}),t=function(){const e=async function*(){for await(const e of n)yield e}();return async()=>(await e.next()).value}();this.AddMethod("log",(...e)=>{return function(...e){console.log(...e)}.call(this,...e)}),this.AddMethod("clear",(...e)=>{return function(){console.clear()}.call(this,...e)}),this.AddMethod("readLine",async(...e)=>{let n=async function(){return t()}.bind(this);return n(...e)})}});var s=require("fs");r.client_js_code=s.readFileSync("D:\\MyTechs\\nframework\\nframework/nmodules/console/console.nlc.client.js");var c="";for(let e=0;e<n.length;e++)":"==n[e]?c+="--":c+=n[e];return"server"!=r.side&&r.Routing("/nlc/"+c,(e,n)=>n.send(r.client_js_code)),e.push(r),t.nmodules=e,t.pages=[],t.packages=[],t}})();
+(()=>{
+            var ScopeId = "D:\\ThreejsDemos\\Demo1\\nframework/nmodules/console";
+const JSSVPath = "D:\\ThreejsDemos\\Demo1\\nframework/nmodules/console/console.nlc.server.js";
+const JSCLPath = "D:\\ThreejsDemos\\Demo1\\nframework/nmodules/console/console.nlc.client.js";
+
+            var namespace=[];
+            
+module.exports = (manager) => {
+    let exports     = new Object();
+    let nmodules    = [];
+    let packages    = [];
+    let pages       = [];
+    exports.customTypeDatas=[];
+    exports.customTypeDatas.Add=function(key,value){
+        exports.customTypeDatas.push({
+            'key':key,
+            'value':value
+        });
+    }
+
+    
+
+                    
+
+        var NModule=
+        function() {
+            return require("D:\\ThreejsDemos\\Demo1\\nframework\\ncompiler\\tags/../../nmodule/nmodule");
+        }()
+
+    ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        var nmoduleName = 
+
+        ((()=>{
+            
+            if(namespace.length==0){
+                return `console`;
+            }
+            else{
+                let result=`console`;
+                for(var i=namespace.length-1;i>=0;i--){
+                    result = namespace[i]+':'+result;
+                }
+                return result;
+            }
+
+        })())
+
+    ;
+
+        nmodule.name=nmoduleName;
+
+        nmodule.shortName=`console`;
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.baseModules = [];
+
+        nmodule.side = 'both';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+
+    
+
+        
+
+            if(manager.NFramework.console.enable){
+
+                const readline = require('readline');
+
+                const rl = readline.createInterface({ input: process.stdin , output: process.stdout });
+
+                const ReadLine = (function () {
+                    const getLineGen = (async function* () {
+                        for await (const line of rl) {
+                            yield line;
+                        }
+                    })();
+                    return async () => ((await getLineGen.next()).value);
+                })();
+
+                
+        this.AddMethod('log',(...args) => {
+            let f=
+    
+                    function(...args) {
+                        console.log(...args);
+                    }
+                
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+                
+        this.AddMethod('clear',(...args) => {
+            let f=
+    
+                    function() {
+                        console.clear();
+                    }
+                
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+                
+        this.AddMethod('readLine',async (...args)=>{
+                let f=async function() {
+                        return await ReadLine();
+                    }
+                
+                let f2=f.bind(this);
+                return await f2(...args);
+            }
+
+        );
+
+    
+
+            }
+
+        
+
+    
+
+
+
+
+        });
+    
+
+        var fs=require('fs');
+
+        var clientVersion=JSCLPath;
+
+        nmodule.client_js_code=fs.readFileSync(clientVersion);
+        
+
+        var parsedPath = '';
+
+        for (let i=0;i<nmoduleName.length;i++){
+            if(nmoduleName[i]==':'){
+                parsedPath += '--';
+            }
+            else{
+                parsedPath += nmoduleName[i];
+            }
+        }
+
+        if(nmodule.side!='server'){
+            nmodule.Routing('/nlc/'+parsedPath, (req, res) => res.send(nmodule.client_js_code));
+        }
+
+        
+
+            nmodules.push(nmodule);
+
+        
+
+                
+
+    exports.nmodules=nmodules;
+    exports.pages=pages;
+    exports.packages=packages;
+    return exports;
+}
+        
+        })()

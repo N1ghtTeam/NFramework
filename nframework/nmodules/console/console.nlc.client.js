@@ -1,1 +1,83 @@
-/* NFRAMEWORK */(()=>{var n,e,o=[];manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned["8af7ed9e_adbb_4477_b948_d6b96e260ee5"]&&(window.NFramework.nmoduleManager.nlcElementRunned["8af7ed9e_adbb_4477_b948_d6b96e260ee5"]=!0,n=new window.NFramework.NModule,e=(()=>{if(0==o.length)return"console";{let e="console";for(var n=o.length-1;0<=n;n--)e=o[n]+":"+e;return e}})(),n.name=e,n.shortName="console",n.__TYPE="NMODULE",n.baseModules=[],n.side="both",n.RunExternalMethod=function(e){e.call(n)},n.RunExternalMethod(function(){}),window.NFramework.nmoduleManager.ImportModule(n))})();
+(()=>{
+            var ScopeId = "D:\\ThreejsDemos\\Demo1\\nframework/nmodules/console";
+const JSSVPath = "D:\\ThreejsDemos\\Demo1\\nframework/nmodules/console/console.nlc.server.js";
+const JSCLPath = "D:\\ThreejsDemos\\Demo1\\nframework/nmodules/console/console.nlc.client.js";
+
+            var namespace=[];
+            manager = window.NFramework.nmoduleManager;
+
+
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['a9190190_8cf6_4f8b_9988_a7f1b574af99']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['a9190190_8cf6_4f8b_9988_a7f1b574af99']=true;
+                        
+            (()=>{
+                
+
+        var NModule=
+            function() {
+                return window.NFramework.NModule;
+            }()
+
+        ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        var nmoduleName = 
+
+        ((()=>{
+            
+            if(namespace.length==0){
+                return `console`;
+            }
+            else{
+                let result=`console`;
+                for(var i=namespace.length-1;i>=0;i--){
+                    result = namespace[i]+':'+result;
+                }
+                return result;
+            }
+
+        })())
+
+    ;
+
+        nmodule.name=nmoduleName;
+
+        nmodule.shortName=`console`;
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.baseModules = [];
+
+        nmodule.side = 'both';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+
+    
+
+
+
+
+        });
+    
+
+            var nmoduleManager = window.NFramework.nmoduleManager;
+            nmoduleManager.ImportModule(nmodule);
+        
+            })();
+        
+                    }
+                
+
+                
+        
+        })()

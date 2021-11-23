@@ -13,160 +13,296 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
     
     var inputs=tag.GetInputs(element,childsCode,code);
 
-    if(inputs.length>0){
-        let newInputs=[];
+    function checkInputs(inputs){
+        if(inputs.length>0){
+            let newInputs=[];
+            newInputs=[];
 
+            for(let i=0;i<inputs.length;i++){
 
-        newInputs=[];
+                let ct=false;
 
-        for(let i=0;i<inputs.length;i++){
+                let icache=i;
 
-            let ct=false;
-
-            let icache=i;
-
-            if(inputs[i][0]=='='){
-                newInputs[i-1]+='='//+inputs[i+1];
-                ct=true;
-                if(inputs[i][inputs[i].length-1]=='='){
-                    newInputs[i-1]+=inputs[i+1];
-                    icache=i+1;
+                if(inputs[i][0]=='='){
+                    newInputs[i-1]+='='//+inputs[i+1];
+                    ct=true;
+                    if(inputs[i][inputs[i].length-1]=='='){
+                        newInputs[i-1]+=inputs[i+1];
+                        icache=i+1;
+                    }
                 }
-            }
-            else
-            if(inputs[i][inputs[i].length-1]=='='){
-                newInputs[i]='='+inputs[i+1];
-                icache=i+1;
-                ct=true;
-            }
-            
+                else
+                if(inputs[i][inputs[i].length-1]=='='){
+                    newInputs[i]='='+inputs[i+1];
+                    icache=i+1;
+                    ct=true;
+                }
+                
 
-            i=icache;
-            
-            if(!ct)
-            newInputs.push(inputs[i]);
+                i=icache;
+                
+                if(!ct)
+                newInputs.push(inputs[i]);
 
-        }
-
-        inputs=newInputs;
-
-
-        newInputs=[];
-
-        let inputsStr='';
-
-        for(let i=0;i<inputs.length;i++){
-
-            inputsStr+=inputs[i];
-
-            if(i<inputs.length-1){
-                inputsStr+='\n';
             }
 
-        }
+            inputs=newInputs;
 
-        let inputIndex=0;
 
-        let newInputsStr='';
+            newInputs=[];
 
-        let curlyBracketCount=0;
+            let inputsStr='';
 
-        for(let i=0;i<inputsStr.length;i++){
+            for(let i=0;i<inputs.length;i++){
 
-            let strChar='';
-            let isInStr=false;
+                inputsStr+=inputs[i];
 
-            if(inputsStr[i]=='\n' && curlyBracketCount!=0){
-                inputIndex++;
+                if(i<inputs.length-1){
+                    inputsStr+='\n';
+                }
+
             }
-            else{
-                if(inputsStr[i]!='\n' || curlyBracketCount==0){
-                    newInputsStr+=inputsStr[i];
+
+            let inputIndex=0;
+
+            let newInputsStr='';
+
+            let curlyBracketCount=0;
+
+            for(let i=0;i<inputsStr.length;i++){
+
+                let strChar='';
+                let isInStr=false;
+
+                if(inputsStr[i]=='\n' && curlyBracketCount!=0){
+                    inputIndex++;
                 }
                 else{
-                    newInputsStr+=' ';
+                    if(inputsStr[i]!='\n' || curlyBracketCount==0){
+                        newInputsStr+=inputsStr[i];
+                    }
+                    else{
+                        newInputsStr+=' ';
+                    }
                 }
+
+                if(!isInStr && (inputsStr[i]=='"' || inputsStr[i]=='`' || inputsStr[i]=="'")){
+                    strChar=inputsStr[i];
+                    isInStr=true;
+                }
+                if(isInStr && inputsStr[i]==strChar){
+                    isInStr=false;
+                }
+
+                if(!isInStr){
+                    
+                    if(inputsStr[i]=='{'){
+                        curlyBracketCount++;
+                    }
+                    
+                    if(inputsStr[i]=='}'){
+                        curlyBracketCount--;
+                    }
+
+                }
+
             }
 
-            if(!isInStr && (inputsStr[i]=='"' || inputsStr[i]=='`' || inputsStr[i]=="'")){
-                strChar=inputsStr[i];
-                isInStr=true;
+            newInputs=newInputsStr.split('\n');
+
+            inputs=newInputs;
+            
+            newInputs=[];
+
+            for(let i=0;i<inputs.length;i++){
+
+                let parsedInp='';
+
+                let inp=inputs[i];
+
+                let parts=inp.split('=');
+
+                if(parts.length>1){
+                    let start=0;
+
+                    let part1='';
+
+                    for(let t=1;t<parts.length;t++){
+                        part1+=parts[t];
+                        if(t<parts.length-1){
+                            part1+='=';
+                        }
+                    }
+
+                    let end=part1.length-1;
+                    for(;start<part1.length;start++){
+                        if(part1[start]!=' '){
+                            break;
+                        }
+                    }
+                    for(;end>=0;end--){
+                        if(part1[end]!=' '){
+                            break;
+                        }
+                    }
+                    var parsedPart1=part1.substring(start,end+1);
+
+                    if(parsedPart1[0]=='{' && parsedPart1[parsedPart1.length-1]=='}'){
+                        parsedPart1=parsedPart1.substring(1,parsedPart1.length-1);
+                    }
+
+                    parsedInp = (parts[0]+'='+parsedPart1);
+                }
+                else{
+                    parsedInp = (inp);
+                }
+
+                newInputs.push(parsedInp);
+
             }
-            if(isInStr && inputsStr[i]==strChar){
-                isInStr=false;
+
+            inputs=newInputs;
+        }
+        return inputs;
+    }
+
+    function checkInputs2(inputs){
+        let newInputs = [];
+
+        let istr = '';
+        let nStr = '';
+
+        for (let i = 0; i < inputs.length;i++){
+            istr+=inputs[i];
+
+            if(i!=inputs.length-1){
+                istr+='\n';
+            }
+        }
+
+        let isInStr = false;
+        let strChr = '';
+
+        let curlyBracketLevel = 0;
+
+        for (let i = 0; i < istr.length;i++){
+            
+            if(!isInStr && (istr[i]=='"' || istr[i]=='`' || istr[i]==`'`)){
+                isInStr = true;
+                strChr = istr[i];
+            }
+            else
+            if(isInStr && istr[i] == strChr){
+                isInStr = false;
             }
 
             if(!isInStr){
-                
-                if(inputsStr[i]=='{'){
-                    curlyBracketCount++;
+
+                if(istr[i]=='{'){
+                    curlyBracketLevel++;
                 }
-                
-                if(inputsStr[i]=='}'){
-                    curlyBracketCount--;
+                if(istr[i]=='}'){
+                    curlyBracketLevel--;
                 }
 
+            }
+
+            let addChr = true;
+
+            if(!isInStr && curlyBracketLevel==0){
+
+
+                if(istr[i]=='\n' && istr[i+1]=='='){
+                    nStr+='=';
+                    addChr = false;
+                    i++;
+                }
+                else if(istr[i]=='\n' && istr[i-1]=='='){
+                    addChr = false;
+                }
+
+            }
+
+            if(addChr)
+                nStr += istr[i];
+        }
+
+        istr = nStr;
+
+        nStr = '';
+
+        curlyBracketLevel = 0;
+
+        let ms=[-1];
+
+        isInStr = false;
+        strChr = '';
+
+        for (let i = 0; i < istr.length;i++){
+            
+            if(!isInStr && (istr[i]=='"' || istr[i]=='`' || istr[i]==`'`)){
+                isInStr = true;
+                strChr = istr[i];
+            }
+            else
+            if(isInStr && istr[i] == strChr){
+                isInStr = false;
+            }
+
+            let addChr = true;
+
+            if(!isInStr){
+
+                if(istr[i]=='{'){
+                    if(curlyBracketLevel==0){
+                        nStr+='(';
+                        addChr = false;
+                    }
+
+                    curlyBracketLevel++;
+                }
+                if(istr[i]=='}'){
+                    curlyBracketLevel--;
+
+                    if(curlyBracketLevel==0){
+                        nStr+=')';
+                        addChr = false;
+                    }
+
+                }
+
+            }
+
+            if(addChr){
+                nStr += istr[i];
+            }
+
+            if(curlyBracketLevel==0){
+                if(istr[i]=='\n'){
+                    ms.push(nStr.length-1);
+                }
             }
 
         }
 
-        newInputs=newInputsStr.split('\n');
+        istr = nStr;
 
-        inputs=newInputs;
-        
-        newInputs=[];
+        ms.push(istr.length);
 
-        for(let i=0;i<inputs.length;i++){
+        let nis = [];
 
-            let parsedInp='';
-
-            let inp=inputs[i];
-
-            let parts=inp.split('=');
-
-            if(parts.length>1){
-                let start=0;
-
-                let part1='';
-
-                for(let t=1;t<parts.length;t++){
-                    part1+=parts[t];
-                    if(t<parts.length-1){
-                        part1+='=';
-                    }
-                }
-
-                let end=part1.length-1;
-                for(;start<part1.length;start++){
-                    if(part1[start]!=' '){
-                        break;
-                    }
-                }
-                for(;end>=0;end--){
-                    if(part1[end]!=' '){
-                        break;
-                    }
-                }
-                var parsedPart1=part1.substring(start,end+1);
-
-                if(parsedPart1[0]=='{' && parsedPart1[parsedPart1.length-1]=='}'){
-                    parsedPart1=parsedPart1.substring(1,parsedPart1.length-1);
-                }
-
-                parsedInp = (parts[0]+'='+parsedPart1);
-            }
-            else{
-                parsedInp = (inp);
+        if(istr.length>0)
+            for(let i=0;i<ms.length-1;i++){
+                nis.push(istr.substring(ms[i]+1,ms[i+1]));
             }
 
-            newInputs.push(parsedInp);
+        inputs = nis;
 
-        }
-
-        inputs=newInputs;
+        return inputs;
     }
 
-
+    inputs=checkInputs2(inputs);
 
     var rfid = uuidv4();
 
@@ -210,10 +346,6 @@ module.exports=function(element,childsCode,code,manager,htmlTagName,tag){
             }
             attributes+=`
                 var a${rfid}${atbName}=true;
-                attributes_${rfid}.push({
-                    key:'${atbName}',
-                    value:(()=>{return a${rfid}${inputs[i]}})()
-                });
                 result_${rfid}.setAttribute('${atbName}',(()=>{return a${rfid}${inputs[i]}})());
             `;
         }

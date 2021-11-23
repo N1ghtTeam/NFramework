@@ -1,9 +1,0 @@
-<use html>
-<use dom>
-
-<module demo-base
-
-        side { 'both' }
->
-
-</module>
