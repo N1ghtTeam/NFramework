@@ -178,13 +178,13 @@ class NModule {
     }
 
     Setup() {
-        if (this.methods.setup)
-            this.methods.setup.call(this);
+        if (this.methods.Setup)
+            this.methods.Setup.call(this);
     }
 
     Start() {
-        if (this.methods.start)
-            this.methods.start.call(this);
+        if (this.methods.Start)
+            this.methods.Start.call(this);
     }
 
     GetModule(name) {
