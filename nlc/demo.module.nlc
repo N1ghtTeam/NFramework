@@ -1,0 +1,18 @@
+<module demo-module>
+
+    <property hello_world_text/>
+
+
+    <method Start>
+
+        function(){
+
+            @console->readLine().then(
+                data => console.log(data)
+            );
+
+        }
+
+    </method>
+
+</module>

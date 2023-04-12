@@ -4,7 +4,7 @@
 
         <property body/>
 
-        <method setup>
+        <method Setup>
 
             function(){
                 this->body=document.body;

@@ -3,7 +3,7 @@
 
     <server-only>
 
-        <method start>
+        <method Start>
 
             function(){
 

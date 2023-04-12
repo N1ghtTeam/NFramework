@@ -10,7 +10,8 @@
         return (
             <>
 
-                Hello World
+                <demo-ui>
+                </demo-ui>
 
             </>
         );
@@ -26,9 +27,10 @@
     render(){
 
         return(
+           
             UIClass('demo-ui-base').render(this).add(
                 <>     
-                    Hello
+                    A
                 </>
             )
         );

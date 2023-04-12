@@ -1,1 +1,220 @@
-/* NFRAMEWORK */(()=>{var t,n,e,r=[];manager=window.NFramework.nmoduleManager,null==window.NFramework.nmoduleManager.nlcElementRunned.d7f28758_50c6_45ac_ab2d_733e67f44a9f&&(window.NFramework.nmoduleManager.nlcElementRunned.d7f28758_50c6_45ac_ab2d_733e67f44a9f=!0,n=new window.NFramework.NModule,e=(()=>{if(0==r.length)return"dom";{let e="dom";for(var t=r.length-1;0<=t;t--)e=r[t]+":"+e;return e}})(),n.name=e,n.shortName="dom",n.__TYPE="NMODULE",n.baseModules=[],n.side="both",n.RunExternalMethod=function(e){e.call(n)},n.RunExternalMethod(function(){this.AddProperty("body"),this.AddMethod("setup",(...e)=>{return function(){this.GetThisWithCallback(e=>{t=e});let e={set stter(e){t.Set("body",e)}};e.stter=document.body}.call(this,...e)}),this.AddMethod("getElementById",(...e)=>{return function(e){return document.getElementById(e)}.call(this,...e)}),this.AddMethod("getElementsByName",(...e)=>{return function(e){return document.getElementsByName(e)}.call(this,...e)}),this.AddMethod("getElementsByClassName",(...e)=>{return function(e){return document.getElementsByClassName(e)}.call(this,...e)}),this.AddMethod("getElementsByTagName",(...e)=>{return function(e){return document.getElementsByTagName(e)}.call(this,...e)}),this.AddMethod("querySelector",(...e)=>{return function(e){return document.querySelector(e)}.call(this,...e)}),this.AddMethod("querySelectorAll",(...e)=>{return function(e){return document.querySelectorAll(e)}.call(this,...e)})}),window.NFramework.nmoduleManager.ImportModule(n))})();
+(()=>{
+            var ScopeId = "C:\\NCoder\\NFramework\\nframework/nmodules/dom";
+const JSSVPath = "C:\\NCoder\\NFramework\\nframework/nmodules/dom/dom.nlc.server.js";
+const JSCLPath = "C:\\NCoder\\NFramework\\nframework/nmodules/dom/dom.nlc.client.js";
+
+            var namespace=[];
+            
+                            var a65067f3e_6211_48d2_876a_ce017807c8c7_module;
+                        manager = window.NFramework.nmoduleManager;
+
+
+                    
+                    if(window.NFramework.nmoduleManager.nlcElementRunned['9f550d57_3a44_4b7c_bca1_b6290bf2ca26']==null){
+                        window.NFramework.nmoduleManager.nlcElementRunned['9f550d57_3a44_4b7c_bca1_b6290bf2ca26']=true;
+                        
+            (()=>{
+                
+
+        var NModule=
+            function() {
+                return window.NFramework.NModule;
+            }()
+
+        ;
+
+        var nmodule=new NModule();
+
+        var This=nmodule;
+
+        var nmoduleName = 
+
+        ((()=>{
+            
+            if(namespace.length==0){
+                return `dom`;
+            }
+            else{
+                let result=`dom`;
+                for(var i=namespace.length-1;i>=0;i--){
+                    result = namespace[i]+':'+result;
+                }
+                return result;
+            }
+
+        })())
+
+    ;
+
+        nmodule.name=nmoduleName;
+
+        nmodule.shortName=`dom`;
+
+        nmodule.__TYPE='NMODULE';
+
+        nmodule.baseModules = [];
+
+        nmodule.side = 'both';
+
+        nmodule.RunExternalMethod=function(callback){
+            callback.call(nmodule);
+        }
+
+
+        nmodule.RunExternalMethod(function(){
+    
+
+    
+
+        
+
+    this.AddProperty('body');
+
+    
+
+        
+        this.AddMethod('Setup',(...args) => {
+            let f=(
+    
+
+            function(){
+                this.GetThisWithCallback((module)=>{
+                            a65067f3e_6211_48d2_876a_ce017807c8c7_module=module;
+                        })
+                        let getterObj65067f3e_6211_48d2_876a_ce017807c8c7={
+                            set stter(value) {
+                                a65067f3e_6211_48d2_876a_ce017807c8c7_module.Set('body',value);
+                            }
+                        }
+                        getterObj65067f3e_6211_48d2_876a_ce017807c8c7.stter=document.body;
+            }
+
+        );
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+        
+        this.AddMethod('getElementById',(...args) => {
+            let f=(
+    
+            function(pr0){
+                return document.getElementById(pr0);
+            }
+        );
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+        
+        this.AddMethod('getElementsByName',(...args) => {
+            let f=(
+    
+            function(pr0){
+                return document.getElementsByName(pr0);
+            }
+        );
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+        
+        this.AddMethod('getElementsByClassName',(...args) => {
+            let f=(
+    
+            function(pr0){
+                return document.getElementsByClassName(pr0);
+            }
+        );
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+        
+        this.AddMethod('getElementsByTagName',(...args) => {
+            let f=(
+    
+            function(pr0){
+                return document.getElementsByTagName(pr0);
+            }
+        );
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+        
+        this.AddMethod('querySelector',(...args) => {
+            let f=(
+    
+            function(pr0){
+                return document.querySelector(pr0);
+            }
+        );
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+        
+        this.AddMethod('querySelectorAll',(...args) => {
+            let f=(
+    
+            function(pr0){
+                return document.querySelectorAll(pr0);
+            }
+        );
+
+    return f.call(this,...args);
+
+}
+
+    );
+
+    
+
+    
+
+
+        });
+    
+
+            var nmoduleManager = window.NFramework.nmoduleManager;
+            nmoduleManager.ImportModule(nmodule);
+        
+            })();
+        
+                    }
+                
+
+                
+        
+        })()

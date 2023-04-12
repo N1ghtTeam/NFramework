@@ -13,14 +13,14 @@ tag.Compile = function(element, childsCode, code) {
 
     let compiledCode = `
         this.AddMethod('${inputs[0]}',(...args) => {
-            let f=
+            let f=(
     `;
 
     for (let i = 0; i < contents.length; i++) {
         compiledCode += contents[i].code;
     }
 
-    compiledCode += `
+    compiledCode += `);
 
     return f.call(this,...args);
 
