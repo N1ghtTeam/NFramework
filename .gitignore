@@ -2,5 +2,5 @@
 
 
 
-*.nlc.server.js
-*.nlc.client.js
+**/*.nlc.server.js
+**/*.nlc.client.js
