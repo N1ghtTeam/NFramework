@@ -1,1 +1,6 @@
 .vscode/settings.json
+
+
+
+*.nlc.server.js
+*.nlc.client.js
